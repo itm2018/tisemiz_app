@@ -46,11 +46,6 @@
 	));
 /**Configure Exception Handler
 **/
-Configure::write('Exception',array(
-	'handler' => 'ErrorHandler::handleException',
-	'renderer' => 'AppExceptionRenderer',
-	'log' => true
-));
 /**
  * Configure the Exception handler used for uncaught exceptions. By default,
  * ErrorHandler::handleException() is used. It will display a HTML page for the exception, and

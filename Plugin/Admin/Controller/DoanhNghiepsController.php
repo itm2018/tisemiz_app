@@ -13,6 +13,7 @@ class DoanhNghiepsController extends AdminAppController {
  */
 //	public $scaffold;
 	public $layout = 'admin/default';
-	public function lietke(){}
+	public function lietke(){
+    }
 	public function themmoi(){}
 }
