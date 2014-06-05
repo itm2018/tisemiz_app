@@ -16,9 +16,12 @@
 		echo $this->Html->css(array(
 			'/assets/css/bootstrap.min',
 			'/assets/css/font-awesome.min',
-			'/assets/css/main.min')
-			);
+			'/assets/css/main.min',
+			'/assets/css/custom',
+                        )
+                    );
 	?>
+        <?php echo $this->fetch('css');?>
 	<!-- CSS -->
 <!--	<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">

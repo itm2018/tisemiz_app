@@ -6,25 +6,25 @@
 <!--<![endif]-->
 
 <head>
-	<title>TiseMiz | Evironment Management</title>
+	<title>TiseMiz | <?php echo $this->fetch('title');?></title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<meta name="description" content="Kingboard - Bootstrap Admin Dashboard Theme">
-	<meta name="author" content="The Develovers">
+	<meta name="description" content="TiseMiz - Tool Increase Strength of Environment Management in Industry Zone">
+	<meta name="author" content="Son Ca Huynh huynhsonca@wordpress.com">
+        <?php echo $this->fetch('meta');?>
+        <!-- CSS -->
 	<?php
 		echo $this->Html->css(array(
 			'/assets/css/bootstrap.min',
 			'/assets/css/font-awesome.min',
-			'/assets/css/main.min')
-			);
+			'/assets/css/main.min',
+			'/assets/css/custom',
+                        )
+		);
 	?>
-	<!-- CSS -->
-<!--	<link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<link href="assets/css/main.min.css" rel="stylesheet" type="text/css">-->
+        <?php echo $this->fetch('css');?>
 
-	<!-- CSS for demo style switcher. you can remove this -->
 	<link href="<?php echo $this->Html->url('/assets/css/style-switcher.css');?>" rel="stylesheet" type="text/css">
 
 	<!-- Fav and touch icons -->
@@ -33,7 +33,7 @@
 	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo $this->Html->url('/assets/ico/kingboard-favicon72x72.png');?>">
 	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="<?php echo $this->Html->url('/assets/ico/kingboard-favicon57x57.png');?>">
 	<link rel="shortcut icon" href="<?php echo $this->Html->url('/assets/ico/favicon.png');?>">
-<!-- Javascript -->
+        <!-- Javascript -->
 	<?php
 		echo $this->Html->script(array(
 			'/assets/js/jquery-2.1.1.min',
@@ -56,7 +56,8 @@
 			'/assets/js/maps/usa_states',
 			'/assets/js/king-chart-stat.min',
 			'/assets/js/king-table.min',
-			'/assets/js/king-components.min'
+			'/assets/js/king-components.min',
+                        '/assets/tinymce/tinymce.min'
 		));
 	?>
 	<?php echo $this->fetch('script');?>
