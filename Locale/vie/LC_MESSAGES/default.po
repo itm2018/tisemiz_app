@@ -1,0 +1,50 @@
+msgid "Username"
+msgstr "Tên đăng nhập"
+
+msgid "Password"
+msgstr "Mật khẩu"
+
+msgid "Login"
+msgstr "Đăng nhập"
+
+msgid "Register"
+msgstr "Đăng ký"
+
+msgid "Reset"
+msgstr "Làm lại"
+
+msgid "Email"
+msgstr "Địa chỉ email"
+
+msgid "Confirm Password"
+msgstr "Xác nhận mật khẩu"
+
+msgid "please enter your email"
+msgstr "vui lòng nhập email"
+
+msgid "Login Information"
+msgstr "Thông tin đăng nhập"
+
+msgid "Username contains just alphabet and number characters"
+msgstr "Tên đăng nhập chỉ được chứa chữ cái và số"
+
+msgid "A user with this username had been registered in the system"
+msgstr "Tên đăng nhập này đã tồn tại trong hệ thống"
+
+msgid "This is not a valid email address"
+msgstr "Địa chỉ email không đúng"
+
+msgid "A user with this email had been registered in the system"
+msgstr "Email này đã được đăng ký trong hệ thống. Vui lòng chọn một địa chỉ email khác"
+
+msgid "Password must be at least 6 digits, contains at least 1 non-alphabet character, at least 1 uppercase letter and  at least 1 number"
+msgstr "Mật khẩu nên có ít nhất 6 ký tự, chứa ít nhất mỗi 1 ký tự đặc biệt, 1 chữ cái viết hoa, 1 ký số"
+
+msgid "Please confirm exactly your password"
+msgstr "Xác nhận mật khẩu không đúng"
+
+msgid "Home page"
+msgstr "Trang chủ"
+
+msgid "Don't have an account?"
+msgstr "Bạn chưa có tài khoản?"

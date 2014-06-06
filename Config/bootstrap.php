@@ -100,3 +100,8 @@ CakeLog::config('error', array(
 CakePlugin::load('Admin', array('bootstrap' => false, 'routes' => false));
 
 CakePlugin::load('Front', array('bootstrap' => false, 'routes' => false));
+
+/**
+ * Set default language of application
+ */
+Configure::write('Config.language','vie');

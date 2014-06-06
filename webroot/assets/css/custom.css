@@ -6,6 +6,20 @@ Define custom css for application
     Author     : soncahuynh
 */
 
-.required{
+span.required,
+.error-message{
     color: #F00;
+}
+#flashMessage{
+    background-image: -webkit-linear-gradient(#ff6707, #dd5600 60%, #c94e00);
+    background-image: linear-gradient(#ff6707, #dd5600 60%, #c94e00);
+    background-repeat: no-repeat;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff6707', endColorstr='#ffc94e00', GradientType=0);
+    filter: none;
+    border-bottom: 1px solid #aa4200;
+    border-radius: 5px;
+    padding: 5px 0px 5px 20px;
+}
+.message{
+    color: #fff;
 }

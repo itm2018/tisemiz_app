@@ -9,18 +9,7 @@ App::uses('AppController', 'Controller');
 class UsersController extends AppController
 {
 
-    public function beforeFilter()
-    {
-        parent::beforeFilter();
-        $this->Security->blackHoleCallback = 'blackhole';
-        $this->Security->validatePost = false;
-        $this->Auth->allow(array('register','success'));
-    }
 
-    public function blackhole()
-    {
-        $this->redirect(array('controller' => 'users', 'action' => 'login'));
-    }
 
     public function login()
     {
@@ -41,7 +30,6 @@ class UsersController extends AppController
             $this->loadModel('User');
             $this->User->set($this->request->data['User']);
             if ($this->User->validates()) {
-                unset($this->request->data['User']['confirm_password']);
                 try {
                     if($this->User->save($this->request->data['User'])){
                         $this->redirect(array('controller'=>'users','action'=>'success'));

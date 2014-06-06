@@ -37,8 +37,8 @@ class AppController extends Controller
                 'action' => 'index'
             ),
             'logoutRedirect' => array(
-                'controller' => 'pages',
-                'action' => 'display',
+                'controller' => 'users',
+                'action' => 'login',
                 'home'
             ),
             'loginAction' => array(
@@ -58,4 +58,16 @@ class AppController extends Controller
             )
         )
     );
+    public function beforeFilter()
+    {
+        parent::beforeFilter();
+        $this->Security->blackHoleCallback = 'blackhole';
+        $this->Security->validatePost = false;
+        $this->Auth->allow(array('register','success'));
+    }
+
+    public function blackhole()
+    {
+        $this->redirect(array('controller' => 'users', 'action' => 'login'));
+    }
 }

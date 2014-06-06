@@ -20,21 +20,38 @@ class User extends AppModel
         }
         return true;
     }
-
     public $validate = array(
         'username' => array(
-            'rule' => 'alphaNumeric',
-            'required' => true,
-            'allowEmpty' => false,
-            'message' => 'This is not a valid email address'
+           'notEmpty'=>array(
+               'rule' => 'alphaNumeric',
+               'required' => true,
+               'allowEmpty' => false,
+               'message' => 'Username contains just alphabet and number characters'
+           ),
+            'unique'=>array(
+                'rule'=>'isUnique',
+                'message'=>'A user with this username had been registered in the system'
+            )
         ),
         'email' => array(
-            'rule' => 'email',
-            'required' => true,
-            'allowEmpty' => false,
-            'message' => 'This is not a valid email address'
+            'notEmpty'=>array(
+                'rule' => 'email',
+                'required' => true,
+                'allowEmpty' => false,
+                'message' => 'This is not a valid email address'
+            ),
+            'unique'=>array(
+                'rule'=>'isUnique',
+                'message'=>'A user with this email had been registered in the system'
+            )
         ),
-        'password' => array(
+        'password'=>array(
+            'strength'=>array(
+                'rule'=>'/(?=^.{6,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/',
+                'message'=>'Password must be at least 6 digits, contains at least 1 non-alphabet character, at least 1 uppercase letter and  at least 1 number'
+            )
+        ),
+        'confirm_password' => array(
             'equal' => array(
                 'rule' => array('checkEqual'),
                 'message' => 'Please confirm exactly your password'
@@ -46,6 +63,6 @@ class User extends AppModel
     {
         $value = array_values($check);
         $value = $value[0];
-        return ($value == $this->data['User']['confirm_password']);
+        return ($value == $this->data['User']['password']);
     }
 }

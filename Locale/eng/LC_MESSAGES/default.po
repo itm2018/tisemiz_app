@@ -1,0 +1,26 @@
+msgid "Username"
+msgstr "Username"
+
+msgid "Password"
+msgstr "Password"
+
+msgid "Login"
+msgstr "Login"
+
+msgid "Register"
+msgstr "Register"
+
+msgid "Reset"
+msgstr "Reset"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Confirm Password"
+msgstr "Confirm Password"
+
+msgid "please enter your email"
+msgstr "please enter your email"
+
+msgid "Login Information"
+msgstr "Login Information"
