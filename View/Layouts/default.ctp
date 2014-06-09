@@ -14,7 +14,7 @@
 
     <!--<link href="css/bootstrap-blue.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">-->
-    <?php echo $this->Html->css(array(
+    <?php echo $this->Minify->css(array(
         'bootstrap-blue',
         'style',
         '/assets/css/custom',
@@ -40,7 +40,7 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>-->
-    <?php echo $this->Html->script(array(
+    <?php echo $this->Minify->script(array(
         'html5shiv',
         'jquery.min',
         'bootstrap.min',
@@ -64,7 +64,7 @@
                             data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
                             class="icon-bar"></span><span class="icon-bar"></span></button>
-                    <a class="navbar-brand" href="#">Trang chủ</a>
+                    <a class="navbar-brand" href="#"><i class="fa fa-home"></i> Trang chủ</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -141,19 +141,30 @@
                     </form>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Người dùng<strong
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<?php
+								if($user=$this->Session->read('Auth.User')){
+									echo h($user['username']);
+								} else{
+									echo __('User');
+								}
+								?><strong
                                     class="caret"></strong></a>
                             <ul class="dropdown-menu">
+								<?php if(!$this->Session->read('Auth.User')):?>
                                 <li>
                                     <?php echo $this->Html->link(__('Login'),'/users/login');?>
                                 </li>
+								<li class="divider">
                                 <li>
                                     <?php echo $this->Html->link(__('Register'),'/users/register');?>
                                 </li>
+								<li class="divider">
+								<?php endif;?>
                                 <li>
                                     <?php echo $this->Html->link(__('Logout'),'/users/logout');?>
                                 </li>
-                                <li class="divider">
+
                                 </li>
                             </ul>
                         </li>
@@ -178,8 +189,9 @@
         </div>
     </div>
 </div>
+<div class="marginT100" style="margin-top: 100px;"></div>
 <!--footer-->
-<div class="navbar navbar-default navbar-fixed-bottom">
+<div id="footer" class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
         <div class="navbar-header">
             <a href="../" class="navbar-brand">TiseMiz</a>
@@ -212,11 +224,19 @@
                 <li><a href="http://www.facebook.com/tisemiz" target="_blank">Follow Us!</a></li>
                 <li><a href="https://www.youtube.com/?ref=bsw" target="_blank">Watch Us!</a></li>
                 <li><a href="https://www.twitter.com/?ref=bsw" target="_blank">Tweet Us!</a></li>
+				<li id="hidefooter"><a href="javascript:void();"><?php echo __('Hide me');?></a></li>
             </ul>
 
         </div>
     </div>
 </div>
 <!--end footer-->
+<script type="text/javascript">
+	$(function(){
+		$('#hidefooter').click(function(){
+			$('#footer').fadeOut("slow");
+		});
+	});
+</script>
 </body>
 </html>

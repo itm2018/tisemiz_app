@@ -101,6 +101,8 @@ CakePlugin::load('Admin', array('bootstrap' => false, 'routes' => false));
 
 CakePlugin::load('Front', array('bootstrap' => false, 'routes' => false));
 
+CakePlugin::load('Minify', array('routes' => true));
+
 /**
  * Set default language of application
  */

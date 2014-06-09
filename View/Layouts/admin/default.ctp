@@ -282,7 +282,9 @@
 										<div class="btn-group">
 											<a href="#" class="btn btn-link dropdown-toggle" data-toggle="dropdown">
 												<img src="<?php echo $this->Html->url("/assets/img/user-avatar.png");?>" />
-												<span class="name">Stacy Rose</span>
+												<span class="name"><?php if($user=$this->Session->read('Auth.User'))
+														echo $user['username'];
+													?></span>
 												<span class="caret"></span>
 											</a>
 											<ul class="dropdown-menu" role="menu">
@@ -299,7 +301,7 @@
 													</a>
 												</li>
 												<li>
-													<a href="#">
+													<a href="<?php echo $this->Html->url('/users/logout');?>">
 														<i class="fa fa-power-off"></i>
 														<span class="text">Logout</span>
 													</a>

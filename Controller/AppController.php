@@ -23,6 +23,7 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller
 {
+	public $helpers = array('Minify.Minify');
     public $components = array(
         'Session',
         'RequestHandler',
@@ -33,7 +34,7 @@ class AppController extends Controller
         'Auth' => array(
             'loginRedirect' => array(
                 'plugin'=>'admin',
-                'controller' => 'Dashboards',
+                'controller' => 'dashboards',
                 'action' => 'index'
             ),
             'logoutRedirect' => array(
@@ -42,6 +43,7 @@ class AppController extends Controller
                 'home'
             ),
             'loginAction' => array(
+				'plugin'=>null,
                 'controller'=>'users',
                 'action' => 'login',
             ),
@@ -49,25 +51,47 @@ class AppController extends Controller
             'authenticate' => array(
                 'Form' => array(
                     'userModel' => 'User',
-                    'fields' => array('username' => 'email'),
                     'passwordHasher' => array(
                         'className' => 'Simple',
                         'hashType' => 'sha256'
-                    )
+                    ),
+					'fields'=>array('username'=>'username','password'=>'password'),
+					'scope'=>array('User.status'=>1)
                 )
             )
-        )
+        ),
+		'Acl'
     );
     public function beforeFilter()
     {
         parent::beforeFilter();
         $this->Security->blackHoleCallback = 'blackhole';
         $this->Security->validatePost = false;
-        $this->Auth->allow(array('register','success'));
     }
 
     public function blackhole()
     {
-        $this->redirect(array('controller' => 'users', 'action' => 'login'));
+        $this->redirect(array('plugin'=>null,'controller' => 'errors', 'action' => 'session_expire'));
     }
+	public function any_action(){
+		$aro = $this->Acl->Aro;
+		$groups=array(
+			0=>array(
+				'alias'=>'warriors'
+			),
+			1=>array(
+				'alias'=>'wizards'
+			),
+			2=>array(
+				'alias'=>'hobbits'
+			),
+			3=>array(
+				'alias'=>'visitors'
+			)
+		);
+		foreach($groups as $data){
+			$aro->create();
+			$aro->save($data);
+		}
+	}
 }

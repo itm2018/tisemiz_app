@@ -1,3 +1,6 @@
+msgid "User"
+msgstr "Người dùng"
+
 msgid "Username"
 msgstr "Tên đăng nhập"
 
@@ -19,14 +22,20 @@ msgstr "Địa chỉ email"
 msgid "Confirm Password"
 msgstr "Xác nhận mật khẩu"
 
-msgid "please enter your email"
-msgstr "vui lòng nhập email"
+msgid "email/username"
+msgstr "tài khoản/email"
 
 msgid "Login Information"
 msgstr "Thông tin đăng nhập"
 
-msgid "Username contains just alphabet and number characters"
-msgstr "Tên đăng nhập chỉ được chứa chữ cái và số"
+msgid "A username is required"
+msgstr "Chưa chọn tên đăng nhập"
+
+msgid "Username must be between 5 to 20 characters"
+msgstr "Tên đăng nhập phải từ 5 đến 20 ký tự"
+
+msgid "Username can only be letters, numbers and underscores"
+msgstr "Tên đăng nhập chỉ được chứa chữ cái, số và dấu gạch dưới _ or -"
 
 msgid "A user with this username had been registered in the system"
 msgstr "Tên đăng nhập này đã tồn tại trong hệ thống"
@@ -38,7 +47,7 @@ msgid "A user with this email had been registered in the system"
 msgstr "Email này đã được đăng ký trong hệ thống. Vui lòng chọn một địa chỉ email khác"
 
 msgid "Password must be at least 6 digits, contains at least 1 non-alphabet character, at least 1 uppercase letter and  at least 1 number"
-msgstr "Mật khẩu nên có ít nhất 6 ký tự, chứa ít nhất mỗi 1 ký tự đặc biệt, 1 chữ cái viết hoa, 1 ký số"
+msgstr "Mật khẩu nên có ít nhất 6 ký tự, và chứa ít nhất 1 ký tự đặc biệt, 1 chữ cái viết hoa, 1 chữ số 0-9"
 
 msgid "Please confirm exactly your password"
 msgstr "Xác nhận mật khẩu không đúng"
@@ -48,3 +57,28 @@ msgstr "Trang chủ"
 
 msgid "Don't have an account?"
 msgstr "Bạn chưa có tài khoản?"
+
+msgid "Forgot your password?"
+msgstr "Quên mật khẩu?"
+
+msgid "Reset Password"
+msgstr "Lấy lại mật "
+
+msgid "Hide me"
+msgstr "Ẩn"
+
+msgid "Username or password is incorrect"
+msgstr "Tên đăng nhập hoặc mật khẩu không đúng"
+
+msgid "Account has not been activated. Please activate your account first or contact with administrator for supporting"
+msgstr "Tài khoản chưa được kích hoạt. Vui lòng kích hoạt tài khoản trước khi đăng nhập hoặc liên hệ với quản trị viên để được hỗ trợ"
+
+msgid "Account has been saved successfully"
+msgstr "Lưu tài khoản thành công"
+
+msgid "Congratulation"
+msgstr "Chúc mừng"
+
+msgid "Your account has been added. But before you can login to system, please check your mailbox for confirmation email and do as introduction as active your account."
+msgstr "Tài khoản của bạn đã được tạo. Nhưng trước khi bạn có thể đăng  vào hệ thống, vui lòng kiểm tra hộp thư để xem email xác nhận và làm theo hướng dẫn để kích hoạt tài khoản.<br>Xin chân thành cảm ơn."
+

@@ -45,7 +45,7 @@ App::uses('CakeEventManager', 'Event');
  *
  * @package       Cake.Controller
  * @property      AclComponent $Acl
- * @property      AuthComponent $Auth
+ * @property      AuthComponent 	$Auth
  * @property      CookieComponent $Cookie
  * @property      EmailComponent $Email
  * @property      PaginatorComponent $Paginator
