@@ -24,16 +24,18 @@
                 <em>- với chức năng tìm kiếm trực tiếp, sắp xếp, phân trang</em>
             </div>
             <div class="widget-content ui-jqgrid-hbox">
-                <div class="col-md-6"><div id="DataTables_Table_0_length" class="dataTables_length"><label><select size="1" name="DataTables_Table_DoanhNghiep_length" aria-controls="DataTables_Table_0"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> records per page</label></div></div>
-                <div class="col-md-6"><div class="dataTables_filter" id="DataTables_Table_0_filter"><label>Search: <input type="text" aria-controls="DataTables_Table_DoanhNghiep" id="search_filter"></label></div></div>
+                <div class="col-md-6"><div id="DataTables_Table_0_length" class="dataTables_length"><label><select size="1" name="DataTables_Table_DoanhNghiep_length" id="DataTables_Table_DoanhNghiep_length" aria-controls="DataTables_Table_0"><option value="10">10</option><option value="20" selected="selected">20</option><option value="50">50</option><option value="100">100</option></select> records per page</label></div></div>
+                <div class="col-md-6"><div class="dataTables_filter" id="DataTables_Table_0_filter"><label>Tìm: <input type="text" aria-controls="DataTables_Table_DoanhNghiep" id="search_filter"></label></div></div>
                 <script type="text/javascript">
                     $(function(){
+                        var limit = <?php echo $limit?>;
+                        $('#DataTables_Table_DoanhNghiep_length').val(limit);
                        $('#search_filter').keyup(function(){
-                           var val=$(this).val();
+                           var val=$(this).val().toLowerCase();
                           $('#jqGridDn tbody tr').each(function(){
                               var has=0;
                              $(this).find('td').each(function(){
-                                if($(this).text().indexOf(val)!=-1){
+                                if($(this).text().toLowerCase().indexOf(val)>-1){
                                     has=1;
                                 }
                              }) ;
@@ -44,6 +46,10 @@
                               }
                           });
                        }) ;
+                        $('#DataTables_Table_DoanhNghiep_length').change(function(){
+                            var number = $(this).val();
+                            window.location.href = "<?php echo FULL_BASE_URL;?>/admin/doanhnghiep/lietke/?number=" + number;
+                        });
                     });
                 </script>
                 <table id="jqGridDn" class="table table-sorting table-striped table-hover datatable ui-jqgrid-htable" cellpadding="0" cellspacing="0" width="100%">

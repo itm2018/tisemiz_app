@@ -21,7 +21,11 @@ class DoanhNghiepsController extends AdminAppController {
 //        )
     );
 	public function lietke(){
+        if($this->request->query('number') && is_numeric($this->request->query('number'))){
+            $this->paginate['limit']=$this->request->query('number');
+        }
         $this->Paginator->settings=$this->paginate;
+        $this->set('limit',$this->paginate['limit']);
         $data=$this->Paginator->paginate('DoanhNghiep');
         $this->set('data',$data);
     }
