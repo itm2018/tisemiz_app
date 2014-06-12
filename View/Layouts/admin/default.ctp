@@ -491,19 +491,19 @@
 						<div class="sidebar-content">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h5><i class="fa fa-lightbulb-o"></i> Tips</h5>
+									<h5><i class="fa fa-lightbulb-o"></i> Mẹo vặt</h5>
 								</div>
 								<div class="panel-body">
-									<p>You can do live search to the widget at search box located at top bar. It's very useful if your dashboard is full of widget.</p>
+									<p>Bạn có thể sử dụng thanh công cụ tìm kiếm để tiết kiệm thời gian</p>
 								</div>
 							</div>
 
 							<h5 class="label label-default"><i class="fa fa-info-circle"></i> Server Info</h5>
 							<ul class="list-unstyled list-info-sidebar bottom-30px">
 								<li class="data-row">
-									<span class="data-name">Disk Space Usage</span>
+									<span class="data-name">Số người truy cập</span>
 									<span class="data-value">
-										274.43 / 2 GB
+										27443
 										<div class="progress progress-xs">
 											<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%">
 												<span class="sr-only">10%</span>
@@ -512,7 +512,7 @@
 									</span>
 								</li>
 								<li class="data-row">
-									<span class="data-name">Monthly Bandwidth Transfer</span>
+									<span class="data-name">Lưu lượng dữ liệu hàng tháng</span>
 									<span class="data-value">
 										230 / 500 GB
 										<div class="progress progress-xs">
@@ -523,15 +523,15 @@
 									</span>
 								</li>
 								<li class="data-row">
-									<span class="data-name">Database Disk Space</span>
-									<span class="data-value">219.45 MB</span>
+									<span class="data-name">Số người đang online</span>
+									<span class="data-value">219</span>
 								</li>
 								<li class="data-row">
-									<span class="data-name">Operating System</span>
+									<span class="data-name">Hệ điều hành</span>
 									<span class="data-value">Linux</span>
 								</li>
 								<li class="data-row">
-									<span class="data-name">Apache Version</span>
+									<span class="data-name">Phiên bản hệ thống</span>
 									<span class="data-value">2.4.6</span>
 								</li>
 								<li class="data-row">

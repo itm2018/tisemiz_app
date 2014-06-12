@@ -7,6 +7,7 @@
     <meta name="description" content="Tisemiz ứng dụng quản lý môi trường tại các khu công nghiệp, góp phần bảo vệ môi trường sống tại Việt nam">
     <meta name="author" content="huynhsonca@gmail.com">
     <?php echo $this->fetch('meta');?>
+	<link rel="shortcut icon" href="<?php echo $this->Html->url('/assets/ico/favicon.png');?>">
     <!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
     <!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
     <!--script src="js/less-1.3.3.min.js"></script-->
@@ -54,9 +55,9 @@
     <div class="row clearfix">
         <div class="col-md-12 column">
             <div class="page-header">
-                <h1>
-                    TISEMIZ
-                </h1>
+				<div align="center" style="background:url(/img/index_02.gif); height:108px">
+					<div style="width:804px; margin:auto; height:108px; background:url(/img/index_04.jpg)"></div>
+				</div>
             </div>
             <nav class="navbar navbar-default" role="navigation">
                 <div class="navbar-header">
@@ -76,7 +77,7 @@
                             <a href="#">Hoạt động môi trường</a>
                         </li>
                         <li>
-                            <a href="#">Thống kê</a>
+                            <a href="#">Tin tức</a>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Báo cáo<strong

@@ -10,12 +10,6 @@ App::uses('Validation', 'Utility');
 class UsersController extends AppController
 {
 
-	public function beforeFilter()
-	{
-		parent::beforeFilter();
-		$this->Auth->allow(array('register', 'success'));
-	}
-
 	public function login()
 	{
 

@@ -67,12 +67,14 @@ class AppController extends Controller
         parent::beforeFilter();
         $this->Security->blackHoleCallback = 'blackhole';
         $this->Security->validatePost = false;
+		$this->Auth->allow(array('register', 'success', 'view'));
     }
 
     public function blackhole()
     {
         $this->redirect(array('plugin'=>null,'controller' => 'errors', 'action' => 'session_expire'));
     }
+
 	public function any_action(){
 		$aro = $this->Acl->Aro;
 		$groups=array(
