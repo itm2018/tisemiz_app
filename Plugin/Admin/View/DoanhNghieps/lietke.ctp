@@ -1,3 +1,16 @@
+<style>
+
+    .pagination>.current>a, .pagination>.current>span, .pagination>.current>a:hover, .pagination>.current>span:hover, .pagination>.current>a:focus, .pagination>.current>span:focus {
+        z-index: 2;
+        color: #fff;
+        background-color: #428bca;
+        border-color: #428bca;
+        cursor: default;
+    }
+    ul.pagination li.disabled{
+        display: none;
+    }
+</style>
 <div class="main-header">
         <h2>Doanh nghiệp</h2>
         <em>Liệt kê danh sách doanh nghiệp</em>
@@ -10,153 +23,118 @@
                 <h3><i class="fa fa-table"></i> Bảng cố định</h3>
                 <em>- với chức năng tìm kiếm trực tiếp, sắp xếp, phân trang</em>
             </div>
-            <div class="widget-content">
-                <table class="table table-sorting table-striped table-hover datatable" cellpadding="0" cellspacing="0" width="100%">
+            <div class="widget-content ui-jqgrid-hbox">
+                <div class="col-md-6"><div id="DataTables_Table_0_length" class="dataTables_length"><label><select size="1" name="DataTables_Table_DoanhNghiep_length" id="DataTables_Table_DoanhNghiep_length" aria-controls="DataTables_Table_0"><option value="10">10</option><option value="20" selected="selected">20</option><option value="50">50</option><option value="100">100</option></select> records per page</label></div></div>
+                <div class="col-md-6"><div class="dataTables_filter" id="DataTables_Table_0_filter"><label>Tìm: <input type="text" aria-controls="DataTables_Table_DoanhNghiep" id="search_filter"></label></div></div>
+                <script type="text/javascript">
+                    $(function(){
+                        var limit = <?php echo $limit?>;
+                        $('#DataTables_Table_DoanhNghiep_length').val(limit);
+                       $('#search_filter').keyup(function(){
+                           var val=$(this).val().toLowerCase();
+                          $('#jqGridDn tbody tr').each(function(){
+                              var has=0;
+                             $(this).find('td').each(function(){
+                                if($(this).text().toLowerCase().indexOf(val)>-1){
+                                    has=1;
+                                }
+                             }) ;
+                              if(has==0){
+                                  $(this).hide();
+                              }else{
+                                  $(this).show();
+                              }
+                          });
+                       }) ;
+                        $('#DataTables_Table_DoanhNghiep_length').change(function(){
+                            var number = $(this).val();
+                            window.location.href = "<?php echo FULL_BASE_URL;?>/admin/doanhnghiep/lietke/?number=" + number;
+                        });
+                    });
+                </script>
+                <table id="jqGridDn" class="table table-sorting table-striped table-hover datatable ui-jqgrid-htable" cellpadding="0" cellspacing="0" width="100%">
                     <thead>
                     <tr>
-                        <th>Browser</th>
-                        <th>Operating System</th>
-                        <th>Visits</th>
-                        <th>New Visits</th>
-                        <th>Bounce Rate</th>
+                        <th class="sorting"><?php echo $this->Paginator->sort('colMa',__('ID'));?></th>
+                        <th class="sorting"><?php echo $this->Paginator->sort('colTen',__('Tên Doanh Nghiệp'));?></th>
+                        <th class="sorting"><?php echo $this->Paginator->sort('colTenTAnh',__('Tên Tiếng Anh'));?></th>
+                        <th class="sorting"><?php echo $this->Paginator->sort('colDiaChi',__('Địa chỉ'));?></th>
+                        <th class="sorting"><?php echo $this->Paginator->sort('colDienThoai',__('Điện thoai')); ?></th>
+                        <th class="sorting"><?php echo $this->Paginator->sort('colFax',__('Số Fax')); ?></th>
+                        <th class="sorting"><?php echo $this->Paginator->sort('colEmail',__('Email')); ?></th>
+                        <th class="sorting"><?php echo $this->Paginator->sort('colSoTKhoan',__('Số tài khoản')); ?></th>
+                        <th class="sorting"><?php echo $this->Paginator->sort('colNamHopDong',__('Năm HD')); ?></th>
+<!--                        <th class="sorting">--><?php //echo $this->Paginator->sort('colGiayPhepKD',__('Giấy phép KD')); ?><!--</th>-->
+<!--                        <th class="sorting">--><?php //echo $this->Paginator->sort('colLoaiHinhDN',__('Loại hình DN')); ?><!--</th>-->
+                        <th class="sorting"><?php echo $this->Paginator->sort('colLinhVucHD',__('Lĩnh Vực HD')); ?></th>
+                        <th class="sorting"><?php echo $this->Paginator->sort('colSanPham',__('Sản phẩm')); ?></th>
+<!--                        <th>--><?php //echo $this->Paginator->sort('colQuocGia',__('Quốc gia')); ?><!--</th>-->
+                        <th class="actions"><?php echo __('Actions'); ?></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>Chrome</td>
-                        <td>Macintosh</td>
-                        <td>360</td>
-                        <td>82.78%</td>
-                        <td>87.77%</td>
-                    </tr>
-                    <tr>
-                        <td>Chrome</td>
-                        <td>Windows</td>
-                        <td>582</td>
-                        <td>87.24%</td>
-                        <td>90.12%</td>
-                    </tr>
-                    <tr>
-                        <td>Chrome</td>
-                        <td>Linux</td>
-                        <td>172</td>
-                        <td>45.21%</td>
-                        <td>48.81%</td>
-                    </tr>
-                    <tr>
-                        <td>Chrome</td>
-                        <td>iOS</td>
-                        <td>86</td>
-                        <td>35.23%</td>
-                        <td>44.21%</td>
-                    </tr>
-                    <tr>
-                        <td>Firefox</td>
-                        <td>Windows</td>
-                        <td>280</td>
-                        <td>63.12%</td>
-                        <td>89.34%</td>
-                    </tr>
-                    <tr>
-                        <td>Firefox</td>
-                        <td>Android</td>
-                        <td>236</td>
-                        <td>58.02%</td>
-                        <td>76.19%</td>
-                    </tr>
-                    <tr>
-                        <td>Internet Explorer</td>
-                        <td>Windows</td>
-                        <td>145</td>
-                        <td>45.23%</td>
-                        <td>94.65%</td>
-                    </tr>
-                    <tr>
-                        <td>Safari</td>
-                        <td>Macintosh</td>
-                        <td>103</td>
-                        <td>22.12%</td>
-                        <td>52.43%</td>
-                    </tr>
-                    <tr>
-                        <td>Safari</td>
-                        <td>iOS</td>
-                        <td>302</td>
-                        <td>56.98%</td>
-                        <td>45.53%</td>
-                    </tr>
-                    <tr>
-                        <td>Opera</td>
-                        <td>Windows</td>
-                        <td>328</td>
-                        <td>67.12%</td>
-                        <td>78.34%</td>
-                    </tr>
-                    <tr>
-                        <td>Opera</td>
-                        <td>Macintosh</td>
-                        <td>22</td>
-                        <td>87.21%</td>
-                        <td>79.81%</td>
-                    </tr>
-                    <tr>
-                        <td>Chrome</td>
-                        <td>iOS</td>
-                        <td>45</td>
-                        <td>23.21%</td>
-                        <td>34.67%</td>
-                    </tr>
-                    <tr>
-                        <td>Firefox</td>
-                        <td>Windows</td>
-                        <td>67</td>
-                        <td>27.11%</td>
-                        <td>78.08%</td>
-                    </tr>
-                    <tr>
-                        <td>Chrome</td>
-                        <td>Macintosh</td>
-                        <td>120</td>
-                        <td>80.78%</td>
-                        <td>80.77%</td>
-                    </tr>
-                    <tr>
-                        <td>Chrome</td>
-                        <td>Windows</td>
-                        <td>682</td>
-                        <td>89.44%</td>
-                        <td>95.32%</td>
-                    </tr>
-                    <tr>
-                        <td>Chrome</td>
-                        <td>Windows</td>
-                        <td>172</td>
-                        <td>43.11%</td>
-                        <td>46.89%</td>
-                    </tr>
+                    <?php foreach ($data as $doanhNghiep): ?>
+                        <tr>
+                            <td><?php echo h($doanhNghiep['DoanhNghiep']['colMa']); ?>&nbsp;</td>
+                            <td><?php echo h($doanhNghiep['DoanhNghiep']['colTen']); ?>&nbsp;</td>
+                            <td><?php echo h($doanhNghiep['DoanhNghiep']['colTenTAnh']); ?>&nbsp;</td>
+                            <td><?php echo h($doanhNghiep['DoanhNghiep']['colDiaChi']); ?>&nbsp;</td>
+                            <td><?php echo h($doanhNghiep['DoanhNghiep']['colDienThoai']); ?>&nbsp;</td>
+                            <td><?php echo h($doanhNghiep['DoanhNghiep']['colFax']); ?>&nbsp;</td>
+                            <td><?php echo h($doanhNghiep['DoanhNghiep']['colEmail']); ?>&nbsp;</td>
+                            <td><?php echo h($doanhNghiep['DoanhNghiep']['colSoTKhoan']); ?>&nbsp;</td>
+                            <td><?php echo date('Y',strtotime(h($doanhNghiep['DoanhNghiep']['colNamHopDong']))); ?>&nbsp;</td>
+<!--                            <td>--><?php //echo h($doanhNghiep['DoanhNghiep']['colGiayPhepKD']); ?><!--&nbsp;</td>-->
+<!--                            <td>--><?php //echo h($doanhNghiep['DoanhNghiep']['colLoaiHinhDN']); ?><!--&nbsp;</td>-->
+                            <td><?php echo h($doanhNghiep['DoanhNghiep']['colLinhVucHD']); ?>&nbsp;</td>
+                            <td><?php echo h($doanhNghiep['DoanhNghiep']['colSanPham']); ?>&nbsp;</td>
+<!--                            <td>--><?php //echo h($doanhNghiep['DoanhNghiep']['colQuocGia']); ?><!--&nbsp;</td>-->
+                            <td class="actions">
+                                <?php echo $this->Html->link(__('Sửa'), array('action' => 'edit', $doanhNghiep['DoanhNghiep']['colMa'])); ?>
+                                <?php echo $this->Form->postLink(__('Xóa'), array('action' => 'delete', $doanhNghiep['DoanhNghiep']['colMa']), null, __('Are you sure you want to delete # %s?', $doanhNghiep['DoanhNghiep']['colMa'])); ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+
                     </tbody>
                 </table>
+                <div class="col-md-6"><div class="dataTables_info" id="DataTables_Table_0_info"> <?php
+                        echo $this->Paginator->counter(array(
+                            'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
+                        ));
+                        ?></div></div>
+                <div class="col-md-6">
+                    <div class="dataTables_paginate paging_bootstrap">
+                        <ul class="pagination">
+                            <?php
+                            echo $this->Paginator->prev( '←', array( 'class' => 'prev', 'tag' => 'li'),null, array( 'class' => 'prev disabled','tag'=>'li'));
+                            echo $this->Paginator->numbers( array( 'tag' => 'li', 'separator' => '', 'currentClass' => 'active', 'currentTag' => 'a' ) );
+                            echo $this->Paginator->next( '→', array( 'class' => 'next', 'tag' => 'li' ), null, array( 'class' => 'next disabled', 'tag' => 'li' ) );
+                            ?>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- END JQUERY DATA TABLE -->
 
         <!-- JQGRID TABLE -->
-        <div class="widget widget-table">
-            <div class="widget-header">
-                <h3><i class="fa fa-table"></i> Bảng có thể chỉnh sửa</h3>
-                <em>- chỉnh sửa dòng, điều chỉnh, thêm, sửa, xóa, tìm kiếm, reload</em>
-            </div>
-            <div class="widget-content">
-                <div id="jqgrid-wrapper">
-                    <table id="jqgrid" class="table table-striped table-hover">
-                        <tr>
-                            <td></td>
-                        </tr>
-                    </table>
-                    <div id="jqgrid-pager"></div>
-                </div>
-            </div>
-        </div>
+<!--        <div class="widget widget-table">-->
+<!--            <div class="widget-header">-->
+<!--                <h3><i class="fa fa-table"></i> Bảng có thể chỉnh sửa</h3>-->
+<!--                <em>- chỉnh sửa dòng, điều chỉnh, thêm, sửa, xóa, tìm kiếm, reload</em>-->
+<!--            </div>-->
+<!--            <div class="widget-content">-->
+<!--                <div id="jqgrid-wrapper">-->
+<!--                    <table id="jqgrid" class="table table-striped table-hover">-->
+<!--                        <tr>-->
+<!--                            <td></td>-->
+<!--                        </tr>-->
+<!--                    </table>-->
+<!--                    <div id="jqgrid-pager"></div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
         <!-- JQGRID TABLE -->
 
     </div>
