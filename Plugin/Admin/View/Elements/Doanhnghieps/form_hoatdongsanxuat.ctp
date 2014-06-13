@@ -1,21 +1,29 @@
-<form class="form-horizontal" role="form">
+<!--<form class="form-horizontal" role="form">-->
+<?php echo $this->Form->create('HoatDongSanXuat',array('method'=>'post','class'=>'form-horizontal','role'=>'form'));?>
 	<div class="form-group">
 		<label for="inputTongdtxd" class="col-sm-2 control-label">Tổng diện tích xây dựng</label>
-		<div class="col-sm-10">
+		<!--<div class="col-sm-10">
 			<input type="text" class="form-control" id="inputTongdtxd" placeholder="diện tích xây dựng">
-		</div>
+		</div>-->
+		<?php echo $this->Form->input('colDienTichDatXD',array('type'=>'text','class'=>'form-control',
+															   'placeholder'=>__('tổng diện tích đất xây dựng (m2)')))
+		;?>
 	</div>
 	<div class="form-group">
 		<label for="inputTongnv" class="col-sm-2 control-label">Tổng nhân viên</label>
-		<div class="col-sm-10">
+		<!--<div class="col-sm-10">
 			<input type="text" class="form-control" id="inputTongnv" placeholder="tổng số lượng nhân viên">
-		</div>
+		</div>-->
+		<?php echo $this->Form->input('colNVienTT', array('type'=>'text','class'=>'form-control',
+														  'placeholder'=>__('tổng số lượng nhân viên')));?>
 	</div>
 	<div class="form-group">
 		<label for="inputSoca" class="col-sm-2 control-label">Số ca sản xuất</label>
-		<div class="col-sm-10">
+		<!--<div class="col-sm-10">
 			<input type="text" class="form-control" id="inputSoca" placeholder="số ca sản xuất">
-		</div>
+		</div>-->
+		<?php echo $this->Form->input('colSoCaSX', array('type'=>'text','class'=>'form-control',
+														  ));?>
 	</div>
 	<div class="row clearfix">
 		<div class="col-md-6 column">
@@ -32,7 +40,9 @@
 									<tr>
 										<td>
 											<div class="radio">
-												<label><input type="radio" name="suatan" value="1"> Nhà máy</label>
+												<!--<label><input type="radio" name="suatan" value="1"> Nhà
+												máy</label>-->
+												<?php echo $this->Form->radio('');?>
 											</div>
 										</td>
 										<td>

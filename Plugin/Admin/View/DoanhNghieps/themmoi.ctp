@@ -54,8 +54,9 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="panel-sanpham">
                             <p><h3>II. THÔNG TIN HOẠT ĐỘNG SẢN XUẤT</h3></p>
-                            <--form thong tin hoat dong san xuat -->
-							<--end form thong tin hoat dong san xuat
+                            <!--form thong tin hoat dong san xuat -->
+								<?php echo $this->element('Admin.Doanhnghieps/form_hoatdongsanxuat');?>
+							<!--end form thong tin hoat dong san xuat-->
                         </div>
                         <div class="tab-pane" id="panel-nguyenlieu">
                             Nguyên liệu

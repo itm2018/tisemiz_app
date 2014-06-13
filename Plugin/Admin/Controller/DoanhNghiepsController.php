@@ -32,5 +32,16 @@ class DoanhNghiepsController extends AdminAppController {
         $this->set('data',$data);
     }
 	public function themmoi(){
+		if($this->request->is('post')){
+			if($this->request->data['DoanhNghiep']){
+				$this->loadModel('Admin.DoanhNghiep');
+				$this->DoanhNghiep->set($this->request->data['DoanhNghiep']);
+				if($this->DoanhNghiep->validates()){
+					$this->DoanhNghiep->save($this->request->data['DoanhNghiep']);
+					$this->Session->setFlash(__('Saved successfully enterprise information'),'default',
+												array('class'=>'message success'));
+				}
+			}
+		}
 	}
 }

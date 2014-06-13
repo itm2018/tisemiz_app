@@ -20,7 +20,7 @@
         <!-- JQUERY DATA TABLE -->
         <div class="widget widget-table">
             <div class="widget-header">
-                <h3><i class="fa fa-table"></i> Bảng cố định</h3>
+                <h3><i class="fa fa-table"></i> Danh sách doanh nghiệp</h3>
                 <em>- với chức năng tìm kiếm trực tiếp, sắp xếp, phân trang</em>
             </div>
             <div class="widget-content ui-jqgrid-hbox">
@@ -56,7 +56,7 @@
                     <thead>
                     <tr>
                         <th class="sorting"><?php echo $this->Paginator->sort('colMa',__('ID'));?></th>
-                        <th class="sorting"><?php echo $this->Paginator->sort('colTen',__('Tên Doanh Nghiệp'));?></th>
+                        <th class="sorting"><?php echo $this->Paginator->sort('colTen',__('Tên DN'));?></th>
                         <th class="sorting"><?php echo $this->Paginator->sort('colTenTAnh',__('Tên Tiếng Anh'));?></th>
                         <th class="sorting"><?php echo $this->Paginator->sort('colDiaChi',__('Địa chỉ'));?></th>
                         <th class="sorting"><?php echo $this->Paginator->sort('colDienThoai',__('Điện thoai')); ?></th>
@@ -100,7 +100,10 @@
                 </table>
                 <div class="col-md-6"><div class="dataTables_info" id="DataTables_Table_0_info"> <?php
                         echo $this->Paginator->counter(array(
-                            'format' => __('Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}')
+                            'format' => __('Trang {:page} trong số {:pages} trang,
+                            hiển thị {:current} dòng trong tổng số
+                            {:count}
+                            , bắt đầu {:start}, kết thúc {:end}')
                         ));
                         ?></div></div>
                 <div class="col-md-6">

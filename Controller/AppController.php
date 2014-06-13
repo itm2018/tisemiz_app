@@ -27,10 +27,10 @@ class AppController extends Controller
     public $components = array(
         'Session',
         'RequestHandler',
-        'Security' => array(
-            'csrfExpires' => '+1 hour',
-            'csrfUseOne' => false
-        ),
+//        'Security' => array(
+//            'csrfExpires' => '+1 hour',
+//            'csrfUseOne' => false
+//        ),
         'Auth' => array(
             'loginRedirect' => array(
                 'plugin'=>'admin',
@@ -65,8 +65,8 @@ class AppController extends Controller
     public function beforeFilter()
     {
         parent::beforeFilter();
-        $this->Security->blackHoleCallback = 'blackhole';
-        $this->Security->validatePost = false;
+//        $this->Security->blackHoleCallback = 'blackhole';
+//        $this->Security->validatePost = false;
 		$this->Auth->allow(array('register', 'success', 'view'));
     }
 

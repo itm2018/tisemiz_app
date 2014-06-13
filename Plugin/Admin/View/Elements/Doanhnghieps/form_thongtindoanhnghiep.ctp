@@ -1,5 +1,6 @@
 <!--<form class="form-horizontal" role="form">-->
-<?php echo $this->Form->create('Doanhnghiep',array('method'=>'post','class'=>'form-horizontal','role'=>'form'));?>
+<?php echo $this->Form->create('DoanhNghiep',array('method'=>'post','class'=>'form-horizontal','role'=>'form',
+												   'novalidate'=>'novalidate'));?>
 	<h4>Thông tin chung</h4>
 	<div class="form-group">
 		<label for="inputNamnhaplieu" class="col-sm-2 control-label">Năm nhập liệu <span class="required">*</span></label>
@@ -71,7 +72,7 @@
 				<option value=3">Hàn Quốc</option>
 			</select>
 		</div>-->
-		<?php echo $this->Form->input('colLoaiHinhDN',array('class'=>'form-control',
+		<?php echo $this->Form->input('colQuocGia',array('class'=>'form-control',
 															'div'=>array('class'=>'col-sm-10'),'label'=>false,
 															'options'=>Common::getListQuocgia()));?>
 	</div>
@@ -161,7 +162,7 @@
 		<!--<div class="col-sm-10">
 			<input type="text" class="form-control" id="inputDiachi">
 		</div>-->
-		<?php echo $this->Form->input('colDiachi',array('type'=>'text','class'=>'form-control',
+		<?php echo $this->Form->input('colDiaChi',array('type'=>'text','class'=>'form-control',
 														  'div'=>array('class'=>'col-sm-10'),'label'=>false));?>
 	</div>
 	<h4>Thông tin liên lạc</h4>
@@ -170,7 +171,7 @@
 		<!--<div class="col-sm-10">
 			<input type="tel" class="form-control" id="inputTel">
 		</div>-->
-		<?php echo $this->Form->input('colDienthoai',array('type'=>'tel','class'=>'form-control',
+		<?php echo $this->Form->input('colDienThoai',array('type'=>'tel','class'=>'form-control',
 														  'div'=>array('class'=>'col-sm-10'),'label'=>false));?>
 	</div>
 	<div class="form-group">
