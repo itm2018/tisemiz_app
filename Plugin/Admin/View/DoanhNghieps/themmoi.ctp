@@ -36,6 +36,9 @@
                 <div class="tabbable" id="tabs-9835">
                     <ul class="nav nav-tabs">
                         <li class="active">
+                            <a href="#panel-tongquan" data-toggle="tab">Tổng quan</a>
+                        </li>
+                        <li>
                             <a href="#panel-sanpham" data-toggle="tab">Sản phẩm</a>
                         </li>
                         <li>
@@ -52,32 +55,40 @@
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane active" id="panel-sanpham">
-                            <p><h3>II. THÔNG TIN HOẠT ĐỘNG SẢN XUẤT</h3></p>
+                        <div class="tab-pane active" id="panel-tongquan">
                             <!--form thong tin hoat dong san xuat -->
-								<?php echo $this->element('Admin.Doanhnghieps/form_hoatdongsanxuat');?>
-							<!--end form thong tin hoat dong san xuat-->
+                            <?php echo $this->element('Admin.Doanhnghieps/form_hoatdongsanxuat');?>
+                            <!--end form thong tin hoat dong san xuat-->
+                        </div>
+                        <div class="tab-pane" id="panel-sanpham">
+
+                            <!--form thong tin sản phẩm -->
+                            <?php echo $this->element('Admin.Doanhnghieps/form_sanphamdoanhnghiep');?>
+							<!--end form thong tin sản phẩm-->
                         </div>
                         <div class="tab-pane" id="panel-nguyenlieu">
-                            Nguyên liệu
+                            <!--form nguyen lieu-->
+                            <?php echo $this->element('Admin.Doanhnghieps/form_nguyenlieusanpham');?>
+                            <!--end form nguyen lieu-->
                         </div>
                         <div class="tab-pane" id="panel-diennuoc">
-                            Điện nước
+                            <!--form dien nươc-->
+                            <?php echo $this->element('Admin.Doanhnghieps/form_diennuocdoanhnghiep');?>
+                            <!--end form dien nuoc-->
                         </div>
                         <div class="tab-pane" id="panel-nuocngam">
-                            Nước ngầm
+                            <!--form nuoc ngam-->
+                            <?php echo $this->element('Admin.Doanhnghieps/form_nuocngamdoanhnghiep');?>
+                            <!--end form nuoc ngam-->
                         </div>
                         <div class="tab-pane" id="panel-nhienlieu">
-                            Nhiên liệu
+                            <!--form nhien lieu-->
+                            <?php echo $this->element('Admin.Doanhnghieps/form_nhienlieudoanhnghiep');?>
+                            <!--end form nhien lieu-->
                         </div>
                     </div>
                     <!-- common of hoat dong san xuat -->
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary">Lưu thông tin hoạt động sản xuất</button>
-                            <button type="reset" class="btn btn-info">Làm lại</button>
-                        </div>
-                    </div>
+
                     <!-- end of common of hoat dong san xuat -->
                 </div>
 
@@ -111,465 +122,14 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="panel-nuocthai">
-                            <p><h3>3.1. NƯỚC THẢI</h3></p>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            Năm
-                                        </th>
-                                        <th>
-                                            Nguồn thải
-                                        </th>
-                                        <th>
-                                            Lưu lượng
-                                        </th>
-                                        <th>
-                                            Nguồn phát sinh chủ yếu
-                                        </th>
-                                        <th>
-                                            Lưu lượng thiết kế
-                                        </th>
-                                        <th>
-                                            Lưu lượng thực tế
-                                        </th>
-                                        <th>
-                                            Xóa
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            2008
-                                        </td>
-                                        <td>
-                                            Sinh hoạt
-                                        </td>
-                                        <td>
-                                            60
-                                        </td>
-                                        <td>
-                                            Từ hoạt động nhà ăn tập thể và <br> vệ sinh của công nhân viên
-                                        </td>
-                                        <td>
-                                            100
-                                        </td>
-                                        <td>
-                                            60
-                                        </td>
-                                        <td>
-                                            <input type="checkbox" name="deleterow#">
-                                        </td>
-                                    </tr>
-                                    <tr class="active">
-                                        <td>
-                                            2008
-                                        </td>
-                                        <td>
-                                            Sinh hoạt
-                                        </td>
-                                        <td>
-                                            60
-                                        </td>
-                                        <td>
-                                            Từ hoạt động nhà ăn tập thể và <br> vệ sinh của công nhân viên
-                                        </td>
-                                        <td>
-                                            100
-                                        </td>
-                                        <td>
-                                            60
-                                        </td>
-                                        <td>
-                                            <input type="checkbox" name="deleterow#">
-                                        </td>
-                                    </tr>
-                                    <tr class="success">
-                                        <td>
-                                            2008
-                                        </td>
-                                        <td>
-                                            Sinh hoạt
-                                        </td>
-                                        <td>
-                                            60
-                                        </td>
-                                        <td>
-                                            Từ hoạt động nhà ăn tập thể và <br> vệ sinh của công nhân viên
-                                        </td>
-                                        <td>
-                                            100
-                                        </td>
-                                        <td>
-                                            60
-                                        </td>
-                                        <td>
-                                            <input type="checkbox" name="deleterow#">
-                                        </td>
-                                    </tr>
-                                    <tr class="warning">
-                                        <td>
-                                            2008
-                                        </td>
-                                        <td>
-                                            Sinh hoạt
-                                        </td>
-                                        <td>
-                                            60
-                                        </td>
-                                        <td>
-                                            Từ hoạt động nhà ăn tập thể và <br> vệ sinh của công nhân viên
-                                        </td>
-                                        <td>
-                                            100
-                                        </td>
-                                        <td>
-                                            60
-                                        </td>
-                                        <td>
-                                            <input type="checkbox" name="deleterow#">
-                                        </td>
-                                    </tr>
-                                    <tr class="danger">
-                                        <td>
-                                            2008
-                                        </td>
-                                        <td>
-                                            Sinh hoạt
-                                        </td>
-                                        <td>
-                                            60
-                                        </td>
-                                        <td>
-                                            Từ hoạt động nhà ăn tập thể và <br> vệ sinh của công nhân viên
-                                        </td>
-                                        <td>
-                                            100
-                                        </td>
-                                        <td>
-                                            60
-                                        </td>
-                                        <td>
-                                            <input type="checkbox" name="deleterow"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="6">
-                                        </td>
-                                        <td>
-                                            <button type="submit" name="delete" class="btn btn-danger">Xóa</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <p><h3>THÔNG TIN NƯỚC THẢI</h3></p>
-                            <form class="form-horizontal" role="form">
-                                <div class="form-group">
-                                    <label for="inputNguonthai" class="col-sm-2 control-label">Nguồn thải</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-control" id="inputNguonthai">
-                                            <option value="1">Sinh hoạt</option>
-                                            <option value="2">Sản xuất</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputNam" class="col-sm-2 control-label">Năm <span class="text-danger">*</span></label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputNam" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputLuuluong" class="col-sm-2 control-label">Lưu lượng(m3/ngày)<span class="text-danger">*</span></label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputLuuluong" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputNguonphatsinhchuyeu" class="col-sm-2 control-label">Nguồn phát sinh chủ yếu<span class="text-danger">*</span></label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputNguonphatsinhchuyeu" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputLuuluongthietke" class="col-sm-2 control-label">Lưu lượng thiết kế</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputLuuluongthietke" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputLuuluongthucte" class="col-sm-2 control-label">Lưu lượng thực tế</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputLuuluongthucte" placeholder="">
-                                    </div>
-                                </div>
-                                <!--<div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <div class="checkbox">
-                                             <label><input type="checkbox"> Remember me</label>
-                                        </div>
-                                    </div>
-                                </div>-->
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-primary">Lưu thông tin nước thải</button>
-                                        <button type="submit" class="btn btn-success">Thêm khác</button>
-                                        <button type="reset" class="btn btn-info">Quay về</button>
-                                    </div>
-                                </div>
-                            </form>
+                            <!-- form thong tin nuoc thai doanh nghiep-->
+                            <?php echo $this->element('Admin.Doanhnghieps/form_nuocthainhamay');?>
+                            <!-- end form thong tin nuoc thai doanh nghiep -->
                         </div>
                         <div class="tab-pane" id="panel-kiemsoatnuocthai">
-                            <p><h3>3.2. BIỆN PHÁP XỬ LÝ NƯỚC THẢI</h3></p>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            Năm
-                                        </th>
-                                        <th>
-                                            Biện pháp xử lý
-                                        </th>
-                                        <th>
-                                            Sinh hoạt
-                                        </th>
-                                        <th>
-                                            Sản xuất
-                                        </th>
-                                        <th>
-                                            Xử lý khí thải
-                                        </th>
-                                        <th>
-                                            Làm nguội
-                                        </th>
-                                        <th>
-                                            Nguồn khác
-                                        </th>
-                                        <th>
-                                            Xóa
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            2008
-                                        </td>
-                                        <td>
-                                            Sinh hoạt
-                                        </td>
-                                        <td>
-                                            60
-                                        </td>
-                                        <td>
-                                            Từ hoạt động nhà ăn tập thể và <br> vệ sinh của công nhân viên
-                                        </td>
-                                        <td>
-                                            100
-                                        </td>
-                                        <td>
-                                            60
-                                        </td>
-                                        <td>
-                                            Không biết
-                                        </td>
-                                        <td>
-                                            <input type="checkbox" name="deleterow#">
-                                        </td>
-                                    </tr>
-                                    <tr class="active">
-                                        <td>
-                                            2008
-                                        </td>
-                                        <td>
-                                            Sinh hoạt
-                                        </td>
-                                        <td>
-                                            60
-                                        </td>
-                                        <td>
-                                            Từ hoạt động nhà ăn tập thể và <br> vệ sinh của công nhân viên
-                                        </td>
-                                        <td>
-                                            100
-                                        </td>
-                                        <td>
-                                            60
-                                        </td>
-                                        <td>
-                                            Không biết
-                                        </td>
-                                        <td>
-                                            <input type="checkbox" name="deleterow#">
-                                        </td>
-                                    </tr>
-                                    <tr class="success">
-                                        <td>
-                                            2008
-                                        </td>
-                                        <td>
-                                            Sinh hoạt
-                                        </td>
-                                        <td>
-                                            60
-                                        </td>
-                                        <td>
-                                            Từ hoạt động nhà ăn tập thể và <br> vệ sinh của công nhân viên
-                                        </td>
-                                        <td>
-                                            100
-                                        </td>
-                                        <td>
-                                            60
-                                        </td>
-                                        <td>
-                                            Không biết
-                                        </td>
-                                        <td>
-                                            <input type="checkbox" name="deleterow#">
-                                        </td>
-                                    </tr>
-                                    <tr class="warning">
-                                        <td>
-                                            2008
-                                        </td>
-                                        <td>
-                                            Sinh hoạt
-                                        </td>
-                                        <td>
-                                            60
-                                        </td>
-                                        <td>
-                                            Từ hoạt động nhà ăn tập thể và <br> vệ sinh của công nhân viên
-                                        </td>
-                                        <td>
-                                            100
-                                        </td>
-                                        <td>
-                                            60
-                                        </td>
-                                        <td>
-                                            Không biết
-                                        </td>
-                                        <td>
-                                            <input type="checkbox" name="deleterow#">
-                                        </td>
-                                    </tr>
-                                    <tr class="danger">
-                                        <td>
-                                            2008
-                                        </td>
-                                        <td>
-                                            Sinh hoạt
-                                        </td>
-                                        <td>
-                                            60
-                                        </td>
-                                        <td>
-                                            Từ hoạt động nhà ăn tập thể và <br> vệ sinh của công nhân viên
-                                        </td>
-                                        <td>
-                                            100
-                                        </td>
-                                        <td>
-                                            60
-                                        </td>
-                                        <td>
-                                            Không biết
-                                        </td>
-                                        <td>
-                                            <input type="checkbox" name="deleterow"/>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="7">
-                                        </td>
-                                        <td>
-                                            <button type="submit" name="delete" class="btn btn-danger">Xóa</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <p><h3>THÔNG TIN XỬ LÝ NƯỚC THẢI</h3></p>
-                            <form class="form-horizontal" role="form">
-                                <div class="form-group">
-                                    <label for="inputBienphapxuly" class="col-sm-2 control-label">Biện pháp xử lý</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-control" id="inputBienphapxuly">
-                                            <option value="1">Xả vào tuyến nước mưa</option>
-                                            <option value="2">Xả vào tuyến nước bẩn</option>
-                                            <option value="3">Song chắn rác</option>
-                                            <option value="4">Tuyến nổi</option>
-                                            <option value="5">Lắng</option>
-                                            <option value="6">Keo tụ</option>
-                                            <option value="7">Điều chỉnh pH</option>
-                                            <option value="8">Sinh học kỵ khí</option>
-                                            <option value="9">Sinh học hiếu khí</option>
-                                            <option value="10">Lắng 2</option>
-                                            <option value="11">Lọc</option>
-                                            <option value="12">Khử trùng</option>
-                                            <option value="13">Ép bùn</option>
-                                            <option value="14">Khác</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputNam" class="col-sm-2 control-label">Năm <span class="text-danger">*</span></label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputNam" placeholder="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <div class="checkbox">
-                                            <label><input type="checkbox"> Sinh hoạt</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <div class="checkbox">
-                                            <label><input type="checkbox"> Sản xuất</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <div class="checkbox">
-                                            <label><input type="checkbox"> Xử lý khí thải</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <div class="checkbox">
-                                            <label><input type="checkbox"> Làm nguội</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <div class="checkbox">
-                                            <label><input type="checkbox"> Nguồn khác</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--<div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <div class="checkbox">
-                                             <label><input type="checkbox"> Remember me</label>
-                                        </div>
-                                    </div>
-                                </div>-->
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-primary">Lưu thông tin xử lý nước thải</button>
-                                        <button type="submit" class="btn btn-success">Thêm khác</button>
-                                        <button type="reset" class="btn btn-info">Quay về</button>
-                                    </div>
-                                </div>
-                            </form>
+                            <!-- form xu ly nuoc thai doanh nghiep-->
+                            <?php echo $this->element('Admin.Doanhnghieps/form_xulynuocthaidoanhnghiep');?>
+                            <!-- end form xu ly nuoc thai doanh nghiep -->
                         </div>
                         <div class="tab-pane" id="panel-khithai">
                             <!--khithai-->
