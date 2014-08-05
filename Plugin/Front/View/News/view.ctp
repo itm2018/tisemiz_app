@@ -144,52 +144,7 @@
 
 			</script>
 			<!-- Box share bottom -->
-			<div class="social_share width_common" id="social_like" style="height:24px;">
-				<div class="share_news item_social">
-					<div class="vne-like" data-component="true" data-component-type="like"
-						 data-component-objectid="3001287" data-component-siteid="1000000" data-objecttype="1"
-						 style="display: block;"><a class="btn_quantam" id="vne-like-anchor-1000000-3001287" href="#"
-													total-like="36"></a>
 
-						<div class="number_count"><span id="like-total-1000000-3001287">36</span></div>
-					</div>
-				</div>
-				<div class="item_social social_fb hidden_320" style="overflow: visible;">
-					<div class="fb-like fb_iframe_widget" data-send="false" data-layout="button_count" data-width="450"
-						 data-show-faces="true"
-						 data-href="http://vnexpress.net/tin-tuc/khoa-hoc/moi-truong/phat-hien-ech-bay-o-viet-nam-3001287.html"
-						 fb-xfbml-state="rendered"
-						 fb-iframe-plugin-query="app_id=&amp;href=http%3A%2F%2Fvnexpress.net%2Ftin-tuc%2Fkhoa-hoc%2Fmoi-truong%2Fphat-hien-ech-bay-o-viet-nam-3001287.html&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;show_faces=true&amp;width=450">
-						<span style="vertical-align: bottom; width: 82px; height: 20px;"><iframe name="fc770f2d"
-																								 width="450px"
-																								 height="1000px"
-																								 frameborder="0"
-																								 allowtransparency="true"
-																								 scrolling="no"
-																								 title="fb:like Facebook Social Plugin"
-																								 src="http://www.facebook.com/plugins/like.php?app_id=&amp;channel=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter%2FV80PAcvrynR.js%3Fversion%3D41%23cb%3Df37976276%26domain%3Dvnexpress.net%26origin%3Dhttp%253A%252F%252Fvnexpress.net%252Ff1625b27fc%26relation%3Dparent.parent&amp;href=http%3A%2F%2Fvnexpress.net%2Ftin-tuc%2Fkhoa-hoc%2Fmoi-truong%2Fphat-hien-ech-bay-o-viet-nam-3001287.html&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;show_faces=true&amp;width=450"
-																								 style="border: none; visibility: visible; width: 82px; height: 20px;"
-																								 class=""></iframe></span>
-					</div>
-				</div>
-				<div class="item_social social_twitter hidden_320">
-					<iframe id="twitter-share-button" scrolling="no" frameborder="0" allowtransparency="true"
-							src="http://platform.twitter.com/widgets/tweet_button.1401325387.html#_=1402418393664&amp;count=horizontal&amp;counturl=http%3A%2F%2Fvnexpress.net%2Ftin-tuc%2Fkhoa-hoc%2Fmoi-truong%2Fphat-hien-ech-bay-o-viet-nam-3001287.html&amp;id=twitter-share-button&amp;lang=en&amp;original_referer=http%3A%2F%2Fvnexpress.net%2Ftin-tuc%2Fkhoa-hoc%2Fmoi-truong%2Fphat-hien-ech-bay-o-viet-nam-3001287.html&amp;size=m&amp;text=Ph%C3%A1t%20hi%E1%BB%87n%20%E1%BA%BFch%20bay%20%E1%BB%9F%20Vi%E1%BB%87t%20Nam%20-%20VnExpress&amp;url=http%3A%2F%2Fbit.ly%2F1np1teC"
-							class="twitter-share-button twitter-tweet-button twitter-share-button twitter-count-horizontal"
-							title="Twitter Tweet Button" data-twttr-rendered="true"
-							style="width: 107px; height: 20px;"></iframe>
-				</div>
-				<div class="item_social social_plus hidden_320">
-					<div id="___plusone_0"
-						 style="text-indent: 0px; margin: 0px; padding: 0px; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px; background: transparent;">
-						<iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no"
-								style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;"
-								tabindex="0" vspace="0" width="100%" id="I0_1402418393221" name="I0_1402418393221"
-								src="https://apis.google.com/u/0/_/+1/fastbutton?usegapi=1&amp;size=medium&amp;hl=vi&amp;origin=http%3A%2F%2Fvnexpress.net&amp;url=http%3A%2F%2Fvnexpress.net%2Ftin-tuc%2Fkhoa-hoc%2Fmoi-truong%2Fphat-hien-ech-bay-o-viet-nam-3001287.html&amp;gsrc=3p&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.vi.6HCbUaGM-Cs.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Fz%3Dzcms%2Frs%3DAItRSTPw-nzRWSSEvHY5SGNVTbEBrn5n0g#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&amp;id=I0_1402418393221&amp;parent=http%3A%2F%2Fvnexpress.net&amp;pfname=&amp;rpctoken=31428440"
-								data-gapiattached="true" title="+1"></iframe>
-					</div>
-				</div>
-			</div>
 			<!-- Box tin khác & link chéo -->
 			<div class="clear"></div>
 		</div>

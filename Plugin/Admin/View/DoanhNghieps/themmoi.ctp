@@ -501,6 +501,6 @@
             "searchreplace visualblocks code fullscreen",
             "insertdatetime media table contextmenu paste moxiemanager textcolor hr spellchecker tabfocus insertdatetime autoresize code bbcode contextmenu emoticons fullpage"
         ],
-        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | color | search replace | bullist numlist | outdent indent blockquote | link unlink anchor image cleanup help code | insertdate inserttime preview | forecolor backcolor | tablecontrols | hr removeformat visualaid | sub sup | charmap emotions iespell media advhr | print | ltr rtl | fullscreen",
+        toolbar: "insertfile undo redo | fontselect fontsizeselect formatselect styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | color | search replace | bullist numlist | outdent indent blockquote | link unlink anchor image cleanup help code | insertdate inserttime preview | forecolor backcolor | tablecontrols | hr removeformat visualaid | sub sup | charmap emotions iespell media advhr | print | ltr rtl | fullscreen",
     });
 </script>

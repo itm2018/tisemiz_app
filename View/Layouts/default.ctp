@@ -16,10 +16,11 @@
     <!--<link href="css/bootstrap-blue.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">-->
     <?php echo $this->Minify->css(array(
-        'bootstrap-blue',
+        'bootstrap-slate',
         'style',
         '/assets/css/custom',
-        '/assets/css/font-awesome.min'
+        '/assets/css/font-awesome.min',
+        'adjust'
     ));?>
     <?php echo $this->fetch('css'); ?>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -54,12 +55,15 @@
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-12 column">
-            <div class="page-header">
-				<div align="center" style="background:url(/img/index_02.gif); height:108px">
-					<div style="width:804px; margin:auto; height:108px; background:url(/img/index_04.jpg)"></div>
-				</div>
-            </div>
+           <header>
+               <img src="/img/header1.jpg" style="width: 100%;">
+           </header>
             <nav class="navbar navbar-default" role="navigation">
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input id="current_date" type="text" class="form-control" placeholder="" value="<?php echo date('d/m/y H:i\':s\'\'');?>">
+                    </div>
+                </form>
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse"
                             data-target="#bs-example-navbar-collapse-1">
@@ -71,75 +75,21 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="">
-                            <a href="#">Doanh nghiệp</a>
-                        </li>
-                        <li>
-                            <a href="#">Hoạt động môi trường</a>
-                        </li>
-                        <li>
                             <a href="#">Tin tức</a>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Báo cáo<strong
-                                    class="caret"></strong></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="#">1.Báo cáo tuần về hoạt động môi trường KCN</a>
-                                </li>
-                                <li>
-                                    <a href="#">2.Báo cáo tháng về hoạt động môi trường KCN</a>
-                                </li>
-                                <li>
-                                    <a href="#">3.Báo cáo 6 tháng về hoạt động môi trường KCN</a>
-                                </li>
-                                <li>
-                                    <a href="#">4.Báo cáo môi trường KCN</a>
-                                </li>
-                                <li class="divider">
-                                </li>
-                                <li>
-                                    <a href="#">5.Báo cáo môi trường tổng hợp hàng năm của doanh nghiệp</a>
-                                </li>
-                                <li>
-                                    <a href="#">6.Báo cáo môi trường 6 tháng của doanh nghiệp</a>
-                                </li>
-                                <li>
-                                    <a href="#">7.Báo cáo quan trắc môi trường của doanh nghiệp</a>
-                                </li>
-                                <li class="divider">
-                                </li>
-                                <li>
-                                    <a href="#">8.Báo cáo phí nước thải</a>
-                                </li>
-                                <li class="divider">
-                                </li>
-                                <li>
-                                    <a href="#">Thiết lập thông số</a>
-                                </li>
-                            </ul>
+                        <li>
+                            <a href="#">Bản đồ</a>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Danh mục<strong
-                                    class="caret"></strong></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="#">Tài liệu</a>
-                                </li>
-                                <li>
-                                    <a href="#">Thông tư hướng dẫn</a>
-                                </li>
-                                <li>
-                                    <a href="#">Điều khoản</a>
-                                </li>
-                            </ul>
+                        <li>
+                            <a href="#">Quản lý</a>
                         </li>
                     </ul>
-                    <form class="navbar-form navbar-left" role="search">
+                    <!--<form class="navbar-form navbar-left" role="search">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Từ khóa tìm kiếm">
                         </div>
                         <button type="submit" class="btn btn-default">Tìm</button>
-                    </form>
+                    </form>-->
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -173,6 +123,11 @@
                 </div>
 
             </nav>
+            <nav>
+                <div class="col-md-12-column">
+                    <img src="/img/subheader.jpg" style="width: 100%;">
+                </div>
+            </nav>
             <!--<ul class="breadcrumb">
                 <li>
                     <a href="#">Trang chủ</a> <span class="divider">/</span>
@@ -184,60 +139,28 @@
                     Nhập liệu
                 </li>
             </ul>-->
-            <?php echo $this->fetch('breadcrumb');?>
-            <?php echo $this->Session->flash(); ?>
-            <?php echo $this->fetch('content'); ?>
+            <div class="content">
+                <div class="bread"><span>Phần mềm quản lý môi trường tại khu công nghiệp Tây Bắc Củ Chi (ĐT: 08.32345678)</span></div>
+                <?php echo $this->fetch('breadcrumb');?>
+                <?php echo $this->Session->flash(); ?>
+                <?php echo $this->fetch('content'); ?>
+            </div>
         </div>
     </div>
-</div>
-<div class="marginT100" style="margin-top: 100px;"></div>
-<!--footer-->
-<div id="footer" class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-        <div class="navbar-header">
-            <a href="../" class="navbar-brand">TiseMiz</a>
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar-main">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="/help/">Trợ giúp</a>
-                </li>
-                <li>
-                    <a href="/blog/">Blog</a>
-                </li>
-                <li>
-                    <a href="/faq/">FAQ</a>
-                </li>
-                <li>
-                    <a href="/contact/">Liên hệ</a>
-                </li>
-                <li>
-                    <a href="/map/">Bản đồ</a>
-                </li>
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="http://www.facebook.com/tisemiz" target="_blank">Follow Us!</a></li>
-                <li><a href="https://www.youtube.com/?ref=bsw" target="_blank">Watch Us!</a></li>
-                <li><a href="https://www.twitter.com/?ref=bsw" target="_blank">Tweet Us!</a></li>
-				<li id="hidefooter"><a href="javascript:void();"><?php echo __('Hide me');?></a></li>
-            </ul>
-
+    <!--footer-->
+    <div id="footer" class="navbar-footer">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="javascript:void();" class="navbar-brand">&copy;TiseMiz - 2014 - Alright reserved</a>
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
         </div>
     </div>
+    <!--end footer-->
 </div>
-<!--end footer-->
-<script type="text/javascript">
-	$(function(){
-		$('#hidefooter').click(function(){
-			$('#footer').fadeOut("slow");
-		});
-	});
-</script>
 </body>
 </html>

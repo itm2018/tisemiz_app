@@ -6,7 +6,7 @@ App::uses('AdminAppController', 'Admin.Controller');
  */
 class DashboardsController extends AdminAppController {
 
-	public $layout = 'admin/default';
+	public $layout = 'admin/backward';
 	public function index(){
 	}
 }

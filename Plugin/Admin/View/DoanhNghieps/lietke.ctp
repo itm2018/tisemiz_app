@@ -24,8 +24,11 @@
                 <em>- với chức năng tìm kiếm trực tiếp, sắp xếp, phân trang</em>
             </div>
             <div class="widget-content ui-jqgrid-hbox">
+                <div class="row"> <div style="float: right;margin-right: 15px;"><a href="<?php echo $this->Html->url('/admin/doanhnghiep/themmoi');?>"><input class="btn btn-primary" type="button" value="Thêm mới"></a> </div></div>
                 <div class="col-md-6"><div id="DataTables_Table_0_length" class="dataTables_length"><label><select size="1" name="DataTables_Table_DoanhNghiep_length" id="DataTables_Table_DoanhNghiep_length" aria-controls="DataTables_Table_0"><option value="10">10</option><option value="20" selected="selected">20</option><option value="50">50</option><option value="100">100</option></select> records per page</label></div></div>
-                <div class="col-md-6"><div class="dataTables_filter" id="DataTables_Table_0_filter"><label>Tìm: <input type="text" aria-controls="DataTables_Table_DoanhNghiep" id="search_filter"></label></div></div>
+                <div class="col-md-6"><div class="dataTables_filter" id="DataTables_Table_0_filter"><label>Tìm: <input type="text" aria-controls="DataTables_Table_DoanhNghiep" id="search_filter"></label></div>
+
+                </div>
                 <script type="text/javascript">
                     $(function(){
                         var limit = <?php echo $limit?>;

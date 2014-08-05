@@ -15,7 +15,7 @@ class DoanhNghiepsController extends AdminAppController {
  * @var mixed
  */
 //	public $scaffold;
-	public $layout = 'admin/default';
+	public $layout = 'admin/backward';
     public $paginate =array(
         'limit'=>20,
 //        'order'=>array(

@@ -11,11 +11,11 @@
 				<div class="input-group input-group-lg">
 					<input type="search" placeholder="type keyword here" class="form-control">
 					<span class="input-group-btn">
-						<button class="btn btn-primary" type="button"><i class="fa fa-search"></i> Search</button>
+						<button class="btn btn-primary" type="button"><i class="fa fa-search"></i> Tìm kiếm</button>
 					</span>
 				</div>
 			</form>
 			<p>
-				<a href="javascript:history.go(-1)" class="btn btn-custom-primary"><i class="fa fa-arrow-left"></i> Go Back</a>
-				<a href="#" class="btn btn-primary"><i class="fa fa-home"></i> Home</a>
+				<a href="javascript:history.go(-1)" class="btn btn-custom-primary"><i class="fa fa-arrow-left"></i> Trở lại</a>
+				<a href="#" class="btn btn-primary"><i class="fa fa-home"></i> Trang chủ</a>
 			</p>
