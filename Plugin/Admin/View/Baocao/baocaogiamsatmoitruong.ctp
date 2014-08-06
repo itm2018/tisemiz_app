@@ -1940,15 +1940,21 @@
 					$("#txtdenngay").datepicker({numberOfMonths: 2 });
 			});</script>
 <script type="text/javascript">
-			function doDLBaocao(stype) {
+			function doDLBaocao(type) {
 			document.getElementById('btnLuu').click();
 					var width = 800;
 					var height = 400;
 					var left = parseInt((screen.availWidth / 2) - (width / 2));
 					var top = parseInt((screen.availHeight / 2) - (height / 2));
-					var ObjectID = '782322';
+					var ObjectID = <?php echo !(empty($baocaogsmt_id)) ? $baocaogsmt_id : ''; ?>;
 					//PPwindow2 = window.open("../Baocao/DulieuBCGSMT.aspx?Type=" + stype + "&BaoCaoGSMTID=" + ObjectID, "CTNH", "width=" + width + ",height=" + height + ",toolbar=no,directories=no,status=yes, menubar=no,scrollbars=yes,resizable=yes,border=thin,left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "")
-					PPwindow2 = window.open("", "CTNH", "width=" + width + ",height=" + height + ",toolbar=no,directories=no,status=yes, menubar=no,scrollbars=yes,resizable=yes,border=thin,left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "")
+					PPwindow2 = window.open("<?php echo $this->Html->url(array('plugin' => 'admin', 'controller' => 'baocao', 'action' => 'dulieugiamsatmoitruong')); ?>" + "?type=" + type + "&baocaogsmtid=" + ObjectID, "CTNH", "width=" + width + ",height=" + height + ",toolbar=no,directories=no,status=yes, menubar=no,scrollbars=yes,resizable=yes,border=thin,left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "")
 					PPwindow2.focus();
 			}
+</script>
+<script type="text/javascript">
+	function doDelete(strID, strAllQueryString) {
+	if (confirm('Bạn có thực sự muốn xóa ?'))
+			window.location.href = "DulieuBCGSMT.aspx?action=delete&ID=" + strID + "&" + strAllQueryString;
+	}
 </script>
