@@ -7,6 +7,7 @@
 App::uses('AppController', 'Controller');
 App::uses('Validation', 'Utility');
 
+
 class UsersController extends AppController
 {
 
@@ -73,4 +74,5 @@ class UsersController extends AppController
 	}
 
 	public function success() { }
+
 }

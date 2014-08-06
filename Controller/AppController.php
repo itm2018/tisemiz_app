@@ -23,7 +23,7 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-	public $helpers = array('Minify.Minify');
+	//public $helpers = array('Minify.Minify');
 	public $components = array(
 		'Session',
 		'Security',

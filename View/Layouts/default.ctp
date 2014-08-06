@@ -15,7 +15,7 @@
 
     <!--<link href="css/bootstrap-blue.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">-->
-    <?php echo $this->Minify->css(array(
+    <?php echo $this->Html->css(array(
         'bootstrap-slate',
         'style',
         '/assets/css/custom',
@@ -42,7 +42,7 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>-->
-    <?php echo $this->Minify->script(array(
+    <?php echo $this->Html->script(array(
         'html5shiv',
         'jquery.min',
         'bootstrap.min',

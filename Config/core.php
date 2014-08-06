@@ -366,4 +366,4 @@ Cache::config('_cake_model_', array(
 	'duration' => $duration
 ));
 Configure::write('Asset.timestamp', true);
-Configure::write('MinifyAsset', false);
+//Configure::write('MinifyAsset', false);
