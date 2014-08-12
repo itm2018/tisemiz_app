@@ -22,8 +22,9 @@ class BaocaoController extends AdminAppController {
 		$this->layout = 'popup';
 		$type = $this->request->query('type');
 		$baocaogsmt_id = $this->request->query('baocaogsmtid');
-		if (!empty($type) && !empty($baocaogsmt_id) && is_numeric($type) && $baocaogsmt_id == $this->Session->read('baocaogsmt_id')) {
-			$this->set('baocaogsmt_id',$baocaogsmt_id);
+//		if (!empty($type) && !empty($baocaogsmt_id) && is_numeric($type) && $baocaogsmt_id == $this->Session->read('baocaogsmt_id')) {
+		if (!empty($type) && !empty($baocaogsmt_id) && is_numeric($type)) {
+			$this->set('baocaogsmt_id',$this->Session->read('baocaogsmt_id'));
 			if ($type == 3) {
 				//tinh hinh san xuat kinh doanh trong ky bao cao
 				$this->render('Elements/Baocao/tinhhinhsanxuatkinhdoanh');

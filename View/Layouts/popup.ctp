@@ -7,7 +7,7 @@
 		<?php echo $this->fetch('meta'); ?>
 		<?php echo $this->Html->css(array('popup')); ?>
 		<?php echo $this->fetch('css'); ?>
-		<?php echo $this->Html->script(array('CheckValid')); ?>
+		<?php echo $this->Html->script(array('CheckValid','jquery.min')); ?>
 		<?php echo $this->fetch('script'); ?>
 		<script type="text/javascript">
 			function doDelete(strID, strAllQueryString) {
