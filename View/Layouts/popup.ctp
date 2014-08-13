@@ -9,12 +9,6 @@
 		<?php echo $this->fetch('css'); ?>
 		<?php echo $this->Html->script(array('CheckValid','jquery.min')); ?>
 		<?php echo $this->fetch('script'); ?>
-		<script type="text/javascript">
-			function doDelete(strID, strAllQueryString) {
-				if (confirm('Bạn có thực sự muốn xóa ?'))
-						//					window.location.href = "DulieuBCGSMT.aspx?action=delete&ID=" + strID + "&" + strAllQueryString;
-			}
-		</script>
 		</head>
 	<body>
 		<?php echo $this->Session->flash(); ?>
