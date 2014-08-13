@@ -244,48 +244,48 @@
                                                             </th>
                                                         </tr>
                                                     </thead>
-													<tbody>
-														<?php
-														if (!empty($tinhhinhsxkd)) {
-															foreach($tinhhinhsxkd as $key => $thsxkd) {
-																?>		
+                                                    <tbody>
+                                                        <?php
+                                                        if (!empty($tinhhinhsxkd)) {
+                                                            foreach ($tinhhinhsxkd as $key => $thsxkd) {
+                                                                ?>		
 
-																<tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(255, 255, 255);">
-																	<td align="right">
-																		<?php echo h($thsxkd['stt']); ?>
-																		<input type="hidden" name="tensp" id="rptNuocThai_ID_0" value="785222">
-																	</td>
-																	<td align="left">
-																		<?php echo h($thsxkd['tensp']); ?>
-																	</td>
-																	<td align="right">
-																		<?php echo h($thsxkd['donvi']); ?>
-																	</td>
+                                                                <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(255, 255, 255);">
+                                                                    <td align="right">
+                                                                        <?php echo h($thsxkd['stt']); ?>
+                                                                        <input type="hidden" name="tensp" id="rptNuocThai_ID_0" value="785222">
+                                                                    </td>
+                                                                    <td align="left">
+                                                                        <?php echo h($thsxkd['tensp']); ?>
+                                                                    </td>
+                                                                    <td align="right">
+                                                                        <?php echo h($thsxkd['donvi']); ?>
+                                                                    </td>
 
-																	<td align="right">
-																		<?php echo h($thsxkd['quy1']); ?>
-																	</td>
+                                                                    <td align="right">
+                                                                        <?php echo h($thsxkd['quy1']); ?>
+                                                                    </td>
 
-																	<td align="right">
-																		<?php echo h($thsxkd['quy2']); ?>
-																	</td>
+                                                                    <td align="right">
+                                                                        <?php echo h($thsxkd['quy2']); ?>
+                                                                    </td>
 
-																	<td align="right">
-																		<?php echo h($thsxkd['quy3']); ?>
-																	</td>
+                                                                    <td align="right">
+                                                                        <?php echo h($thsxkd['quy3']); ?>
+                                                                    </td>
 
-																	<td align="right">
-																		<?php echo h($thsxkd['quy4']); ?>
-																	</td>
+                                                                    <td align="right">
+                                                                        <?php echo h($thsxkd['quy4']); ?>
+                                                                    </td>
 
-																	<td align="right">
-																		<?php echo h(round($thsxkd['tong'], 2)); ?>
-																	</td>
-																</tr>
-																<?php
-															}
-														}
-														?>
+                                                                    <td align="right">
+                                                                        <?php echo h(round($thsxkd['tong'], 2)); ?>
+                                                                    </td>
+                                                                </tr>
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
                                                     </tbody>
                                                 </table>
                                             </td>
@@ -369,78 +369,122 @@
 
 
                                                     <tbody>
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                            style="background: rgb(255, 255, 255);">
-                                                            <td align="right">
-                                                                1
-                                                                <input type="hidden" name="rptNuocThai$ctl01$ID" id="rptNuocThai_ID_0" value="785222">
-                                                            </td>
-                                                            <td align="left">
-                                                                Nước thải sinh hoạt
-                                                            </td>
-                                                            <td align="right">
-                                                                m3
-                                                            </td>
+                                                        <?php
+                                                        if (!empty($nguonphatsinhnuocthai)) {
+                                                            foreach ($nguonphatsinhnuocthai as $key => $npsnt) {
+                                                                ?>
+                                                                <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
+                                                                    style="background: rgb(255, 255, 255);">
+                                                                    <td align="right">
+                                                                        <?php echo h($npsnt['stt']); ?>
+                                                                        <input type="hidden" name="rptNuocThai$ctl01$ID" id="rptNuocThai_ID_0" value=" <?php echo h($npsnt['temp_id']); ?>">
+                                                                    </td>
+                                                                    <td align="left">
+                                                                        <?php echo h($npsnt['loainuocthai']); ?>
+                                                                    </td>
+                                                                    <td align="right">
+                                                                        <?php echo h($npsnt['donvi']); ?>
+                                                                    </td>
 
-                                                            <td align="right">
-                                                                0
-                                                            </td>
+                                                                    <td align="right">
+                                                                        <?php echo h($npsnt['quy1']); ?>
+                                                                    </td>
 
-                                                            <td align="right">
-                                                                0
-                                                            </td>
+                                                                    <td align="right">
+                                                                        <?php echo h($npsnt['quy2']); ?>
+                                                                    </td>
 
-                                                            <td align="right">
-                                                                0
-                                                            </td>
+                                                                    <td align="right">
+                                                                        <?php echo h($npsnt['quy3']); ?>
+                                                                    </td>
 
-                                                            <td align="right">
-                                                                1278
-                                                            </td>
+                                                                    <td align="right">
+                                                                        <?php echo h($npsnt['quy4']); ?>
+                                                                    </td>
 
-                                                            <td align="right">
-                                                                1278
-                                                            </td>
-                                                            <td align="left">
+                                                                    <td align="right">
+                                                                        <?php echo h($npsnt['tong']); ?>
+                                                                    </td>
+                                                                    <td align="left">
+                                                                        <?php echo h($npsnt['ghichu']); ?>
+                                                                    </td>
+                                                                </tr>
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
+<!--                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
+                                                    style="background: rgb(255, 255, 255);">
+                                                    <td align="right">
+                                                        1
+                                                        <input type="hidden" name="rptNuocThai$ctl01$ID" id="rptNuocThai_ID_0" value="785222">
+                                                    </td>
+                                                    <td align="left">
+                                                        Nước thải sinh hoạt
+                                                    </td>
+                                                    <td align="right">
+                                                        m3
+                                                    </td>
 
-                                                            </td>
-                                                        </tr>
+                                                    <td align="right">
+                                                        0
+                                                    </td>
 
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                            <td align="right">
-                                                                2
-                                                                <input type="hidden" name="rptNuocThai$ctl02$ID" id="rptNuocThai_ID_1" value="785223">
-                                                            </td>
-                                                            <td align="left">
-                                                                Nước thải sản xuất
-                                                            </td>
-                                                            <td align="right">
-                                                                m3
-                                                            </td>
+                                                    <td align="right">
+                                                        0
+                                                    </td>
 
-                                                            <td align="right">
-                                                                0
-                                                            </td>
+                                                    <td align="right">
+                                                        0
+                                                    </td>
 
-                                                            <td align="right">
-                                                                0
-                                                            </td>
+                                                    <td align="right">
+                                                        1278
+                                                    </td>
 
-                                                            <td align="right">
-                                                                0
-                                                            </td>
+                                                    <td align="right">
+                                                        1278
+                                                    </td>
+                                                    <td align="left">
 
-                                                            <td align="right">
-                                                                0
-                                                            </td>
+                                                    </td>
+                                                </tr>
 
-                                                            <td align="right">
-                                                                0
-                                                            </td>
-                                                            <td align="left">
+                                                <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
+                                                    <td align="right">
+                                                        2
+                                                        <input type="hidden" name="rptNuocThai$ctl02$ID" id="rptNuocThai_ID_1" value="785223">
+                                                    </td>
+                                                    <td align="left">
+                                                        Nước thải sản xuất
+                                                    </td>
+                                                    <td align="right">
+                                                        m3
+                                                    </td>
 
-                                                            </td>
-                                                        </tr>
+                                                    <td align="right">
+                                                        0
+                                                    </td>
+
+                                                    <td align="right">
+                                                        0
+                                                    </td>
+
+                                                    <td align="right">
+                                                        0
+                                                    </td>
+
+                                                    <td align="right">
+                                                        0
+                                                    </td>
+
+                                                    <td align="right">
+                                                        0
+                                                    </td>
+                                                    <td align="left">
+
+                                                    </td>
+                                                </tr>-->
 
 
                                                     </tbody>
@@ -534,269 +578,305 @@
 
 
                                                     <tbody>
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                            style="background: rgb(255, 255, 255);">
-                                                            <td align="right">
-                                                                1
-                                                                <input type="hidden" name="rptPhanTichNuocThai$ctl01$ID" id="rptPhanTichNuocThai_ID_0" value="785224">
-                                                            </td>
-                                                            <td align="left">
-                                                                pH Nước thải sinh hoạt
-                                                            </td>
-                                                            <td align="right">
+                                                        <?php
+                                                        if (!empty($ketquaphantichnuocthai)) {
+                                                            foreach ($ketquaphantichnuocthai as $key => $kqptnt) {
+                                                                ?>
+                                                                <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
+                                                                    style="background: rgb(255, 255, 255);">
+                                                                    <td align="right">
+                                                                        <?php echo h($kqptnt['stt']); ?>
+                                                                        <input type="hidden" name="rptPhanTichNuocThai$ctl01$ID" id="rptPhanTichNuocThai_ID_0" value="<?php echo h($kqptnt['temp_id']); ?>">
+                                                                    </td>
+                                                                    <td align="left">
+                                                                        <?php echo h($kqptnt['thongsodo']); ?>
+                                                                    </td>
+                                                                    <td align="right">
+                                                                        <?php echo h($kqptnt['donvi']); ?>
+                                                                    </td>
+                                                                    <td align="right">
+                                                                        <?php echo h($kqptnt['lan1']); ?>
+                                                                    </td>
+                                                                    <td align="right">
+                                                                        <?php echo h($kqptnt['lan2']); ?>
+                                                                    </td>
+                                                                    <td align="right">
+                                                                        <?php echo h($kqptnt['lan3']); ?>
+                                                                    </td>
+                                                                    <td align="right">
+                                                                        <?php echo h($kqptnt['lan4']); ?>
+                                                                    </td>
+                                                                    <td align="left">
+                                                                        <?php echo h($kqptnt['ghichu']); ?>
+                                                                    </td>
+                                                                </tr>
+                                                                <?php
+                                                            }
+                                                        } else {
+                                                            ?>
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
+                                                                style="background: rgb(255, 255, 255);">
+                                                                <td align="right">
+                                                                    1
+                                                                    <input type="hidden" name="rptPhanTichNuocThai$ctl01$ID" id="rptPhanTichNuocThai_ID_0" value="785224">
+                                                                </td>
+                                                                <td align="left">
+                                                                    pH Nước thải sinh hoạt
+                                                                </td>
+                                                                <td align="right">
 
-                                                            </td>
+                                                                </td>
 
-                                                        </tr>
+                                                            </tr>
 
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                            <td align="right">
-                                                                2
-                                                                <input type="hidden" name="rptPhanTichNuocThai$ctl02$ID" id="rptPhanTichNuocThai_ID_1" value="785225">
-                                                            </td>
-                                                            <td align="left">
-                                                                BOD5 Nước thải sinh hoạt
-                                                            </td>
-                                                            <td align="right">
-                                                                mg/L
-                                                            </td>
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
+                                                                <td align="right">
+                                                                    2
+                                                                    <input type="hidden" name="rptPhanTichNuocThai$ctl02$ID" id="rptPhanTichNuocThai_ID_1" value="785225">
+                                                                </td>
+                                                                <td align="left">
+                                                                    BOD5 Nước thải sinh hoạt
+                                                                </td>
+                                                                <td align="right">
+                                                                    mg/L
+                                                                </td>
 
-                                                        </tr>
+                                                            </tr>
 
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                            style="background: rgb(255, 255, 255);">
-                                                            <td align="right">
-                                                                3
-                                                                <input type="hidden" name="rptPhanTichNuocThai$ctl03$ID" id="rptPhanTichNuocThai_ID_2" value="785226">
-                                                            </td>
-                                                            <td align="left">
-                                                                COD Nước thải sinh hoạt
-                                                            </td>
-                                                            <td align="right">
-                                                                mg/L
-                                                            </td>
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
+                                                                style="background: rgb(255, 255, 255);">
+                                                                <td align="right">
+                                                                    3
+                                                                    <input type="hidden" name="rptPhanTichNuocThai$ctl03$ID" id="rptPhanTichNuocThai_ID_2" value="785226">
+                                                                </td>
+                                                                <td align="left">
+                                                                    COD Nước thải sinh hoạt
+                                                                </td>
+                                                                <td align="right">
+                                                                    mg/L
+                                                                </td>
 
-                                                        </tr>
+                                                            </tr>
 
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                            style="background: rgb(255, 255, 255);">
-                                                            <td align="right">
-                                                                4
-                                                                <input type="hidden" name="rptPhanTichNuocThai$ctl04$ID" id="rptPhanTichNuocThai_ID_3" value="785227">
-                                                            </td>
-                                                            <td align="left">
-                                                                SS Nước thải sinh hoạt
-                                                            </td>
-                                                            <td align="right">
-                                                                mg/L
-                                                            </td>
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
+                                                                style="background: rgb(255, 255, 255);">
+                                                                <td align="right">
+                                                                    4
+                                                                    <input type="hidden" name="rptPhanTichNuocThai$ctl04$ID" id="rptPhanTichNuocThai_ID_3" value="785227">
+                                                                </td>
+                                                                <td align="left">
+                                                                    SS Nước thải sinh hoạt
+                                                                </td>
+                                                                <td align="right">
+                                                                    mg/L
+                                                                </td>
 
-                                                        </tr>
+                                                            </tr>
 
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                            <td align="right">
-                                                                5
-                                                                <input type="hidden" name="rptPhanTichNuocThai$ctl05$ID" id="rptPhanTichNuocThai_ID_4" value="785228">
-                                                            </td>
-                                                            <td align="left">
-                                                                NH4+ Nước thải sinh hoạt
-                                                            </td>
-                                                            <td align="right">
-                                                                mg/L
-                                                            </td>
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
+                                                                <td align="right">
+                                                                    5
+                                                                    <input type="hidden" name="rptPhanTichNuocThai$ctl05$ID" id="rptPhanTichNuocThai_ID_4" value="785228">
+                                                                </td>
+                                                                <td align="left">
+                                                                    NH4+ Nước thải sinh hoạt
+                                                                </td>
+                                                                <td align="right">
+                                                                    mg/L
+                                                                </td>
 
-                                                        </tr>
+                                                            </tr>
 
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                            style="background: rgb(255, 255, 255);">
-                                                            <td align="right">
-                                                                6
-                                                                <input type="hidden" name="rptPhanTichNuocThai$ctl06$ID" id="rptPhanTichNuocThai_ID_5" value="785229">
-                                                            </td>
-                                                            <td align="left">
-                                                                N Tổng Nước thải sinh hoạt
-                                                            </td>
-                                                            <td align="right">
-                                                                mg/L
-                                                            </td>
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
+                                                                style="background: rgb(255, 255, 255);">
+                                                                <td align="right">
+                                                                    6
+                                                                    <input type="hidden" name="rptPhanTichNuocThai$ctl06$ID" id="rptPhanTichNuocThai_ID_5" value="785229">
+                                                                </td>
+                                                                <td align="left">
+                                                                    N Tổng Nước thải sinh hoạt
+                                                                </td>
+                                                                <td align="right">
+                                                                    mg/L
+                                                                </td>
 
-                                                        </tr>
+                                                            </tr>
 
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                            <td align="right">
-                                                                7
-                                                                <input type="hidden" name="rptPhanTichNuocThai$ctl07$ID" id="rptPhanTichNuocThai_ID_6" value="785230">
-                                                            </td>
-                                                            <td align="left">
-                                                                P Tổng nước thải sinh hoạt
-                                                            </td>
-                                                            <td align="right">
-                                                                mg/L
-                                                            </td>
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
+                                                                <td align="right">
+                                                                    7
+                                                                    <input type="hidden" name="rptPhanTichNuocThai$ctl07$ID" id="rptPhanTichNuocThai_ID_6" value="785230">
+                                                                </td>
+                                                                <td align="left">
+                                                                    P Tổng nước thải sinh hoạt
+                                                                </td>
+                                                                <td align="right">
+                                                                    mg/L
+                                                                </td>
 
-                                                        </tr>
+                                                            </tr>
 
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                            <td align="right">
-                                                                8
-                                                                <input type="hidden" name="rptPhanTichNuocThai$ctl08$ID" id="rptPhanTichNuocThai_ID_7" value="785231">
-                                                            </td>
-                                                            <td align="left">
-                                                                Dầu mỡ ĐTV Nước thải sinh hoạt
-                                                            </td>
-                                                            <td align="right">
-                                                                mg/L
-                                                            </td>
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
+                                                                <td align="right">
+                                                                    8
+                                                                    <input type="hidden" name="rptPhanTichNuocThai$ctl08$ID" id="rptPhanTichNuocThai_ID_7" value="785231">
+                                                                </td>
+                                                                <td align="left">
+                                                                    Dầu mỡ ĐTV Nước thải sinh hoạt
+                                                                </td>
+                                                                <td align="right">
+                                                                    mg/L
+                                                                </td>
 
-                                                        </tr>
+                                                            </tr>
 
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                            style="background: rgb(255, 255, 255);">
-                                                            <td align="right">
-                                                                9
-                                                                <input type="hidden" name="rptPhanTichNuocThai$ctl09$ID" id="rptPhanTichNuocThai_ID_8" value="785232">
-                                                            </td>
-                                                            <td align="left">
-                                                                Coliform Nước thải sinh hoạt
-                                                            </td>
-                                                            <td align="right">
-                                                                MPN/100mL
-                                                            </td>
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
+                                                                style="background: rgb(255, 255, 255);">
+                                                                <td align="right">
+                                                                    9
+                                                                    <input type="hidden" name="rptPhanTichNuocThai$ctl09$ID" id="rptPhanTichNuocThai_ID_8" value="785232">
+                                                                </td>
+                                                                <td align="left">
+                                                                    Coliform Nước thải sinh hoạt
+                                                                </td>
+                                                                <td align="right">
+                                                                    MPN/100mL
+                                                                </td>
 
-                                                        </tr>
+                                                            </tr>
 
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                            style="background: rgb(255, 255, 255);">
-                                                            <td align="right">
-                                                                10
-                                                                <input type="hidden" name="rptPhanTichNuocThai$ctl10$ID" id="rptPhanTichNuocThai_ID_9" value="785233">
-                                                            </td>
-                                                            <td align="left">
-                                                                pH Nước thải sản xuất
-                                                            </td>
-                                                            <td align="right">
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
+                                                                style="background: rgb(255, 255, 255);">
+                                                                <td align="right">
+                                                                    10
+                                                                    <input type="hidden" name="rptPhanTichNuocThai$ctl10$ID" id="rptPhanTichNuocThai_ID_9" value="785233">
+                                                                </td>
+                                                                <td align="left">
+                                                                    pH Nước thải sản xuất
+                                                                </td>
+                                                                <td align="right">
 
-                                                            </td>
+                                                                </td>
 
-                                                        </tr>
+                                                            </tr>
 
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                            style="background: rgb(255, 255, 255);">
-                                                            <td align="right">
-                                                                11
-                                                                <input type="hidden" name="rptPhanTichNuocThai$ctl11$ID" id="rptPhanTichNuocThai_ID_10" value="785234">
-                                                            </td>
-                                                            <td align="left">
-                                                                BOD5 Nước thải sản xuất
-                                                            </td>
-                                                            <td align="right">
-                                                                mg/L
-                                                            </td>
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
+                                                                style="background: rgb(255, 255, 255);">
+                                                                <td align="right">
+                                                                    11
+                                                                    <input type="hidden" name="rptPhanTichNuocThai$ctl11$ID" id="rptPhanTichNuocThai_ID_10" value="785234">
+                                                                </td>
+                                                                <td align="left">
+                                                                    BOD5 Nước thải sản xuất
+                                                                </td>
+                                                                <td align="right">
+                                                                    mg/L
+                                                                </td>
 
-                                                        </tr>
+                                                            </tr>
 
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                            <td align="right">
-                                                                12
-                                                                <input type="hidden" name="rptPhanTichNuocThai$ctl12$ID" id="rptPhanTichNuocThai_ID_11" value="785235">
-                                                            </td>
-                                                            <td align="left">
-                                                                COD Nước thải sản xuất
-                                                            </td>
-                                                            <td align="right">
-                                                                mg/L
-                                                            </td>
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
+                                                                <td align="right">
+                                                                    12
+                                                                    <input type="hidden" name="rptPhanTichNuocThai$ctl12$ID" id="rptPhanTichNuocThai_ID_11" value="785235">
+                                                                </td>
+                                                                <td align="left">
+                                                                    COD Nước thải sản xuất
+                                                                </td>
+                                                                <td align="right">
+                                                                    mg/L
+                                                                </td>
 
-                                                        </tr>
+                                                            </tr>
 
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                            style="background: rgb(255, 255, 255);">
-                                                            <td align="right">
-                                                                13
-                                                                <input type="hidden" name="rptPhanTichNuocThai$ctl13$ID" id="rptPhanTichNuocThai_ID_12" value="785236">
-                                                            </td>
-                                                            <td align="left">
-                                                                SS Nước thải sản xuất
-                                                            </td>
-                                                            <td align="right">
-                                                                mg/L
-                                                            </td>
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
+                                                                style="background: rgb(255, 255, 255);">
+                                                                <td align="right">
+                                                                    13
+                                                                    <input type="hidden" name="rptPhanTichNuocThai$ctl13$ID" id="rptPhanTichNuocThai_ID_12" value="785236">
+                                                                </td>
+                                                                <td align="left">
+                                                                    SS Nước thải sản xuất
+                                                                </td>
+                                                                <td align="right">
+                                                                    mg/L
+                                                                </td>
 
-                                                        </tr>
+                                                            </tr>
 
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                            style="background: rgb(255, 255, 255);">
-                                                            <td align="right">
-                                                                14
-                                                                <input type="hidden" name="rptPhanTichNuocThai$ctl14$ID" id="rptPhanTichNuocThai_ID_13" value="785237">
-                                                            </td>
-                                                            <td align="left">
-                                                                NH4+ Nước thải sản xuất
-                                                            </td>
-                                                            <td align="right">
-                                                                mg/L
-                                                            </td>
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
+                                                                style="background: rgb(255, 255, 255);">
+                                                                <td align="right">
+                                                                    14
+                                                                    <input type="hidden" name="rptPhanTichNuocThai$ctl14$ID" id="rptPhanTichNuocThai_ID_13" value="785237">
+                                                                </td>
+                                                                <td align="left">
+                                                                    NH4+ Nước thải sản xuất
+                                                                </td>
+                                                                <td align="right">
+                                                                    mg/L
+                                                                </td>
 
-                                                        </tr>
+                                                            </tr>
 
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                            <td align="right">
-                                                                15
-                                                                <input type="hidden" name="rptPhanTichNuocThai$ctl15$ID" id="rptPhanTichNuocThai_ID_14" value="785238">
-                                                            </td>
-                                                            <td align="left">
-                                                                N Tổng Nước thải sản xuất
-                                                            </td>
-                                                            <td align="right">
-                                                                mg/L
-                                                            </td>
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
+                                                                <td align="right">
+                                                                    15
+                                                                    <input type="hidden" name="rptPhanTichNuocThai$ctl15$ID" id="rptPhanTichNuocThai_ID_14" value="785238">
+                                                                </td>
+                                                                <td align="left">
+                                                                    N Tổng Nước thải sản xuất
+                                                                </td>
+                                                                <td align="right">
+                                                                    mg/L
+                                                                </td>
 
-                                                        </tr>
+                                                            </tr>
 
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                            <td align="right">
-                                                                16
-                                                                <input type="hidden" name="rptPhanTichNuocThai$ctl16$ID" id="rptPhanTichNuocThai_ID_15" value="785239">
-                                                            </td>
-                                                            <td align="left">
-                                                                P Tổng Nước thải sản xuất
-                                                            </td>
-                                                            <td align="right">
-                                                                mg/L
-                                                            </td>
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
+                                                                <td align="right">
+                                                                    16
+                                                                    <input type="hidden" name="rptPhanTichNuocThai$ctl16$ID" id="rptPhanTichNuocThai_ID_15" value="785239">
+                                                                </td>
+                                                                <td align="left">
+                                                                    P Tổng Nước thải sản xuất
+                                                                </td>
+                                                                <td align="right">
+                                                                    mg/L
+                                                                </td>
 
-                                                        </tr>
+                                                            </tr>
 
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                            style="background: rgb(255, 255, 255);">
-                                                            <td align="right">
-                                                                17
-                                                                <input type="hidden" name="rptPhanTichNuocThai$ctl17$ID" id="rptPhanTichNuocThai_ID_16" value="785240">
-                                                            </td>
-                                                            <td align="left">
-                                                                Dầu khoáng nước thải sản xuất
-                                                            </td>
-                                                            <td align="right">
-                                                                mg/L
-                                                            </td>
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
+                                                                style="background: rgb(255, 255, 255);">
+                                                                <td align="right">
+                                                                    17
+                                                                    <input type="hidden" name="rptPhanTichNuocThai$ctl17$ID" id="rptPhanTichNuocThai_ID_16" value="785240">
+                                                                </td>
+                                                                <td align="left">
+                                                                    Dầu khoáng nước thải sản xuất
+                                                                </td>
+                                                                <td align="right">
+                                                                    mg/L
+                                                                </td>
 
-                                                        </tr>
+                                                            </tr>
 
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                            style="background: rgb(255, 255, 255);">
-                                                            <td align="right">
-                                                                18
-                                                                <input type="hidden" name="rptPhanTichNuocThai$ctl18$ID" id="rptPhanTichNuocThai_ID_17" value="785241">
-                                                            </td>
-                                                            <td align="left">
-                                                                Coliform nước thải sản xuất
-                                                            </td>
-                                                            <td align="right">
-                                                                MPN/100mL
-                                                            </td>
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
+                                                                style="background: rgb(255, 255, 255);">
+                                                                <td align="right">
+                                                                    18
+                                                                    <input type="hidden" name="rptPhanTichNuocThai$ctl18$ID" id="rptPhanTichNuocThai_ID_17" value="785241">
+                                                                </td>
+                                                                <td align="left">
+                                                                    Coliform nước thải sản xuất
+                                                                </td>
+                                                                <td align="right">
+                                                                    MPN/100mL
+                                                                </td>
 
-                                                        </tr>
-
+                                                            </tr>
+                                                        <?php } ?>
 
                                                     </tbody>
                                                 </table>
@@ -861,260 +941,288 @@
                                                             </th>
                                                         </tr>
                                                     </thead>
-
-
                                                     <tbody>
+                                                        <?php
+                                                        if (!empty($nguonphatsinhkhithai)) {
+                                                            foreach ($nguonphatsinhkhithai as $key => $npskt) {
+                                                                ?>
                                                         <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                            <td align="right">
-                                                                1
-                                                                <input type="hidden" name="rptKhiThai$ctl01$ID" id="rptKhiThai_ID_0" value="785242">
-                                                            </td>
-                                                            <td align="left">
-                                                                Bụi Khu vực cổng bảo vệ
-                                                            </td>
-                                                            <td align="left">
-                                                                mg/m3
-                                                            </td>
+                                                                <td align="right">
+                                                                    <?php echo $npskt['stt'];?>
+                                                                    <input type="hidden" name="rptKhiThai$ctl01$ID" id="rptKhiThai_ID_0" value="<?php echo $npskt['temp_id'];?>">
+                                                                </td>
+                                                                <td align="left">
+                                                                    <?php echo $npskt['loaikhithai'];?>
+                                                                </td>
+                                                                <td align="left">
+                                                                    <?php echo $npskt['donvi'];?>
+                                                                </td>
+                                                                <td align="right">
+                                                                    <?php echo $npskt['quy1'];?>
+                                                                </td>
+                                                                <td align="right">
+                                                                    <?php echo $npskt['quy2'];?>
+                                                                </td>
+                                                                <td align="right">
+                                                                    <?php echo $npskt['quy3'];?>
+                                                                </td>
+                                                                <td align="right">
+                                                                    <?php echo $npskt['quy4'];?>
+                                                                </td>
+                                                                <td align="left">
+                                                                    <?php echo $npskt['ghichu'];?>
+                                                                </td>
+                                                            </tr>
+                                                                <?php
+                                                            }
+                                                        } else {
+                                                            ?>
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
+                                                                <td align="right">
+                                                                    1
+                                                                    <input type="hidden" name="rptKhiThai$ctl01$ID" id="rptKhiThai_ID_0" value="785242">
+                                                                </td>
+                                                                <td align="left">
+                                                                    Bụi Khu vực cổng bảo vệ
+                                                                </td>
+                                                                <td align="left">
+                                                                    mg/m3
+                                                                </td>
 
-                                                            <td align="right">
-                                                                0
-                                                            </td>
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
 
-                                                            <td align="right">
-                                                                0
-                                                            </td>
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
 
-                                                            <td align="right">
-                                                                0
-                                                            </td>
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
 
-                                                            <td align="right">
-                                                                0.103
-                                                            </td>
-
-
-                                                        </tr>
-
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                            style="background: rgb(255, 255, 255);">
-                                                            <td align="right">
-                                                                2
-                                                                <input type="hidden" name="rptKhiThai$ctl02$ID" id="rptKhiThai_ID_1" value="785243">
-                                                            </td>
-                                                            <td align="left">
-                                                                SO2 khu vực cổng bảo vệ
-                                                            </td>
-                                                            <td align="left">
-                                                                mg/m3
-                                                            </td>
-
-                                                            <td align="right">
-                                                                0
-                                                            </td>
-
-                                                            <td align="right">
-                                                                0
-                                                            </td>
-
-                                                            <td align="right">
-                                                                0
-                                                            </td>
-
-                                                            <td align="right">
-                                                                0.08
-                                                            </td>
-
-
-                                                        </tr>
-
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                            <td align="right">
-                                                                3
-                                                                <input type="hidden" name="rptKhiThai$ctl03$ID" id="rptKhiThai_ID_2" value="785244">
-                                                            </td>
-                                                            <td align="left">
-                                                                NO2 Khu vực cổng bảo vệ
-                                                            </td>
-                                                            <td align="left">
-                                                                mg/m3
-                                                            </td>
-
-                                                            <td align="right">
-                                                                0
-                                                            </td>
-
-                                                            <td align="right">
-                                                                0
-                                                            </td>
-
-                                                            <td align="right">
-                                                                0
-                                                            </td>
-
-                                                            <td align="right">
-                                                                0.089
-                                                            </td>
+                                                                <td align="right">
+                                                                    0.103
+                                                                </td>
 
 
-                                                        </tr>
+                                                            </tr>
 
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                            <td align="right">
-                                                                4
-                                                                <input type="hidden" name="rptKhiThai$ctl04$ID" id="rptKhiThai_ID_3" value="785245">
-                                                            </td>
-                                                            <td align="left">
-                                                                CO Khu vực cổng bảo vệ
-                                                            </td>
-                                                            <td align="left">
-                                                                mg/m3
-                                                            </td>
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
+                                                                style="background: rgb(255, 255, 255);">
+                                                                <td align="right">
+                                                                    2
+                                                                    <input type="hidden" name="rptKhiThai$ctl02$ID" id="rptKhiThai_ID_1" value="785243">
+                                                                </td>
+                                                                <td align="left">
+                                                                    SO2 khu vực cổng bảo vệ
+                                                                </td>
+                                                                <td align="left">
+                                                                    mg/m3
+                                                                </td>
 
-                                                            <td align="right">
-                                                                0
-                                                            </td>
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
 
-                                                            <td align="right">
-                                                                0
-                                                            </td>
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
 
-                                                            <td align="right">
-                                                                0
-                                                            </td>
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
 
-                                                            <td align="right">
-                                                                1.96
-                                                            </td>
-
-
-                                                        </tr>
-
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                            style="background: rgb(255, 255, 255);">
-                                                            <td align="right">
-                                                                5
-                                                                <input type="hidden" name="rptKhiThai$ctl05$ID" id="rptKhiThai_ID_4" value="785246">
-                                                            </td>
-                                                            <td align="left">
-                                                                Bụi khu vực xưởng sản xuất
-                                                            </td>
-                                                            <td align="left">
-                                                                mg/m3
-                                                            </td>
-
-                                                            <td align="right">
-                                                                0
-                                                            </td>
-
-                                                            <td align="right">
-                                                                0
-                                                            </td>
-
-                                                            <td align="right">
-                                                                0
-                                                            </td>
-
-                                                            <td align="right">
-                                                                0.214
-                                                            </td>
+                                                                <td align="right">
+                                                                    0.08
+                                                                </td>
 
 
-                                                        </tr>
+                                                            </tr>
 
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                            <td align="right">
-                                                                6
-                                                                <input type="hidden" name="rptKhiThai$ctl06$ID" id="rptKhiThai_ID_5" value="785247">
-                                                            </td>
-                                                            <td align="left">
-                                                                SO2 Khu vực xưởng sản xuất
-                                                            </td>
-                                                            <td align="left">
-                                                                mg/m3
-                                                            </td>
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
+                                                                <td align="right">
+                                                                    3
+                                                                    <input type="hidden" name="rptKhiThai$ctl03$ID" id="rptKhiThai_ID_2" value="785244">
+                                                                </td>
+                                                                <td align="left">
+                                                                    NO2 Khu vực cổng bảo vệ
+                                                                </td>
+                                                                <td align="left">
+                                                                    mg/m3
+                                                                </td>
 
-                                                            <td align="right">
-                                                                0
-                                                            </td>
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
 
-                                                            <td align="right">
-                                                                0
-                                                            </td>
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
 
-                                                            <td align="right">
-                                                                0
-                                                            </td>
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
 
-                                                            <td align="right">
-                                                                0.11
-                                                            </td>
-
-
-                                                        </tr>
-
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                            <td align="right">
-                                                                7
-                                                                <input type="hidden" name="rptKhiThai$ctl07$ID" id="rptKhiThai_ID_6" value="785248">
-                                                            </td>
-                                                            <td align="left">
-                                                                NO2 Khu vực xưởng sản xuất
-                                                            </td>
-                                                            <td align="left">
-                                                                mg/m3
-                                                            </td>
-
-                                                            <td align="right">
-                                                                0
-                                                            </td>
-
-                                                            <td align="right">
-                                                                0
-                                                            </td>
-
-                                                            <td align="right">
-                                                                0
-                                                            </td>
-
-                                                            <td align="right">
-                                                                0.126
-                                                            </td>
+                                                                <td align="right">
+                                                                    0.089
+                                                                </td>
 
 
-                                                        </tr>
+                                                            </tr>
 
-                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                            <td align="right">
-                                                                8
-                                                                <input type="hidden" name="rptKhiThai$ctl08$ID" id="rptKhiThai_ID_7" value="785249">
-                                                            </td>
-                                                            <td align="left">
-                                                                CO Khu vực xưởng sản xuất
-                                                            </td>
-                                                            <td align="left">
-                                                                mg/m3
-                                                            </td>
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
+                                                                <td align="right">
+                                                                    4
+                                                                    <input type="hidden" name="rptKhiThai$ctl04$ID" id="rptKhiThai_ID_3" value="785245">
+                                                                </td>
+                                                                <td align="left">
+                                                                    CO Khu vực cổng bảo vệ
+                                                                </td>
+                                                                <td align="left">
+                                                                    mg/m3
+                                                                </td>
 
-                                                            <td align="right">
-                                                                0
-                                                            </td>
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
 
-                                                            <td align="right">
-                                                                0
-                                                            </td>
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
 
-                                                            <td align="right">
-                                                                0
-                                                            </td>
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
 
-                                                            <td align="right">
-                                                                2.15
-                                                            </td>
-
-
-                                                        </tr>
+                                                                <td align="right">
+                                                                    1.96
+                                                                </td>
 
 
+                                                            </tr>
+
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
+                                                                style="background: rgb(255, 255, 255);">
+                                                                <td align="right">
+                                                                    5
+                                                                    <input type="hidden" name="rptKhiThai$ctl05$ID" id="rptKhiThai_ID_4" value="785246">
+                                                                </td>
+                                                                <td align="left">
+                                                                    Bụi khu vực xưởng sản xuất
+                                                                </td>
+                                                                <td align="left">
+                                                                    mg/m3
+                                                                </td>
+
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
+
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
+
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
+
+                                                                <td align="right">
+                                                                    0.214
+                                                                </td>
+
+
+                                                            </tr>
+
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
+                                                                <td align="right">
+                                                                    6
+                                                                    <input type="hidden" name="rptKhiThai$ctl06$ID" id="rptKhiThai_ID_5" value="785247">
+                                                                </td>
+                                                                <td align="left">
+                                                                    SO2 Khu vực xưởng sản xuất
+                                                                </td>
+                                                                <td align="left">
+                                                                    mg/m3
+                                                                </td>
+
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
+
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
+
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
+
+                                                                <td align="right">
+                                                                    0.11
+                                                                </td>
+
+
+                                                            </tr>
+
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
+                                                                <td align="right">
+                                                                    7
+                                                                    <input type="hidden" name="rptKhiThai$ctl07$ID" id="rptKhiThai_ID_6" value="785248">
+                                                                </td>
+                                                                <td align="left">
+                                                                    NO2 Khu vực xưởng sản xuất
+                                                                </td>
+                                                                <td align="left">
+                                                                    mg/m3
+                                                                </td>
+
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
+
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
+
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
+
+                                                                <td align="right">
+                                                                    0.126
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
+                                                                <td align="right">
+                                                                    8
+                                                                    <input type="hidden" name="rptKhiThai$ctl08$ID" id="rptKhiThai_ID_7" value="785249">
+                                                                </td>
+                                                                <td align="left">
+                                                                    CO Khu vực xưởng sản xuất
+                                                                </td>
+                                                                <td align="left">
+                                                                    mg/m3
+                                                                </td>
+
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
+
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
+
+                                                                <td align="right">
+                                                                    0
+                                                                </td>
+
+                                                                <td align="right">
+                                                                    2.15
+                                                                </td>
+                                                            </tr>
+                                                        <?php } ?>
                                                     </tbody>
                                                 </table>
                                             </td>
@@ -1204,9 +1312,48 @@
                                                             </th>
                                                         </tr>
                                                     </thead>
-
-
                                                     <tbody>
+                                                        <?php
+                                                        if(!empty($ketquaphantichkhithai)){
+                                                            foreach ($ketquaphantichkhithai as $key=>$kqptkt){
+                                                                ?>
+                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
+                                                            style="background: rgb(255, 255, 255);">
+                                                            <td align="right">
+                                                                <?php echo h($kqptkt['stt']);?>
+                                                                <input type="hidden" name="rptPhanTichKhiThai$ctl01$ID" id="rptPhanTichKhiThai_ID_0" value="<?php echo h($kqptkt['temp_id']);?>">
+                                                            </td>
+                                                            <td align="left">
+                                                                <?php echo h($kqptkt['thongsodo']);?>
+                                                            </td>
+                                                            <td align="left">
+                                                                <?php echo h($kqptkt['donvi']);?>
+                                                            </td>
+
+                                                            <td align="right">
+                                                                <?php echo h($kqptkt['lan1']);?>
+                                                            </td>
+
+                                                            <td align="right">
+                                                                <?php echo h($kqptkt['lan2']);?>
+                                                            </td>
+
+                                                            <td align="right">
+                                                                <?php echo h($kqptkt['lan3']);?>
+                                                            </td>
+
+                                                            <td align="right">
+                                                                <?php echo h($kqptkt['lan4']);?>
+                                                            </td>
+
+                                                            <td align="left">
+                                                                <?php echo h($kqptkt['ghichu']);?>
+                                                            </td>
+                                                        </tr>
+                                                        <?php
+                                                            }
+                                                        }else{
+                                                        ?>
                                                         <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
                                                             style="background: rgb(255, 255, 255);">
                                                             <td align="right">
@@ -1725,8 +1872,7 @@
                                                             <td align="center">
                                                             </td>
                                                         </tr>
-
-
+                                                        <?php } ?>
                                                     </tbody>
                                                 </table>
                                             </td>
@@ -1976,26 +2122,26 @@
 </table>
 
 <script type="text/javascript">
-			$(function(){
-			$("#txttungay").datepicker({numberOfMonths: 2 });
-					$("#txtdenngay").datepicker({numberOfMonths: 2 });
-			});</script>
+            $(function(){
+            $("#txttungay").datepicker({numberOfMonths: 2 });
+                    $("#txtdenngay").datepicker({numberOfMonths: 2 });
+            });</script>
 <script type="text/javascript">
-			function doDLBaocao(type) {
-			document.getElementById('btnLuu').click();
-					var width = 800;
-					var height = 400;
-					var left = parseInt((screen.availWidth / 2) - (width / 2));
-					var top = parseInt((screen.availHeight / 2) - (height / 2));
-					var ObjectID = <?php echo!(empty($baocaogsmt_id)) ? $baocaogsmt_id : ''; ?>;
-					//PPwindow2 = window.open("../Baocao/DulieuBCGSMT.aspx?Type=" + stype + "&BaoCaoGSMTID=" + ObjectID, "CTNH", "width=" + width + ",height=" + height + ",toolbar=no,directories=no,status=yes, menubar=no,scrollbars=yes,resizable=yes,border=thin,left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "")
-					PPwindow2 = window.open("<?php echo $this->Html->url(array('plugin' => 'admin', 'controller' => 'baocao', 'action' => 'dulieugiamsatmoitruong')); ?>" + "?type=" + type + "&baocaogsmtid=" + ObjectID, "CTNH", "width=" + width + ",height=" + height + ",toolbar=no,directories=no,status=yes, menubar=no,scrollbars=yes,resizable=yes,border=thin,left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "")
-					PPwindow2.focus();
-			}
+            function doDLBaocao(type) {
+            document.getElementById('btnLuu').click();
+                    var width = 800;
+                    var height = 400;
+                    var left = parseInt((screen.availWidth / 2) - (width / 2));
+                    var top = parseInt((screen.availHeight / 2) - (height / 2));
+                    var ObjectID = <?php echo!(empty($baocaogsmt_id)) ? $baocaogsmt_id : ''; ?>;
+                    //PPwindow2 = window.open("../Baocao/DulieuBCGSMT.aspx?Type=" + stype + "&BaoCaoGSMTID=" + ObjectID, "CTNH", "width=" + width + ",height=" + height + ",toolbar=no,directories=no,status=yes, menubar=no,scrollbars=yes,resizable=yes,border=thin,left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "")
+                    PPwindow2 = window.open("<?php echo $this->Html->url(array('plugin' => 'admin', 'controller' => 'baocao', 'action' => 'dulieugiamsatmoitruong')); ?>" + "?type=" + type + "&baocaogsmtid=" + ObjectID, "CTNH", "width=" + width + ",height=" + height + ",toolbar=no,directories=no,status=yes, menubar=no,scrollbars=yes,resizable=yes,border=thin,left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "")
+                    PPwindow2.focus();
+            }
 </script>
 <script type="text/javascript">
-	function doDelete(strID, strAllQueryString) {
-	if (confirm('Bạn có thực sự muốn xóa ?'))
-			window.location.href = "DulieuBCGSMT.aspx?action=delete&ID=" + strID + "&" + strAllQueryString;
-	}
+    function doDelete(strID, strAllQueryString) {
+    if (confirm('Bạn có thực sự muốn xóa ?'))
+            window.location.href = "DulieuBCGSMT.aspx?action=delete&ID=" + strID + "&" + strAllQueryString;
+    }
 </script>
