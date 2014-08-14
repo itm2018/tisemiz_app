@@ -26,6 +26,12 @@ class BaocaoController extends AdminAppController {
         $this->set('nguonphatsinhkhithai', $nguonphatsinhkhithai);
         $ketquaphantichkhithai = $this->Session->read('ketquaphantichkhithai');
         $this->set('ketquaphantichkhithai', $ketquaphantichkhithai);
+		$hientrangchatthairansinhhoat=$this->Session->read('hientrangchatthairansinhhoat');
+		$this->set('hientrangchatthairansinhhoat',$hientrangchatthairansinhhoat);
+		$hientrangchatthairancongnghiep=$this->Session->read('hientrangchatthairancongnghiep');
+		$this->set('hientrangchatthairancongnghiep',$hientrangchatthairancongnghiep);
+		$hientrangchatthairannguyhai=$this->Session->read('hientrangchatthairannguyhai');
+		$this->set('hientrangchatthairannguyhai',$hientrangchatthairannguyhai);
     }
 
     public function dulieugiamsatmoitruong() {
@@ -120,21 +126,21 @@ class BaocaoController extends AdminAppController {
                 //chat thai ran sinh hoat
                 $this->render('Elements/Baocao/chatthairansinhhoat');
             } elseif ($type == 7) {
-                $hientrangchatthairannguyhai = $this->Session->read('hientrangchatthairannguyhai');
+                $hientrangchatthairancongnghiep = $this->Session->read('hientrangchatthairancongnghiep');
                 //for delete action
                 if ($this->request->query('action') == 'delete' && $this->request->query('ID') && is_numeric($this->request->query('ID'))) {
-                    foreach ($hientrangchatthairannguyhai as $key => $htchrcn) {
+                    foreach ($hientrangchatthairancongnghiep as $key => $htchrcn) {
                         if ($htchrcn['temp_id'] == $this->request->query('ID')) {
-                            unset($hientrangchatthairannguyhai[$key]);
+                            unset($hientrangchatthairancongnghiep[$key]);
                         }
                     }
-                    $this->Session->write('hientrangchatthairannguyhai', $hientrangchatthairannguyhai);
+                    $this->Session->write('hientrangchatthairancongnghiep', $hientrangchatthairancongnghiep);
                 }
-                $this->set('hientrangchatthairannguyhai', $hientrangchatthairannguyhai);
+                $this->set('hientrangchatthairancongnghiep', $hientrangchatthairancongnghiep);
                 //chat thai cong nghiep
-                $this->render('Elements/Baocao/chatthainguyhai');
+                $this->render('Elements/Baocao/chatthaicongnghiep');
             } elseif ($type == 8) {
-                $hientrangchathairannguyhai = $this->Session->read('hientrangchathairannguyhai');
+                $hientrangchathairannguyhai = $this->Session->read('hientrangchatthairannguyhai');
                 //for delete action
                 if ($this->request->query('action') == 'delete' && $this->request->query('ID') && is_numeric($this->request->query('ID'))) {
                     foreach ($hientrangchathairannguyhai as $key => $htchrnh) {
@@ -142,9 +148,9 @@ class BaocaoController extends AdminAppController {
                             unset($hientrangchathairannguyhai[$key]);
                         }
                     }
-                    $this->Session->write('hientrangchathairannguyhai', $hientrangchathairannguyhai);
+                    $this->Session->write('hientrangchatthairannguyhai', $hientrangchathairannguyhai);
                 }
-                $this->set('hientrangchathairannguyhai', $hientrangchathairannguyhai);
+                $this->set('hientrangchatthairannguyhai', $hientrangchathairannguyhai);
                 //chat thai nguy hai
                 $this->render('Elements/Baocao/chatthainguyhai');
             }
@@ -398,7 +404,7 @@ class BaocaoController extends AdminAppController {
                     $stt[$key] = $row['stt'];
                     $thongsodo[$key] = $row['thongsodo'];
                     $ketquaphantichkhithai[$key]['temp_id'] = $key;
-                    $ketquaphantichkhithai[$key]['tong'] = $row['thang1'] + $row['thang2'] + $row['thang3'] + $row['thang4'] + $row['thang5'] + $row['thang6'] + $row['thang7'] + $row['thang8'] + $row['thang7'] + $row['thang9'] + $row['thang10'] + $row['thang11'] + $row['thang7'] + $row['thang8'] + $row['thang7'] + $row['thang9'] + $row['thang10'] + $row['thang11'] + $row['thang12'];
+                    $ketquaphantichkhithai[$key]['tong'] = $row['lan1'] + $row['lan2'] + $row['lan3'] + $row['lan4'];
                 }
                 if ($ketquaphantichkhithai)
                     array_multisort($stt, SORT_ASC, $thongsodo, SORT_ASC, $ketquaphantichkhithai);
@@ -481,7 +487,7 @@ class BaocaoController extends AdminAppController {
                     $stt[$key] = $row['stt'];
                     $loaichatthai[$key] = $row['loaichatthai'];
                     $hientrangchatthairansinhhoat[$key]['temp_id'] = $key;
-                    $hientrangchatthairansinhhoat[$key]['tong'] = $row['thang1'] + $row['thang2'] + $row['thang3'] + $row['thang4'] + $row['thang5'] + $row['thang6'] + $row['thang7'] + $row['thang8'] + $row['thang7'] + $row['thang9'] + $row['thang10'] + $row['thang11'] + $row['thang7'] + $row['thang8'] + $row['thang7'] + $row['thang9'] + $row['thang10'] + $row['thang11']+ $row['$row['thang1'] + $row['thang2'] + $row['thang3'] + $row['thang4'] + $row['thang5'] + $row['thang6'] + $row['thang7'] + $row['thang8'] + $row['thang7'] + $row['thang9'] + $row['thang10'] + $row['thang11'] + $row['thang7'] + $row['thang8'] + $row['thang7'] + $row['thang9'] + $row['thang10'] + $row['thang11'] +  $row['thang12'];
+                    $hientrangchatthairansinhhoat[$key]['tong'] = $row['thang1'] + $row['thang2'] + $row['thang3'] + $row['thang4'] + $row['thang5'] + $row['thang6'] + $row['thang7'] + $row['thang8'] + $row['thang9'] + $row['thang10'] + $row['thang11'] + $row['thang12'];
                 }
                 if ($hientrangchatthairansinhhoat)
                     array_multisort($stt, SORT_ASC, $loaichatthai, SORT_ASC, $hientrangchatthairansinhhoat);
@@ -564,14 +570,14 @@ class BaocaoController extends AdminAppController {
                     $stt[$key] = $row['stt'];
                     $loaichatthai[$key] = $row['loaichatthai'];
                     $hientrangchatthairancongnghiep[$key]['temp_id'] = $key;
-                    $hientrangchatthairancongnghiep[$key]['tong'] = $row['lan1'] + $row['lan2'] + $row['lan3'] + $row['lan4'];
+                    $hientrangchatthairancongnghiep[$key]['tong'] = $row['thang1'] + $row['thang2'] + $row['thang3'] + $row['thang4'] + $row['thang5'] + $row['thang6'] + $row['thang7'] + $row['thang8']  + $row['thang9'] + $row['thang10'] + $row['thang11'] + $row['thang12'];
                 }
                 if ($hientrangchatthairancongnghiep)
                     array_multisort($stt, SORT_ASC, $loaichatthai, SORT_ASC, $hientrangchatthairancongnghiep);
                 $this->Session->write('hientrangchatthairancongnghiep', $hientrangchatthairancongnghiep);
                 $hientrangchatthairancongnghiep = $this->Session->read('hientrangchatthairancongnghiep');
                 $this->set('hientrangchatthairancongnghiep', $hientrangchatthairancongnghiep);
-                $this->render('Elements/Baocao/chatthairancongnghiep');
+                $this->render('Elements/Baocao/chatthaicongnghiep');
             } elseif ($type == 8) {
                 $data = $this->request->data;
                 $hientrangchatthairannguyhai = array();
@@ -647,14 +653,14 @@ class BaocaoController extends AdminAppController {
                     $stt[$key] = $row['stt'];
                     $loaichatthai[$key] = $row['loaichatthai'];
                     $hientrangchatthairannguyhai[$key]['temp_id'] = $key;
-                    $hientrangchatthairannguyhai[$key]['tong'] = $row['thang1'] + $row['thang2'] + $row['thang3'] + $row['thang4'] + $row['thang5'] + $row['thang6'] + $row['thang7'] + $row['thang8'] + $row['thang7'] + $row['thang9'] + $row['thang10'] + $row['thang11'] + $row['thang7'] + $row['thang8'] + $row['thang7'] + $row['thang9'] + $row['thang10'] + $row['thang11'] + $row['thang12'];
+                    $hientrangchatthairannguyhai[$key]['tong'] = $row['thang1'] + $row['thang2'] + $row['thang3'] + $row['thang4'] + $row['thang5'] + $row['thang6'] + $row['thang7'] + $row['thang8']  + $row['thang9'] + $row['thang10'] + $row['thang11'] + $row['thang12'];
                 }
                 if ($hientrangchatthairannguyhai)
                     array_multisort($stt, SORT_ASC, $loaichatthai, SORT_ASC, $hientrangchatthairannguyhai);
                 $this->Session->write('hientrangchatthairannguyhai', $hientrangchatthairannguyhai);
                 $hientrangchatthairannguyhai = $this->Session->read('hientrangchatthairannguyhai');
                 $this->set('hientrangchatthairannguyhai', $hientrangchatthairannguyhai);
-                $this->render('Elements/Baocao/chatthairannguyhai');
+                $this->render('Elements/Baocao/chatthainguyhai');
             }
         }
     }

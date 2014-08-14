@@ -304,7 +304,7 @@
             </tbody></table>
         
       
-    <input type="button" id="btnCapNhat" name="btnCapNhat" onclick="window.opener.location.reload();window.close();" value="Kết thúc">
+    <input type="button" id="btnCapNhat" name="btnCapNhat" onclick="window.opener.location.reload();window.opener.location.reload();window.close();" value="Kết thúc">
     <input type="submit" name="btnSave" value="Cập nhật" id="btnSave" class="button">
 <?php echo $this->Form->end(); ?>
 <script type="text/javascript">

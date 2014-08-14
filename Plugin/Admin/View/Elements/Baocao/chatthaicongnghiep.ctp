@@ -453,11 +453,90 @@
 				<td align="center">
 				</td>
 			</tr>
+			<?php
+			if(!empty($hientrangchatthairancongnghiep)){
+				foreach($hientrangchatthairancongnghiep as $key=>$htctrcn){
+					?>
+			<tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(219, 240, 201);">
+				<td align="center">
+					<input type="text" style="width: 98%" value="<?php echo $htctrcn['stt'];?>" id="ThuTu" name="ThuTu[]">
+					<input type="hidden" style="width: 98%" value="<?php echo $htctrcn['temp_id'];?>" id="ID" name="ID[]">
+				</td>
+				<td align="left">
+					<input type="text" style="width: 98%" value="<?php echo $htctrcn['loaichatthai'];?>" id="Ten" name="Ten[]">
+				</td>
+				<td align="center">
+					<input type="text" style="width: 98%" value="<?php echo $htctrcn['donvi'];?>" id="DonVi" name="DonVi[]">
+				</td>
 
+				<td align="right">
+					<input type="text" style="width: 98%" value="<?php echo $htctrcn['thang1'];?>" name="T1[]">
+				</td>
+
+				<td align="right">
+					<input type="text" style="width: 98%" value="<?php echo $htctrcn['thang2'];?>" name="T2[]">
+				</td>
+
+				<td align="right">
+					<input type="text" style="width: 98%" value="<?php echo $htctrcn['thang3'];?>" name="T3[]">
+				</td>
+
+				<td align="right">
+					<input type="text" style="width: 98%" value="<?php echo $htctrcn['thang4'];?>" name="T4[]">
+				</td>
+
+				<td align="right">
+					<input type="text" style="width: 98%" value="<?php echo $htctrcn['thang5'];?>" name="T5[]">
+				</td>
+
+				<td align="right">
+					<input type="text" style="width: 98%" value="<?php echo $htctrcn['thang6'];?>" name="T6[]">
+				</td>
+
+				<td align="right">
+					<input type="text" style="width: 98%" value="<?php echo $htctrcn['thang7'];?>" name="T7[]">
+				</td>
+
+				<td align="right">
+					<input type="text" style="width: 98%" value="<?php echo $htctrcn['thang8'];?>" name="T8[]">
+				</td>
+
+				<td align="right">
+					<input type="text" style="width: 98%" value="<?php echo $htctrcn['thang9'];?>" name="T9[]">
+				</td>
+
+				<td align="right">
+					<input type="text" style="width: 98%" value="<?php echo $htctrcn['thang10'];?>" name="T10[]">
+				</td>
+
+				<td align="right">
+					<input type="text" style="width: 98%" value="<?php echo $htctrcn['thang11'];?>" name="T11[]">
+				</td>
+
+				<td align="right">
+					<input type="text" style="width: 98%" value="<?php echo $htctrcn['thang12'];?>" name="T12[]">
+				</td>
+
+				<td>
+					<?php echo $htctrcn['tong'];?>
+				</td>
+
+				<td align="center">
+					<input type="text" style="width: 98%" value="<?php echo $htctrcn['ghichu'];?>" id="GhiChu" name="GhiChu[]">
+				</td>
+
+				<td align="center">
+					<a href="javascript:doDelete(<?php echo h($htctrcn['temp_id']); ?>,'');">Delete</a>
+				</td>
+			</tr>
+			<?php
+				}
+			}
+			?>
 		</tbody></table>
 
 
-    <input type="button" id="btnCapNhat" name="btnCapNhat" onclick="window.opener.location.reload();
+    <input type="button" id="btnCapNhat" name="btnCapNhat" onclick="window.opener.location.reload();window.opener.location.reload();
 			window.close();" value="Kết thúc">
     <input type="submit" name="btnSave" value="Cập nhật" id="btnSave" class="button">
 <?php echo $this->Form->end(); ?>
