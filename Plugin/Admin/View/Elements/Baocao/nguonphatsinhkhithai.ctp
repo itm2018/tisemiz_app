@@ -1,4 +1,3 @@
-<div>ID:<?php echo !empty($baocaogsmt_id)?h($baocaogsmt_id):'';?></div>
 <?php echo $this->Form->create('form1', array('method' => 'post')); ?>
     <table id="Table9" cellspacing="0" cellpadding="0" width="100%" border="0">
         <tbody><tr>
@@ -304,7 +303,7 @@
 		</tbody></table>
 
 
-    <input type="button" id="btnCapNhat" name="btnCapNhat" onclick="window.opener.location.reload();window.opener.location.reload();
+    <input type="button" id="btnCapNhat" name="btnCapNhat" onclick="window.opener.location.reload();
 			window.close();" value="Kết thúc">
     <input type="submit" name="btnSave" value="Cập nhật" id="btnSave" class="button">
 <?php echo $this->Form->end(); ?>

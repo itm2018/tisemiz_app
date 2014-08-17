@@ -69,7 +69,7 @@ class AppController extends Controller {
 		$this->Security->blackHoleCallback = 'blackhole';
 		$this->Security->validatePost = false;
 		$this->Security->unlockedActions = array('dulieugiamsatmoitruong');
-		$this->Auth->allow(array('register', 'success', 'view'));
+		$this->Auth->allow(array('register', 'success', 'view', 'index'));
 	}
 
 	public function blackhole() {

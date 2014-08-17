@@ -12,6 +12,7 @@
 		</head>
 	<body>
 		<?php echo $this->Session->flash(); ?>
+                <!--<div>ID:<?php // echo !empty($baocaogsmt_id)?h($baocaogsmt_id):'';?></div>-->
 		<?php echo $this->fetch('content'); ?>
 	</body>
 </html>

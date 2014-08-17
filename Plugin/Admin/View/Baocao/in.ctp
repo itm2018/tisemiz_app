@@ -12,26 +12,18 @@
         border: 1px solid #cccccc;
         border-radius: 4px;   
     }
+    .content {
+        margin: 2px;
+        padding: 2px;
+        border-top: solid 0.15em #d6d6d6;
+        border-left: solid 0.15em #d6d6d6;
+        border-right: solid 0.15em #d6d6d6;
+        border-bottom: solid 0.15em #d6d6d6;
+    }
+
 </style>
-<?php
-if (!empty($this->validationErrors['Baocaogsmt']) || !empty($this->validationErrors['BaocaogsmtDoanhnghiep'])):
-    ?>
-    <div class="error-message">
-        <ul>
-            <?php if(!empty($this->validationErrors['Baocaogsmt'])):?>
-            <?php foreach ($this->validationErrors['Baocaogsmt'] as $key => $value): ?>
-                <li class=""><?php echo $value[0]; ?></li>
-            <?php endforeach; ?>
-            <?php endif;?>
-            <?php if(!empty($this->validationErrors['BaocaogsmtDoanhnghiep'])):?> 
-            <?php foreach ($this->validationErrors['BaocaogsmtDoanhnghiep'] as $key => $value): ?>
-                <li class=""><?php echo $value[0]; ?></li>
-            <?php endforeach; ?>
-            <?php endif; ?>
-        </ul>
-    </div>
-<?php endif; ?>
-<?php echo $this->Form->create('Baocaogsmt', array('method' => 'post', 'url' => $this->Html->url(), 'enctype' => 'multipart/form-data')); ?>
+<br>
+<?php echo $this->Form->create('Baocaogsmt', array('method' => 'post', 'url' => $this->Html->url())); ?>
 <table id="table1" cellspacing="0" cellpadding="0" width="100%" bgcolor="white" border="0">
     <tbody>
         <tr>
@@ -43,19 +35,21 @@ if (!empty($this->validationErrors['Baocaogsmt']) || !empty($this->validationErr
                                 <table id="Table9" cellspacing="0" cellpadding="0" width="100%" border="0">
                                     <tbody>
                                         <tr>
-                                            <td>
+<!--                                            <td>
                                                 <img id="Image2" src="/img/hea_im_title04.gif">
-                                            </td>
-                                            <td width="100%">
-                                                <span id="Label19" style="font-family:Times New Roman;font-size:11pt;font-weight:bold;">BÁO CÁO GIÁM SÁT MÔI TRƯỜNG</span>
+                                            </td>-->
+                                            <td width="100%" colspan="2" style="text-align: center;">
+                                                <span id="Label19" style="font-family:Times New Roman;font-size:14pt;font-weight:bold; text-align: center;">BÁO CÁO GIÁM SÁT MÔI TRƯỜNG</span>
                                             </td>
                                         </tr>
+                                        <tr><td colspan="2"></td></tr>
+                                        <tr><td colspan="2"></td></tr>
                                     </tbody>
                                 </table>
                             </td>
                         </tr>
                         <tr>
-                            <td style="padding-right: 15px; padding-left: 15px; padding-bottom: 15px">
+                            <td style="padding-right: 15px; padding-left: 15px; padding-bottom: 15px; padding-top: 20px;">
                                 <table id="Table7" cellspacing="0" cellpadding="0" style="width: 750px">
                                     <tbody>
                                         <tr>
@@ -63,15 +57,13 @@ if (!empty($this->validationErrors['Baocaogsmt']) || !empty($this->validationErr
                                                 Báo cáo từ ngày:
                                             </td>
                                             <td>
-                                                <!--<input name="txttungay" readonly="readonly" type="text"  id="txttungay" class="textbox" autocomplete="off" >-->
-                                                <?php echo $this->Form->input('txttungay', array('label' => false, 'readonly' => 'readonly', 'type' => 'text', 'id' => 'txttungay', 'class' => 'textbox', 'autocomplete' => 'off')); ?>
+                                                <?php echo $this->Form->input('txttungay', array('div' => 'fase', 'style' => 'border: none;', 'label' => false, 'readonly' => 'readonly', 'type' => 'text', 'id' => 'txttungay', 'class' => 'textbox', 'autocomplete' => 'off', 'value' => date('d/m/Y', strtotime($data['Baocaogsmt']['tungay'])))); ?>
                                             </td>
                                             <td>
                                                 Đến ngày:
                                             </td>
                                             <td>
-                                                <!--<input name="txtdenngay" readonly="readonly" type="text" id="txtdenngay" class="textbox">-->
-                                                <?php echo $this->Form->input('txtdenngay', array('label' => false, 'readonly' => 'readonly', 'type' => 'text', 'id' => 'txtdenngay', 'class' => 'textbox', 'autocomplete' => 'off')); ?>
+                                                <?php echo $this->Form->input('txtdenngay', array('div' => 'fase', 'style' => 'border: none;', 'label' => false, 'readonly' => 'readonly', 'type' => 'text', 'id' => 'txtdenngay', 'class' => 'textbox', 'autocomplete' => 'off', 'value' => date('d/m/Y', strtotime($data['Baocaogsmt']['denngay'])))); ?>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -94,49 +86,37 @@ if (!empty($this->validationErrors['Baocaogsmt']) || !empty($this->validationErr
                                                         <tr>
                                                             <td colspan="3">
                                                                 Tên cơ sở:
-                                                                <!--<input name="hidDoanhnghiepID" type="hidden" id="hidDoanhnghiepID" value="770465">-->
-<!--                                                                <input name="txtTenDoanhNghiep" type="text" id="txtTenDoanhNghiep" class="typeinput"
-                                                                       style="width: 660px;">-->
-                                                                <?php echo $this->Form->input('txtTenDoanhNghiep', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtTenDoanhNghiep', 'class' => 'typeinput', 'style' => 'width: 660px;')); ?>
+                                                                <?php echo $this->Form->input('txtTenDoanhNghiep', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtTenDoanhNghiep', 'class' => 'typeinput', 'style' => 'width: 660px;', 'value' => $data['BaocaogsmtDoanhnghiep']['tencoso'], 'readonly' => 'readonly')); ?>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td colspan="3">
                                                                 Địa chỉ văn phòng, trụ sở chính:
-                                                                <!--<input name="txtDiaChiDN" type="text" id="txtDiaChiDN" class="typeinput" style="width: 526px;">-->
-                                                                <?php echo $this->Form->input('txtDiaChiDN', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtDiaChiDN', 'class' => 'typeinput', 'style' => 'width: 526px;')); ?>
+                                                                <?php echo $this->Form->input('txtDiaChiDN', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtDiaChiDN', 'class' => 'typeinput', 'style' => 'width: 526px;', 'value' => $data['BaocaogsmtDoanhnghiep']['truso'], 'readonly' => 'readonly')); ?>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td style="width: 30%">
                                                                 Điện thoại:
-<!--                                                                <input name="txtDienThoaiDN" type="text" id="txtDienThoaiDN" class="typeinput"
-                                                                       style="width: 140px;">-->
-                                                                <?php echo $this->Form->input('txtDienThoaiDN', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtDienThoaiDN', 'class' => 'typeinput', 'style' => 'width: 140px;')); ?>
+                                                                <?php echo $this->Form->input('txtDienThoaiDN', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtDienThoaiDN', 'class' => 'typeinput', 'style' => 'width: 140px;', 'value' => $data['BaocaogsmtDoanhnghiep']['dienthoai'], 'readonly' => 'readonly')); ?>
                                                             </td>
                                                             <td style="width: 30%">
                                                                 Fax:
-                                                                <!--<input name="txtFaxDN" type="text" id="txtFaxDN" class="typeinput" style="width: 150px;">-->
-                                                                <?php echo $this->Form->input('txtFaxDN', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtFaxDN', 'class' => 'typeinput', 'style' => 'width: 150px;')); ?>
+                                                                <?php echo $this->Form->input('txtFaxDN', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtFaxDN', 'class' => 'typeinput', 'style' => 'width: 150px;', 'value' => $data['BaocaogsmtDoanhnghiep']['fax'], 'readonly' => 'readonly')); ?>
                                                             </td>
                                                             <td style="width: 40%">
                                                                 Email:
-                                                                <!--<input name="txtEmailDN" type="text" id="txtEmailDN" class="typeinput" style="width: 241px;">-->
-                                                                <?php echo $this->Form->input('txtEmailDN', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtEmailDN', 'class' => 'typeinput', 'style' => 'width: 241px;')); ?>
+                                                                <?php echo $this->Form->input('txtEmailDN', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtEmailDN', 'class' => 'typeinput', 'style' => 'width: 241px;', 'value' => $data['BaocaogsmtDoanhnghiep']['email'], 'readonly' => 'readonly')); ?>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td colspan="2">
                                                                 Giấy đăng ký kinh doanh:
-<!--                                                                <input name="txtSoGiayDKKD" type="text" id="txtSoGiayDKKD" class="typeinput"
-                                                                       style="width: 260px;">-->
-                                                                <?php echo $this->Form->input('txtSoGiayDKKD', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtSoGiayDKKD', 'class' => 'typeinput', 'style' => 'width: 260px;')); ?>
+                                                                <?php echo $this->Form->input('txtSoGiayDKKD', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtSoGiayDKKD', 'class' => 'typeinput', 'style' => 'width: 260px;', 'value' => $data['BaocaogsmtDoanhnghiep']['gpkinhdoanh'], 'readonly' => 'readonly')); ?>
                                                             </td>
                                                             <td>
                                                                 Mã số thuế:
-<!--                                                                <input name="txtMasothueDN" type="text" id="txtMasothueDN" class="typeinput"
-                                                                       style="width: 205px;">-->
-                                                                <?php echo $this->Form->input('txtMasothueDN', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtMasothueDN', 'class' => 'typeinput', 'style' => 'width: 205px;')); ?>
+                                                                <?php echo $this->Form->input('txtMasothueDN', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtMasothueDN', 'class' => 'typeinput', 'style' => 'width: 205px;', 'value' => $data['BaocaogsmtDoanhnghiep']['masothue'], 'readonly' => 'readonly')); ?>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -151,47 +131,37 @@ if (!empty($this->validationErrors['Baocaogsmt']) || !empty($this->validationErr
                                                         <tr>
                                                             <td colspan="3">
                                                                 Tên cơ sở:
-                                                                <!--<input name="hidCosoID" type="hidden" id="hidCosoID" value="-1">-->
-                                                                <!--<input name="txtTenCS" type="text" id="txtTenCS" class="typeinput" style="width: 660px;">-->
-                                                                <?php echo $this->Form->input('txtTenCS', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtTenCS', 'class' => 'typeinput', 'style' => 'width: 660px;')); ?>
+                                                                <?php echo $this->Form->input('txtTenCS', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtTenCS', 'class' => 'typeinput', 'style' => 'width: 660px;', 'value' => $cosolapbaocao['tencoso'], 'readonly' => 'readonly')); ?>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td colspan="3">
                                                                 Địa chỉ:
-                                                                <!--<input name="txtDiaChiCS" type="text" id="txtDiaChiCS" class="typeinput" style="width: 681px;">-->
-                                                                <?php echo $this->Form->input('txtDiaChiCS', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtDiaChiCS', 'class' => 'typeinput', 'style' => 'width: 681px;')); ?>
+                                                                <?php echo $this->Form->input('txtDiaChiCS', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtDiaChiCS', 'class' => 'typeinput', 'style' => 'width: 681px;', 'value' => $cosolapbaocao['truso'], 'readonly' => 'readonly')); ?>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td style="width: 30%">
                                                                 Điện thoại:
-<!--                                                                <input name="txtDienThoaiCS" type="text" id="txtDienThoaiCS" class="typeinput"
-                                                                       style="width:140px;">-->
-                                                                <?php echo $this->Form->input('txtDienThoaiCS', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtDienThoaiCS', 'class' => 'typeinput', 'style' => 'width: 140px;')); ?>
+                                                                <?php echo $this->Form->input('txtDienThoaiCS', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtDienThoaiCS', 'class' => 'typeinput', 'style' => 'width: 140px;', 'value' => $cosolapbaocao['dienthoai'], 'readonly' => 'readonly')); ?>
                                                             </td>
                                                             <td style="width: 30%">
                                                                 Fax:
-                                                                <!--<input name="txtFaxCS" type="text" id="txtFaxCS" class="typeinput" style="width: 150px;">-->
-                                                                <?php echo $this->Form->input('txtFaxCS', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtFaxCS', 'class' => 'typeinput', 'style' => 'width: 150px;')); ?>
+                                                                <?php echo $this->Form->input('txtFaxCS', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtFaxCS', 'class' => 'typeinput', 'style' => 'width: 150px;', 'value' => $cosolapbaocao['fax'], 'readonly' => 'readonly')); ?>
                                                             </td>
                                                             <td style="width: 40%">
                                                                 Email:
-                                                                <!--<input name="txtEmailCS" type="text" id="txtEmailCS" class="typeinput" style="width: 241px;">-->
-                                                                <?php echo $this->Form->input('txtEmailCS', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtEmailCS', 'class' => 'typeinput', 'style' => 'width: 241px;')); ?>
+                                                                <?php echo $this->Form->input('txtEmailCS', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtEmailCS', 'class' => 'typeinput', 'style' => 'width: 241px;', 'value' => $cosolapbaocao['email'], 'readonly' => 'readonly')); ?>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td colspan="2">
                                                                 Giấy đăng ký kinh doanh:
-                                                                <!--<input name="txtDKKD_CS" type="text" id="txtDKKD_CS" class="typeinput" style="width: 260px;">-->
-                                                                <?php echo $this->Form->input('txtDKKD_CS', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtDKKD_CS', 'class' => 'typeinput', 'style' => 'width: 260px;')); ?>
+                                                                <?php echo $this->Form->input('txtDKKD_CS', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtDKKD_CS', 'class' => 'typeinput', 'style' => 'width: 260px;', 'value' => $cosolapbaocao['gpkinhdoanh'], 'readonly' => 'readonly')); ?>
                                                             </td>
                                                             <td>
                                                                 Mã số thuế:
-<!--                                                                <input name="txtMasothueCS" type="text" id="txtMasothueCS" class="typeinput"
-                                                                       style="width: 205px;">-->
-                                                                <?php echo $this->Form->input('txtMasothueCS', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtMasothueCS', 'class' => 'typeinput', 'style' => 'width: 205px;')); ?>
+                                                                <?php echo $this->Form->input('txtMasothueCS', array('div' => false, 'label' => false, 'type' => 'text', 'id' => 'txtMasothueCS', 'class' => 'typeinput', 'style' => 'width: 205px;', 'value' => $cosolapbaocao['masothue'], 'readonly' => 'readonly')); ?>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -215,18 +185,17 @@ if (!empty($this->validationErrors['Baocaogsmt']) || !empty($this->validationErr
                                                         <tr>
                                                             <td>
                                                                 <div>
-                                                                    <?php echo $this->Form->input('QuytrinhCongngheSanxuat', array('div' => false, 'label' => false, 'type' => 'textarea', 'class' => 'form-control', 'id' => 'QuytrinhCongngheSanxuat')); ?>
+                                                                    <?php
+                                                                    echo $data['Baocaogsmt']['quytrinhcnxstrongkybc'];
+                                                                    ?>
                                                                     <input type="hidden" name="hidden_QuytrinhCongngheSanxuat" id ="hidden_QuytrinhCongngheSanxuat" value="" />
                                                                 </div>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td align="left">
-                                                                <span id="Label1">hoặc đính kèm file: </span>
-                                                                <?php echo $this->Form->input('txtFileQTCNSX', array('div' => false, 'label' => false, 'type' => 'file', 'id' => 'txtFileQTCNSX', 'size' => '10')); ?>
-                                                                <?php if (!empty($this->Session->read('file_QTCNSX'))): ?>
-                                                                    <div style="color: #008000;">File đính kèm: <?php echo h($this->Session->read('file_QTCNSX')); ?></div>
-                                                                <?php endif; ?>
+                                                                <span id="Label1">File đính kèm: </span>
+                                                                <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_quytrinhcnsxbaocaogsmt']); ?>" target="_blank" class="download-link"><?php echo $data['Baocaogsmt']['file_quytrinhcnsxbaocaogsmt']; ?></a>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -253,7 +222,6 @@ if (!empty($this->validationErrors['Baocaogsmt']) || !empty($this->validationErr
                                                 </b>
                                             </td>
                                             <td align="right">
-                                                <a href="javascript:doDLBaocao('3');">Cập nhật dữ liệu</a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -298,17 +266,16 @@ if (!empty($this->validationErrors['Baocaogsmt']) || !empty($this->validationErr
                                                     </thead>
                                                     <tbody>
                                                         <?php
-                                                        if (!empty($tinhhinhsxkd)) {
-                                                            foreach ($tinhhinhsxkd as $key => $thsxkd) {
+                                                        if (!empty($data['Tinhhinhsxkd'])) {
+                                                            foreach ($data['Tinhhinhsxkd'] as $key => $thsxkd) {
                                                                 ?>		
 
                                                                 <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(255, 255, 255);">
                                                                     <td align="right">
                                                                         <?php echo h($thsxkd['stt']); ?>
-                                                                        <!--<input type="hidden" name="tensp" id="rptNuocThai_ID_0" value="785222">-->
                                                                     </td>
                                                                     <td align="left">
-                                                                        <?php echo h($thsxkd['tensp']); ?>
+                                                                        <?php echo h($thsxkd['tennguyenlieu']); ?>
                                                                     </td>
                                                                     <td align="right">
                                                                         <?php echo h($thsxkd['donvi']); ?>
@@ -362,11 +329,8 @@ if (!empty($this->validationErrors['Baocaogsmt']) || !empty($this->validationErr
                                         </tr>
                                         <tr>
                                             <td align="left" colspan="2">
-                                                <span id="Label2">Đính kèm file:  Sơ đồ vị trí các điểm giám sát khí thải, nước thải</span>
-                                                <?php echo $this->Form->input('txtFileNPSON', array('div' => false, 'label' => false, 'type' => 'file', 'id' => 'txtFileNPSON', 'size' => 10)); ?>
-                                                <?php if (!empty($this->Session->read('file_NPSON'))): ?>
-                                                    <div style="color: #008000;">File đính kèm: <?php echo h($this->Session->read('file_NPSON')); ?></div>
-                                                <?php endif; ?>
+                                                <span id="Label2">File đính kèm sơ đồ vị trí các điểm giám sát khí thải, nước thải: </span>
+                                                <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_nguononhiem']); ?>" target="_blank" class="donwload-link"><?php echo $data['Baocaogsmt']['file_nguononhiem']; ?></a>
                                             </td>
                                         </tr>
 
@@ -375,7 +339,6 @@ if (!empty($this->validationErrors['Baocaogsmt']) || !empty($this->validationErr
                                                 <b>3.1.1 Nước thải</b>
                                             </td>
                                             <td align="right">
-                                                <a href="javascript:doDLBaocao('4');">Cập nhật dữ liệu</a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -425,8 +388,8 @@ if (!empty($this->validationErrors['Baocaogsmt']) || !empty($this->validationErr
 
                                                     <tbody>
                                                         <?php
-                                                        if (!empty($nguonphatsinhnuocthai)) {
-                                                            foreach ($nguonphatsinhnuocthai as $key => $npsnt) {
+                                                        if (!empty($data['Hientrangnuocthai'])) {
+                                                            foreach ($data['Hientrangnuocthai'] as $key => $npsnt) {
                                                                 ?>
                                                                 <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
                                                                     style="background: rgb(255, 255, 255);">
@@ -562,18 +525,16 @@ m3
                                                         <tr>
                                                             <td>
                                                                 <div>
-                                                                    <?php echo $this->Form->input('QuytrinhCongngheXulyNuoc', array('div' => false, 'label' => false, 'hiddenField' => false, 'type' => 'textarea', 'class' => 'form-control', 'id' => 'QuytrinhCongngheXulyNuoc')); ?>
+                                                                    <?php echo $data['Baocaogsmt']['quytrinhcnxlnt']; ?>
+                                                                    <?php // echo $this->Form->input('QuytrinhCongngheXulyNuoc', array('div' => false, 'label' => false, 'hiddenField' => false, 'type' => 'textarea', 'class' => 'form-control', 'id' => 'QuytrinhCongngheXulyNuoc')); ?>
                                                                     <input type="hidden" name="hidden_QuytrinhCongngheXulyNuoc" id ="hidden_QuytrinhCongngheXulyNuoc" value="" />
                                                                 </div>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td align="left">
-                                                                <span id="Label3">hoặc đính kèm file: </span>
-                                                                <?php echo $this->Form->input('txtFileQTXLNT', array('div' => false, 'label' => false, 'type' => 'file', 'id' => 'txtFileQTXLNT', 'size' => 10)); ?>
-                                                                <?php if (!empty($this->Session->read('file_QTXLNT'))): ?>
-                                                                    <div style="color: #008000;">File đính kèm: <?php echo h($this->Session->read('file_QTXLNT')); ?></div>
-                                                                <?php endif; ?>
+                                                                <span id="Label3">File đính kèm: </span>
+                                                                <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_quytrinhcnxlnt']); ?>" target="_blank" class="donwload-link"><?php echo $data['Baocaogsmt']['file_quytrinhcnxlnt']; ?></a>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -589,7 +550,6 @@ m3
                                                 <b>Kết quả phân tích</b><span id="lblFileXLNT"></span>
                                             </td>
                                             <td align="right">
-                                                <a href="javascript:doDLBaocao('12');">Cập nhật dữ liệu</a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -636,8 +596,8 @@ m3
 
                                                     <tbody>
                                                         <?php
-                                                        if (!empty($ketquaphantichnuocthai)) {
-                                                            foreach ($ketquaphantichnuocthai as $key => $kqptnt) {
+                                                        if (!empty($data['Ketquaphantichnuocthai'])) {
+                                                            foreach ($data['Ketquaphantichnuocthai'] as $key => $kqptnt) {
                                                                 ?>
                                                                 <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
                                                                     style="background: rgb(255, 255, 255);">
@@ -941,11 +901,8 @@ m3
                                         </tr>
                                         <tr>
                                             <td align="left" colspan="2">
-                                                <span id="Label4">Đính kèm file kết quả phân tích nước thải: </span>
-                                                <?php echo $this->Form->input('txtFileXLNT', array('div' => false, 'label' => false, 'type' => 'file', 'id' => 'txtFileXLNT', 'size' => 10)); ?>
-                                                <?php if (!empty($this->Session->read('file_XLNT'))): ?>
-                                                    <div style="color: #008000;">File đính kèm: <?php echo h($this->Session->read('file_XLNT')); ?></div>
-                                                <?php endif; ?>
+                                                <span id="Label4">File đính kèm kết quả phân tích nước thải: </span>
+                                                <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_ketquaphantichnt']); ?>" target="_blank" class="donwload-link"><?php echo $data['Baocaogsmt']['file_ketquaphantichnt']; ?></a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -957,7 +914,6 @@ m3
                                                 <b>3.1.2 Khí thải tại nguồn</b>
                                             </td>
                                             <td align="right">
-                                                <a href="javascript:doDLBaocao('5');">Cập nhật dữ liệu</a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1003,8 +959,8 @@ m3
                                                     </thead>
                                                     <tbody>
                                                         <?php
-                                                        if (!empty($nguonphatsinhkhithai)) {
-                                                            foreach ($nguonphatsinhkhithai as $key => $npskt) {
+                                                        if (!empty($data['Hientrangkhithai'])) {
+                                                            foreach ($data['Hientrangkhithai'] as $key => $npskt) {
                                                                 ?>
                                                                 <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
                                                                     <td align="right">
@@ -1163,7 +1119,8 @@ m3
                                                         <tr>
                                                             <td>
                                                                 <div>
-                                                                    <?php echo $this->Form->input('QuytrinhCongngheXulyKhithai', array('div' => false, 'label' => false, 'hiddenField' => false, 'type' => 'textarea', 'class' => 'form-control', 'id' => 'QuytrinhCongngheXulyKhithai')); ?>
+                                                                    <?php echo $data['Baocaogsmt']['quytrinhcnxlkt']; ?>
+                                                                    <?php // echo $this->Form->input('QuytrinhCongngheXulyKhithai', array('div' => false, 'label' => false, 'hiddenField' => false, 'type' => 'textarea', 'class' => 'form-control', 'id' => 'QuytrinhCongngheXulyKhithai')); ?>
                                                                     <input type="hidden" name="hidden_QuytrinhCongngheXulyKhithai" id ="hidden_QuytrinhCongngheXulyKhithai" value="" />
                                                                 </div>
                                                             </td>
@@ -1174,11 +1131,8 @@ m3
                                         </tr>
                                         <tr>
                                             <td align="left">
-                                                <span id="Label5">hoặc đính kèm file: </span>
-                                                <?php echo $this->Form->input('txtFileQTXLKT', array('div' => false, 'label' => false, 'type' => 'file', 'id' => 'txtFileQTXLKT', 'size' => 10)); ?>
-                                                <?php if (!empty($this->Session->read('file_QTXLKT'))): ?>
-                                                    <div style="color: #008000;">File đính kèm: <?php echo h($this->Session->read('file_QTXLKT')); ?></div>
-                                                <?php endif; ?>
+                                                <span id="Label5">File đính kèm: </span>
+                                                <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_quytrinhcnxlkt']); ?>" target="_blank" class="donwload-link"><?php echo $data['Baocaogsmt']['file_quytrinhcnxlkt']; ?></a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -1190,7 +1144,6 @@ m3
                                                 <b>Kết quả phân tích</b><span id="lblFileXLKT"></span>
                                             </td>
                                             <td align="right">
-                                                <a href="javascript:doDLBaocao('13');">Cập nhật dữ liệu</a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1235,14 +1188,13 @@ m3
                                                     </thead>
                                                     <tbody>
                                                         <?php
-                                                        if (!empty($ketquaphantichkhithai)) {
-                                                            foreach ($ketquaphantichkhithai as $key => $kqptkt) {
+                                                        if (!empty($data['Ketquaphantichkhithai'])) {
+                                                            foreach ($data['Ketquaphantichkhithai'] as $key => $kqptkt) {
                                                                 ?>
                                                                 <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
                                                                     style="background: rgb(255, 255, 255);">
                                                                     <td align="right">
                                                                         <?php echo h($kqptkt['stt']); ?>
-                                                                        <!--<input type="hidden" name="rptPhanTichKhiThai$ctl01$ID" id="rptPhanTichKhiThai_ID_0" value="<?php echo h($kqptkt['temp_id']); ?>">-->
                                                                     </td>
                                                                     <td align="left">
                                                                         <?php echo h($kqptkt['thongsodo']); ?>
@@ -1481,11 +1433,8 @@ m3
                                         </tr>
                                         <tr>
                                             <td align="left" colspan="2">
-                                                <span id="Label7">Đính kèm file kết quả phân tích khí thải: </span>
-                                                <?php echo $this->Form->input('txtFileXLKT', array('div' => false, 'label' => false, 'type' => 'file', 'id' => 'txtFileXLKT', 'size' => 10)); ?>
-                                                <?php if (!empty($this->Session->read('file_XLKT'))): ?>
-                                                    <div style="color: #008000;">File đính kèm: <?php echo h($this->Session->read('file_XLKT')); ?></div>
-                                                <?php endif; ?>
+                                                <span id="Label7">File đính kèm kết quả phân tích khí thải: </span>
+                                                <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_ketquaphantichkt']); ?>" target="_blank" class="donwload-link"><?php echo $data['Baocaogsmt']['file_ketquaphantichkt']; ?></a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -1575,81 +1524,82 @@ m3
                                                                 A Chất thải RSH
                                                             </td>
                                                             <td>
-                                                                <a href="javascript:doDLBaocao('6');">Cập nhật dữ liệu</a>
                                                             </td>
                                                         </tr>
                                                         <?php
-                                                        if (!empty($hientrangchatthairansinhhoat)) {
-                                                            foreach ($hientrangchatthairansinhhoat as $key => $htctrsh) {
+                                                        if (!empty($data['Hientrangchatthairan'])) {
+                                                            foreach ($data['Hientrangchatthairan'] as $key => $htctrsh) {
                                                                 ?>
-                                                                <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(255, 255, 255);">
-                                                                    <td align="center">
-                                                                        <?php echo $htctrsh['stt']; ?>
-                                                                        <!--<input type="hidden" style="width: 98%" value="<?php echo $htctrsh['temp_id']; ?>" id="ID" name="ID[]">-->
-                                                                    </td>
-                                                                    <td align="left">
-                                                                        <?php echo $htctrsh['loaichatthai']; ?>
-                                                                    </td>
-                                                                    <td align="center">
-                                                                        <?php echo $htctrsh['donvi']; ?>
-                                                                    </td>
+                                                                <?php if ($htctrsh['id_loaichatthairan'] == 1): ?>
+                                                                    <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(255, 255, 255);">
+                                                                        <td align="center">
+                                                                            <?php echo $htctrsh['stt']; ?>
+                                                                            <!--<input type="hidden" style="width: 98%" value="<?php echo $htctrsh['temp_id']; ?>" id="ID" name="ID[]">-->
+                                                                        </td>
+                                                                        <td align="left">
+                                                                            <?php echo $htctrsh['loaichatthai']; ?>
+                                                                        </td>
+                                                                        <td align="center">
+                                                                            <?php echo $htctrsh['donvi']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrsh['thang1']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrsh['thang1']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrsh['thang2']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrsh['thang2']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrsh['thang3']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrsh['thang3']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrsh['thang4']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrsh['thang4']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrsh['thang5']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrsh['thang5']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrsh['thang6']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrsh['thang6']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrsh['thang7']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrsh['thang7']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrsh['thang8']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrsh['thang8']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrsh['thang9']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrsh['thang9']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrsh['thang10']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrsh['thang10']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrsh['thang11']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrsh['thang11']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrsh['thang12']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrsh['thang12']; ?>
+                                                                        </td>
 
-                                                                    <td>
-                                                                        <?php echo $htctrsh['tong']; ?>
-                                                                    </td>
+                                                                        <td>
+                                                                            <?php echo $htctrsh['tong']; ?>
+                                                                        </td>
 
-                                                                    <td align="center">
-                                                                        <?php echo $htctrsh['ghichu']; ?>
-                                                                    </td>
-                                                                </tr>
+                                                                        <td align="center">
+                                                                            <?php echo $htctrsh['donvithugomvanchuyen']; ?>
+                                                                        </td>
+                                                                    </tr>
+                                                                <?php endif; ?>
                                                                 <?php
                                                             }
                                                         }
@@ -1660,81 +1610,82 @@ m3
                                                                 B Chất thải Công nghiệp
                                                             </td>
                                                             <td>
-                                                                <a href="javascript:doDLBaocao('7');">Cập nhật dữ liệu</a>
                                                             </td>
                                                         </tr>
                                                         <?php
-                                                        if (!empty($hientrangchatthairancongnghiep)) {
-                                                            foreach ($hientrangchatthairancongnghiep as $key => $htctrcn) {
+                                                        if (!empty($data['Hientrangchatthairan'])) {
+                                                            foreach ($data['Hientrangchatthairan'] as $key => $htctrcn) {
                                                                 ?>
-                                                                <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(255, 255, 255);">
-                                                                    <td align="center">
-                                                                        <?php echo $htctrcn['stt']; ?>
-                                                                        <!--<input type="hidden" style="width: 98%" value="<?php echo $htctrcn['temp_id']; ?>" id="ID" name="ID[]">-->
-                                                                    </td>
-                                                                    <td align="left">
-                                                                        <?php echo $htctrcn['loaichatthai']; ?>
-                                                                    </td>
-                                                                    <td align="center">
-                                                                        <?php echo $htctrcn['donvi']; ?>
-                                                                    </td>
+                                                                <?php if ($htctrcn['id_loaichatthairan'] == 2): ?>
+                                                                    <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(255, 255, 255);">
+                                                                        <td align="center">
+                                                                            <?php echo $htctrcn['stt']; ?>
+                                                                            <!--<input type="hidden" style="width: 98%" value="<?php echo $htctrcn['temp_id']; ?>" id="ID" name="ID[]">-->
+                                                                        </td>
+                                                                        <td align="left">
+                                                                            <?php echo $htctrcn['loaichatthai']; ?>
+                                                                        </td>
+                                                                        <td align="center">
+                                                                            <?php echo $htctrcn['donvi']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrcn['thang1']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrcn['thang1']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrcn['thang2']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrcn['thang2']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrcn['thang3']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrcn['thang3']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrcn['thang4']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrcn['thang4']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrcn['thang5']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrcn['thang5']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrcn['thang6']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrcn['thang6']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrcn['thang7']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrcn['thang7']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrcn['thang8']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrcn['thang8']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrcn['thang9']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrcn['thang9']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrcn['thang10']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrcn['thang10']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrcn['thang11']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrcn['thang11']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrcn['thang12']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrcn['thang12']; ?>
+                                                                        </td>
 
-                                                                    <td>
-                                                                        <?php echo $htctrcn['tong']; ?>
-                                                                    </td>
+                                                                        <td>
+                                                                            <?php echo $htctrcn['tong']; ?>
+                                                                        </td>
 
-                                                                    <td align="center">
-                                                                        <?php echo $htctrcn['ghichu']; ?>
-                                                                    </td>
-                                                                </tr>
+                                                                        <td align="center">
+                                                                            <?php echo $htctrcn['donvithugomvanchuyen']; ?>
+                                                                        </td>
+                                                                    </tr>
+                                                                <?php endif; ?>
                                                                 <?php
                                                             }
                                                         }
@@ -1745,82 +1696,83 @@ m3
                                                                 C Chất thải nguy hại
                                                             </td>
                                                             <td>
-                                                                <a href="javascript:doDLBaocao('8');">Cập nhật dữ liệu</a>
                                                             </td>
                                                         </tr>
 
                                                         <?php
-                                                        if (!empty($hientrangchatthairannguyhai)) {
-                                                            foreach ($hientrangchatthairannguyhai as $key => $htctrnh) {
+                                                        if (!empty($data['Hientrangchatthairan'])) {
+                                                            foreach ($data['Hientrangchatthairan'] as $key => $htctrnh) {
                                                                 ?>
-                                                                <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(255, 255, 255);">
-                                                                    <td align="center">
-                                                                        <?php echo $htctrnh['stt']; ?>
-                                                                        <!--<input type="hidden" style="width: 98%" value="<?php echo $htctrnh['temp_id']; ?>" id="ID" name="ID[]">-->
-                                                                    </td>
-                                                                    <td align="left">
-                                                                        <?php echo $htctrnh['loaichatthai']; ?>
-                                                                    </td>
-                                                                    <td align="center">
-                                                                        <?php echo $htctrnh['donvi']; ?>0
-                                                                    </td>
+                                                                <?php if ($htctrnh['id_loaichatthairan'] == 3): ?>
+                                                                    <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(255, 255, 255);">
+                                                                        <td align="center">
+                                                                            <?php echo $htctrnh['stt']; ?>
+                                                                            <!--<input type="hidden" style="width: 98%" value="<?php echo $htctrnh['temp_id']; ?>" id="ID" name="ID[]">-->
+                                                                        </td>
+                                                                        <td align="left">
+                                                                            <?php echo $htctrnh['loaichatthai']; ?>
+                                                                        </td>
+                                                                        <td align="center">
+                                                                            <?php echo $htctrnh['donvi']; ?>0
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrnh['thang1']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrnh['thang1']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrnh['thang2']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrnh['thang2']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrnh['thang3']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrnh['thang3']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrnh['thang4']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrnh['thang4']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrnh['thang5']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrnh['thang5']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrnh['thang6']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrnh['thang6']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrnh['thang7']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrnh['thang7']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrnh['thang8']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrnh['thang8']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrnh['thang9']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrnh['thang9']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrnh['thang10']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrnh['thang10']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrnh['thang11']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrnh['thang11']; ?>
+                                                                        </td>
 
-                                                                    <td align="right">
-                                                                        <?php echo $htctrnh['thang12']; ?>
-                                                                    </td>
+                                                                        <td align="right">
+                                                                            <?php echo $htctrnh['thang12']; ?>
+                                                                        </td>
 
-                                                                    <td>
-                                                                        <?php echo $htctrnh['tong']; ?>
-                                                                    </td>
+                                                                        <td>
+                                                                            <?php echo $htctrnh['tong']; ?>
+                                                                        </td>
 
-                                                                    <td align="center">
-                                                                        <?php echo $htctrnh['ghichu']; ?>
-                                                                    </td>
-                                                                </tr>
+                                                                        <td align="center">
+                                                                            <?php echo $htctrnh['donvithugomvanchuyen']; ?>
+                                                                        </td>
+                                                                    </tr>
+                                                                <?php endif; ?>
                                                                 <?php
                                                             }
                                                         }
@@ -1850,7 +1802,8 @@ m3
                                                         <tr>
                                                             <td>
                                                                 <div>
-                                                                    <?php echo $this->Form->input('Nguonphatsinhtiengon', array('div' => false, 'label' => false, 'type' => 'textarea', 'class' => 'form-control', 'id' => 'Nguonphatsinhtiengon')); ?>
+                                                                    <?php echo $data['Baocaogsmt']['nguonpstiengonvabpkp']; ?>
+                                                                    <?php // echo $this->Form->input('Nguonphatsinhtiengon', array('div' => false, 'label' => false, 'type' => 'textarea', 'class' => 'form-control', 'id' => 'Nguonphatsinhtiengon')); ?>
                                                                     <input type="hidden" name="hidden_Nguonphatsinhtiengon" id ="hidden_Nguonphatsinhtiengon" value="" />
                                                                 </div>
                                                             </td>
@@ -1861,11 +1814,8 @@ m3
                                         </tr>
                                         <tr>
                                             <td align="left">
-                                                <span id="Label9">Đính kèm file kết quả phân tích (nếu có): </span>
-                                                <?php echo $this->Form->input('txtFilePSTO', array('div' => false, 'label' => false, 'type' => 'file', 'id' => 'txtFilePSTO', 'size' => 10)); ?>
-                                                <?php if (!empty($this->Session->read('file_PSTO'))): ?>
-                                                    <div style="color: #008000;">File đính kèm: <?php echo h($this->Session->read('file_PSTO')); ?></div>
-                                                <?php endif; ?>
+                                                <span id="Label9">File đính kèm kết quả phân tích: </span>
+                                                <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_ketquaphantichtiengon']); ?>" target="_blank" class="donwload-link"><?php echo $data['Baocaogsmt']['file_ketquaphantichtiengon']; ?></a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1880,7 +1830,8 @@ m3
                                                         <tr>
                                                             <td>
                                                                 <div>
-                                                                    <?php echo $this->Form->input('Nguonphatsinhdorung', array('div' => false, 'label' => false, 'hiddenField' => false, 'type' => 'textarea', 'class' => 'form-control', 'id' => 'Nguonphatsinhdorung')); ?>
+                                                                    <?php echo $data['Baocaogsmt']['nguonpstiengonvabpkp']; ?>
+                                                                    <?php // echo $this->Form->input('Nguonphatsinhdorung', array('div' => false, 'label' => false, 'hiddenField' => false, 'type' => 'textarea', 'class' => 'form-control', 'id' => 'Nguonphatsinhdorung')); ?>
                                                                     <input type="hidden" name="hidden_Nguonphatsinhdorung" id ="hidden_Nguonphatsinhdorung" value="" />
                                                                 </div>
                                                             </td>
@@ -1891,11 +1842,8 @@ m3
                                         </tr>
                                         <tr>
                                             <td align="left">
-                                                <span id="Label8">Đính kèm file kết quả phân tích (nếu có): </span>
-                                                <?php echo $this->Form->input('txtFilePSDR', array('div' => false, 'label' => false, 'type' => 'file', 'id' => 'txtFilePSDR', 'size' => 10)); ?>
-                                                <?php if (!empty($this->Session->read('file_PSDR'))): ?>
-                                                    <div style="color: #008000;">File đính kèm: <?php echo h($this->Session->read('file_PSDR')); ?></div>
-                                                <?php endif; ?>
+                                                <span id="Label8">File đính kèm kết quả phân tích: </span>
+                                                <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_ketquaphantichdorung']); ?>" target="_blank" class="donwload-link"><?php echo $data['Baocaogsmt']['file_ketquaphantichdorung']; ?></a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1910,10 +1858,7 @@ m3
                                                 Sơ đồ vị trí các điểm giám sát đối với môi trường không khí xung quanh, đất, nước
                                                 ngầm, nước mặt.
                                                 <br>
-                                                <?php echo $this->Form->input('txtFileMTXQ1', array('div' => false, 'label' => false, 'type' => 'file', 'id' => 'txtFileMTXQ1', 'size' => 10)); ?>
-                                                <?php if (!empty($this->Session->read('file_MTXQ1'))): ?>
-                                                    <div style="color: #006600;">File đính kèm: <?php echo h($this->Session->read('file_MTXQ1')); ?></div>
-                                                <?php endif; ?>
+                                                <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_sodovitricacdiemgiamsatmtxq']); ?>" target="_blank" class="donwload-link"><?php echo $data['Baocaogsmt']['file_sodovitricacdiemgiamsatmtxq']; ?></a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1923,10 +1868,7 @@ m3
                                                 <br>
                                                 Các kết quả đo đạc phân tích giám sát môi trường không khí xung quanh, đất, nước
                                                 ngầm, nước mặt.<br>
-                                                <?php echo $this->Form->input('txtFileMTXQ2', array('div' => false, 'label' => false, 'type' => 'file', 'id' => 'txtFileMTXQ2', 'size' => 10)); ?>
-                                                <?php if (!empty($this->Session->read('file_MTXQ2'))): ?>
-                                                    <div style="color: #008000;">File đính kèm: <?php echo h($this->Session->read('file_MTXQ2')); ?></div>
-                                                <?php endif; ?>
+                                                <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_ketquadodacphantichmtxq']); ?>" target="_blank" class="donwload-link"><?php echo $data['Baocaogsmt']['file_ketquadodacphantichmtxq']; ?></a>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1937,19 +1879,9 @@ m3
                                         <tr>
                                             <td height="25px">
                                                 Chủ cơ sở
+                                                <br><br><br><br><br>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td align="center" bgcolor="aliceblue" height="50">
-                                                <input type="submit" name="btnLuu" value="Lưu tạm"
-                                                       onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions( & quot; btnLuu & quot; , & quot; & quot; , true, & quot; & quot; , & quot; & quot; , false, false))"
-                                                       id="btnLuu" style="width:100px;">&nbsp;
-                                                <input type="submit" name="btnHoantat" value="Nộp báo cáo"
-                                                       onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions( & quot; btnHoantat & quot; , & quot; & quot; , true, & quot; & quot; , & quot; & quot; , false, false))"
-                                                       id="btnHoantat" style="width:100px;">&nbsp;
-                                            </td>
-                                        </tr>
-
                                     </tbody>
                                 </table>
                             </td>
@@ -1962,115 +1894,10 @@ m3
 </table>
 <?php echo $this->Form->end(); ?>
 <script type="text/javascript">
-
-            $(function(){
-            $("#txttungay").datepicker({
-                numberOfMonths: 1,
-                changeMonth: true,
-                changeYear: true,
-                showButtonPanel: true,
-            });
-            $("#txtdenngay").datepicker({
-                  numberOfMonths: 1,
-                    changeMonth: true,
-                    changeYear: true,
-                    showButtonPanel: true, });
-            $('input[type="file"]').each(function(){
-               $(this).on('change',function(){
-                  var parts = $(this).val().split('.');
-                  var last = parts.length - 1;
-                  if(parts[last]!='doc' && parts[last]!='docx' && parts[last]!='pdf' && parts[last]!='xls' && parts[last]!='xlsx'){
-                    $(this).val(null);
-                    alert('Bạn chỉ có thể tải lên file Word, Excel hoặc Pdf');
-                  }
-               }); 
-            });  
-            });                    </script>
-<script type="text/javascript">
-            function doDLBaocao(type) {
-            var width = 800;
-                    var height = 400;
-                    var left = parseInt((screen.availWidth / 2) - (width / 2));
-                    var top = parseInt((screen.availHeight / 2) - (height / 2));
-                    var ObjectID = <?php echo!(empty($baocaogsmt_id)) ? $baocaogsmt_id : ''; ?>;
-                    PPwindow2 = window.open("<?php echo $this->Html->url(array('plugin' => 'admin', 'controller' => 'baocao', 'action' => 'dulieugiamsatmoitruong')); ?>" + "?type=" + type + "&baocaogsmtid=" + ObjectID, "CTNH", "width=" + width + ",height=" + height + ",toolbar=no,directories=no,status=yes, menubar=no,scrollbars=yes,resizable=yes,border=thin,left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "")
-                    PPwindow2.focus();
-            }
-</script>
-<script type="text/javascript">
-    function setValueTextareaBox(){
-    var cnsx = $('#hidden_QuytrinhCongngheSanxuat').val();
-            var xln = $('#hidden_QuytrinhCongngheXulyNuoc').val();
-            var xlkt = $('#hidden_QuytrinhCongngheXulyKhithai').val();
-            var psto = $('#hidden_Nguonphatsinhtiengon').val();
-            var psdr = $('#hidden_Nguonphatsinhdorung').val();
-            $('#QuytrinhCongngheSanxuat').text(cnsx);
-            $('#QuytrinhCongngheXulyNuoc').text(xln);
-            $('#QuytrinhCongngheXulyKhithai').text(xlkt);
-            $('#Nguonphatsinhtiengon').text(psto);
-            $('#Nguonphatsinhdorung').text(psdr);
-            if ($('#QuytrinhCongngheSanxuat').text() == ''){
-    $('#QuytrinhCongngheSanxuat').text(cnsx);
-    }
-    if ($('#QuytrinhCongngheXulyNuoc').text() == ''){
-    $('#QuytrinhCongngheXulyNuoc').text(xln);
-    }
-    if ($('#QuytrinhCongngheXulyKhithai').text() == ''){
-    $('#QuytrinhCongngheXulyKhithai').text(xlkt);
-    }
-    if ($('#Nguonphatsinhtiengon').text() == ''){
-    $('#Nguonphatsinhtiengon').text(psto);
-    }
-    if ($('#Nguonphatsinhdorung').text() == ''){
-    $('#Nguonphatsinhdorung').text(psdr);
-    }
-    }
-    $(function(){
-
-    $(window).on('beforeunload', function(){
-    var values = [];
-            $('input[type="text"]').each(function(){
-    values.push($(this).val());
+    $(function() {
+        printMyWindow();
     });
-            setLocalStorage('inputvalues', JSON.stringify(values));
-            var editors_text = [];
-            editors_text.push(tinyMCE.get('QuytrinhCongngheSanxuat').getContent());
-            editors_text.push(tinyMCE.get('QuytrinhCongngheXulyNuoc').getContent());
-            editors_text.push(tinyMCE.get('QuytrinhCongngheXulyKhithai').getContent());
-            editors_text.push(tinyMCE.get('Nguonphatsinhtiengon').getContent());
-            editors_text.push(tinyMCE.get('Nguonphatsinhdorung').getContent());
-            setLocalStorage('editors_text', JSON.stringify(editors_text));
-    });
-            var inputvalues = getLocalStorage('inputvalues');
-            if (inputvalues){
-    var arr = JSON.parse(inputvalues);
-            var i = 0;
-            $('input[type="text"]').each(function(){
-    $(this).val(arr[i]);
-            ++i;
-    });
+    function printMyWindow() {
+        window.print();
     }
-    var editors_text = getLocalStorage('editors_text');
-            if (editors_text){
-    var text_arr = JSON.parse(editors_text);
-            if (text_arr[0]){
-    $('#hidden_QuytrinhCongngheSanxuat').val(text_arr[0]);
-    }
-    if (text_arr[1]){
-    $('#hidden_QuytrinhCongngheXulyNuoc').val(text_arr[1]);
-    }
-    if (text_arr[2]){
-    $('#hidden_QuytrinhCongngheXulyKhithai').val(text_arr[2]);
-    }
-    if (text_arr[3]){
-    $('#hidden_Nguonphatsinhtiengon').val(text_arr[3]);
-    }
-    if (text_arr[4]){
-    $('#hidden_Nguonphatsinhdorung').val(text_arr[4]);
-    }
-    setValueTextareaBox();
-    }
-
-    });
-
 </script>

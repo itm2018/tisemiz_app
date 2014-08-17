@@ -12,5 +12,11 @@ class Hientrangkhithai extends AdminAppModel {
  * @var mixed False or table name
  */
 	public $useTable = 'hientrangkhithai';
+        public $belongsTo = array(
+        'Baocaogsmt' => array(
+            'className' => 'Admin.Baocaogsmt',
+            'foreignKey' => 'id_bc'
+        )
+    );
 
 }
