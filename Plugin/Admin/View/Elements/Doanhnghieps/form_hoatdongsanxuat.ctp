@@ -1,17 +1,17 @@
 <p><h3>II. THÔNG TIN HOẠT ĐỘNG SẢN XUẤT</h3></p>
 <?php echo $this->Form->create('HoatDongSanXuat', array('method' => 'post', 'class' => 'form-horizontal', 'role' => 'form')); ?>
 <div class="form-group">
-    <label for="inputTongdtxd" class="col-sm-2 control-label">Tổng diện tích xây dựng</label>
+    <label for="inputTongdtxd" class="col-sm-2 control-label">Tổng diện tích xây dựng <span class="required">*</span></label>
     <?php echo $this->Form->input('colDienTichDatXD', array('div' => array('class' => 'col-sm-10'), 'label' => false, 'type' => 'text', 'class' => 'form-control',
         'placeholder' => __('tổng diện tích đất xây dựng (m2)')));?>
 </div>
 <div class="form-group">
-    <label for="inputTongnv" class="col-sm-2 control-label">Tổng nhân viên</label>
+    <label for="inputTongnv" class="col-sm-2 control-label">Tổng nhân viên <span class="required">*</span></label>
     <?php echo $this->Form->input('colNVienTT', array('div' => array('class' => 'col-sm-10'), 'label' => false, 'type' => 'text', 'class' => 'form-control',
         'placeholder' => __('tổng số lượng nhân viên')));?>
 </div>
 <div class="form-group">
-    <label for="inputSoca" class="col-sm-2 control-label">Số ca sản xuất</label>
+    <label for="inputSoca" class="col-sm-2 control-label">Số ca sản xuất <span class="required">*</span></label>
     <?php echo $this->Form->input('colSoCaSX', array('div' => array('class' => 'col-sm-10'), 'label' => false, 'type' => 'text', 'class' => 'form-control',
     ));?>
 </div>
@@ -24,8 +24,7 @@
                         <label for="suatan" class="col-sm-12 control-label">Suất ăn cho công nhân</label>
                     </td>
                     <td>
-                        <div class="col-sm-offset-
-							2 col-sm-10">
+                        <div class="col-sm-offset-2 col-sm-10">
                             <table>
                                 <tr>
                                     <td>

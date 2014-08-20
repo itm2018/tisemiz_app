@@ -1,3 +1,12 @@
+<?php
+$this->Paginator->options(array(
+    'url'=>array(
+        'plugin'=>'admin',
+        'controller'=>'doanhnghiep',
+        'action'=>'lietke'
+    )
+));
+?>
 <style>
 
     .pagination>.current>a, .pagination>.current>span, .pagination>.current>a:hover, .pagination>.current>span:hover, .pagination>.current>a:focus, .pagination>.current>span:focus {
@@ -60,19 +69,19 @@
                     <tr>
                         <th class="sorting"><?php echo $this->Paginator->sort('colMa',__('ID'));?></th>
                         <th class="sorting"><?php echo $this->Paginator->sort('colTen',__('Tên DN'));?></th>
-                        <th class="sorting"><?php echo $this->Paginator->sort('colTenTAnh',__('Tên Tiếng Anh'));?></th>
+                        <!--<th class="sorting"><?php // echo $this->Paginator->sort('colTenTAnh',__('Tên Tiếng Anh'));?></th>-->
                         <th class="sorting"><?php echo $this->Paginator->sort('colDiaChi',__('Địa chỉ'));?></th>
                         <th class="sorting"><?php echo $this->Paginator->sort('colDienThoai',__('Điện thoai')); ?></th>
-                        <th class="sorting"><?php echo $this->Paginator->sort('colFax',__('Số Fax')); ?></th>
+                        <!--<th class="sorting"><?php // echo $this->Paginator->sort('colFax',__('Số Fax')); ?></th>-->
                         <th class="sorting"><?php echo $this->Paginator->sort('colEmail',__('Email')); ?></th>
                         <th class="sorting"><?php echo $this->Paginator->sort('colSoTKhoan',__('Số tài khoản')); ?></th>
                         <th class="sorting"><?php echo $this->Paginator->sort('colNamHopDong',__('Năm HD')); ?></th>
 <!--                        <th class="sorting">--><?php //echo $this->Paginator->sort('colGiayPhepKD',__('Giấy phép KD')); ?><!--</th>-->
 <!--                        <th class="sorting">--><?php //echo $this->Paginator->sort('colLoaiHinhDN',__('Loại hình DN')); ?><!--</th>-->
-                        <th class="sorting"><?php echo $this->Paginator->sort('colLinhVucHD',__('Lĩnh Vực HD')); ?></th>
+                        <!--<th class="sorting"><?php // echo $this->Paginator->sort('colLinhVucHD',__('Lĩnh Vực HD')); ?></th>-->
                         <th class="sorting"><?php echo $this->Paginator->sort('colSanPham',__('Sản phẩm')); ?></th>
 <!--                        <th>--><?php //echo $this->Paginator->sort('colQuocGia',__('Quốc gia')); ?><!--</th>-->
-                        <th class="actions"><?php echo __('Actions'); ?></th>
+                        <th class="actions"><?php echo __('Chức năng'); ?></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -80,16 +89,16 @@
                         <tr>
                             <td><?php echo h($doanhNghiep['DoanhNghiep']['colMa']); ?>&nbsp;</td>
                             <td><?php echo h($doanhNghiep['DoanhNghiep']['colTen']); ?>&nbsp;</td>
-                            <td><?php echo h($doanhNghiep['DoanhNghiep']['colTenTAnh']); ?>&nbsp;</td>
+                            <!--<td><?php // echo h($doanhNghiep['DoanhNghiep']['colTenTAnh']); ?>&nbsp;</td>-->
                             <td><?php echo h($doanhNghiep['DoanhNghiep']['colDiaChi']); ?>&nbsp;</td>
                             <td><?php echo h($doanhNghiep['DoanhNghiep']['colDienThoai']); ?>&nbsp;</td>
-                            <td><?php echo h($doanhNghiep['DoanhNghiep']['colFax']); ?>&nbsp;</td>
+                            <!--<td><?php // echo h($doanhNghiep['DoanhNghiep']['colFax']); ?>&nbsp;</td>-->
                             <td><?php echo h($doanhNghiep['DoanhNghiep']['colEmail']); ?>&nbsp;</td>
                             <td><?php echo h($doanhNghiep['DoanhNghiep']['colSoTKhoan']); ?>&nbsp;</td>
                             <td><?php echo date('Y',strtotime(h($doanhNghiep['DoanhNghiep']['colNamHopDong']))); ?>&nbsp;</td>
 <!--                            <td>--><?php //echo h($doanhNghiep['DoanhNghiep']['colGiayPhepKD']); ?><!--&nbsp;</td>-->
 <!--                            <td>--><?php //echo h($doanhNghiep['DoanhNghiep']['colLoaiHinhDN']); ?><!--&nbsp;</td>-->
-                            <td><?php echo h($doanhNghiep['DoanhNghiep']['colLinhVucHD']); ?>&nbsp;</td>
+                            <!--<td><?php // echo h($doanhNghiep['DoanhNghiep']['colLinhVucHD']); ?>&nbsp;</td>-->
                             <td><?php echo h($doanhNghiep['DoanhNghiep']['colSanPham']); ?>&nbsp;</td>
 <!--                            <td>--><?php //echo h($doanhNghiep['DoanhNghiep']['colQuocGia']); ?><!--&nbsp;</td>-->
                             <td class="actions">

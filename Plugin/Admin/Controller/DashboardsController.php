@@ -7,6 +7,6 @@ App::uses('AdminAppController', 'Admin.Controller');
 class DashboardsController extends AdminAppController {
 
 	public $layout = 'admin/backward';
-	public function index(){
+	public function billboard(){
 	}
 }

@@ -8,28 +8,16 @@
         <meta name="author" content="huynhsonca@gmail.com">
         <?php echo $this->fetch('meta'); ?>
         <link rel="shortcut icon" href="<?php echo $this->Html->url('/assets/ico/favicon.png'); ?>">
-        <!--link rel="stylesheet/less" href="less/bootstrap.less" type="text/css" /-->
-        <!--link rel="stylesheet/less" href="less/responsive.less" type="text/css" /-->
-        <!--script src="js/less-1.3.3.min.js"></script-->
-        <!--append ‘#!watch’ to the browser URL, then refresh the page. -->
-
-        <!--<link href="css/bootstrap-blue.css" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">-->
         <?php
         echo $this->Html->css(array(
             'bootstrap',
             'style',
             '/assets/css/custom',
-//        '/assets/css/font-awesome.min',
             'adjust-admin',
             'jquery-ui'
-//        '/assets/css/bootstrap.min',
-//        '/assets/css/font-awesome.min',
-//        '/assets/css/main.min',
-//        '/assets/css/custom',
         ));
         ?>
-<?php echo $this->fetch('css'); ?>
+        <?php echo $this->fetch('css'); ?>
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
     
@@ -45,10 +33,6 @@
         <link rel="apple-touch-icon-precomposed"
               href="<?php echo $this->Html->url('img/apple-touch-icon-57-precomposed.png'); ?>">
         <link rel="shortcut icon" href="<?php echo $this->Html->url('img/icon-environment.png'); ?>">
-        <!--<script src="js/html5shiv.js"></script>
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/scripts.js"></script>-->
         <?php
         echo $this->Html->script(array(
             'html5shiv',
@@ -58,32 +42,11 @@
             'jquery-ui',
             'jquery.ui.datepicker-vi.min',
             'gcalendar-holidays',
-//        '/assets/js/jquery-2.1.1.min',
-//        '/assets/js/bootstrap.min',
-//        '/assets/js/modernizr',
-//        '/assets/js/bootstrap-tour.custom',
-//        '/assets/js/king-common.min',
-//        '/assets/js/deliswitch.min',
-//        '/assets/js/stat/jquery.easypiechart.min',
-//        '/assets/js/raphael-2.1.0.min',
-//        '/assets/js/stat/flot/jquery.flot.min',
-//        '/assets/js/stat/flot/jquery.flot.resize.min',
-//        '/assets/js/stat/flot/jquery.flot.time.min',
-//        '/assets/js/stat/flot/jquery.flot.pie.min',
-//        '/assets/js/stat/flot/jquery.flot.tooltip.min',
-//        '/assets/js/jquery.sparkline.min',
-//        '/assets/js/datatable/jquery.dataTables.min',
-//        '/assets/js/datatable/jquery.dataTables.bootstrap',
-//        '/assets/js/jquery.mapael',
-//        '/assets/js/maps/usa_states',
-//        '/assets/js/king-chart-stat.min',
-//        '/assets/js/king-table.min',
-//        '/assets/js/king-components.min',
             '/assets/tinymce/tinymce.min',
             'localstorage'
         ));
         ?>
-<?php echo $this->fetch('script'); ?>
+        <?php echo $this->fetch('script'); ?>
         <script>
             $(function() {
                 tinymce.init({
@@ -127,19 +90,13 @@
                                     data-target="#bs-example-navbar-collapse-1">
                                 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
                                     class="icon-bar"></span><span class="icon-bar"></span></button>
-                            <a class="navbar-brand" href="/	"><i class="fa fa-home"></i> Trang chủ</a>
+                            <a class="navbar-brand" href="/"><i class="fa fa-home"></i> Trang chủ</a>
                         </div>
 
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
-                                <li class="">
-                                    <a href="#">Bản đồ</a>
-                                </li>
                                 <li>
                                     <a href="<?php echo $this->Html->url('/admin/doanhnghiep/lietke'); ?>">Doanh nghiệp</a>
-                                </li>
-                                <li>
-                                    <a href="#">Hoạt động môi trường</a>
                                 </li>
                                 <li>
                                     <a href="#">Thống kê</a>
@@ -149,18 +106,11 @@
                                     <ul class="dropdown-menu">
                                         <li><a href="<?php echo $this->Html->url('/admin/baocao/baocaogiamsatmoitruong'); ?>">Báo cáo giám sát môi trường</a></li>
                                         <li><a href="<?php echo $this->Html->url('/admin/baocao/danhsachbaocaogiamsatmoitruong'); ?>">Danh sách BCGSMT</a></li>
+                                        <li><a href="<?php echo $this->Html->url('/admin/baocao/baocaochatthainguyhai'); ?>">Báo cáo chất thải nguy hại</a></li>
+                                        <li><a href="<?php echo $this->Html->url('/admin/baocao/danhsachbaocaochatthainguyhai'); ?>">Danh sách BCCTNH</a></li>
                                     </ul>
                                 </li>
-                                <li>
-                                    <a href="#">Quản lý</a>
-                                </li>
                             </ul>
-                            <!--<form class="navbar-form navbar-left" role="search">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Từ khóa tìm kiếm">
-                                </div>
-                                <button type="submit" class="btn btn-default">Tìm</button>
-                            </form>-->
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -173,7 +123,7 @@
                                         ?><strong
                                             class="caret"></strong></a>
                                     <ul class="dropdown-menu">
-<?php if (!$this->Session->read('Auth.User')): ?>
+                                        <?php if (!$this->Session->read('Auth.User')): ?>
                                             <li>
                                                 <?php echo $this->Html->link(__('Login'), '/users/login'); ?>
                                             </li>
@@ -182,9 +132,9 @@
                                                 <?php echo $this->Html->link(__('Register'), '/users/register'); ?>
                                             </li>
                                             <li class="divider">
-<?php endif; ?>
+                                            <?php endif; ?>
                                         <li>
-<?php echo $this->Html->link(__('Logout'), '/users/logout'); ?>
+                                            <?php echo $this->Html->link(__('Logout'), '/users/logout'); ?>
                                         </li>
 
                                 </li>
@@ -199,22 +149,11 @@
                             <img src="/img/subheader.jpg" style="width: 100%;">
                         </div>
                     </nav>
-                    <!--<ul class="breadcrumb">
-                        <li>
-                            <a href="#">Trang chủ</a> <span class="divider">/</span>
-                        </li>
-                        <li>
-                            <a href="#">Doanh nghiệp</a> <span class="divider">/</span>
-                        </li>
-                        <li class="active">
-                            Nhập liệu
-                        </li>
-                    </ul>-->
                     <div class="content">
                         <div class="bread"><span>Phần mềm quản lý môi trường tại khu công nghiệp Tây Bắc Củ Chi (ĐT: 08.32345678)</span></div>
-<?php echo $this->fetch('breadcrumb'); ?>
-<?php echo $this->Session->flash(); ?>
-<?php echo $this->fetch('content'); ?>
+                        <?php echo $this->fetch('breadcrumb'); ?>
+                        <?php echo $this->Session->flash(); ?>
+                        <?php echo $this->fetch('content'); ?>
                     </div>
                 </div>
             </div>

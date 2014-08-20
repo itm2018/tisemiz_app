@@ -14,16 +14,16 @@
     }
 </style>
 <?php
-if (!empty($this->validationErrors['Baocaogsmt']) || !empty($this->validationErrors['BaocaogsmtDoanhnghiep'])):
+if ((isset($this->validationErrors['Baocaogsmt']) && $this->validationErrors['Baocaogsmt'])  || (isset($this->validationErrors['BaocaogsmtDoanhnghiep']) && $this->validationErrors['BaocaogsmtDoanhnghiep'])):
     ?>
     <div class="error-message">
         <ul>
-            <?php if(!empty($this->validationErrors['Baocaogsmt'])):?>
+            <?php if(isset($this->validationErrors['Baocaogsmt']) && $this->validationErrors['Baocaogsmt']):?>
             <?php foreach ($this->validationErrors['Baocaogsmt'] as $key => $value): ?>
                 <li class=""><?php echo $value[0]; ?></li>
             <?php endforeach; ?>
             <?php endif;?>
-            <?php if(!empty($this->validationErrors['BaocaogsmtDoanhnghiep'])):?> 
+            <?php if(isset($this->validationErrors['BaocaogsmtDoanhnghiep']) && $this->validationErrors['BaocaogsmtDoanhnghiep']):?> 
             <?php foreach ($this->validationErrors['BaocaogsmtDoanhnghiep'] as $key => $value): ?>
                 <li class=""><?php echo $value[0]; ?></li>
             <?php endforeach; ?>
@@ -224,7 +224,9 @@ if (!empty($this->validationErrors['Baocaogsmt']) || !empty($this->validationErr
                                                             <td align="left">
                                                                 <span id="Label1">hoặc đính kèm file: </span>
                                                                 <?php echo $this->Form->input('txtFileQTCNSX', array('div' => false, 'label' => false, 'type' => 'file', 'id' => 'txtFileQTCNSX', 'size' => '10')); ?>
-                                                                <?php if (!empty($this->Session->read('file_QTCNSX'))): ?>
+                                                                <?php 
+																$get_file_in_session=$this->Session->read('file_QTCNSX');
+																if ($get_file_in_session): ?>
                                                                     <div style="color: #008000;">File đính kèm: <?php echo h($this->Session->read('file_QTCNSX')); ?></div>
                                                                 <?php endif; ?>
                                                             </td>
@@ -298,7 +300,7 @@ if (!empty($this->validationErrors['Baocaogsmt']) || !empty($this->validationErr
                                                     </thead>
                                                     <tbody>
                                                         <?php
-                                                        if (!empty($tinhhinhsxkd)) {
+                                                        if (isset($tinhhinhsxkd)) {
                                                             foreach ($tinhhinhsxkd as $key => $thsxkd) {
                                                                 ?>		
 
@@ -364,7 +366,9 @@ if (!empty($this->validationErrors['Baocaogsmt']) || !empty($this->validationErr
                                             <td align="left" colspan="2">
                                                 <span id="Label2">Đính kèm file:  Sơ đồ vị trí các điểm giám sát khí thải, nước thải</span>
                                                 <?php echo $this->Form->input('txtFileNPSON', array('div' => false, 'label' => false, 'type' => 'file', 'id' => 'txtFileNPSON', 'size' => 10)); ?>
-                                                <?php if (!empty($this->Session->read('file_NPSON'))): ?>
+                                                <?php 
+												$get_file_in_session=$this->Session->read('file_NPSON');
+												if (isset($get_file_in_session)): ?>
                                                     <div style="color: #008000;">File đính kèm: <?php echo h($this->Session->read('file_NPSON')); ?></div>
                                                 <?php endif; ?>
                                             </td>
@@ -425,7 +429,7 @@ if (!empty($this->validationErrors['Baocaogsmt']) || !empty($this->validationErr
 
                                                     <tbody>
                                                         <?php
-                                                        if (!empty($nguonphatsinhnuocthai)) {
+                                                        if (isset($nguonphatsinhnuocthai)) {
                                                             foreach ($nguonphatsinhnuocthai as $key => $npsnt) {
                                                                 ?>
                                                                 <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
@@ -571,7 +575,9 @@ m3
                                                             <td align="left">
                                                                 <span id="Label3">hoặc đính kèm file: </span>
                                                                 <?php echo $this->Form->input('txtFileQTXLNT', array('div' => false, 'label' => false, 'type' => 'file', 'id' => 'txtFileQTXLNT', 'size' => 10)); ?>
-                                                                <?php if (!empty($this->Session->read('file_QTXLNT'))): ?>
+                                                                <?php 
+																$get_file_in_session=$this->Session->read('file_QTXLNT');
+																if (isset($get_file_in_session)): ?>
                                                                     <div style="color: #008000;">File đính kèm: <?php echo h($this->Session->read('file_QTXLNT')); ?></div>
                                                                 <?php endif; ?>
                                                             </td>
@@ -636,7 +642,7 @@ m3
 
                                                     <tbody>
                                                         <?php
-                                                        if (!empty($ketquaphantichnuocthai)) {
+                                                        if (isset($ketquaphantichnuocthai)) {
                                                             foreach ($ketquaphantichnuocthai as $key => $kqptnt) {
                                                                 ?>
                                                                 <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
@@ -943,7 +949,9 @@ m3
                                             <td align="left" colspan="2">
                                                 <span id="Label4">Đính kèm file kết quả phân tích nước thải: </span>
                                                 <?php echo $this->Form->input('txtFileXLNT', array('div' => false, 'label' => false, 'type' => 'file', 'id' => 'txtFileXLNT', 'size' => 10)); ?>
-                                                <?php if (!empty($this->Session->read('file_XLNT'))): ?>
+                                                <?php 
+												$get_file_in_session=$this->Session->read('file_XLNT');
+												if (isset($get_file_in_session) && $get_file_in_session): ?>
                                                     <div style="color: #008000;">File đính kèm: <?php echo h($this->Session->read('file_XLNT')); ?></div>
                                                 <?php endif; ?>
                                             </td>
@@ -1003,7 +1011,7 @@ m3
                                                     </thead>
                                                     <tbody>
                                                         <?php
-                                                        if (!empty($nguonphatsinhkhithai)) {
+                                                        if (isset($nguonphatsinhkhithai)) {
                                                             foreach ($nguonphatsinhkhithai as $key => $npskt) {
                                                                 ?>
                                                                 <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
@@ -1176,7 +1184,9 @@ m3
                                             <td align="left">
                                                 <span id="Label5">hoặc đính kèm file: </span>
                                                 <?php echo $this->Form->input('txtFileQTXLKT', array('div' => false, 'label' => false, 'type' => 'file', 'id' => 'txtFileQTXLKT', 'size' => 10)); ?>
-                                                <?php if (!empty($this->Session->read('file_QTXLKT'))): ?>
+                                                <?php 
+												$get_file_in_session=$this->Session->read('file_QTXLKT');
+												if (isset($get_file_in_session) && $get_file_in_session): ?>
                                                     <div style="color: #008000;">File đính kèm: <?php echo h($this->Session->read('file_QTXLKT')); ?></div>
                                                 <?php endif; ?>
                                             </td>
@@ -1235,7 +1245,7 @@ m3
                                                     </thead>
                                                     <tbody>
                                                         <?php
-                                                        if (!empty($ketquaphantichkhithai)) {
+                                                        if (isset($ketquaphantichkhithai)) {
                                                             foreach ($ketquaphantichkhithai as $key => $kqptkt) {
                                                                 ?>
                                                                 <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
@@ -1483,7 +1493,9 @@ m3
                                             <td align="left" colspan="2">
                                                 <span id="Label7">Đính kèm file kết quả phân tích khí thải: </span>
                                                 <?php echo $this->Form->input('txtFileXLKT', array('div' => false, 'label' => false, 'type' => 'file', 'id' => 'txtFileXLKT', 'size' => 10)); ?>
-                                                <?php if (!empty($this->Session->read('file_XLKT'))): ?>
+                                                <?php 
+												$get_file_in_session=$this->Session->read('file_XLKT');
+												if (isset($get_file_in_session) && $get_file_in_session): ?>
                                                     <div style="color: #008000;">File đính kèm: <?php echo h($this->Session->read('file_XLKT')); ?></div>
                                                 <?php endif; ?>
                                             </td>
@@ -1579,7 +1591,7 @@ m3
                                                             </td>
                                                         </tr>
                                                         <?php
-                                                        if (!empty($hientrangchatthairansinhhoat)) {
+                                                        if (isset($hientrangchatthairansinhhoat)) {
                                                             foreach ($hientrangchatthairansinhhoat as $key => $htctrsh) {
                                                                 ?>
                                                                 <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(255, 255, 255);">
@@ -1664,7 +1676,7 @@ m3
                                                             </td>
                                                         </tr>
                                                         <?php
-                                                        if (!empty($hientrangchatthairancongnghiep)) {
+                                                        if (isset($hientrangchatthairancongnghiep)) {
                                                             foreach ($hientrangchatthairancongnghiep as $key => $htctrcn) {
                                                                 ?>
                                                                 <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(255, 255, 255);">
@@ -1750,7 +1762,7 @@ m3
                                                         </tr>
 
                                                         <?php
-                                                        if (!empty($hientrangchatthairannguyhai)) {
+                                                        if (isset($hientrangchatthairannguyhai)) {
                                                             foreach ($hientrangchatthairannguyhai as $key => $htctrnh) {
                                                                 ?>
                                                                 <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(255, 255, 255);">
@@ -1863,7 +1875,9 @@ m3
                                             <td align="left">
                                                 <span id="Label9">Đính kèm file kết quả phân tích (nếu có): </span>
                                                 <?php echo $this->Form->input('txtFilePSTO', array('div' => false, 'label' => false, 'type' => 'file', 'id' => 'txtFilePSTO', 'size' => 10)); ?>
-                                                <?php if (!empty($this->Session->read('file_PSTO'))): ?>
+                                                <?php 
+												$get_file_in_session=$this->Session->read('file_PSTO');
+												if (isset($get_file_in_session) && $get_file_in_session): ?>
                                                     <div style="color: #008000;">File đính kèm: <?php echo h($this->Session->read('file_PSTO')); ?></div>
                                                 <?php endif; ?>
                                             </td>
@@ -1893,7 +1907,9 @@ m3
                                             <td align="left">
                                                 <span id="Label8">Đính kèm file kết quả phân tích (nếu có): </span>
                                                 <?php echo $this->Form->input('txtFilePSDR', array('div' => false, 'label' => false, 'type' => 'file', 'id' => 'txtFilePSDR', 'size' => 10)); ?>
-                                                <?php if (!empty($this->Session->read('file_PSDR'))): ?>
+                                                <?php 
+												$get_file_in_session=$this->Session->read('file_PSDR');
+												if (isset($get_file_in_session) && $get_file_in_session): ?>
                                                     <div style="color: #008000;">File đính kèm: <?php echo h($this->Session->read('file_PSDR')); ?></div>
                                                 <?php endif; ?>
                                             </td>
@@ -1911,7 +1927,9 @@ m3
                                                 ngầm, nước mặt.
                                                 <br>
                                                 <?php echo $this->Form->input('txtFileMTXQ1', array('div' => false, 'label' => false, 'type' => 'file', 'id' => 'txtFileMTXQ1', 'size' => 10)); ?>
-                                                <?php if (!empty($this->Session->read('file_MTXQ1'))): ?>
+                                                <?php 
+												$get_file_in_session=$this->Session->read('file_MTXQ1');
+												if (isset($get_file_in_session) && $get_file_in_session): ?>
                                                     <div style="color: #006600;">File đính kèm: <?php echo h($this->Session->read('file_MTXQ1')); ?></div>
                                                 <?php endif; ?>
                                             </td>
@@ -1924,7 +1942,9 @@ m3
                                                 Các kết quả đo đạc phân tích giám sát môi trường không khí xung quanh, đất, nước
                                                 ngầm, nước mặt.<br>
                                                 <?php echo $this->Form->input('txtFileMTXQ2', array('div' => false, 'label' => false, 'type' => 'file', 'id' => 'txtFileMTXQ2', 'size' => 10)); ?>
-                                                <?php if (!empty($this->Session->read('file_MTXQ2'))): ?>
+                                                <?php 
+												$get_file_in_session=$this->Session->read('file_MTXQ2');
+												if (isset($get_file_in_session) && $get_file_in_session): ?>
                                                     <div style="color: #008000;">File đính kèm: <?php echo h($this->Session->read('file_MTXQ2')); ?></div>
                                                 <?php endif; ?>
                                             </td>
@@ -1985,15 +2005,16 @@ m3
                   }
                }); 
             });  
-            });                    </script>
+            });                 
+</script>
 <script type="text/javascript">
             function doDLBaocao(type) {
-            var width = 800;
+					var width = 800;
                     var height = 400;
                     var left = parseInt((screen.availWidth / 2) - (width / 2));
                     var top = parseInt((screen.availHeight / 2) - (height / 2));
-                    var ObjectID = <?php echo!(empty($baocaogsmt_id)) ? $baocaogsmt_id : ''; ?>;
-                    PPwindow2 = window.open("<?php echo $this->Html->url(array('plugin' => 'admin', 'controller' => 'baocao', 'action' => 'dulieugiamsatmoitruong')); ?>" + "?type=" + type + "&baocaogsmtid=" + ObjectID, "CTNH", "width=" + width + ",height=" + height + ",toolbar=no,directories=no,status=yes, menubar=no,scrollbars=yes,resizable=yes,border=thin,left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "")
+                    var ObjectID = "<?php echo !empty($baocaogsmt_id) ? $baocaogsmt_id : ''; ?>";
+                    PPwindow2 = window.open("<?php echo $this->Html->url(array('plugin' => 'admin', 'controller' => 'baocao', 'action' => 'dulieugiamsatmoitruong')); ?>" + "?type=" + type + "&baocaogsmtid=" + ObjectID, "CTNH", "width=" + width + ",height=" + height + ",toolbar=no,directories=no,status=yes, menubar=no,scrollbars=yes,resizable=yes,border=thin,left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "");
                     PPwindow2.focus();
             }
 </script>

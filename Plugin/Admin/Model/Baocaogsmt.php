@@ -96,7 +96,7 @@ class Baocaogsmt extends AdminAppModel {
                 'message' => 'Bạn phải đăng nhập để thực hiện hành động này'
             ),
         ),
-        'file_quytrinhcnsxbaocaogsmt' => array(
+        /*'file_quytrinhcnsxbaocaogsmt' => array(
             'allowFileType' => array(
                 'rule' => array('allowFileType'),
                 'required' => true,
@@ -175,7 +175,7 @@ class Baocaogsmt extends AdminAppModel {
                 'allowEmpty' => true,
                 'message' => 'Định dạng file kết quả đo đạc phân tích môi trường xung quanh không được cho phép'
             )
-        ),
+        ),*/
     );
 
     public function allowFileType($check) {

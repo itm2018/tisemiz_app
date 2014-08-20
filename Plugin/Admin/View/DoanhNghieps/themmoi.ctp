@@ -7,10 +7,10 @@
     <!--form_main-->
     <div class="tabbable" id="tabs-9834">
         <ul class="nav nav-tabs">
-            <li class="active">
+            <li active>
                 <a href="#panel-1" data-toggle="tab">Thông tin doanh nghiệp</a>
             </li>
-            <li>
+            <li id="tab-hdsx">
                 <a href="#panel-2" data-toggle="tab">Hoạt động sản xuất</a>
             </li>
             <li>
@@ -35,7 +35,7 @@
                 <br>
                 <div class="tabbable" id="tabs-9835">
                     <ul class="nav nav-tabs">
-                        <li class="active">
+                        <li class="active" id="tab-tongquan">
                             <a href="#panel-tongquan" data-toggle="tab">Tổng quan</a>
                         </li>
                         <li>
@@ -494,13 +494,17 @@
 </div>
 <!-- /main-content -->
 <script type="text/javascript">
-    tinymce.init({
-        selector: "textarea",
-        plugins: [
-            "advlist autolink lists link image charmap print preview anchor",
-            "searchreplace visualblocks code fullscreen",
-            "insertdatetime media table contextmenu paste moxiemanager textcolor hr spellchecker tabfocus insertdatetime autoresize code bbcode contextmenu emoticons fullpage"
-        ],
-        toolbar: "insertfile undo redo | fontselect fontsizeselect formatselect styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | color | search replace | bullist numlist | outdent indent blockquote | link unlink anchor image cleanup help code | insertdate inserttime preview | forecolor backcolor | tablecontrols | hr removeformat visualaid | sub sup | charmap emotions iespell media advhr | print | ltr rtl | fullscreen",
-    });
+//    tinymce.init({
+//        selector: "textarea",
+//        plugins: [
+//            "advlist autolink lists link image charmap print preview anchor",
+//            "searchreplace visualblocks code fullscreen",
+//            "insertdatetime media table contextmenu paste moxiemanager textcolor hr spellchecker tabfocus insertdatetime autoresize code bbcode contextmenu emoticons fullpage"
+//        ],
+//        toolbar: "insertfile undo redo | fontselect fontsizeselect formatselect styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | color | search replace | bullist numlist | outdent indent blockquote | link unlink anchor image cleanup help code | insertdate inserttime preview | forecolor backcolor | tablecontrols | hr removeformat visualaid | sub sup | charmap emotions iespell media advhr | print | ltr rtl | fullscreen",
+//    });
+$(function(){
+//    $('#tab-hdsx').addClass('active');
+//    $('#tab-tongquan').addClass('active');
+});
 </script>

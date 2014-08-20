@@ -188,8 +188,8 @@
                                                         <tr>
                                                             <td align="left">
                                                                 <span id="Label1">File đính kèm: </span>
-                                                                <?php if (!empty($data['Baocaogsmt']['file_quytrinhcnsxbaocaogsmt'])): ?>
-                                                                    <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_quytrinhcnsxbaocaogsmt']); ?>" target="_blank" class="download-link"><?php echo $data['Baocaogsmt']['file_quytrinhcnsxbaocaogsmt']; ?></a>
+                                                                <?php if (!empty($data['Baocaogsmt']['file_quytrinhcnsx'])): ?>
+                                                                    <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_quytrinhcnsx']); ?>" target="_blank" class="download-link"><?php echo $data['Baocaogsmt']['file_quytrinhcnsx']; ?></a>
                                                                 <?php else: ?>
                                                                     (không có)
                                                                 <?php endif; ?>
@@ -527,7 +527,6 @@ m3
                                                             <td>
                                                                 <div>
                                                                     <?php echo $data['Baocaogsmt']['quytrinhcnxlnt']; ?>
-                                                                    <?php // echo $this->Form->input('QuytrinhCongngheXulyNuoc', array('div' => false, 'label' => false, 'hiddenField' => false, 'type' => 'textarea', 'class' => 'form-control', 'id' => 'QuytrinhCongngheXulyNuoc')); ?>
                                                                     <input type="hidden" name="hidden_QuytrinhCongngheXulyNuoc" id ="hidden_QuytrinhCongngheXulyNuoc" value="" />
                                                                 </div>
                                                             </td>
@@ -535,7 +534,7 @@ m3
                                                         <tr>
                                                             <td align="left">
                                                                 <span id="Label3">File đính kèm: </span>
-                                                                <?php if (!empty($data['Baocaogsmt']['file_quytrinhcnxlnt'])): ?>
+                                                                <?php if (isset($data['Baocaogsmt']['file_quytrinhcnxlnt']) && $data['Baocaogsmt']['file_quytrinhcnxlnt']): ?>
                                                                     <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_quytrinhcnxlnt']); ?>" target="_blank" class="download-link"><?php echo $data['Baocaogsmt']['file_quytrinhcnxlnt']; ?></a>
                                                                 <?php else: ?>
                                                                     (không có)
@@ -608,7 +607,6 @@ m3
                                                                     style="background: rgb(255, 255, 255);">
                                                                     <td align="right">
                                                                         <?php echo h($kqptnt['stt']); ?>
-                                                                        <!--<input type="hidden" name="rptPhanTichNuocThai$ctl01$ID" id="rptPhanTichNuocThai_ID_0" value="<?php echo h($kqptnt['temp_id']); ?>">-->
                                                                     </td>
                                                                     <td align="left">
                                                                         <?php echo h($kqptnt['thongsodo']); ?>
@@ -643,7 +641,7 @@ m3
                                         <tr>
                                             <td align="left" colspan="2">
                                                 <span id="Label4">File đính kèm kết quả phân tích nước thải: </span>
-                                                <?php if (!empty($data['Baocaogsmt']['file_ketquaphantichnt'])): ?>
+                                                <?php if (isset($data['Baocaogsmt']['file_ketquaphantichnt']) && $data['Baocaogsmt']['file_ketquaphantichnt']): ?>
                                                                     <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_ketquaphantichnt']); ?>" target="_blank" class="download-link"><?php echo $data['Baocaogsmt']['file_ketquaphantichnt']; ?></a>
                                                                 <?php else: ?>
                                                                     (không có)
@@ -710,7 +708,6 @@ m3
                                                                 <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
                                                                     <td align="right">
                                                                         <?php echo $npskt['stt']; ?>
-                                                                        <!--<input type="hidden" name="rptKhiThai$ctl01$ID" id="rptKhiThai_ID_0" value="<?php echo $npskt['temp_id']; ?>">-->
                                                                     </td>
                                                                     <td align="left">
                                                                         <?php echo $npskt['loaikhithai']; ?>
@@ -759,7 +756,6 @@ m3
                                                             <td>
                                                                 <div>
                                                                     <?php echo $data['Baocaogsmt']['quytrinhcnxlkt']; ?>
-                                                                    <?php // echo $this->Form->input('QuytrinhCongngheXulyKhithai', array('div' => false, 'label' => false, 'hiddenField' => false, 'type' => 'textarea', 'class' => 'form-control', 'id' => 'QuytrinhCongngheXulyKhithai')); ?>
                                                                     <input type="hidden" name="hidden_QuytrinhCongngheXulyKhithai" id ="hidden_QuytrinhCongngheXulyKhithai" value="" />
                                                                 </div>
                                                             </td>

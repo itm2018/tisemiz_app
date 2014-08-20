@@ -32,30 +32,30 @@ class DoanhNghiep extends AdminAppModel
 			'rule'       => array('numeric'),
 			'required'   => true,
 			'allowEmpty' => false,
-			'message'    => 'This field required a number'
+			'message'    => 'Trường này phải là số của năm'
 		),
 		'colTen'       => array(
 			'rule'       => array('notEmpty'),
 			'required'   => true,
 			'allowEmpty' => false,
-			'message'    => 'Please enter enterprise\'s name'
+			'message'    => 'Xin nhập tên doanh nghiệp'
 		),
 		'colDiaChi'    => array(
 			'rule'       => array('notEmpty'),
 			'required'   => true,
 			'allowEmpty' => false,
-			'message'    => 'Please enter enterprise\'s address'
+			'message'    =>'Xin nhập địa chỉ doanh nghiệp'
 		),
 		'colDienThoai' => array(
 			'notEmpty' => array(
 				'rule'       => array('notEmpty'),
 				'required'   => true,
 				'allowEmpty' => false,
-				'message'    => 'Please enter a phone number'
+				'message'    =>'Xin nhập số điện thoại'
 			),
 			'tel'      => array(
 				'rule'    => '/^\(?\d{2,4}\)?\-?\d{3,5}\-?\d{3,5}+$/',
-				'message' => 'Phone number is invalid'
+				'message' => 'Số điện thoại không đúng'
 			)
 		),
 		'colFax'       => array(
@@ -63,11 +63,11 @@ class DoanhNghiep extends AdminAppModel
 				'rule'       => array('notEmpty'),
 				'required'   => true,
 				'allowEmpty' => true,
-				'message'    => 'Please enter a fax number'
+				'message'    => 'Xin nhập số fax'
 			),
 			'tel'        => array(
 				'rule'    => '/^\(?\d{2,4}\)?\-?\d{3,5}\-?\d{3,5}+$/',
-				'message' => 'Fax number is invalid'
+				'message' => 'Số fax không đúng'
 			)
 
 		),
@@ -76,11 +76,11 @@ class DoanhNghiep extends AdminAppModel
 				'rule'       => array('notEmpty'),
 				'required'   => true,
 				'allowEmpty' => false,
-				'message'    => 'Please enter email'
+				'message'    => 'Xin nhập địa chỉ email của doanh nghiệp'
 			),
 			'email'    => array(
 				'rule'       => array('email'),
-				'message'    => 'Email is invalid'
+				'message'    =>'Địa chỉ email không đúng'
 			)
 		),
 		'colNamHopDong'=>array(
@@ -88,10 +88,17 @@ class DoanhNghiep extends AdminAppModel
 				'rule'=>array('date','dmy'),
 				'required'=>true,
 				'allowEmpty'=>true,
-				'message'=>'Date is invalid'
+				'message'=>'Ngày không đúng định dạng'
 			),
 		)
 	);
+        public $hasMany=array(
+            'HoatDongSanXuat'=>array(
+                'className'=>'Admin.HoatDongSanXuat',
+                'foreignKey'=>'colCSSX'
+            )
+        );
+        
 	public function beforeSave($options=array()){
 		if(!empty($this->data['DoanhNghiep']['colNamHopDong'])){
 			$date=explode('/',$this->data['DoanhNghiep']['colNamHopDong']);

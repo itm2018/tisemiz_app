@@ -38,10 +38,6 @@
     <link rel="apple-touch-icon-precomposed"
           href="<?php echo $this->Html->url('img/apple-touch-icon-57-precomposed.png'); ?>">
     <link rel="shortcut icon" href="<?php echo $this->Html->url('img/icon-environment.png'); ?>">
-    <!--<script src="js/html5shiv.js"></script>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/scripts.js"></script>-->
     <?php echo $this->Html->script(array(
         'html5shiv',
         'jquery.min',
@@ -75,13 +71,12 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="">
-                            <a href="<?php echo $this->Html->url('/news');?>">Tin tức</a>
+                            <a href="<?php echo $this->Html->url('/news');?>">Văn bản pháp quy</a>
                         </li>
                         <li>
-                            <a href="#">Bản đồ</a>
+                            <a href="<?php echo $this->Html->url('/bando');?>">Bản đồ</a>
                         </li>
                         <li>
-                            <!--<a href="<">Quản lý</a>-->
                             <?php echo $this->Html->link('Quản lý','/admin/dashboards');?>
                         </li>
                     </ul>

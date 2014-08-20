@@ -195,7 +195,11 @@
                                                         <tr>
                                                             <td align="left">
                                                                 <span id="Label1">File đính kèm: </span>
-                                                                <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_quytrinhcnsxbaocaogsmt']); ?>" target="_blank" class="download-link"><?php echo $data['Baocaogsmt']['file_quytrinhcnsxbaocaogsmt']; ?></a>
+																<?php if(isset($data['Baocaogsmt']['file_quytrinhcnsx']) && $data['Baocaogsmt']['file_quytrinhcnsx']):?>
+                                                                <?php echo $data['Baocaogsmt']['file_quytrinhcnsx']; ?>
+																<?php else:?>
+																(không có)
+																<?php endif;?>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -211,7 +215,6 @@
                                                 <b>II TÌNH HỈNH SẢN XUẤT VÀ KINH DOANH TRONG KỲ BÁO CÁO</b>
                                             </td>
                                         </tr>
-
                                     </tbody>
                                 </table>
                                 <table id="Table15" cellspacing="0" cellpadding="0" border="0" style="width: 750px">
@@ -330,7 +333,11 @@
                                         <tr>
                                             <td align="left" colspan="2">
                                                 <span id="Label2">File đính kèm sơ đồ vị trí các điểm giám sát khí thải, nước thải: </span>
-                                                <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_nguononhiem']); ?>" target="_blank" class="donwload-link"><?php echo $data['Baocaogsmt']['file_nguononhiem']; ?></a>
+                                                <?php if(isset($data['Baocaogsmt']['file_nguononhiem']) && $data['Baocaogsmt']['file_nguononhiem']):?>
+												<?php echo $data['Baocaogsmt']['file_nguononhiem']; ?>
+												<?php else: ?>
+												(không có)
+												<?php endif;?>
                                             </td>
                                         </tr>
 
@@ -395,7 +402,6 @@
                                                                     style="background: rgb(255, 255, 255);">
                                                                     <td align="right">
                                                                         <?php echo h($npsnt['stt']); ?>
-                                                                        <!--<input type="hidden" name="rptNuocThai$ctl01$ID" id="rptNuocThai_ID_0" value=" <?php echo h($npsnt['temp_id']); ?>">-->
                                                                     </td>
                                                                     <td align="left">
                                                                         <?php echo h($npsnt['loainuocthai']); ?>
@@ -431,80 +437,6 @@
                                                             }
                                                         }
                                                         ?>
-<!--                                                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-style="background: rgb(255, 255, 255);">
-<td align="right">
-1
-<input type="hidden" name="rptNuocThai$ctl01$ID" id="rptNuocThai_ID_0" value="785222">
-</td>
-<td align="left">
-Nước thải sinh hoạt
-</td>
-<td align="right">
-m3
-</td>
-
-<td align="right">
-0
-</td>
-
-<td align="right">
-0
-</td>
-
-<td align="right">
-0
-</td>
-
-<td align="right">
-1278
-</td>
-
-<td align="right">
-1278
-</td>
-<td align="left">
-
-</td>
-</tr>
-
-<tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-<td align="right">
-2
-<input type="hidden" name="rptNuocThai$ctl02$ID" id="rptNuocThai_ID_1" value="785223">
-</td>
-<td align="left">
-Nước thải sản xuất
-</td>
-<td align="right">
-m3
-</td>
-
-<td align="right">
-0
-</td>
-
-<td align="right">
-0
-</td>
-
-<td align="right">
-0
-</td>
-
-<td align="right">
-0
-</td>
-
-<td align="right">
-0
-</td>
-<td align="left">
-
-</td>
-</tr>-->
-
-
                                                     </tbody>
                                                 </table>
                                             </td>
@@ -526,7 +458,6 @@ m3
                                                             <td>
                                                                 <div>
                                                                     <?php echo $data['Baocaogsmt']['quytrinhcnxlnt']; ?>
-                                                                    <?php // echo $this->Form->input('QuytrinhCongngheXulyNuoc', array('div' => false, 'label' => false, 'hiddenField' => false, 'type' => 'textarea', 'class' => 'form-control', 'id' => 'QuytrinhCongngheXulyNuoc')); ?>
                                                                     <input type="hidden" name="hidden_QuytrinhCongngheXulyNuoc" id ="hidden_QuytrinhCongngheXulyNuoc" value="" />
                                                                 </div>
                                                             </td>
@@ -534,7 +465,11 @@ m3
                                                         <tr>
                                                             <td align="left">
                                                                 <span id="Label3">File đính kèm: </span>
-                                                                <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_quytrinhcnxlnt']); ?>" target="_blank" class="donwload-link"><?php echo $data['Baocaogsmt']['file_quytrinhcnxlnt']; ?></a>
+																<?php if(isset($data['Baocaogsmt']['file_quytrinhcnxlnt']) && $data['Baocaogsmt']['file_quytrinhcnxlnt']):?>
+                                                                <?php echo $data['Baocaogsmt']['file_quytrinhcnxlnt']; ?>
+																<?php else:?>
+																(không có)
+																<?php endif;?>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -603,7 +538,6 @@ m3
                                                                     style="background: rgb(255, 255, 255);">
                                                                     <td align="right">
                                                                         <?php echo h($kqptnt['stt']); ?>
-                                                                        <!--<input type="hidden" name="rptPhanTichNuocThai$ctl01$ID" id="rptPhanTichNuocThai_ID_0" value="<?php echo h($kqptnt['temp_id']); ?>">-->
                                                                     </td>
                                                                     <td align="left">
                                                                         <?php echo h($kqptnt['thongsodo']); ?>
@@ -629,272 +563,9 @@ m3
                                                                 </tr>
                                                                 <?php
                                                             }
-                                                        } else {
+                                                        }
                                                             ?>
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                                style="background: rgb(255, 255, 255);">
-                                                                <td align="right">
-                                                                    1
-                                                                    <!--<input type="hidden" name="rptPhanTichNuocThai$ctl01$ID" id="rptPhanTichNuocThai_ID_0" value="785224">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    pH Nước thải sinh hoạt
-                                                                </td>
-                                                                <td align="right">
-
-                                                                </td>
-
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                                <td align="right">
-                                                                    2
-                                                                    <!--<input type="hidden" name="rptPhanTichNuocThai$ctl02$ID" id="rptPhanTichNuocThai_ID_1" value="785225">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    BOD5 Nước thải sinh hoạt
-                                                                </td>
-                                                                <td align="right">
-                                                                    mg/L
-                                                                </td>
-
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                                style="background: rgb(255, 255, 255);">
-                                                                <td align="right">
-                                                                    3
-                                                                    <!--<input type="hidden" name="rptPhanTichNuocThai$ctl03$ID" id="rptPhanTichNuocThai_ID_2" value="785226">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    COD Nước thải sinh hoạt
-                                                                </td>
-                                                                <td align="right">
-                                                                    mg/L
-                                                                </td>
-
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                                style="background: rgb(255, 255, 255);">
-                                                                <td align="right">
-                                                                    4
-                                                                    <!--<input type="hidden" name="rptPhanTichNuocThai$ctl04$ID" id="rptPhanTichNuocThai_ID_3" value="785227">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    SS Nước thải sinh hoạt
-                                                                </td>
-                                                                <td align="right">
-                                                                    mg/L
-                                                                </td>
-
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                                <td align="right">
-                                                                    5
-                                                                    <!--<input type="hidden" name="rptPhanTichNuocThai$ctl05$ID" id="rptPhanTichNuocThai_ID_4" value="785228">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    NH4+ Nước thải sinh hoạt
-                                                                </td>
-                                                                <td align="right">
-                                                                    mg/L
-                                                                </td>
-
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                                style="background: rgb(255, 255, 255);">
-                                                                <td align="right">
-                                                                    6
-                                                                    <!--<input type="hidden" name="rptPhanTichNuocThai$ctl06$ID" id="rptPhanTichNuocThai_ID_5" value="785229">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    N Tổng Nước thải sinh hoạt
-                                                                </td>
-                                                                <td align="right">
-                                                                    mg/L
-                                                                </td>
-
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                                <td align="right">
-                                                                    7
-                                                                    <!--<input type="hidden" name="rptPhanTichNuocThai$ctl07$ID" id="rptPhanTichNuocThai_ID_6" value="785230">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    P Tổng nước thải sinh hoạt
-                                                                </td>
-                                                                <td align="right">
-                                                                    mg/L
-                                                                </td>
-
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                                <td align="right">
-                                                                    8
-                                                                    <!--<input type="hidden" name="rptPhanTichNuocThai$ctl08$ID" id="rptPhanTichNuocThai_ID_7" value="785231">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    Dầu mỡ ĐTV Nước thải sinh hoạt
-                                                                </td>
-                                                                <td align="right">
-                                                                    mg/L
-                                                                </td>
-
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                                style="background: rgb(255, 255, 255);">
-                                                                <td align="right">
-                                                                    9
-                                                                    <!--<input type="hidden" name="rptPhanTichNuocThai$ctl09$ID" id="rptPhanTichNuocThai_ID_8" value="785232">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    Coliform Nước thải sinh hoạt
-                                                                </td>
-                                                                <td align="right">
-                                                                    MPN/100mL
-                                                                </td>
-
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                                style="background: rgb(255, 255, 255);">
-                                                                <td align="right">
-                                                                    10
-                                                                    <!--<input type="hidden" name="rptPhanTichNuocThai$ctl10$ID" id="rptPhanTichNuocThai_ID_9" value="785233">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    pH Nước thải sản xuất
-                                                                </td>
-                                                                <td align="right">
-
-                                                                </td>
-
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                                style="background: rgb(255, 255, 255);">
-                                                                <td align="right">
-                                                                    11
-                                                                    <!--<input type="hidden" name="rptPhanTichNuocThai$ctl11$ID" id="rptPhanTichNuocThai_ID_10" value="785234">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    BOD5 Nước thải sản xuất
-                                                                </td>
-                                                                <td align="right">
-                                                                    mg/L
-                                                                </td>
-
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                                <td align="right">
-                                                                    12
-                                                                    <!--<input type="hidden" name="rptPhanTichNuocThai$ctl12$ID" id="rptPhanTichNuocThai_ID_11" value="785235">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    COD Nước thải sản xuất
-                                                                </td>
-                                                                <td align="right">
-                                                                    mg/L
-                                                                </td>
-
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                                style="background: rgb(255, 255, 255);">
-                                                                <td align="right">
-                                                                    13
-                                                                    <!--<input type="hidden" name="rptPhanTichNuocThai$ctl13$ID" id="rptPhanTichNuocThai_ID_12" value="785236">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    SS Nước thải sản xuất
-                                                                </td>
-                                                                <td align="right">
-                                                                    mg/L
-                                                                </td>
-
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                                style="background: rgb(255, 255, 255);">
-                                                                <td align="right">
-                                                                    14
-                                                                    <!--<input type="hidden" name="rptPhanTichNuocThai$ctl14$ID" id="rptPhanTichNuocThai_ID_13" value="785237">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    NH4+ Nước thải sản xuất
-                                                                </td>
-                                                                <td align="right">
-                                                                    mg/L
-                                                                </td>
-
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                                <td align="right">
-                                                                    15
-                                                                    <!--<input type="hidden" name="rptPhanTichNuocThai$ctl15$ID" id="rptPhanTichNuocThai_ID_14" value="785238">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    N Tổng Nước thải sản xuất
-                                                                </td>
-                                                                <td align="right">
-                                                                    mg/L
-                                                                </td>
-
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                                <td align="right">
-                                                                    16
-                                                                    <!--<input type="hidden" name="rptPhanTichNuocThai$ctl16$ID" id="rptPhanTichNuocThai_ID_15" value="785239">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    P Tổng Nước thải sản xuất
-                                                                </td>
-                                                                <td align="right">
-                                                                    mg/L
-                                                                </td>
-
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                                style="background: rgb(255, 255, 255);">
-                                                                <td align="right">
-                                                                    17
-                                                                    <!--<input type="hidden" name="rptPhanTichNuocThai$ctl17$ID" id="rptPhanTichNuocThai_ID_16" value="785240">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    Dầu khoáng nước thải sản xuất
-                                                                </td>
-                                                                <td align="right">
-                                                                    mg/L
-                                                                </td>
-
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                                style="background: rgb(255, 255, 255);">
-                                                                <td align="right">
-                                                                    18
-                                                                    <!--<input type="hidden" name="rptPhanTichNuocThai$ctl18$ID" id="rptPhanTichNuocThai_ID_17" value="785241">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    Coliform nước thải sản xuất
-                                                                </td>
-                                                                <td align="right">
-                                                                    MPN/100mL
-                                                                </td>
-
-                                                            </tr>
-                                                        <?php } ?>
-
+                                                          
                                                     </tbody>
                                                 </table>
                                             </td>
@@ -902,7 +573,10 @@ m3
                                         <tr>
                                             <td align="left" colspan="2">
                                                 <span id="Label4">File đính kèm kết quả phân tích nước thải: </span>
-                                                <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_ketquaphantichnt']); ?>" target="_blank" class="donwload-link"><?php echo $data['Baocaogsmt']['file_ketquaphantichnt']; ?></a>
+												<?php if(isset($data['Baocaogsmt']['file_ketquaphantichnt']) && $data['Baocaogsmt']['file_ketquaphantichnt']) :?>
+                                                <?php echo $data['Baocaogsmt']['file_ketquaphantichnt']; ?>
+												<?php else:?>
+												<?php endif;?>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -965,7 +639,6 @@ m3
                                                                 <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
                                                                     <td align="right">
                                                                         <?php echo $npskt['stt']; ?>
-                                                                        <!--<input type="hidden" name="rptKhiThai$ctl01$ID" id="rptKhiThai_ID_0" value="<?php echo $npskt['temp_id']; ?>">-->
                                                                     </td>
                                                                     <td align="left">
                                                                         <?php echo $npskt['loaikhithai']; ?>
@@ -991,114 +664,9 @@ m3
                                                                 </tr>
                                                                 <?php
                                                             }
-                                                        } else {
+                                                        } 
                                                             ?>
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                                <td align="right">
-                                                                    1
-                                                                    <!--<input type="hidden" name="rptKhiThai$ctl01$ID" id="rptKhiThai_ID_0" value="785242">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    Bụi Khu vực cổng bảo vệ
-                                                                </td>
-                                                                <td align="left">
-                                                                    mg/m3
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                                style="background: rgb(255, 255, 255);">
-                                                                <td align="right">
-                                                                    2
-                                                                    <!--<input type="hidden" name="rptKhiThai$ctl02$ID" id="rptKhiThai_ID_1" value="785243">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    SO2 khu vực cổng bảo vệ
-                                                                </td>
-                                                                <td align="left">
-                                                                    mg/m3
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                                <td align="right">
-                                                                    3
-                                                                    <!--<input type="hidden" name="rptKhiThai$ctl03$ID" id="rptKhiThai_ID_2" value="785244">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    NO2 Khu vực cổng bảo vệ
-                                                                </td>
-                                                                <td align="left">
-                                                                    mg/m3
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                                <td align="right">
-                                                                    4
-                                                                    <!--<input type="hidden" name="rptKhiThai$ctl04$ID" id="rptKhiThai_ID_3" value="785245">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    CO Khu vực cổng bảo vệ
-                                                                </td>
-                                                                <td align="left">
-                                                                    mg/m3
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                                style="background: rgb(255, 255, 255);">
-                                                                <td align="right">
-                                                                    5
-                                                                    <!--<input type="hidden" name="rptKhiThai$ctl05$ID" id="rptKhiThai_ID_4" value="785246">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    Bụi khu vực xưởng sản xuất
-                                                                </td>
-                                                                <td align="left">
-                                                                    mg/m3
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                                <td align="right">
-                                                                    6
-                                                                    <!--<input type="hidden" name="rptKhiThai$ctl06$ID" id="rptKhiThai_ID_5" value="785247">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    SO2 Khu vực xưởng sản xuất
-                                                                </td>
-                                                                <td align="left">
-                                                                    mg/m3
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                                <td align="right">
-                                                                    7
-                                                                    <!--<input type="hidden" name="rptKhiThai$ctl07$ID" id="rptKhiThai_ID_6" value="785248">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    NO2 Khu vực xưởng sản xuất
-                                                                </td>
-                                                                <td align="left">
-                                                                    mg/m3
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                                <td align="right">
-                                                                    8
-                                                                    <!--<input type="hidden" name="rptKhiThai$ctl08$ID" id="rptKhiThai_ID_7" value="785249">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    CO Khu vực xưởng sản xuất
-                                                                </td>
-                                                                <td align="left">
-                                                                    mg/m3
-                                                                </td>
-                                                            </tr>
-                                                        <?php } ?>
+                                                            
                                                     </tbody>
                                                 </table>
                                             </td>
@@ -1120,7 +688,6 @@ m3
                                                             <td>
                                                                 <div>
                                                                     <?php echo $data['Baocaogsmt']['quytrinhcnxlkt']; ?>
-                                                                    <?php // echo $this->Form->input('QuytrinhCongngheXulyKhithai', array('div' => false, 'label' => false, 'hiddenField' => false, 'type' => 'textarea', 'class' => 'form-control', 'id' => 'QuytrinhCongngheXulyKhithai')); ?>
                                                                     <input type="hidden" name="hidden_QuytrinhCongngheXulyKhithai" id ="hidden_QuytrinhCongngheXulyKhithai" value="" />
                                                                 </div>
                                                             </td>
@@ -1132,7 +699,11 @@ m3
                                         <tr>
                                             <td align="left">
                                                 <span id="Label5">File đính kèm: </span>
-                                                <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_quytrinhcnxlkt']); ?>" target="_blank" class="donwload-link"><?php echo $data['Baocaogsmt']['file_quytrinhcnxlkt']; ?></a>
+												<?php if(isset($data['Baocaogsmt']['file_quytrinhcnxlkt']) && $data['Baocaogsmt']['file_quytrinhcnxlkt']) :?>
+                                                <?php echo $data['Baocaogsmt']['file_quytrinhcnxlkt']; ?>
+												<?php else:?>
+												(không có)
+												<?php endif;?>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -1225,208 +796,9 @@ m3
                                                                 </tr>
                                                                 <?php
                                                             }
-                                                        } else {
+                                                        } 
                                                             ?>
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                                style="background: rgb(255, 255, 255);">
-                                                                <td align="right">
-                                                                    1
-                                                                    <!--<input type="hidden" name="rptPhanTichKhiThai$ctl01$ID" id="rptPhanTichKhiThai_ID_0" value="785250">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    Tiếng ồn Khu vực cổng bảo vệ
-                                                                </td>
-                                                                <td align="left">
-                                                                    dBA
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                                <td align="right">
-                                                                    2
-                                                                    <!--<input type="hidden" name="rptPhanTichKhiThai$ctl02$ID" id="rptPhanTichKhiThai_ID_1" value="785251">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    Nhiệt độ Khu vực cổng bảo vệ
-                                                                </td>
-                                                                <td align="left">
-                                                                    Độ C
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                                <td align="right">
-                                                                    3
-                                                                    <!--<input type="hidden" name="rptPhanTichKhiThai$ctl03$ID" id="rptPhanTichKhiThai_ID_2" value="785252">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    Tóc độ gió Khu vực cổng bảo vệ
-                                                                </td>
-                                                                <td align="left">
-                                                                    m/s
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                                <td align="right">
-                                                                    4
-                                                                    <!--<input type="hidden" name="rptPhanTichKhiThai$ctl04$ID" id="rptPhanTichKhiThai_ID_3" value="785253">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    Độ ẩm Khu vực cổng bảo vệ
-                                                                </td>
-                                                                <td align="left">
-                                                                    %
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                                <td align="right">
-                                                                    5
-                                                                    <!--<input type="hidden" name="rptPhanTichKhiThai$ctl05$ID" id="rptPhanTichKhiThai_ID_4" value="785254">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    Ánh sáng Khu vực cổng bảo vệ
-                                                                </td>
-                                                                <td align="left">
-                                                                    Lux
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                                <td align="right">
-                                                                    6
-                                                                    <!--<input type="hidden" name="rptPhanTichKhiThai$ctl06$ID" id="rptPhanTichKhiThai_ID_5" value="785255">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    Bụi Khu vực cổng bảo vệ
-                                                                </td>
-                                                                <td align="left">
-                                                                    dBA
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                                style="background: rgb(255, 255, 255);">
-                                                                <td align="right">
-                                                                    7
-                                                                    <!--<input type="hidden" name="rptPhanTichKhiThai$ctl07$ID" id="rptPhanTichKhiThai_ID_6" value="785256">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    SO2 Khu vực cổng bảo vệ
-                                                                </td>
-                                                                <td align="left">
-                                                                    mg/m3
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                                style="background: rgb(255, 255, 255);">
-                                                                <td align="right">
-                                                                    8
-                                                                    <!--<input type="hidden" name="rptPhanTichKhiThai$ctl08$ID" id="rptPhanTichKhiThai_ID_7" value="785257">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    NO2 Khu vực cổng bảo vệ
-                                                                </td>
-                                                                <td align="left">
-                                                                    mg/m3
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                                style="background: rgb(255, 255, 255);">
-                                                                <td align="right">
-                                                                    9
-                                                                    <!--<input type="hidden" name="rptPhanTichKhiThai$ctl09$ID" id="rptPhanTichKhiThai_ID_8" value="785258">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    CO Khu vực cổng bảo vệ
-                                                                </td>
-                                                                <td align="left">
-                                                                    mg/m3
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                                <td align="right">
-                                                                    10
-                                                                    <!--<input type="hidden" name="rptPhanTichKhiThai$ctl10$ID" id="rptPhanTichKhiThai_ID_9" value="785259">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    Tiiếng ồn Khu vực xưởng sản xuất
-                                                                </td>
-                                                                <td align="left">
-                                                                    dBA
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                                style="background: rgb(255, 255, 255);">
-                                                                <td align="right">
-                                                                    11
-                                                                    <!--<input type="hidden" name="rptPhanTichKhiThai$ctl11$ID" id="rptPhanTichKhiThai_ID_10" value="785260">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    Nhiệt độ Khu vực xưởng sản xuất
-                                                                </td>
-                                                                <td align="left">
-                                                                    Độ C
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                                <td align="right">
-                                                                    12
-                                                                    <!--<input type="hidden" name="rptPhanTichKhiThai$ctl12$ID" id="rptPhanTichKhiThai_ID_11" value="785261">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    Tốc độ gió Khu vực xưởng sản xuất
-                                                                </td>
-                                                                <td align="left">
-                                                                    m/s
-                                                                </td>
-                                                            </tr>
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                                <td align="right">
-                                                                    13
-                                                                    <!--<input type="hidden" name="rptPhanTichKhiThai$ctl13$ID" id="rptPhanTichKhiThai_ID_12" value="785262">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    Độ ẩm Khu vực xưởng sản xuất
-                                                                </td>
-                                                                <td align="left">
-                                                                    %
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'"
-                                                                style="background: rgb(255, 255, 255);">
-                                                                <td align="right">
-                                                                    14
-                                                                    <!--<input type="hidden" name="rptPhanTichKhiThai$ctl14$ID" id="rptPhanTichKhiThai_ID_13" value="785263">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    Ánh sáng Khu vực xưởng sản xuất
-                                                                </td>
-                                                                <td align="left">
-                                                                    Lux
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
-                                                                <td align="right">
-                                                                    15
-                                                                    <!--<input type="hidden" name="rptPhanTichKhiThai$ctl15$ID" id="rptPhanTichKhiThai_ID_14" value="785264">-->
-                                                                </td>
-                                                                <td align="left">
-                                                                    Bụi Khu vực xưởng sản xuất
-                                                                </td>
-                                                                <td align="left">
-                                                                    mg/m3
-                                                                </td>
-                                                            </tr>
-                                                        <?php } ?>
+                                                            
                                                     </tbody>
                                                 </table>
                                             </td>
@@ -1434,7 +806,11 @@ m3
                                         <tr>
                                             <td align="left" colspan="2">
                                                 <span id="Label7">File đính kèm kết quả phân tích khí thải: </span>
-                                                <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_ketquaphantichkt']); ?>" target="_blank" class="donwload-link"><?php echo $data['Baocaogsmt']['file_ketquaphantichkt']; ?></a>
+												<?php if(isset($data['Baocaogsmt']['file_ketquaphantichkt']) && $data['Baocaogsmt']['file_ketquaphantichkt']):?>
+                                                <?php echo $data['Baocaogsmt']['file_ketquaphantichkt']; ?>
+												<?php else: ?>
+												(không có)
+												<?php endif;?>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -1534,7 +910,6 @@ m3
                                                                     <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(255, 255, 255);">
                                                                         <td align="center">
                                                                             <?php echo $htctrsh['stt']; ?>
-                                                                            <!--<input type="hidden" style="width: 98%" value="<?php echo $htctrsh['temp_id']; ?>" id="ID" name="ID[]">-->
                                                                         </td>
                                                                         <td align="left">
                                                                             <?php echo $htctrsh['loaichatthai']; ?>
@@ -1620,7 +995,6 @@ m3
                                                                     <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(255, 255, 255);">
                                                                         <td align="center">
                                                                             <?php echo $htctrcn['stt']; ?>
-                                                                            <!--<input type="hidden" style="width: 98%" value="<?php echo $htctrcn['temp_id']; ?>" id="ID" name="ID[]">-->
                                                                         </td>
                                                                         <td align="left">
                                                                             <?php echo $htctrcn['loaichatthai']; ?>
@@ -1707,7 +1081,6 @@ m3
                                                                     <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(255, 255, 255);">
                                                                         <td align="center">
                                                                             <?php echo $htctrnh['stt']; ?>
-                                                                            <!--<input type="hidden" style="width: 98%" value="<?php echo $htctrnh['temp_id']; ?>" id="ID" name="ID[]">-->
                                                                         </td>
                                                                         <td align="left">
                                                                             <?php echo $htctrnh['loaichatthai']; ?>
@@ -1803,7 +1176,6 @@ m3
                                                             <td>
                                                                 <div>
                                                                     <?php echo $data['Baocaogsmt']['nguonpstiengonvabpkp']; ?>
-                                                                    <?php // echo $this->Form->input('Nguonphatsinhtiengon', array('div' => false, 'label' => false, 'type' => 'textarea', 'class' => 'form-control', 'id' => 'Nguonphatsinhtiengon')); ?>
                                                                     <input type="hidden" name="hidden_Nguonphatsinhtiengon" id ="hidden_Nguonphatsinhtiengon" value="" />
                                                                 </div>
                                                             </td>
@@ -1815,7 +1187,11 @@ m3
                                         <tr>
                                             <td align="left">
                                                 <span id="Label9">File đính kèm kết quả phân tích: </span>
-                                                <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_ketquaphantichtiengon']); ?>" target="_blank" class="donwload-link"><?php echo $data['Baocaogsmt']['file_ketquaphantichtiengon']; ?></a>
+												<?php if(isset($data['Baocaogsmt']['file_ketquaphantichtiengon']) && $data['Baocaogsmt']['file_ketquaphantichtiengon']):?>
+                                                <?php echo $data['Baocaogsmt']['file_ketquaphantichtiengon']; ?>
+												<?php else:?>
+												(không có)
+												<?php endif;?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1831,7 +1207,6 @@ m3
                                                             <td>
                                                                 <div>
                                                                     <?php echo $data['Baocaogsmt']['nguonpstiengonvabpkp']; ?>
-                                                                    <?php // echo $this->Form->input('Nguonphatsinhdorung', array('div' => false, 'label' => false, 'hiddenField' => false, 'type' => 'textarea', 'class' => 'form-control', 'id' => 'Nguonphatsinhdorung')); ?>
                                                                     <input type="hidden" name="hidden_Nguonphatsinhdorung" id ="hidden_Nguonphatsinhdorung" value="" />
                                                                 </div>
                                                             </td>
@@ -1843,8 +1218,13 @@ m3
                                         <tr>
                                             <td align="left">
                                                 <span id="Label8">File đính kèm kết quả phân tích: </span>
-                                                <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_ketquaphantichdorung']); ?>" target="_blank" class="donwload-link"><?php echo $data['Baocaogsmt']['file_ketquaphantichdorung']; ?></a>
+												<?php if(isset($data['Baocaogsmt']['file_ketquaphantichdorung']) && $data['Baocaogsmt']['file_ketquaphantichdorung']):?>
+                                                <?php echo $data['Baocaogsmt']['file_ketquaphantichdorung']; ?>
+												<?php else:?>
+												(không có)
+												<?php endif;?>
                                             </td>
+												
                                         </tr>
                                         <tr>
                                             <td height="25px">
@@ -1858,7 +1238,11 @@ m3
                                                 Sơ đồ vị trí các điểm giám sát đối với môi trường không khí xung quanh, đất, nước
                                                 ngầm, nước mặt.
                                                 <br>
-                                                <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_sodovitricacdiemgiamsatmtxq']); ?>" target="_blank" class="donwload-link"><?php echo $data['Baocaogsmt']['file_sodovitricacdiemgiamsatmtxq']; ?></a>
+												<?php if(isset($data['Baocaogsmt']['file_sodovitricacdiemgiamsatmtxq']) && $data['Baocaogsmt']['file_sodovitricacdiemgiamsatmtxq']):?>
+                                                <?php echo $data['Baocaogsmt']['file_sodovitricacdiemgiamsatmtxq']; ?>
+												<?php else:?>
+												(không có)
+												<?php endif;?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -1868,7 +1252,11 @@ m3
                                                 <br>
                                                 Các kết quả đo đạc phân tích giám sát môi trường không khí xung quanh, đất, nước
                                                 ngầm, nước mặt.<br>
-                                                <a href="<?php echo $this->Html->url('/admin/baocao/viewfile/' . $data['Baocaogsmt']['id'] . '/' . $data['Baocaogsmt']['file_ketquadodacphantichmtxq']); ?>" target="_blank" class="donwload-link"><?php echo $data['Baocaogsmt']['file_ketquadodacphantichmtxq']; ?></a>
+												<?php if(isset($data['Baocaogsmt']['file_ketquadodacphantichmtxq']) && $data['Baocaogsmt']['file_ketquadodacphantichmtxq']):?>
+                                                <?php echo $data['Baocaogsmt']['file_ketquadodacphantichmtxq']; ?>
+												<?php else:?>
+												(không có)
+												<?php endif;?>
                                             </td>
                                         </tr>
                                         <tr>

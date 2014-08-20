@@ -122,7 +122,7 @@ if (!empty($this->validationErrors['Search'])):
                 </tbody>
             </table>
         </div>
-    <?php else:?>
+    <?php elseif(isset($result) && !$result):?>
         <div class="divsearchresult" style="border: 1px solid #ccc; text-align: center;"><span style="padding: 10px 20px; color: #F31414;">Không tìm thấy dữ liệu</span></div>
     <?php endif; ?>
 </div>
