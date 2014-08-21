@@ -48,44 +48,64 @@ class DoanhNghiepsController extends AdminAppController {
         $this->loadModel('Admin.DoanhNghiep');
         $savingDoanhNghiep = $this->Session->read('savingDoanhNghiep');
         if ($savingDoanhNghiep) {
+            $this->Session->delete('savingDoanhNghiep');
             $this->set('savingDoanhNghiep', $savingDoanhNghiep);
         }
         if ($this->request->is('post')) {
             if (!empty($this->request->data['DoanhNghiep'])) {
                 $this->set('tab_ttdn', 1);
-//                var_dump($this->request->data['DoanhNghiep']);
-//                exit;
                 if (!isset($savingDoanhNghiep['colMa']) || !$savingDoanhNghiep['colMa']) {
-
-                    $this->DoanhNghiep->set($this->request->data['DoanhNghiep']);
+                    $doanhnghiepdata = $this->request->data['DoanhNghiep'];
+                    $path = ROOT . DIRECTORY_SEPARATOR . APP_DIR . DIRECTORY_SEPARATOR . WEBROOT_DIR . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR;
+                    if (move_uploaded_file($this->request->data['DoanhNghiep']['colHinhAnh']['tmp_name'], $path . $this->request->data['DoanhNghiep']['colHinhAnh']['name'])) {
+                        $doanhnghiepdata['colHinhAnh'] = '/uploads/' . $doanhnghiepdata['colHinhAnh']['name'];
+                    } else {
+                        $doanhnghiepdata['colHinhAnh'] = 'failed upload';
+                    }
+                    var_dump($doanhnghiepdata['nganh']);exit;
+                    if (isset($doanhnghiepdata['nganh'])) {
+                        $nganh = array_values($doanhnghiepdata['nganh']);
+                        foreach ($nganh as $key => $value) {
+                            if (!is_numeric($value)) {
+                                unset($nganh[$key]);
+                            }
+                        }
+                        $i = 1;
+                        foreach ($nganh as $nganh_id) {
+                            $doanhnghiepdata['colNganh' . $i] = $nganh_id;
+                            ++$i;
+                        }
+                    }
+                    $this->DoanhNghiep->set($doanhnghiepdata);
                     if ($this->DoanhNghiep->validates()) {
-
-                        $dn = $this->DoanhNghiep->save($this->request->data['DoanhNghiep']);
+                        var_dump($doanhnghiepdata);exit;
+                        $dn = $this->DoanhNghiep->save($doanhnghiepdata);
                         if ($dn) {
                             $this->Session->write('savingDoanhNghiep', $dn);
 //                        var_dump($dn);exit;
                             $this->Session->setFlash(__('Lưu thành công thông tin doanh nghiệp'), 'default', array('class' => 'message success'));
                         }
                     }
+                    var_dump($this->DoanhNghiep->validationErrors);exit;
                 }
             }
             if (!empty($this->request->data['HoatDongSanXuat'])) {
-                $this->set('tab_hdsx', 1);
+//                $this->set('tab_hdsx', 1);
                 $this->loadModel('Admin.HoatDongSanXuat');
                 $data = $this->request->data['HoatDongSanXuat'];
                 $data['colCSSX'] = $savingDoanhNghiep['DoanhNghiep']['colMa'];
                 $this->HoatDongSanXuat->set($data);
                 if ($this->HoatDongSanXuat->validates()) {
-//                    $savingDoanhNghiep['HoatDongSanXuat'] = $this->request->data['HoatDongSanXuat'];
-//                    $savingDoanhNghiep['colCSSX'] = $savingDoanhNghiep['DoanhNghiep']['colMa'];
+                    $savingDoanhNghiep['HoatDongSanXuat'] = $data;
+                    $savingDoanhNghiep['HoatDongSanXuat']['colNam'] = $savingDoanhNghiep['DoanhNghiep']['nam'];
 //                    var_dump($savingDoanhNghiep);
 //                        exit;
-                    $hdsx = $this->HoatDongSanXuat->save();
+                    $hdsx = $this->DoanhNghiep->saveAssociated($savingDoanhNghiep);
                     if ($hdsx) {
                         $this->Session->setFlash('Đã lưu hoạt động sản xuất của doanh nghiệp', 'default', array('class' => 'message success'));
-//                        $this->Session->write('savingDoanhNghiep', $dn);
-//                        var_dump($dn);
-//                        exit;
+                        $this->Session->write('savingDoanhNghiep', $hdsx);
+                    } else {
+                        $this->Session->setFlash('Không có thông tin nào thay đổi', 'default', array('class' => 'message success'));
                     }
                 }
             }

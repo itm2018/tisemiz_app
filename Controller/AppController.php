@@ -26,12 +26,11 @@ class AppController extends Controller {
     //public $helpers = array('Minify.Minify');
     public $components = array(
         'Session',
-        'Security',
         'RequestHandler',
-        'Security' => array(
-            'csrfExpires' => '+1 hour',
-            'csrfUseOne' => false
-        ),
+//        'Security' => array(
+//            'csrfExpires' => '+1 hour',
+//            'csrfUseOne' => false
+//        ),
         'Auth' => array(
             'loginRedirect' => array(
                 'plugin' => 'admin',
@@ -66,15 +65,15 @@ class AppController extends Controller {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Security->blackHoleCallback = 'blackhole';
-        $this->Security->validatePost = false;
-        $this->Security->unlockedActions = array('dulieugiamsatmoitruong');
+//        $this->Security->blackHoleCallback = 'blackhole';
+//        $this->Security->validatePost = false;
+//        $this->Security->unlockedActions = array('dulieugiamsatmoitruong');
         $this->Auth->allow(array('register', 'success', 'view', 'index'));
     }
 
-    public function blackhole() {
-        $this->redirect(array('plugin' => null, 'controller' => 'errors', 'action' => 'session_expire'));
-    }
+//    public function blackhole() {
+//        $this->redirect(array('plugin' => null, 'controller' => 'errors', 'action' => 'session_expire'));
+//    }
 
     public function any_action() {
         $aro = $this->Acl->Aro;
