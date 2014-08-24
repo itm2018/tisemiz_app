@@ -43,7 +43,8 @@
             'jquery.ui.datepicker-vi.min',
             'gcalendar-holidays',
             '/assets/tinymce/tinymce.min',
-            'localstorage'
+            'localstorage',
+            '/admin/js/validator'
         ));
         ?>
         <?php echo $this->fetch('script'); ?>

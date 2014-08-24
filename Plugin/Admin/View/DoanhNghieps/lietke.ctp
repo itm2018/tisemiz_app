@@ -79,7 +79,7 @@ $this->Paginator->options(array(
 <!--                        <th class="sorting">--><?php //echo $this->Paginator->sort('colGiayPhepKD',__('Giấy phép KD')); ?><!--</th>-->
 <!--                        <th class="sorting">--><?php //echo $this->Paginator->sort('colLoaiHinhDN',__('Loại hình DN')); ?><!--</th>-->
                         <!--<th class="sorting"><?php // echo $this->Paginator->sort('colLinhVucHD',__('Lĩnh Vực HD')); ?></th>-->
-                        <th class="sorting"><?php echo $this->Paginator->sort('colSanPham',__('Sản phẩm')); ?></th>
+                        <th class="sorting"><?php echo $this->Paginator->sort('colSanpham',__('Sản phẩm')); ?></th>
 <!--                        <th>--><?php //echo $this->Paginator->sort('colQuocGia',__('Quốc gia')); ?><!--</th>-->
                         <th class="actions"><?php echo __('Chức năng'); ?></th>
                     </tr>
@@ -99,7 +99,7 @@ $this->Paginator->options(array(
 <!--                            <td>--><?php //echo h($doanhNghiep['DoanhNghiep']['colGiayPhepKD']); ?><!--&nbsp;</td>-->
 <!--                            <td>--><?php //echo h($doanhNghiep['DoanhNghiep']['colLoaiHinhDN']); ?><!--&nbsp;</td>-->
                             <!--<td><?php // echo h($doanhNghiep['DoanhNghiep']['colLinhVucHD']); ?>&nbsp;</td>-->
-                            <td><?php echo h($doanhNghiep['DoanhNghiep']['colSanPham']); ?>&nbsp;</td>
+                            <td><?php echo h($doanhNghiep['DoanhNghiep']['colSanpham']); ?>&nbsp;</td>
 <!--                            <td>--><?php //echo h($doanhNghiep['DoanhNghiep']['colQuocGia']); ?><!--&nbsp;</td>-->
                             <td class="actions">
                                 <?php echo $this->Html->link(__('Sửa'), array('action' => 'edit', $doanhNghiep['DoanhNghiep']['colMa'])); ?>

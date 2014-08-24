@@ -19,5 +19,10 @@ class NguyenLieuSanPham extends AdminAppModel {
  * @var string
  */
 	public $primaryKey = 'colMa';
-
+        public $belongsTo = array(
+        'Nguyenlieu' => array(
+            'className' => 'Admin.Nguyenlieu',
+            'foreignKey' => 'colNguyenLieu'
+        )
+    );
 }

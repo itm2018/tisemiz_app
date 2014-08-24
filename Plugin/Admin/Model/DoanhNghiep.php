@@ -95,7 +95,27 @@ class DoanhNghiep extends AdminAppModel {
         'HoatDongSanXuat' => array(
             'className' => 'Admin.HoatDongSanXuat',
             'foreignKey' => 'colCSSX'
-        )
+        ),
+        'SanPhamDoanhNghiep' => array(
+            'className' => 'Admin.SanPhamDoanhNghiep',
+            'foreignKey' => 'colCSSX'
+        ),
+        'NguyenLieuSanPham' => array(
+            'className' => 'Admin.NguyenLieuSanPham',
+            'foreignKey' => 'colCSSX'
+        ),
+        'NhienLieuDoanhNghiep' => array(
+            'className' => 'Admin.NhienLieuDoanhNghiep',
+            'foreignKey' => 'colCSSX'
+        ),
+        'DienNuocDoanhNghiep' => array(
+            'className' => 'Admin.DienNuocDoanhNghiep',
+            'foreignKey' => 'colCSSX'
+        ),
+        'NuocNgamDoanhNghiep' => array(
+            'className' => 'Admin.NuocNgamDoanhNghiep',
+            'foreignKey' => 'colCSSX'
+        ),
     );
 
     public function beforeSave($options = array()) {
@@ -117,8 +137,8 @@ class DoanhNghiep extends AdminAppModel {
                     $Model->create();
                 }
                 $Model->set($modelData);
-                $saved =  $Model->save();
-                $hasmany = !empty($saved) ? $saved : null;
+                $saved = $Model->save();
+                $hasmany = $saved ? $saved : array();
                 $data[$alias] = array_values($hasmany);
             }
         }

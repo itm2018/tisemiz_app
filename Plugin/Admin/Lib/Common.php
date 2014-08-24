@@ -85,15 +85,20 @@ class Common
 
     public static function getListDanhmucSanPham()
     {
-        $result = array();
+        $result = array('0'=>'...vui lòng chọn');
         $danh_muc_san_pham = new DanhmucSanpham();
         $list = $danh_muc_san_pham->find('all', array('fields' => array('id', 'tendanhmuc')));
         if (is_array($list) && count($list)) {
             foreach ($list as $item) {
-                $result[$item['DanhmucSanpham']['id']] = $item['DanhmucSanpham']['tendanhmuc'];
+                $result[$item['DanhmucSanPham']['id']] = $item['DanhmucSanPham']['tendanhmuc'];
             }
         }
         return $result;
+    }
+    public static function getFullListDanhmucSanPham(){
+        $danh_muc_san_pham = new DanhmucSanpham();
+        $list = $danh_muc_san_pham->find('all');
+        return $list;
     }
 
     public static function getListNguonThaiNuocThai()

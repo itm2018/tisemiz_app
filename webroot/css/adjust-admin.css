@@ -138,3 +138,57 @@ table.tdgrid ,table.tdgrid td{
     FONT-FAMILY: Arial;
     HEIGHT: 20px
 }
+ul#steps{
+    float: left;
+    display: block;
+    padding: 0 -10px 0 0;
+    margin: 0 auto;
+    background: url('../img/connectbar.png') 40px 33px repeat-x;
+}
+#steps li{
+    font-size: 14pt;
+    font-weight: bold;
+    font-family: Time New Romans;
+    color: #FFF;
+    float:left;
+    list-style: none;
+    width: 75px;
+    height: 75px;
+    padding: 31px 90px 25px 39px;
+    background: url('../img/circle_grey.png') 20px 20px no-repeat;
+}
+#steps li.active{
+    background: url('../img/circle_green.png') 20px 20px no-repeat;
+}
+.nav-steps{
+    margin: 0 auto;
+    margin-left: 50px;
+    
+}
+.nav-tabs li.active{
+    background-color: #0a0;
+}
+.image-view{
+        right: 10px;
+        margin: 0 10px 10px 10px;
+        border: solid 1px #ccc;
+        display: inline;
+        padding: 0;
+        z-index: 10;
+        position: absolute;
+        text-align: center;
+        vertical-align: middle;
+        border-radius: 2px;
+    }
+    .add-group{
+    background: url('../img/button_add.png') center no-repeat;
+    width: 33px;
+    height: 33px;
+    background-color: transparent;
+    border: none;
+    margin-top: 2px;
+    }
+    input.error,
+    select.error{
+        background-color:#F4A08F; border:#BF0A09 solid 2px !important;
+    }
