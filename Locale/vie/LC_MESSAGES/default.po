@@ -62,7 +62,7 @@ msgid "Forgot your password?"
 msgstr "Quên mật khẩu?"
 
 msgid "Reset Password"
-msgstr "Lấy lại mật "
+msgstr "Lấy lại mật khẩu"
 
 msgid "Hide me"
 msgstr "Ẩn"

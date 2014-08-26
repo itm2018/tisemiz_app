@@ -2,15 +2,15 @@
 <?php echo $this->Form->create('Sanpham', array('type' => 'post')); ?>
 <table class="table">
     <tr>
-        <td><label for="colDanhMucSanPham" class="col-sm-2 control-label">Danh mục sản phẩm</label></td>
-        <td><?php echo $this->Form->input('danhmuc_id', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control', 'div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control', 'id' => 'inputDanhmucId', 'options' => Common::getListDanhmucSanPham())); ?>
+        <td><label for="colDanhMucSanPham" class="col-sm-10 control-label">Danh mục sản phẩm</label></td>
+        <td><?php echo $this->Form->input('danhmuc_id', array('div' => array('class' => 'col-sm-10'), 'label' => false, 'class' => 'form-control', 'div' => array('class' => 'col-sm-10'), 'label' => false, 'class' => 'form-control', 'id' => 'inputDanhmucId', 'options' => Common::getListDanhmucSanPham())); ?>
         </td>
         <td></td>
     </tr>
     <tr>
-        <td><label for="inputTensanpham" class="col-sm-2 control-label">Tên sản phẩm <span class="required">*</span></label></td>
-        <td><?php echo $this->Form->input('tensanpham', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control', 'type' => 'text', 'id' => 'txtTensanpham', 'placeholder' => 'nhập tên sản phẩm')); ?></td>
-        <td><?php echo $this->Form->submit('Lưu sản phẩm', array('class' => 'btn btn-primary', 'id' => 'button-luu-sanpham')); ?></td>
+        <td><label for="inputTensanpham" class="col-sm-10 control-label">Tên sản phẩm <span class="required">*</span></label></td>
+        <td><?php echo $this->Form->input('tensanpham', array('div' => array('class' => 'col-sm-10'), 'label' => false, 'class' => 'form-control', 'type' => 'text', 'id' => 'txtTensanpham', 'placeholder' => 'nhập tên sản phẩm')); ?></td>
+        <td style="text-align: left;"><?php echo $this->Form->submit('Lưu sản phẩm', array('class' => 'btn btn-primary', 'id' => 'button-luu-sanpham')); ?></td>
     </tr>
 </table>
 <?php echo $this->Form->end(); ?>

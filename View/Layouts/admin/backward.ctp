@@ -99,8 +99,20 @@
                                 <li>
                                     <a href="<?php echo $this->Html->url('/admin/doanhnghiep/lietke'); ?>">Doanh nghiệp</a>
                                 </li>
-                                <li>
-                                    <a href="#">Thống kê</a>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Thống kê <strong class="caret"></strong></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="">Thống kê thông tin cơ bản</a></li>
+                                        <li><a href="">Thống kê hoạt động trạm xử lý nước thải</a></li>
+                                        <li><a href="">Thống kê lưu lượng nước thải</a></li>
+                                        <li><a href="">Thống kê xử lý cục bộ nước thải</a></li>
+                                        <li><a href="">Thống kê chất thải rắn - nguy hại</a></li>
+                                        <li><a href="">Thống kê hoạt động bảo vệ môi trường</a></li>
+                                        <li><a href="">Thống kê hoạt động thường xuyên</a></li>
+                                        <li><a href="">Thống kê chi phí vận hành XLNT</a></li>
+                                        <li><a href="">Thống kê sự cố</a></li>
+                                        <li><a href="">Thống kê xử lý cục bộ</a></li>
+                                    </ul>
                                 </li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Báo cáo <strong class="caret"></strong></a>
@@ -150,8 +162,14 @@
                             <img src="/img/subheader.jpg" style="width: 100%;">
                         </div>
                     </nav>
+                    <style>
+                        .bread{
+                            width: 965px;
+                            margin: 0 auto;
+                        }
+                    </style>
                     <div class="content">
-                        <div class="bread"><span>Phần mềm quản lý môi trường tại khu công nghiệp Tây Bắc Củ Chi (ĐT: 08.32345678)</span></div>
+                        <div class="bread"><marquee behavior="scrolling" scrolldelay="90" scrollamount="5" onmouseout="this.start();" onmouseover="this.stop();"><span>Phần mềm quản lý môi trường tại Cụm Công Nghiệp Tân Quy (ĐT: 08.32345678)</span></marquee></div>
                         <?php echo $this->fetch('breadcrumb'); ?>
                         <?php echo $this->Session->flash(); ?>
                         <?php echo $this->fetch('content'); ?>

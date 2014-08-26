@@ -390,3 +390,4 @@
         });
     });
 </script>
+<?php echo $this->element('Admin.Doanhnghieps/backend.js'); ?>

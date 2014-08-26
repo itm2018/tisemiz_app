@@ -14,7 +14,7 @@ App::uses('FrontAppController', 'Front.Controller');
  */
 class MapController extends FrontAppController {
 
-    public function index($id) {
+    public function index() {
         
     }
 

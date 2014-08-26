@@ -8,9 +8,9 @@
         <td></td>
     </tr>-->
     <tr>
-        <td><label for="inputTennguyenlieu" class="col-sm-2 control-label">Tên nguyên liệu <span class="required">*</span></label></td>
-        <td><?php echo $this->Form->input('tennguyenlieu', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control', 'type' => 'text', 'id' => 'txtTennguyenlieu', 'placeholder' => 'nhập tên nguyên liệu')); ?></td>
-        <td><?php echo $this->Form->submit('Lưu nguyên liệu', array('class' => 'btn btn-primary', 'id' => 'button-luu-sanpham')); ?></td>
+        <td><label for="inputTennguyenlieu" class="col-sm-10 control-label">Tên nguyên liệu <span class="required">*</span></label></td>
+        <td><?php echo $this->Form->input('tennguyenlieu', array('div' => array('class' => 'col-sm-10'), 'label' => false, 'class' => 'form-control', 'type' => 'text', 'id' => 'txtTennguyenlieu', 'placeholder' => 'nhập tên nguyên liệu')); ?></td>
+        <td style="text-align: left;"><?php echo $this->Form->submit('Lưu nguyên liệu', array('class' => 'btn btn-primary', 'id' => 'button-luu-sanpham')); ?></td>
     </tr>
 </table>
 <?php echo $this->Form->end(); ?>

@@ -1016,8 +1016,9 @@ class BaocaoController extends AdminAppController {
 				$this->Paginator->settings = $this->paginate;
 				$result = $this->Paginator->paginate('Baocaogsmt', array(
 //                    'id_user' => $this->Auth->user('id'), //gioi han chi xem nhung bao cao user hien hanh da tao
-					'tungay <= ' => $startdate->format('Y-m-d'),
-					'denngay >= ' => $enddate->format('Y-m-d')));
+//					'tungay <= ' => $startdate->format('Y-m-d'),
+//					'denngay >= ' => $enddate->format('Y-m-d')
+                                        ));
 				$this->set('result', $result);
 			}
 		}

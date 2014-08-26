@@ -1,11 +1,11 @@
-<h4>Cập nhập nguyên liệu</h4>
-<?php echo $this->Form->create('Nguyenlieu', array('type' => 'post')); ?>
-<?php echo $this->Form->input('id', array('div' => false, 'label' => false, 'class' => 'form-control', 'type' => 'hidden', 'id' => 'idNguyenlieu','value' => isset($nguyenlieu) ? $nguyenlieu['Nguyenlieu']['id'] : '')); ?>
+<h4>Cập nhập nguồn thải nước thải</h4>
+<?php echo $this->Form->create('NguonThaiNuocThai', array('type' => 'post')); ?>
+<?php echo $this->Form->input('colMa', array('div' => false, 'label' => false, 'class' => 'form-control', 'type' => 'hidden', 'id' => 'colMa','value' => isset($nguonthainuocthai) ? $nguonthainuocthai['NguonThaiNuocThai']['colMa'] : '')); ?>
 <table class="table">
     <tr>
-        <td><label for="inputTennguyenlieu" class="col-sm-10 control-label">Tên nguyên liệu <span class="required">*</span></label></td>
-        <td><?php echo $this->Form->input('tennguyenlieu', array('div' => array('class' => 'col-sm-10'), 'label' => false, 'class' => 'form-control', 'type' => 'text', 'id' => 'txtTennguyenlieu', 'placeholder' => 'nhập tên nguyên liệu', 'value' => isset($nguyenlieu) ? $nguyenlieu['Nguyenlieu']['tennguyenlieu'] : '')); ?></td>
-        <td><?php echo $this->Form->submit('Lưu nguyên liệu', array('class' => 'btn btn-primary', 'id' => 'button-luu-nguyenlieu')); ?></td>
+        <td><label for="colTenNguonThai" class="col-sm-10 control-label">Tên nguồn thải <span class="required">*</span></label></td>
+        <td><?php echo $this->Form->input('colTenNguonThai', array('div' => array('class' => 'col-sm-10'), 'label' => false, 'class' => 'form-control', 'type' => 'text', 'id' => 'textcolTenNguonThai', 'placeholder' => 'nhập tên nguồn thải', 'value' => isset($nguonthainuocthai) ? $nguonthainuocthai['NguonThaiNuocThai']['colTenNguonThai'] : '')); ?></td>
+        <td style="text-align: left;"><?php echo $this->Form->submit('Lưu nguồn thải', array('class' => 'btn btn-primary', 'id' => 'button-capnhat-nguonthainuocthai')); ?></td>
     </tr>
 </table>
 <?php echo $this->Form->end(); ?>
@@ -28,9 +28,9 @@
 //    var danhmuc_id = "<?php // echo isset($sanpham) ? $sanpham['Sanpham']['danhmuc_id'] : 0; ?>";
     $(function() {
 //        $('#inputDanhmucId').val(danhmuc_id);
-        $('#button-luu-nguyenlieu').bind('click', function() {
+        $('#button-capnhat-nguonthainuocthai').bind('click', function() {
 //            var dm = $('#inputDanhmucId').val();
-            var tennl = $.trim($('#txtTennguyenlieu').val());
+            var tennl = $.trim($('#textcolTenNguonThai').val());
 //            if (dm == 0 || dm == '') {
 //                alert('Xin chọn danh mục');
 //                $('#inputDanhmucId').focus();
@@ -38,7 +38,7 @@
 //            }
             if (tennl == '')
             {
-                alert('Xin nhập tên nguyên liệu');
+                alert('Xin nhập tên nguồn thải nước thải');
                 $('#txtTennguyenlieu').focus();
                 return false;
             } 

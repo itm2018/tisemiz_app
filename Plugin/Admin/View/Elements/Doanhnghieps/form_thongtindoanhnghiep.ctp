@@ -4,7 +4,7 @@ echo $this->Form->create('DoanhNghiep', array('type' => 'file', 'class' => 'form
 <h4>Thông tin chung</h4>
 <div class="form-group">
     <div class="image-view"><img border="0" src="<?php echo isset($this->data['DoanhNghiep']['colHinhAnh']) ? $this->data['DoanhNghiep']['colHinhAnh'] : Router::url('/admin/img/no-images.jpg'); ?>" alt="Hình ảnh đại diện doanh nghiệp" width="304" height="228"></div>
-    <?php echo $this->Form->input('colMa', array('type' => 'hidden', 'class' => 'form-control', 'div' => array('class' => 'col-sm-10'), 'label' => false, 'value' => isset($savingDoanhNghiep['DoanhNghiep']['colMa']) ? $savingDoanhNghiep['DoanhNghiep']['colMa'] : '')); ?>
+    <?php echo $this->Form->input('colMa', array('type' => 'hidden', 'class' => 'form-control', 'div' => array('class' => 'col-sm-10'), 'label' => false)); ?>
     <label for="inputNamnhaplieu" class="col-sm-2 control-label">Năm nhập liệu <span class="required">*</span></label>
     <?php
     echo $this->Form->input('nam', array('type' => 'number', 'class' => 'form-control',

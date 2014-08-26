@@ -116,6 +116,14 @@ class DoanhNghiep extends AdminAppModel {
             'className' => 'Admin.NuocNgamDoanhNghiep',
             'foreignKey' => 'colCSSX'
         ),
+        'NuocThaiNhaMay' => array(
+            'className' => 'Admin.NuocThaiNhaMay',
+            'foreignKey' => 'colCSSX'
+        ),
+        'XuLyNuocThaiDoanhNghiep' => array(
+            'className' => 'Admin.XuLyNuocThaiDoanhNghiep',
+            'foreignKey' => 'colCSSX'
+        )
     );
 
     public function beforeSave($options = array()) {

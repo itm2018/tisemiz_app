@@ -2,9 +2,9 @@
 <?php echo $this->Form->create('DanhmucSanPham', array('type' => 'post')); ?>
 <table class="table">
     <tr>
-        <td><label for="inputTenDanhMuc" class="col-sm-2 control-label">Tên danh mục <span class="required">*</span></label></td>
-        <td><?php echo $this->Form->input('tendanhmuc', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control', 'type' => 'text', 'id' => 'txtTendanhmuc', 'placeholder' => 'nhập tên danh mục')); ?></td>
-        <td><?php echo $this->Form->submit('Lưu danh mục', array('class' => 'btn btn-primary')); ?></td>
+        <td><label for="inputTenDanhMuc" class="col-sm-10 control-label">Tên danh mục <span class="required">*</span></label></td>
+        <td><?php echo $this->Form->input('tendanhmuc', array('div' => array('class' => 'col-sm-10'), 'label' => false, 'class' => 'form-control', 'type' => 'text', 'id' => 'txtTendanhmuc', 'placeholder' => 'nhập tên danh mục')); ?></td>
+        <td style="text-align: left;"><?php echo $this->Form->submit('Lưu danh mục', array('class' => 'btn btn-primary')); ?></td>
     </tr>
 </table>
 <?php echo $this->Form->end(); ?>
@@ -88,7 +88,7 @@
             data: {ids: ids},
             type: "post",
             success: function(data, textStatus) {
-                console.log(data);
+                window.location.reload();
             },
             url: "<?php echo Router::url('/admin/doanhnghiep/xoadanhmucs') ?>"
         });
