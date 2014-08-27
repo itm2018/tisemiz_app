@@ -20,4 +20,10 @@ class NguonThaiKhiThai extends AdminAppModel {
  */
 	public $primaryKey = 'colMa';
 
+        public $hasMany=array(
+            'XuLyKhiThaiDoanhNghiep'=>array(
+                'className'=>'Admin.XuLyKhiThaiDoanhNghiep',
+                'foreignKey'=>'colMaNguonThai'
+            )
+        );
 }

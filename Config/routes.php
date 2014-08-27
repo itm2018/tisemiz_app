@@ -19,6 +19,7 @@ Router::connect('/admin/doanhnghiep/themnhienlieudoanhnghiep', array('plugin' =>
 Router::connect('/admin/doanhnghiep/themnuocngamdoanhnghiep', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'themnuocngamdoanhnghiep'));
 Router::connect('/admin/doanhnghiep/themnuocthainhamay', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'themnuocthainhamay'));
 Router::connect('/admin/doanhnghiep/thembienphapxulynuocthaidoanhnghiep', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'thembienphapxulynuocthaidoanhnghiep'));
+Router::connect('/admin/doanhnghiep/thembienphapxulykhithaidoanhnghiep', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'thembienphapxulykhithaidoanhnghiep'));
 Router::connect('/admin/doanhnghiep/xoadanhmucs', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'xoadanhmucs'));
 Router::connect('/admin/doanhnghiep/xoasanphams', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'xoasanphams'));
 Router::connect('/admin/doanhnghiep/xoanguyenlieus', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'xoanguyenlieus'));
@@ -30,6 +31,7 @@ Router::connect('/admin/doanhnghiep/xoadanhsachnuocngamdoanhnghiep', array('plug
 Router::connect('/admin/doanhnghiep/xoadanhsachnhienlieudoanhnghiep', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'xoadanhsachnhienlieudoanhnghiep'));
 Router::connect('/admin/doanhnghiep/xoadanhsachnuocthainhamay', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'xoadanhsachnuocthainhamay'));
 Router::connect('/admin/doanhnghiep/xoadanhsachbienphapxulynuocthaidoanhnghiep', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'xoadanhsachbienphapxulynuocthaidoanhnghiep'));
+Router::connect('/admin/doanhnghiep/xoadanhsachbienphapxulykhithaidoanhnghiep', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'xoadanhsachbienphapxulykhithaidoanhnghiep'));
 Router::connect('/admin/doanhnghiep/chucnang/type/:type', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'chucnang'), array('pass' => array('type'), 'type' => '[0-9]'));
 Router::connect('/admin/doanhnghiep/capnhat/type/:type/id/:id', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'capnhat'), array('pass' => array('type', 'id'), 'type' => '[0-9]', 'id' => '[0-9]{1,11}'));
 //Router::connect('/',array('plugin'=>'Front','controller'=>'News','action'=>'view'),'home','home');

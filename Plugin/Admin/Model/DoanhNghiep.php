@@ -123,6 +123,10 @@ class DoanhNghiep extends AdminAppModel {
         'XuLyNuocThaiDoanhNghiep' => array(
             'className' => 'Admin.XuLyNuocThaiDoanhNghiep',
             'foreignKey' => 'colCSSX'
+        ),
+        'XuLyKhiThaiDoanhNghiep' => array(
+            'className' => 'Admin.XuLyKhiThaiDoanhNghiep',
+            'foreignKey' => 'colCSSX'
         )
     );
 

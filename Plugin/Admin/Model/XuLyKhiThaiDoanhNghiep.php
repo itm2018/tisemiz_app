@@ -3,17 +3,17 @@
 App::uses('AdminAppModel', 'Admin.Model');
 
 /**
- * XuLyTiengOnRung Model
+ * XuLyKhiThaiDoanhNghiep Model
  *
  */
-class XuLyTiengOnRung extends AdminAppModel {
+class XuLyKhiThaiDoanhNghiep extends AdminAppModel {
 
     /**
      * Use table
      *
      * @var mixed False or table name
      */
-    public $useTable = 'xu_ly_tieng_on_rung';
+    public $useTable = 'xu_ly_khi_thai_doanh_nghiep';
 
     /**
      * Primary key field
@@ -22,9 +22,9 @@ class XuLyTiengOnRung extends AdminAppModel {
      */
     public $primaryKey = 'colMa';
     public $belongsTo = array(
-        'NguonGayOnRung' => array(
-            'className' => 'Admin.NguonGayOnRung',
-            'foreignKey' => 'colNguonGayOn'
+        'NguonThaiKhiThai' => array(
+            'className' => 'Admin.NguonThaiKhiThai',
+            'foreignKey' => 'colMaNguonThai'
         )
     );
     public $validate = array(
@@ -37,5 +37,4 @@ class XuLyTiengOnRung extends AdminAppModel {
         }
         parent::beforeSave($options);
     }
-
 }

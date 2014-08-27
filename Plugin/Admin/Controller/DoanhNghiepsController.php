@@ -191,6 +191,8 @@ class DoanhNghiepsController extends AdminAppController {
 		$this->set('listnuocthainhamay', $listnuocthainhamay);
 		$listbienphapxulynuocthai = $this->DoanhNghiep->XuLyNuocThaiDoanhNghiep->find('all', array('conditions' => array('colCSSX' => $savingDoanhNghiep['DoanhNghiep']['colMa']), 'order' => array('XuLyNuocThaiDoanhNghiep.created' => 'ASC')));
 		$this->set('listbienphapxulynuocthai', $listbienphapxulynuocthai);
+                $listbienphapxulykhithai = $this->DoanhNghiep->XuLyKhiThaiDoanhNghiep->find('all', array('conditions' => array('colCSSX' => $savingDoanhNghiep['DoanhNghiep']['colMa']), 'order' => array('XuLyKhiThaiDoanhNghiep.created' => 'ASC')));
+                $this->set('listbienphapxulykhithai', $listbienphapxulykhithai);
 	}
 
 	public function step4Hoatdongbaovemoitruong() {
@@ -555,6 +557,17 @@ class DoanhNghiepsController extends AdminAppController {
 		}
 	}
 
+        public function xoadanhsachbienphapxulykhithaidoanhnghiep(){
+            $this->layout = false;
+		$this->autoRender = false;
+		if ($this->request->is('post')) {
+			$colMas = $this->request->data['listcolMa'];
+			$this->loadModel('Admin.NguonThaiKhiThai');
+			if ($this->NguonThaiKhiThai->XuLyKhiThaiDoanhNghiep->deleteAll(array('XuLyKhiThaiDoanhNghiep.colMa' => $colMas))) {
+				$this->Session->setFlash('Đã xóa thông tin ra khỏi danh sách biện pháp xử lý khí thải của doanh nghiệp', 'default', array('class' => 'success'));
+			}
+		}
+        }
 	public function xoanguyenlieus() {
 		$this->layout = false;
 		$this->autoRender = false;
@@ -693,5 +706,28 @@ class DoanhNghiepsController extends AdminAppController {
 			}
 		}
 	}
+        public function thembienphapxulykhithaidoanhnghiep(){
+            $this->layout = false;
+		$this->autoRender = false;
+		$savingDoanhNghiep = $this->Session->read('savingDoanhNghiep');
+		if ($this->request->is('post')) {
+			$bienphapxulykhithai = $this->request->data['XuLyKhiThaiDoanhNghiep'];
+			$bienphapxulykhithai['colCSSX'] = $savingDoanhNghiep['DoanhNghiep']['colMa'];
+			$bienphapxulykhithai['colNam'] = $savingDoanhNghiep['DoanhNghiep']['nam'];
+			$this->loadModel('Admin.XuLyKhiThaiDoanhNghiep');
+			$this->loadModel('Admin.DoanhNghiep');
+			$this->XuLyKhiThaiDoanhNghiep->set($bienphapxulykhithai);
+			if ($this->XuLyKhiThaiDoanhNghiep->validates()) {
+				if ($this->XuLyKhiThaiDoanhNghiep->save()) {
+					$current_doanhnghiep = $this->DoanhNghiep->findByColma($savingDoanhNghiep['DoanhNghiep']['colMa']);
+					$listbienphapxulykhithai = $this->DoanhNghiep->XuLyKhiThaiDoanhNghiep->find('all', array('conditions' => array('colCSSX' => $savingDoanhNghiep['DoanhNghiep']['colMa']), 'order' => array('XuLyKhiThaiDoanhNghiep.created' => 'ASC')));
+					if ($current_doanhnghiep) {
+						$this->Session->write('savingDoanhNghiep', $current_doanhnghiep);
+						echo json_encode($listbienphapxulykhithai);
+					}
+				}
+			}
+		}
+        }
 
 }

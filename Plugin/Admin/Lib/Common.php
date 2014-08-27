@@ -15,6 +15,7 @@ App::uses('NuocNgamDoanhNghiep', 'Admin.Model');
 App::uses('NguonThaiNuocThai', 'Admin.Model');
 App::uses('NguonThaiKhiThai', 'Admin.Model');
 App::uses('BienPhapXuLyNuocThai', 'Admin.Model');
+App::uses('NguonGayOnRung', 'Admin.Model');
 
 class Common
 {
@@ -122,6 +123,28 @@ class Common
         if (is_array($list) && count($list)) {
             foreach ($list as $item) {
                 $result[$item['BienPhapXuLyNuocThai']['id']] = $item['BienPhapXuLyNuocThai']['tenbienphap'];
+            }
+        }
+        return $result;
+    }
+    public static function getListNguonThaiKhiThai(){
+        $result = array();
+        $nguonthai = new NguonThaiKhiThai();
+        $list = $nguonthai->find('all', array('fields' => array('colMa', 'colTenNgThai')));
+        if (is_array($list) && count($list)) {
+            foreach ($list as $item) {
+                $result[$item['NguonThaiKhiThai']['colMa']] = $item['NguonThaiKhiThai']['colTenNgThai'];
+            }
+        }
+        return $result;
+    }
+    public static function getListNguonGayOnRung(){
+        $result = array();
+        $nguonthai = new NguonGayOnRung();
+        $list = $nguonthai->find('all', array('fields' => array('colMa', 'colTenNguon')));
+        if (is_array($list) && count($list)) {
+            foreach ($list as $item) {
+                $result[$item['NguonGayOnRung']['colMa']] = $item['NguonGayOnRung']['colTenNguon'];
             }
         }
         return $result;
