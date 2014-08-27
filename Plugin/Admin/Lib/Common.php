@@ -10,7 +10,7 @@ App::uses('Quocgia', 'Admin.Model');
 App::uses('Nganh', 'Admin.Model');
 App::uses('Nguyenlieu', 'Admin.Model');
 App::uses('Sanpham', 'Admin.Model');
-App::uses('DanhmucSanpham', 'Admin.Model');
+App::uses('DanhmucSanPham', 'Admin.Model');
 App::uses('NuocNgamDoanhNghiep', 'Admin.Model');
 App::uses('NguonThaiNuocThai', 'Admin.Model');
 App::uses('NguonThaiKhiThai', 'Admin.Model');
@@ -86,7 +86,7 @@ class Common
     public static function getListDanhmucSanPham()
     {
         $result = array('0'=>'...vui lòng chọn');
-        $danh_muc_san_pham = new DanhmucSanpham();
+        $danh_muc_san_pham = new DanhmucSanPham();
         $list = $danh_muc_san_pham->find('all', array('fields' => array('id', 'tendanhmuc')));
         if (is_array($list) && count($list)) {
             foreach ($list as $item) {
@@ -96,7 +96,7 @@ class Common
         return $result;
     }
     public static function getFullListDanhmucSanPham(){
-        $danh_muc_san_pham = new DanhmucSanpham();
+        $danh_muc_san_pham = new DanhmucSanPham();
         $list = $danh_muc_san_pham->find('all');
         return $list;
     }

@@ -200,3 +200,12 @@ echo $this->Form->create('DoanhNghiep', array('type' => 'file', 'class' => 'form
     </div>
 </div>
 <?php echo $this->Form->end(); ?>
+<script type="text/javascript">
+	$(function(){
+		$('#DoanhNghiepColNamHopDong').datepicker({numberOfMonths: 2}).next('.ui-datepicker-trigger').css({
+            float: 'right',
+            marginRight: '-20px',
+            marginTop: '-25px'
+        });
+	});
+	</script>
