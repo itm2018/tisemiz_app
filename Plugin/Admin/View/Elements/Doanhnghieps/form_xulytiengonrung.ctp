@@ -33,41 +33,37 @@
         </tr>
     </thead>
     <tbody id="list-kqpt-xulytiengonrung">
-        <!--
-        <?php if (isset($listbienphapxulykhithai) && count($listbienphapxulykhithai)): ?>
+        <?php if (isset($listbienphapxulyonrung) && count($listbienphapxulyonrung)): ?>
             <?php $i = 0; ?>
-            <?php foreach ($listbienphapxulykhithai as $ntnm): ?>
+            <?php foreach ($listbienphapxulyonrung as $xlor): ?>
                 <tr class="<?php echo $classes[$i]; ?>">
                     <td>
-                        <input type="hidden" name="colMa" value="<?php echo $ntnm['XuLyKhiThaiDoanhNghiep']['colMa'] ?>">
-                        <?php echo date('d/m/Y', strtotime($ntnm['XuLyKhiThaiDoanhNghiep']['colThoiGian'])) ?>
+                        <input type="hidden" name="colMa" value="<?php echo $xlor['XuLyTiengOnRung']['colMa'] ?>">
+                        <?php echo date('d/m/Y', strtotime($xlor['XuLyTiengOnRung']['colThoiGian'])) ?>
                     </td>
                     <td>
-                        <?php echo h($ntnm['NguonThaiKhiThai']['colTenNgThai']) ?>
+                        <?php echo h($xlor['NguonGayOnRung']['colTenNguon']) ?>
                     </td>
                     <td>
-                        <?php echo h($ntnm['XuLyKhiThaiDoanhNghiep']['colNguonPSinh']) ?>
+                        <?php echo h($xlor['XuLyTiengOnRung']['colNguonPSinh']) ?>
                     </td>
                     <td>
-                        <?php echo h($ntnm['XuLyKhiThaiDoanhNghiep']['colChuaXLy']) ?>
+                        <?php echo h($xlor['XuLyTiengOnRung']['colKhongXLy']) ?>
                     </td>
                     <td>
-                        <?php echo h($ntnm['XuLyKhiThaiDoanhNghiep']['colOngKhoi']) ?>
+                        <?php echo h($xlor['XuLyTiengOnRung']['colCheChan']) ?>
                     </td>
                     <td>
-                        <?php echo h($ntnm['XuLyKhiThaiDoanhNghiep']['colHapPhu']) ?>
+                        <?php echo h($xlor['XuLyTiengOnRung']['colBocCachAm']) ?>
                     </td>
                     <td>
-                        <?php echo h($ntnm['XuLyKhiThaiDoanhNghiep']['colHapThu']) ?>
+                        <?php echo h($xlor['XuLyTiengOnRung']['colMoTaBienPhapKhac']) ?>
                     </td>
                     <td>
-                        <?php echo h($ntnm['XuLyKhiThaiDoanhNghiep']['colMotaBienPhapKhac']) ?>
+                        <?php echo h($xlor['XuLyTiengOnRung']['colGhiChu']) ?>
                     </td>
                     <td>
-                        <?php echo h($ntnm['XuLyKhiThaiDoanhNghiep']['colGhiChu']) ?>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="deleterow<?php echo $ntnm['XuLyKhiThaiDoanhNghiep']['colMa'] ?>">
+                        <input type="checkbox" name="deleterow<?php echo $xlor['XuLyTiengOnRung']['colMa'] ?>">
                     </td>
                 </tr>
                 <?php
@@ -78,7 +74,6 @@
                 ?>
             <?php endforeach; ?>
         <?php endif; ?>
-        -->
     </tbody>
     <tbody>
         <tr>
@@ -149,7 +144,7 @@
     <div class="form-group" style="display: none" id="divMotaBienPhapKhacOnRung">
         <label for="inputNam" class="col-sm-2 control-label">Mô tả</label>
         <?php
-        echo $this->Form->input('colMotaBienPhapKhac', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control', 'type' => 'text', 'id' => 'colMotaBienPhapKhac_OnRung'))
+        echo $this->Form->input('colMoTaBienPhapKhac', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control', 'type' => 'text', 'id' => 'colMotaBienPhapKhac_OnRung'))
         ;
         ?>
     </div>
@@ -220,29 +215,28 @@
                 type: "post",
                 success: function(data, textStatus) {
                                     console.log(data);
-//                    var html = '';
-//                    var parsed = JSON.parse(data);
-//                    var classes = ['none', 'active', 'success', 'warning'];
-//                    var i = 0;
-//                    parsed.forEach(function(bpxlnt) {
-//                        html += '<tr class="' + classes[i] + '">\n\
-//                <td><input type="hidden" name="colMa" value="' + bpxlnt['XuLyOnRungDoanhNghiep']['colMa'] + '">' + formatDate(new Date(getDateFromFormat(bpxlnt['XuLyOnRungDoanhNghiep']['colThoiGian'], 'yyyy-MM-dd HH:mm:ss')), 'dd/MM/yyyy') + '</td>\n\
-//    <td>' + bpxlnt['NguonThaiOnRung']['colTenNgThai'] + '</td><td>' + bpxlnt['XuLyOnRungDoanhNghiep']['colNguonPSinh'] + '</td>\n\
-//    <td>' + echoBoolValue(bpxlnt['XuLyOnRungDoanhNghiep']['colChuaXLy']) + '</td>\n\
-//    <td>' + echoBoolValue(bpxlnt['XuLyOnRungDoanhNghiep']['colOngKhoi']) + '</td>\n\
-//    <td>' + echoBoolValue(bpxlnt['XuLyOnRungDoanhNghiep']['colHapPhu']) + '</td>\n\
-//    <td>' + echoBoolValue(bpxlnt['XuLyOnRungDoanhNghiep']['colHapThu']) + '</td>\n\
-//    <td>' + bpxlnt['XuLyOnRungDoanhNghiep']['colMotaBienPhapKhac'] + '</td>\n\
-//    <td>' + bpxlnt['XuLyOnRungDoanhNghiep']['colGhiChu'] + '</td>\n\
-//    <td><input type="checkbox" name="deleterow' + bpxlnt['XuLyOnRungDoanhNghiep']['colMa'] + '"></td>\n\
-//    </tr>';
-//                        ++i;
-//                        if (i == 3) {
-//                            i = 0;
-//                        }
-//                    });
-//                    $('#list-kqpt-onrungdoanhnghiep').html(html);
-//                    $('#btn-reset-kiemsoatonrung').trigger('click');
+                    var html = '';
+                    var parsed = JSON.parse(data);
+                    var classes = ['none', 'active', 'success', 'warning'];
+                    var i = 0;
+                    parsed.forEach(function(bpxlor) {
+                        html += '<tr class="' + classes[i] + '">\n\
+                <td><input type="hidden" name="colMa" value="' + bpxlor['XuLyTiengOnRung']['colMa'] + '">' + formatDate(new Date(getDateFromFormat(bpxlor['XuLyTiengOnRung']['colThoiGian'], 'yyyy-MM-dd HH:mm:ss')), 'dd/MM/yyyy') + '</td>\n\
+    <td>' + bpxlor['NguonGayOnRung']['colTenNguon'] + '</td><td>' + bpxlor['XuLyTiengOnRung']['colNguonPSinh'] + '</td>\n\
+    <td>' + echoBoolValue(bpxlor['XuLyTiengOnRung']['colKhongXLy']) + '</td>\n\
+    <td>' + echoBoolValue(bpxlor['XuLyTiengOnRung']['colCheChan']) + '</td>\n\
+    <td>' + echoBoolValue(bpxlor['XuLyTiengOnRung']['colBocCachAm']) + '</td>\n\
+    <td>' + bpxlor['XuLyTiengOnRung']['colMoTaBienPhapKhac'] + '</td>\n\
+    <td>' + bpxlor['XuLyTiengOnRung']['colGhiChu'] + '</td>\n\
+    <td><input type="checkbox" name="deleterow' + bpxlor['XuLyTiengOnRung']['colMa'] + '"></td>\n\
+    </tr>';
+                        ++i;
+                        if (i == 3) {
+                            i = 0;
+                        }
+                    });
+                    $('#list-kqpt-xulytiengonrung').html(html);
+                    $('#btn-reset-kiemsoatonrung').trigger('click');
                 },
                 url: "<?php echo Router::url('/admin/doanhnghiep/thembienphapxulyonrungdoanhnghiep') ?>"
             });

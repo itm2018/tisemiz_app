@@ -55,61 +55,9 @@
 
             </div>
             <div class="tab-pane active" id="panel-4">
-                <p><h3>IV. THÔNG TIN VỀ HOẠT ĐỘNG TUÂN THỦ BẢO VỆ MÔI TRƯỜNG</h3></p>
-                <form class="form-horizontal" role="form">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>
-                                    Thông tin
-                                </th>
-                                <th>
-                                    Đã có
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    Lập hồ sơ đánh giá tác động môi trường
-                                </td>
-                                <td>
-                                    <input type="checkbox" name="daco">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    "Sổ đăng ký nguồn thải" chất nguy hại
-                                </td>
-                                <td>
-                                    <input type="checkbox" name="daco">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Lập hồ sơ đánh giá tác động môi trường
-                                </td>
-                                <td>
-                                    <input type="checkbox" name="daco">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Lập hồ sơ đánh giá tác động môi trường
-                                </td>
-                                <td>
-                                    <input type="checkbox" name="daco">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary">Lưu thông tin tuân thủ bảo vệ môi trường</button>
-                            <button type="reset" class="btn btn-info">Quay về</button>
-                        </div>
-                    </div>
-                </form>
+                <!-- Form thong tin tuan thu bao ve moi truong-->
+                <?php echo $this->element('Admin.Doanhnghieps/form_thongtintuanthubvmt');?>
+                <!-- End Form thong tin tuan thu bao ve moi truong-->
             </div>
             <div class="tab-pane" id="panel-5">
                

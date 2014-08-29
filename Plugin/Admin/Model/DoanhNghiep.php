@@ -127,6 +127,26 @@ class DoanhNghiep extends AdminAppModel {
         'XuLyKhiThaiDoanhNghiep' => array(
             'className' => 'Admin.XuLyKhiThaiDoanhNghiep',
             'foreignKey' => 'colCSSX'
+        ),
+        'XuLyTiengOnRung' => array(
+            'className' => 'Admin.XuLyTiengOnRung',
+            'foreignKey' => 'colCSSX'
+        ),
+        'RacThaiSinhHoat' => array(
+            'className' => 'Admin.RacThaiSinhHoat',
+            'foreignKey' => 'colCSSX'
+        ),
+        'ChatThaiRanCongNghiep' => array(
+            'className' => 'Admin.ChatThaiRanCongNghiep',
+            'foreignKey' => 'colCSSX'
+        ),
+        'ChatThaiNguyHai' => array(
+            'className' => 'Admin.ChatThaiNguyHai',
+            'foreignKey' => 'colCSSX'
+        ),
+        'DoanhNghiepThongTinTuanThuBvmt' => array(
+            'className' => 'Admin.DoanhNghiepThongTinTuanThuBvmt',
+            'foreignKey' => 'colMaDN'
         )
     );
 

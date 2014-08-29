@@ -100,14 +100,17 @@
                         </div>
                         <div class="tab-pane" id="panel-racsinhhoat">
                             <!--racsinhhoat-->
+                            <?php echo $this->element('Admin.Doanhnghieps/form_racthaisinhhoat');?>
                             <!--/racsinhhoat-->
                         </div>
                         <div class="tab-pane" id="panel-chatthaicongnghiep">
                             <!--chatthaicongnghiep-->
+                            <?php echo $this->element('Admin.Doanhnghieps/form_chatthairancongnghiep');?>
                             <!--/chatthaicongnghiep-->
                         </div>
                         <div class="tab-pane" id="panel-chatthainguyhai">
                             <!--chatthainguyhai-->
+                            <?php echo $this->element('Admin.Doanhnghieps/form_chatthainguyhai');?>
                             <!--/chatthainguyhai-->
                         </div>
                     </div>
