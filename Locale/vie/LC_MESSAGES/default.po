@@ -84,3 +84,6 @@ msgstr "Tài khoản của bạn đã được tạo. Nhưng trước khi bạn 
 
 msgid "You are logged in"
 msgstr "Bạn đã đăng nhập thành công"
+
+msgid "Are you sure you want to delete # %s?"
+msgstr "Bạn có chắc muốn xóa doanh nghiệp ứng với ID=%s"

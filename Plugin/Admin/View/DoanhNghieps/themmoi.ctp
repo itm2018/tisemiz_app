@@ -2,7 +2,7 @@
 
 
 <div class="main-header">
-    <h2>Thêm mới doanh nghiệp</h2>
+    <h2>Thêm mới (cập nhật) doanh nghiệp</h2>
     <em>lưu ý chọn năm nhập liệu</em>
 
 </div>

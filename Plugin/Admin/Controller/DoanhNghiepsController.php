@@ -56,10 +56,47 @@ class DoanhNghiepsController extends AdminAppController {
         return $notsavedE;
     }
 
+    public function edit($id = null) {
+        if ($id && is_numeric($id)) {
+            $this->loadModel('Admin.DoanhNghiep');
+            $editing_enterprise = $this->DoanhNghiep->findByColma($id);
+            if ($editing_enterprise) {
+                $this->Session->write('editing', 1);
+                $this->Session->write('savingDoanhNghiep', $editing_enterprise);
+                $this->redirect('/admin/doanhnghiep/themmoi');
+            } else {
+                $this->Session->setFlash('Doanh nghiệp không tồn tại');
+                $this->redirect('/admin/doanhnghiep/lietke');
+            }
+        }
+    }
+
+    public function delete($id) {
+        if ($this->request->is('post')) {
+            if ($id && is_numeric($id)) {
+                $this->loadModel('Admin.DoanhNghiep');
+                $deleting = $this->DoanhNghiep->findByColma($id);
+                if ($deleting) {
+                    if ($this->DoanhNghiep->deleteAll(array('DoanhNghiep.colMa' => $id), true)) {
+                        $this->Session->setFlash('Đã xóa thành công dữ liệu của doanh nghiệp', 'default', array('class' => 'success'));
+                        $this->redirect('/admin/doanhnghiep/lietke');
+                    } else {
+                        $this->Session->setFlash('Thất bại!!!Lỗi xảy ra trong quá trình xóa doanh nghiệp');
+                        $this->redirect('/admin/doanhnghiep/lietke');
+                    }
+                } else {
+                    $this->Session->setFlash('Dữ liệu doanh nghiệp không tồn tại');
+                    $this->redirect('/admin/doanhnghiep/lietke');
+                }
+            }
+        }
+    }
+
     public function themmoi() {
         //load not saving enterprise
         $notesavedE = $this->_getLatestNotSavedEnterprise();
-        if ($notesavedE) {
+        $editing = $this->Session->read('editing');
+        if ($notesavedE && !$editing) {
 //            pr($notesavedE[0]);exit;
             unset($notesavedE[0]['colMa']); //xoa du lieu max colMa
             $this->Session->write('savingDoanhNghiep', $notesavedE[0]);
@@ -242,10 +279,50 @@ class DoanhNghiepsController extends AdminAppController {
             $this->Session->setFlash('Xin nhập thông tin doanh nghiệp');
             $this->redirect('/admin/doanhnghiep/themmoi');
         }
+
+        if ($this->request->is('post')) {
+            $thongtinkiennghi = $this->request->data['ThongTinKienNghiBvmt'];
+            $thongtinkiennghi['colCSSX'] = $savingDoanhNghiep['DoanhNghiep']['colMa'];
+            $this->loadModel('Admin.ThongTinKienNghiBvmt');
+//            $this->ThongTinKienNghiBvmt->set($thongtinkiennghi);
+            $saved_thongtinkiennghi = $this->ThongTinKienNghiBvmt->save($thongtinkiennghi);
+            if ($saved_thongtinkiennghi) {
+                $this->Session->write('savingKiennghi', $saved_thongtinkiennghi);
+                $current_dn = $this->DoanhNghiep->findByColma($savingDoanhNghiep['DoanhNghiep']['colMa']);
+                $this->Session->write('savingDoanhNghiep', $current_dn);
+                $this->Session->setFlash('Đã lưu thông tin kiến nghị bảo vệ môi trường của doanh nghiệp', 'default', array('class' => 'success'));
+                $this->redirect('/admin/doanhnghiep/themmoi/step5');
+            } else {
+                $this->Session->setFlash('Có lỗi xảy ra trong quá trình lưu dữ liệu');
+            }
+        }
+        $savingKiennghi = $this->Session->read('savingKiennghi');
+        if ($savingKiennghi) {
+            $this->request->data = $savingKiennghi;
+            $this->set('savingKiennghi', $savingKiennghi);
+        }
     }
 
     public function step6Hoantat() {
-        
+        if ($this->request->is('post')) {
+            $savingDoanhNghiep = $this->Session->read('savingDoanhNghiep');
+            if (!isset($savingDoanhNghiep['DoanhNghiep']) || !$savingDoanhNghiep['DoanhNghiep']) {
+                $this->Session->setFlash('Xin nhập thông tin doanh nghiệp');
+                $this->redirect('/admin/doanhnghiep/themmoi');
+            }
+            $this->loadModel('Admin.DoanhNghiep');
+            $this->DoanhNghiep->set($savingDoanhNghiep['DoanhNghiep']);
+            if ($this->DoanhNghiep->saveField('saving_status', 1)) {
+                $this->Session->delete('savingDoanhNghiep');
+                $this->Session->delete('editing');
+                $this->Session->delete('savingKiennghi');
+                $this->Session->setFlash('Đã hoàn tất quá trình cập nhật mới thông tin doanh nghiệp', 'default', array('class' => 'success'));
+                $this->redirect('/admin/doanhnghiep/lietke');
+            }
+        } else {
+            $this->Session->setFlash('Xin nhập thông tin doanh nghiệp');
+            $this->redirect('/admin/doanhnghiep/themmoi');
+        }
     }
 
     /**

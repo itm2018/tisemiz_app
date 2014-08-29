@@ -55,23 +55,9 @@
                 
             </div>
             <div class="tab-pane active" id="panel-5">
-                <p>
-                <h3>V. CÁC KIẾN NGHỊ VỚI CƠ QUAN QUẢN LÝ NHÀ NƯỚC</h3>
-                </p>
-                <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label for="inputKiennghi" class="col-sm-2 control-label">Thông tin kiến nghị</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" name="inputKiennghi" id="inputKiennghi" placeholder="Thông tin kiến nghị với cơ quan nhà nước"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary">Lưu thông tin kiến nghị</button>
-                            <button type="reset" class="btn btn-info">Quay về</button>
-                        </div>
-                    </div>
-                </form>
+                <!--thong tin kien nghi-->
+                <?php echo $this->element('Admin.Doanhnghieps/form_thongtinkiennghibaovemoitruong')?>
+                <!--ket thuc thong tin kien nghi-->
             </div>
         </div>
     </div>

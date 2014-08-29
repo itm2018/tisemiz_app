@@ -1118,5 +1118,28 @@ class BaocaoController extends AdminAppController {
 			throw new NotFoundException('Không tồn tại báo cáo này');
 		}
 	}
+        
+        public function baocaochatthainguyhai(){
+            
+        }
+        public function baocaochatthainguyhaistep2(){
+            
+        }
+        public function baocaochatthainguyhaistep3(){
+            
+        }
+        public function baocaochatthainguyhaistep4(){
+            
+        }
+        public function baocaochatthainguyhaistep5(){
+            
+        }
+        public function chatthainguyhaiphatsinh(){
+            
+        }
+        public function chatthainguyhaitonluu(){
+            
+        }
+        
 
 }

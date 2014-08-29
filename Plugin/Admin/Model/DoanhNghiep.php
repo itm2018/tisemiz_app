@@ -147,6 +147,14 @@ class DoanhNghiep extends AdminAppModel {
         'DoanhNghiepThongTinTuanThuBvmt' => array(
             'className' => 'Admin.DoanhNghiepThongTinTuanThuBvmt',
             'foreignKey' => 'colMaDN'
+        ),
+        'ThongTinKienNghiBvmt' => array(
+            'className' => 'Admin.ThongTinKienNghiBvmt',
+            'foreignKey' => 'colCSSX'
+        ),
+        'DoanhNghiepCon' => array(
+            'className' => 'Admin.DoanhNghiep',
+            'foreignKey' => 'colMaDNME'
         )
     );
 
