@@ -22,7 +22,13 @@
         <div class="ws_shadow"></div>
     </div>	
 </div>
-<div style="float: right; margin-right: 88px;">
+<style>
+    .form-group {
+        padding: 0px;
+        margin: 0px;
+    }
+</style>
+<div style="float: right; margin-right: 130px;">
     <div class="col-md-12">
         <div class="widget">
             <div class="widget-header">
