@@ -13,21 +13,21 @@
                 <table id="table3" cellspacing="0" cellpadding="0" width="750px" border="0" style="margin: 5px 5px 5px 5px;" align="center">
                     <tbody><tr>
                         <td>
-                            <a href="javascript:LinkGoto('link1');">
+                            <a href="<?php echo Router::url('/admin/baocao/baocaochatthainguyhai/step1')?>">
                                 <img id="Image3" src="/img/b1_actv_cnt.gif" alt="" border="0"></a>
                         </td>
                         <td align="center">
                             <img id="Image4" src="/img/tab_arrow.gif" alt="" border="0">
                         </td>
                         <td>
-                            <a href="javascript:LinkGoto('link2');">
+                            <a href="<?php echo Router::url('/admin/baocao/baocaochatthainguyhai/step2')?>">
                                 <img id="Image5" src="/img/b2_dactv_cnt.gif" alt="" border="0"></a>
                         </td>
                         <td align="center">
                             <img id="Image6" src="/img/tab_arrow.gif" alt="" border="0">
                         </td>
                         <td>
-                            <a href="javascript:LinkGoto('link3');">
+                            <a href="<?php echo Router::url('/admin/baocao/baocaochatthainguyhai/step3')?>">
                                 <img id="Image7" src="/img/b3_dactv_cnt.gif" alt="" border="0"></a>
                         </td>
                         <td align="center">
@@ -35,14 +35,14 @@
                         </td>
                         
                         <td>
-                            <a href="javascript:LinkGoto('link5');">
+                            <a href="<?php echo Router::url('/admin/baocao/baocaochatthainguyhai/step4')?>">
                                 <img id="Img5" src="/img/b5_dactv_cnt.gif" alt="" border="0"></a>
                         </td>
                         <td align="center">
                             <img id="Img6" src="/img/tab_arrow.gif" alt="" border="0">
                         </td>
                         <td>
-                            <a href="javascript:LinkGoto('link6');">
+                            <a href="<?php echo Router::url('/admin/baocao/baocaochatthainguyhai/step5')?>">
                                 <img id="Img7" src="/img/b6_xt_hid.gif" alt="" border="0"></a>
                         </td>
                     </tr>

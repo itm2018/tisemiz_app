@@ -50,11 +50,11 @@ Router::connect('/news', array('plugin' => 'Front', 'controller' => 'News', 'act
 //Router::connect('/tintuc/xem',array('plugin'=>'Front','controller'=>'News','action'=>'view'));
 //Router::connect('/admin/baocao/dulieugiamsatmoitruong',array('plugin'=>'Admin','controller'=>'Baocao','Action'=>'dulieugiamsatmoitruong'));
 // Router::connect('/admin/baocao/xemchitiet/:id',array('plugin'=>'Admin','controller'=>'Baocao','Action'=>'xemchitiet'),array('pass'=>array('id')));
-Router::connect('/admin/baocao/baocaochatthainguyhai',array('plugin'=>'Admin','controller'=>'Baocao','action'=>'baocaochatthainguyhai'));
-Router::connect('/admin/baocao/baocaochatthainguyhaistep2',array('plugin'=>'Admin','controller'=>'Baocao','action'=>'baocaochatthainguyhaistep2'));
-Router::connect('/admin/baocao/baocaochatthainguyhaistep3',array('plugin'=>'Admin','controller'=>'Baocao','action'=>'baocaochatthainguyhaistep3'));
-Router::connect('/admin/baocao/baocaochatthainguyhaistep4',array('plugin'=>'Admin','controller'=>'Baocao','action'=>'baocaochatthainguyhaistep4'));
-Router::connect('/admin/baocao/baocaochatthainguyhaistep5',array('plugin'=>'Admin','controller'=>'Baocao','action'=>'baocaochatthainguyhaistep5'));
+Router::connect('/admin/baocao/baocaochatthainguyhai/step1',array('plugin'=>'Admin','controller'=>'Baocao','action'=>'baocaochatthainguyhai'));
+Router::connect('/admin/baocao/baocaochatthainguyhai/step2',array('plugin'=>'Admin','controller'=>'Baocao','action'=>'baocaochatthainguyhaistep2'));
+Router::connect('/admin/baocao/baocaochatthainguyhai/step3',array('plugin'=>'Admin','controller'=>'Baocao','action'=>'baocaochatthainguyhaistep3'));
+Router::connect('/admin/baocao/baocaochatthainguyhai/step4',array('plugin'=>'Admin','controller'=>'Baocao','action'=>'baocaochatthainguyhaistep4'));
+Router::connect('/admin/baocao/baocaochatthainguyhai/step5',array('plugin'=>'Admin','controller'=>'Baocao','action'=>'baocaochatthainguyhaistep5'));
 Router::connect('/admin/baocao/chatthainguyhaiphatsinh',array('plugin'=>'Admin','controller'=>'Baocao','action'=>'chatthainguyhaiphatsinh'));
 Router::connect('/admin/baocao/chatthainguyhaitonluu',array('plugin'=>'Admin','controller'=>'Baocao','action'=>'chatthainguyhaitonluu'));
 CakePlugin::routes();
