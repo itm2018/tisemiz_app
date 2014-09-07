@@ -161,16 +161,13 @@
                     }
                 });
                 $('#list-products').html(html);
-                resetdata();
+                 $('#btnResetSanphamDoanhnghiep').trigger("click");
             } catch (e) {
             }
 
         });
     }
 
-    function resetdata() {
-        $('#btnResetSanphamDoanhnghiep').trigger("click");
-    }
     function xoaDanhsachSanpham(list_colMa){
         $.ajax({
             beforeSend: function(XMLHttpRequest) {

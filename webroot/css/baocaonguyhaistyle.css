@@ -398,5 +398,10 @@ table.lstview th{text-align:right;font-size :8pt;font: "Verdana";color: #000;fon
 		    table.lstview span{text-align:right;font-size :8pt;font: "Verdana";color: #000;font-weight: bold;white-space: nowrap;}
         table.lstview , table.lstview td{text-align:left;font-size :9pt;FONT-FAMILY: 'Arial';BORDER-COLLaPSE: collapse ;padding: 7px 3px 5px 0px;}
 /*----------------------------------------- */
-
-	
+.ui-datepicker-trigger{
+     float: right;
+     position: absolute;
+     /*margin-right: -21px;*/
+     /*border: red 1px solid;*/
+     /*margin-right: -20px;*/
+ }  

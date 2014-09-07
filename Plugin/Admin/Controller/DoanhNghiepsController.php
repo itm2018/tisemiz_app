@@ -9,7 +9,7 @@ App::uses('Common', 'Admin.Lib');
 
 class DoanhNghiepsController extends AdminAppController {
 
-    public $components = array('Paginator');
+//    var $components = array('Paginator');
     public $helpers = array('Paginator');
 
     /**
@@ -21,17 +21,11 @@ class DoanhNghiepsController extends AdminAppController {
     public $layout = 'admin/backward';
     public $paginate = array(
         'limit' => 20,
-//        'order'=>array(
-//            'DoanhNghiep.colMa'=>'asc'
-//        )
     );
 
-//    public function beforeFiler() {
-////        parent::beforeFiler();
-//        $this->Security->allowedControllers = array('Admin.DoanhNghieps');
-//        $this->Security->allowedActions = array('themmoi');
-//        $this->Security->unlockedActions = array('themmoi');
-//    }
+    public function beforeFiler() {
+        parent::beforeFiler();
+    }
 
     public function lietke() {
         if ($this->request->query('number') && is_numeric($this->request->query('number'))) {
@@ -48,11 +42,18 @@ class DoanhNghiepsController extends AdminAppController {
         $user_id = $this->Auth->user('id');
         $this->loadModel('Admin.DoanhNghiep');
         $notsavedE = $this->DoanhNghiep->find('all', array(
-            'conditions' => array('user_id' => $user_id, 'saving_status' => 0),
-            'fields' => array('max(colMa) as colMa', '*'),
-            'group by' => 'user_id',
-            'order' => array('user_id' => 'asc')
+            'conditions' => array('DoanhNghiep.user_id' => $user_id, 'DoanhNghiep.saving_status' => 0),
+            'fields' => array('max(DoanhNghiep.colMa) as colMa', '*'),
+            'group by' => 'DoanhNghiep.user_id',
+            'order' => array('DoanhNghiep.user_id' => 'asc')
         ));
+        $nganh = array();
+        for ($i = 1; $i <= 6; ++$i) {
+            if ($notsavedE[0]['DoanhNghiep']["colMaNganh$i"]) {
+                $nganh[] = $notsavedE[0]['DoanhNghiep']["colMaNganh$i"];
+            }
+        }
+        $notsavedE[0]['DoanhNghiep']['nganh'] = $nganh;
         return $notsavedE;
     }
 
@@ -97,8 +98,7 @@ class DoanhNghiepsController extends AdminAppController {
         $notesavedE = $this->_getLatestNotSavedEnterprise();
         $editing = $this->Session->read('editing');
         if ($notesavedE && !$editing) {
-//            pr($notesavedE[0]);exit;
-            unset($notesavedE[0]['colMa']); //xoa du lieu max colMa
+            unset($notesavedE[0][0]); //xoa du lieu max colMa
             $this->Session->write('savingDoanhNghiep', $notesavedE[0]);
         } else {
             $this->loadModel('Admin.DoanhNghiep');
@@ -161,11 +161,18 @@ class DoanhNghiepsController extends AdminAppController {
             }
         }
         $after_savingDoanhNghiep = $this->Session->read('savingDoanhNghiep');
-
-        if ($after_savingDoanhNghiep && $after_savingDoanhNghiep['DoanhNghiep']['colNamHopDong']) {
+//        pr($after_savingDoanhNghiep);
+        if ($after_savingDoanhNghiep) {
             $after_savingDoanhNghiep['DoanhNghiep']['colNamHopDong'] = date('d/m/Y', strtotime($after_savingDoanhNghiep['DoanhNghiep']['colNamHopDong']));
             $after_savingDoanhNghiep['DoanhNghiep']['nganh'] = $this->Session->read('nganh');
             //gan data cho request de dien lai form
+            $nganh = array();
+            for ($i = 1; $i <= 6; ++$i) {
+                if ($after_savingDoanhNghiep['DoanhNghiep']["colMaNganh$i"]) {
+                    $nganh[] = $after_savingDoanhNghiep['DoanhNghiep']["colMaNganh$i"];
+                }
+            }
+            $after_savingDoanhNghiep['DoanhNghiep']['nganh'] = $nganh;
             $this->request->data = $after_savingDoanhNghiep;
         }
     }
@@ -280,31 +287,35 @@ class DoanhNghiepsController extends AdminAppController {
             $this->redirect('/admin/doanhnghiep/themmoi');
         }
 
-        if ($this->request->is('post')) {
-            $thongtinkiennghi = $this->request->data['ThongTinKienNghiBvmt'];
-            $thongtinkiennghi['colCSSX'] = $savingDoanhNghiep['DoanhNghiep']['colMa'];
-            $this->loadModel('Admin.ThongTinKienNghiBvmt');
+        if ($this->request->is('post') || $this->request->is('put')) {
+            $data = $this->request->data['DoanhNghiep'];
+            $thongtinkiennghibvmt = $data['thongtinkiennghibvmt'];
+//            $thongtinkiennghi['colCSSX'] = $savingDoanhNghiep['DoanhNghiep']['colMa'];
+            $this->loadModel('Admin.DoanhNghiep');
+            $this->DoanhNghiep->set($savingDoanhNghiep);
+//            $this->DoanhNghiep->saveField('thongtinkiennghibvmt',$thongtinkiennghibvmt);
 //            $this->ThongTinKienNghiBvmt->set($thongtinkiennghi);
-            $saved_thongtinkiennghi = $this->ThongTinKienNghiBvmt->save($thongtinkiennghi);
-            if ($saved_thongtinkiennghi) {
-                $this->Session->write('savingKiennghi', $saved_thongtinkiennghi);
+//            $saved_thongtinkiennghi = $this->ThongTinKienNghiBvmt->save($thongtinkiennghi);
+            if ($this->DoanhNghiep->saveField('thongtinkiennghibvmt', $thongtinkiennghibvmt)) {
+//                $this->Session->write('savingKiennghi', $saved_thongtinkiennghi);
                 $current_dn = $this->DoanhNghiep->findByColma($savingDoanhNghiep['DoanhNghiep']['colMa']);
                 $this->Session->write('savingDoanhNghiep', $current_dn);
                 $this->Session->setFlash('Đã lưu thông tin kiến nghị bảo vệ môi trường của doanh nghiệp', 'default', array('class' => 'success'));
-                $this->redirect('/admin/doanhnghiep/themmoi/step5');
             } else {
                 $this->Session->setFlash('Có lỗi xảy ra trong quá trình lưu dữ liệu');
             }
+            $this->redirect('/admin/doanhnghiep/themmoi/step5');
         }
-        $savingKiennghi = $this->Session->read('savingKiennghi');
-        if ($savingKiennghi) {
-            $this->request->data = $savingKiennghi;
-            $this->set('savingKiennghi', $savingKiennghi);
+//        $savingKiennghi = $this->Session->read('savingKiennghi');
+        $aftersaveDoanhNghiep = $this->Session->read('savingDoanhNghiep');
+        if ($aftersaveDoanhNghiep) {
+            $this->request->data = $aftersaveDoanhNghiep;
+            $this->set('done', true);
         }
     }
 
     public function step6Hoantat() {
-        if ($this->request->is('post')) {
+        if ($this->request->is('post') || $this->request->is('put')) {
             $savingDoanhNghiep = $this->Session->read('savingDoanhNghiep');
             if (!isset($savingDoanhNghiep['DoanhNghiep']) || !$savingDoanhNghiep['DoanhNghiep']) {
                 $this->Session->setFlash('Xin nhập thông tin doanh nghiệp');
@@ -384,7 +395,7 @@ class DoanhNghiepsController extends AdminAppController {
     /**
      * cac chuc nang them sua xoa cac danh muc
      */
-    public function chucnang($type) {
+    public function chucnang($type, $colMa = null) {
         $this->layout = 'popup_beautiful';
         $classes = array('none', 'active', 'success', 'warning');
         $this->set('classes', $classes);
@@ -453,6 +464,52 @@ class DoanhNghiepsController extends AdminAppController {
                             $this->redirect('/admin/doanhnghiep/chucnang/type/5');
                         }
                     }
+                }
+            } elseif ($type == 10) {
+                if ($this->request->is('post') || $this->request->is('put')) {
+                    $doanhnghiep = $this->request->data['DoanhNghiep'];
+                    if (!isset($doanhnghiep['colMaDNME']) || !$doanhnghiep['colMaDNME']) {
+                        $doanhnghiep['colMaDNME'] = $colMa;
+                    }
+                    $this->loadModel('Admin.DoanhNghiep');
+                    $validates = $this->DoanhNghiep->validate;
+                    unset($validates['nam']);
+                    unset($validates['colNamHopDong']);
+                    $this->DoanhNghiep->validate = $validates;
+                    $this->DoanhNghiep->set($doanhnghiep);
+                    if ($this->DoanhNghiep->validates()) {
+                        $saved_doanhnghiep = $this->DoanhNghiep->save();
+                        if ($saved_doanhnghiep) {
+                            $this->Session->setFlash('Lưu thành công', 'default', array('class' => 'success'));
+                            $this->Session->write('saved_doanhnghiep', $saved_doanhnghiep);
+                            $this->request->data = $saved_doanhnghiep;
+//                            $this->render('Admin.Baocao/_themcoso');
+                            $this->redirect($this->here);
+                        }
+                    }
+                }
+                $current_doanhnghiep = $this->Session->read('saved_doanhnghiep');
+                if (date_create_from_format('Y-m-d', $current_doanhnghiep['DoanhNghiep']['ngaycapchungnhanKDDT'])) {
+                    $current_doanhnghiep['DoanhNghiep']['ngaycapchungnhanKDDT'] = date('d/m/Y', strtotime($current_doanhnghiep['DoanhNghiep']['ngaycapchungnhanKDDT']));
+                }
+                $this->request->data = $current_doanhnghiep;
+                $this->Session->delete('saved_doanhnghiep');
+                $this->render('Admin.Baocao/_themcoso');
+            } elseif ($type == 11) {
+                if ($colMa && is_numeric($colMa)) {
+                    $this->loadModel('Admin.DoanhNghiep');
+                    $doanhnghiep = $this->DoanhNghiep->findByColma($colMa);
+                    if ($doanhnghiep) {
+                        if ($doanhnghiep['DoanhNghiep']['ngaycapchungnhanKDDT'] == '0000-00-00 00:00:00') {
+                            $doanhnghiep['DoanhNghiep']['ngaycapchungnhanKDDT'] = '';
+                        } elseif (date_create_from_format('Y-m-d H:i:s', $doanhnghiep['DoanhNghiep']['ngaycapchungnhanKDDT'])) {
+                            $doanhnghiep['DoanhNghiep']['ngaycapchungnhanKDDT'] = date('d/m/Y', strtotime($doanhnghiep['DoanhNghiep']['ngaycapchungnhanKDDT']));
+                        }
+                        $this->Session->write('saved_doanhnghiep', $doanhnghiep);
+                    } else {
+                        $this->Session->setFlash('Doanh nghiệp không tồn tại');
+                    }
+                    $this->redirect('/admin/doanhnghiep/chucnang/type/10/id_dn/' . $colMa);
                 }
             }
         }
@@ -990,6 +1047,41 @@ class DoanhNghiepsController extends AdminAppController {
                         echo json_encode($listbienphapxulychatthainguyhai);
                     }
                 }
+            }
+        }
+    }
+
+    /**
+     * response for ajax call xoacoso
+     */
+    public function xoacoso() {
+        $this->layout = false;
+        $this->autoRender = false;
+        $_Token = $this->Session->read('_Token');
+        $csrfTokens = $_Token['csrfTokens'];
+        if ($this->request->is('post') || $this->request->is('ajax')) {
+            if (isset($this->request->data['token']) && isset($csrfTokens[$this->request->data['token']])) {
+                if ($this->request->data['id_dn'] && is_numeric($this->request->data['id_dn'])) {
+                    $this->loadModel('Admin.DoanhNghiep');
+                    if ($this->DoanhNghiep->delete(array('colMa' => $this->request->data['id_dn']))) {
+                        $this->Session->setFlash('Xóa thành công cơ sở của doanh nghiệp', 'default', array('class' => 'success'));
+                        exit;
+                    }
+                }
+            }
+        }
+        $this->Session->setFlash('Lỗi!!! Không xóa được cơ sở tại thời điểm hiện tại. Vui lòng liên hệ quản trị để được hỗ trợ.');
+    }
+
+    public function get() {
+        $this->layout = false;
+        $this->autoRender = false;
+        if ($this->request->is('post') || $this->request->is('ajax')) {
+            $colMa = $this->request->data['colMa'];
+            $this->loadModel('Admin.DoanhNghieps');
+            $result = $this->DoanhNghieps->findByColma($colMa);
+            if ($result) {
+                echo json_decode($result);
             }
         }
     }

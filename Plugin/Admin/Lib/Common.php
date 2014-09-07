@@ -149,4 +149,13 @@ class Common
         }
         return $result;
     }
+    public static function getTenNganh($id){
+        $tennguon='';
+        $nganh=new Nganh();
+        $result=$nganh->findById($id);
+        if($result){
+            $tennguon=$result['Nganh']['tennganh'];
+        }
+        return $tennguon;
+    }
 }

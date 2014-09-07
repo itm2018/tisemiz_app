@@ -26,11 +26,7 @@ class AppController extends Controller {
     //public $helpers = array('Minify.Minify');
     public $components = array(
         'Session',
-        'RequestHandler',
-//        'Security' => array(
-//            'csrfExpires' => '+1 hour',
-//            'csrfUseOne' => false
-//        ),
+        'Security',
         'Auth' => array(
             'loginRedirect' => array(
                 'plugin' => 'admin',
@@ -63,17 +59,37 @@ class AppController extends Controller {
         'Acl'
     );
 
-    public function beforeFilter() {
-        parent::beforeFilter();
-//        $this->Security->blackHoleCallback = 'blackhole';
-//        $this->Security->validatePost = false;
-//        $this->Security->unlockedActions = array('dulieugiamsatmoitruong');
-        $this->Auth->allow(array('register', 'success', 'view', 'index'));
+    function isAuthorized($user) {
+        return true;
     }
 
-//    public function blackhole() {
-//        $this->redirect(array('plugin' => null, 'controller' => 'errors', 'action' => 'session_expire'));
-//    }
+    function beforeFilter() {
+        parent::beforeFilter();
+        $this->Security->blackHoleCallback = '_blackHole';
+        //Here, we disable the Security component for Ajax requests
+        if ($this->request->is('ajax') || $this->request->is('post') || $this->request->is('put')) {
+            $this->Security->validatePost = false;
+            $this->Security->enabled = false;
+            $this->Security->csrfCheck = false;
+        }
+        $this->Auth->authorize = 'Controller';
+        $this->Auth->allow(array('register', 'success', 'view', 'index'));
+        $this->Security->unlockedActions = array('login', 'themmoi', 'themnguyenlieudoanhnghiep', 'xoacoso','get');
+    }
+
+    function _blackHole($error) {
+        switch ($error) {
+            case 'secure':
+                $this->redirect('https://' . env('SERVER_NAME') . env('REQUEST_URI'));
+                break;
+            case 'login':
+                // do something else
+                break;
+            default:
+                throw new NotFoundException('Trang bạn đang tìm không tồn tại');
+                break;
+        }
+    }
 
     public function any_action() {
         $aro = $this->Acl->Aro;

@@ -127,7 +127,7 @@
             // If maximum height is exceeded a scrollbar will be displayed.
             maxHeight: false,
             includeSelectAllOption: false,
-            selectAllText: ' Select all',
+            selectAllText: ' Chọn hết',
             selectAllValue: 'multiselect-all',
             enableFiltering: false,
             enableCaseInsensitiveFiltering: false,
@@ -135,8 +135,8 @@
             // possible options: 'text', 'value', 'both'
             filterBehavior: 'text',
             preventInputChangeEvent: false,
-            nonSelectedText: 'None selected',
-            nSelectedText: 'selected',
+            nonSelectedText: 'Chưa chọn',
+            nSelectedText: 'Đã chọn',
             numberDisplayed: 3,
 
             // added by ted

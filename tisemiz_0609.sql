@@ -359,7 +359,7 @@ CREATE TABLE `danhmuc_sanpham` (
   `tendanhmuc` varchar(100) DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated` timestamp NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -845,7 +845,7 @@ CREATE TABLE `loaihinhdoanhnghiep` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tenloaihinh` varchar(100) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated` timestamp NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -872,7 +872,7 @@ CREATE TABLE `nganh` (
   `tennganh` varchar(100) DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated` timestamp NOT NULL,
   `create_by` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
@@ -1095,13 +1095,13 @@ DROP TABLE IF EXISTS `nuoc_thai_nha_may`;
 CREATE TABLE `nuoc_thai_nha_may` (
   `colMa` int(11) NOT NULL AUTO_INCREMENT,
   `colCSSX` int(11) NOT NULL,
-  `colThoiGian` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `colThoiGian` datetime DEFAULT NULL,
   `colNguonThai` int(11) NOT NULL,
   `colLLuongThai` decimal(11,2) NOT NULL DEFAULT '0.00',
   `colNguonPSinh` varchar(500) DEFAULT NULL,
   `colLLXLyTK` decimal(11,2) NOT NULL DEFAULT '0.00',
   `colLLXLyTT` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created` timestamp NOT NULL,
   `colNguonNT` varchar(100) DEFAULT NULL,
   `colNam` int(4) DEFAULT NULL,
   PRIMARY KEY (`colMa`)
@@ -1220,7 +1220,7 @@ CREATE TABLE `sanpham` (
   `tensanpham` varchar(100) DEFAULT NULL,
   `parent_id` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
-  `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated` timestamp NOT NULL,
   `status` tinyint(1) DEFAULT NULL,
   `create_by` varchar(50) DEFAULT NULL,
   `update_by` varchar(45) DEFAULT NULL,
@@ -1250,7 +1250,7 @@ CREATE TABLE `thong_tin_kien_nghi_bvmt` (
   `colMa` int(11) NOT NULL AUTO_INCREMENT,
   `colCSSX` int(11) NOT NULL,
   `colKiennghi` longtext,
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created` timestamp NOT NULL,
   PRIMARY KEY (`colMa`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1276,7 +1276,7 @@ CREATE TABLE `thong_tin_tuan_thu_bvmt` (
   `colMa` int(11) NOT NULL AUTO_INCREMENT,
   `colTentailieu` varchar(50) DEFAULT NULL,
   `colStt` int(11) NOT NULL DEFAULT '0',
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created` timestamp NOT NULL,
   PRIMARY KEY (`colMa`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;

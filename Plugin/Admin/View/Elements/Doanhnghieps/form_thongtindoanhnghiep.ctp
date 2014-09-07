@@ -1,4 +1,5 @@
 <?php
+
 echo $this->Form->create('DoanhNghiep', array('type' => 'file', 'class' => 'form-horizontal', 'role' => 'form'));
 ?>
 <h4>Thông tin chung</h4>
@@ -115,7 +116,7 @@ echo $this->Form->create('DoanhNghiep', array('type' => 'file', 'class' => 'form
     ?>
 </div>
 <div class="form-group">
-    <label for="inputNganh" class="col-sm-2 control-label">Ngành</label>
+    <label for="inputNganh" class="col-sm-2 control-label">Ngành (lựa chọn tối đa là 6)</label>
     <div class="col-sm-10">
 
         <?php
@@ -200,12 +201,58 @@ echo $this->Form->create('DoanhNghiep', array('type' => 'file', 'class' => 'form
     </div>
 </div>
 <?php echo $this->Form->end(); ?>
+<table border="0" cellpadding="0" cellspacing="0">
+            <tbody><tr>
+                    <td align="left" colspan="6" height="30">
+                        <img id="Image22" src="/img/nutcate.gif" alt="" border="0"><span class="text_note_b">CHÚ
+                            Ý</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" colspan="6">
+                        <span class="text_titlenote">1. </span><span class="text_note">Nhập liệu bằng tiếng
+                            việt Unicode.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" colspan="6">
+                        <span class="text_titlenote">2. </span><span class="text_note">Xin hãy
+                            nhập những thông tin yêu cầu đúng theo mẫu sổ đăng ký hoặc giấy phép hành nghề đã
+                            được cơ quan quản lý cấp.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" colspan="6" style="height: 17px">
+                        <span class="text_titlenote">3. </span><span class="text_note">Những trường đánh dấu
+                            (*) là bắt buộc phải nhập.</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" colspan="6">
+                        <span class="text_titlenote">4. </span><span class="text_note">Sau khi điền đầy đủ các
+                            thông tin xin nhấn nút Lưu thông tin doanh nghiệp và chuyển sang bước 2 (Dữ liệu sản
+                            xuất).</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" colspan="6">
+                        <span class="text_titlenote">5. </span><span class="text_note">Sau khi đi đến bước 5, sẽ xuất hiện nút Hoàn tất, nhấn nút này để kết thúc quá trình cập nhật doanh nghiệp.</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 <script type="text/javascript">
-	$(function(){
-		$('#DoanhNghiepColNamHopDong').datepicker({numberOfMonths: 2}).next('.ui-datepicker-trigger').css({
+    $(function() {
+        $('#DoanhNghiepColNamHopDong').datepicker({numberOfMonths: 2}).next('.ui-datepicker-trigger').css({
             float: 'right',
             marginRight: '-20px',
             marginTop: '-25px'
         });
-	});
-	</script>
+        $('#DoanhNghiepThemmoiForm').on('submit', function() {
+            if ($('.btn-group ul li.active').length > 6) {
+                alert('Chỉ chọn tối đa 6 ngành');
+                return false;
+            }
+        });
+    });
+</script>

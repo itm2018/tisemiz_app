@@ -152,21 +152,50 @@ class DoanhNghiep extends AdminAppModel {
             'className' => 'Admin.ThongTinKienNghiBvmt',
             'foreignKey' => 'colCSSX'
         ),
-        'DoanhNghiepCon' => array(
+        'Children' => array(
+            'className' => 'Admin.DoanhNghiep',
+            'foreignKey' => 'colMaDNME',
+        )
+    );
+    public $belongsTo = array(
+        'Parent' => array(
             'className' => 'Admin.DoanhNghiep',
             'foreignKey' => 'colMaDNME'
+        ),
+        'Nganh1' => array(
+            'className' => 'Admin.Nganh',
+            'foreignKey' => 'colMaNganh1'
         )
     );
 
     public function beforeSave($options = array()) {
-        if (!empty($this->data['DoanhNghiep']['colNamHopDong'])) {
-            $date = explode('/', $this->data['DoanhNghiep']['colNamHopDong']);
-            if (empty($date)) {
-                $date = explode('-', $this->data['DoanhNghiep']['colNamHopDong']);
+            if (!empty($this->data['DoanhNghiep']['colNamHopDong'])) {
+                $date = explode('/', $this->data['DoanhNghiep']['colNamHopDong']);
+                if (empty($date)) {
+                    $date = explode('-', $this->data['DoanhNghiep']['colNamHopDong']);
+                }
+                $this->data['DoanhNghiep']['colNamHopDong'] = date('Y-m-d', strtotime($date[1] . '/' . $date[0] . '/'
+                                . $date[2]));
             }
-            $this->data['DoanhNghiep']['colNamHopDong'] = date('Y-m-d', strtotime($date[1] . '/' . $date[0] . '/'
-                            . $date[2]));
-        }
+            if (!empty($this->data['DoanhNghiep']['ngaycapchungnhanKDDT'])) {
+                $date = array(1970, 1, 1);
+                $date = explode('/', $this->data['DoanhNghiep']['ngaycapchungnhanKDDT']);
+                if (empty($date)) {
+                    $date = explode('-', $this->data['DoanhNghiep']['ngaycapchungnhanKDDT']);
+                }
+                $this->data['DoanhNghiep']['ngaycapchungnhanKDDT'] = date('Y-m-d', strtotime($date[1] . '/' . $date[0] . '/'
+                                . $date[2]));
+            }
+            if (!empty($this->data['DoanhNghiep']['ngaycapcmndgiamdoc'])) {
+                $date = array(1970, 1, 1);
+                $date = explode('/', $this->data['DoanhNghiep']['ngaycapcmndgiamdoc']);
+                if (empty($date)) {
+                    $date = explode('-', $this->data['DoanhNghiep']['ngaycapcmndgiamdoc']);
+                }
+                $this->data['DoanhNghiep']['ngaycapcmndgiamdoc'] = date('Y-m-d', strtotime($date[1] . '/' . $date[0] . '/'
+                                . $date[2]));
+            }
+        
     }
 
     public function saveAssociated($data = null, $options = array()) {

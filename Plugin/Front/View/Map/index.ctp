@@ -1,3 +1,3 @@
 <div style="width: 1000px; margin: 0 auto;">
-    <iframe src="https://mapsengine.google.com/02454326419680840546-05414812628978701557-4/widget/in_iframe" width="100%" height="600px"></iframe>
+    <iframe src="http://wikimapia.org/#lang=vi&lat=10.986020&lon=106.599827&z=14&m=b" width="100%" height="600px"></iframe>
 </div>
