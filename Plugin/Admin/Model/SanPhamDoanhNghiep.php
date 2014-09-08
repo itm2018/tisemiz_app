@@ -51,7 +51,7 @@ class SanPhamDoanhNghiep extends AdminAppModel {
         'colCongSuatTK' => array(
             'numeric' => array(
                 'rule' => 'numeric',
-                'required' => true,
+                'required' => false,
                 'allowEmpty' => true,
                 'message' => 'Công suất thiết kế phải là số'
             )

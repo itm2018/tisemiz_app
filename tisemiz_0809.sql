@@ -247,6 +247,33 @@ INSERT INTO `bien_phap_xu_ly_nuoc_thai` VALUES (1,'Xả vào tuyến nước mư
 UNLOCK TABLES;
 
 --
+-- Table structure for table `chat_thai`
+--
+
+DROP TABLE IF EXISTS `chat_thai`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `chat_thai` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ma_chatthai` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `ten_chatthai` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `tt_tontai` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `id_nguonthai` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `chat_thai`
+--
+
+LOCK TABLES `chat_thai` WRITE;
+/*!40000 ALTER TABLE `chat_thai` DISABLE KEYS */;
+INSERT INTO `chat_thai` VALUES (1,'010101','Cặn thải có khả năng sinh axit từ quá trình chế biến quặng sunfua	','Rắn/bùn',1);
+/*!40000 ALTER TABLE `chat_thai` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `chat_thai_nguy_hai`
 --
 
@@ -345,6 +372,31 @@ CREATE TABLE `co_quan_quan_ly` (
 LOCK TABLES `co_quan_quan_ly` WRITE;
 /*!40000 ALTER TABLE `co_quan_quan_ly` DISABLE KEYS */;
 /*!40000 ALTER TABLE `co_quan_quan_ly` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `danh_muc_chat_thai`
+--
+
+DROP TABLE IF EXISTS `danh_muc_chat_thai`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `danh_muc_chat_thai` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ma_danhmuc` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `ten_danhmuc` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `danh_muc_chat_thai`
+--
+
+LOCK TABLES `danh_muc_chat_thai` WRITE;
+/*!40000 ALTER TABLE `danh_muc_chat_thai` DISABLE KEYS */;
+INSERT INTO `danh_muc_chat_thai` VALUES (1,'01','CHẤT THẢI TỪ NGÀNH THĂM DÒ, KHAI THÁC, CHẾ BIẾN KHOÁNG SẢN, DẦU KHÍ VÀ THAN'),(2,'02','CHẤT THẢI TỪ NGÀNH SẢN XUẤT HOÁ CHẤT VÔ CƠ'),(3,'03','CHẤT THẢI TỪ NGÀNH SẢN XUẤT HOÁ CHẤT  HỮU CƠ'),(4,'04','CHẤT THẢI TỪ NGÀNH NHIỆT ĐIỆN VÀ CÁC QUÁ TRÌNH NHIỆT KHÁC'),(5,'05','CHẤT THẢI TỪ NGÀNH LUYỆN KIM'),(6,'06','CHẤT THẢI TỪ NGÀNH SẢN XUẤT VẬT LIỆU XÂY DỰNG VÀ THỦY TINH'),(7,'07','CHẤT THẢI TỪ QUÁ TRÌNH XỬ LÝ, CHE PHỦ BỀ MẶT, TẠO HÌNH KIM LOẠI VÀ CÁC VẬT LIỆU KHÁC'),(8,'08','CHẤT THẢI TỪ QUÁ TRÌNH SẢN XUẤT, ĐIỀU CHẾ, CUNG ỨNG, SỬ DỤNG CÁC SẢN PHẨM CHE PHỦ (SƠN, VÉC NI, MEN THUỶ TINH), CHẤT KẾT DÍNH, CHẤT BỊT KÍN VÀ MỰC IN'),(9,'09','CHẤT THẢI TỪ NGÀNH CHẾ BIẾN GỖ, SẢN XUẤT CÁC SẢN PHẨM GỖ, GIẤY VÀ BỘT GIẤY'),(10,'10','CHẤT THẢI TỪ NGÀNH CHẾ BIẾN DA, LÔNG VÀ DỆT NHUỘM'),(11,'11','CHẤT THẢI XÂY DỰNG VÀ PHÁ DỠ (KỂ CẢ ĐẤT ĐÀO TỪ CÁC KHU VỰC BỊ Ô NHIỄM)'),(12,'12','CHẤT THẢI TỪ CÁC CƠ SỞ TÁI CHẾ, XỬ LÝ, TIÊU HUỶ CHẤT THẢI, XỬ LÝ NƯỚC CẤP SINH HOẠT VÀ CÔNG NGHIỆP');
+/*!40000 ALTER TABLE `danh_muc_chat_thai` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -915,6 +967,32 @@ INSERT INTO `nguon_gay_on_rung` VALUES (1,'Chạy mát phát điện',NULL),(2,'
 UNLOCK TABLES;
 
 --
+-- Table structure for table `nguon_thai`
+--
+
+DROP TABLE IF EXISTS `nguon_thai`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `nguon_thai` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ma_nguonthai` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `ten_nguonthai` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `id_danhmucchatthai` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `nguon_thai`
+--
+
+LOCK TABLES `nguon_thai` WRITE;
+/*!40000 ALTER TABLE `nguon_thai` DISABLE KEYS */;
+INSERT INTO `nguon_thai` VALUES (1,'0101','Chất thải từ quá trình chế biến quặng sắt bằng phương pháp hoá-lý',1),(2,'0102','Chất thải từ quá trình chế biến quặng kim loại màu bằng phương pháp hoá-lý',1),(3,'0103','Bùn thải và các chất thải khác từ quá trình khoan',1),(4,'0104','Chất thải từ quá trình lọc dầu',1),(5,'0105','Chất thải từ quá trình chế biến than bằng phương pháp nhiệt phân',1),(6,'0106','Chất thải từ quá trình tinh chế và vận chuyển khí thiên nhiên',1);
+/*!40000 ALTER TABLE `nguon_thai` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `nguon_thai_khi_thai`
 --
 
@@ -976,14 +1054,14 @@ CREATE TABLE `nguyen_lieu_san_pham` (
   `colMa` int(11) NOT NULL AUTO_INCREMENT,
   `colCSSX` int(11) DEFAULT NULL,
   `colNam` int(4) DEFAULT NULL,
-  `colNguyenLieu` varchar(50) DEFAULT NULL,
+  `colNguyenLieu` int(11) DEFAULT NULL,
   `colDonVi` varchar(50) DEFAULT NULL,
   `colLuongSD` float DEFAULT NULL,
   `colLuongDTru` float DEFAULT NULL,
   `created` timestamp NULL DEFAULT NULL,
   `stt` int(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`colMa`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -992,7 +1070,7 @@ CREATE TABLE `nguyen_lieu_san_pham` (
 
 LOCK TABLES `nguyen_lieu_san_pham` WRITE;
 /*!40000 ALTER TABLE `nguyen_lieu_san_pham` DISABLE KEYS */;
-INSERT INTO `nguyen_lieu_san_pham` VALUES (1,65,2014,'5','kg',2354240,235245,'2014-08-24 10:37:05',0),(2,65,2014,'5','kg',2354240,235245,'2014-08-24 10:39:03',0),(3,65,2014,'3','tấn',3000,3500,'2014-08-24 11:03:13',0),(4,65,2014,'3','tấn',3000,3500,'2014-08-24 11:04:14',0),(5,65,2014,'3','tấn',3000,3500,'2014-08-24 11:04:18',0),(13,65,2014,'8','cái',213242,34324,'2014-08-24 11:33:11',0),(14,66,2014,'3','tấn',1000,1100,'2014-08-24 12:43:13',0),(15,10,2014,'3','ư3f',1212,1212,'2014-08-29 22:23:50',0),(16,86,2014,'1','tấn',300,34,'2014-09-06 16:55:53',0),(17,71,NULL,'0',NULL,234,NULL,'2014-09-08 04:19:02',1),(18,71,NULL,'Chó con',NULL,12345,NULL,'2014-09-08 04:26:38',2),(19,71,NULL,'Chó con',NULL,12345,NULL,'2014-09-08 04:26:55',2),(20,72,NULL,'Chó con',NULL,12345,NULL,'2014-09-08 04:27:10',2),(21,75,NULL,'Chó con',NULL,12345,NULL,'2014-09-08 04:27:18',2);
+INSERT INTO `nguyen_lieu_san_pham` VALUES (1,65,2014,5,'kg',2354240,235245,'2014-08-24 10:37:05',0),(2,65,2014,5,'kg',2354240,235245,'2014-08-24 10:39:03',0),(3,65,2014,3,'tấn',3000,3500,'2014-08-24 11:03:13',0),(4,65,2014,3,'tấn',3000,3500,'2014-08-24 11:04:14',0),(5,65,2014,3,'tấn',3000,3500,'2014-08-24 11:04:18',0),(13,65,2014,8,'cái',213242,34324,'2014-08-24 11:33:11',0),(14,66,2014,3,'tấn',1000,1100,'2014-08-24 12:43:13',0),(15,10,2014,3,'ư3f',1212,1212,'2014-08-29 22:23:50',0),(16,86,2014,1,'tấn',300,34,'2014-09-06 16:55:53',0),(23,71,NULL,5,'tấn',324,NULL,'2014-09-08 04:25:30',3),(24,71,NULL,2,'tấn',1000,NULL,'2014-09-08 04:26:44',2),(25,71,NULL,6,'m',900456,NULL,'2014-09-08 04:32:21',4),(26,71,NULL,1,'tấn',90.34,NULL,'2014-09-08 04:34:36',1),(27,72,NULL,2,'tấn',45,NULL,'2014-09-08 05:02:03',1),(28,72,NULL,3,'tấn',100,NULL,'2014-09-08 05:02:15',2);
 /*!40000 ALTER TABLE `nguyen_lieu_san_pham` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1190,6 +1268,7 @@ DROP TABLE IF EXISTS `san_pham_doanh_nghiep`;
 CREATE TABLE `san_pham_doanh_nghiep` (
   `colMa` int(11) NOT NULL AUTO_INCREMENT,
   `colCSSX` int(11) DEFAULT NULL,
+  `stt` int(4) DEFAULT NULL,
   `colNam` int(4) DEFAULT NULL,
   `colSanPham` varchar(50) DEFAULT NULL,
   `colDVi` varchar(50) DEFAULT NULL,
@@ -1197,7 +1276,7 @@ CREATE TABLE `san_pham_doanh_nghiep` (
   `colCongSuatTT` float DEFAULT NULL,
   `created` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`colMa`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1206,7 +1285,7 @@ CREATE TABLE `san_pham_doanh_nghiep` (
 
 LOCK TABLES `san_pham_doanh_nghiep` WRITE;
 /*!40000 ALTER TABLE `san_pham_doanh_nghiep` DISABLE KEYS */;
-INSERT INTO `san_pham_doanh_nghiep` VALUES (1,61,0,'1','kg',5215,4584,NULL),(2,61,0,'1','kg',5215,4584,NULL),(3,61,0,'3','kg',5215,4584,NULL),(4,61,0,'3','kg',5215,4584,NULL),(5,61,0,'3','kg',5215,4584,NULL),(6,61,0,'3','kg',5215,4584,NULL),(7,61,0,'3','kg',5215,4584,NULL),(8,61,2014,'3','kg',5215,4584,NULL),(9,61,2014,'3','kg',5215,4584,NULL),(10,61,2014,'3','kg',5215,4584,NULL),(11,61,2014,'3','kg',5215,4584,NULL),(12,61,2014,'3','kg',5215,4584,NULL),(13,61,2014,'3','kg',5215,4584,NULL),(14,61,2014,'1','test',2005,2005,NULL),(15,62,2014,'1','test',1234,12345,NULL),(16,62,2014,'1','test',12,12,NULL),(17,62,2014,'1','teest',3,23,NULL),(18,62,2014,'3','tấn',3,23,NULL),(19,62,2014,'3','tấn',3,23,NULL),(20,62,2014,'3','teest',234,234,NULL),(21,62,2014,'4','cái',560000,898645,NULL),(22,62,2014,'3','cái',3000,3500,NULL),(23,62,2014,'2','test',2,2,NULL),(24,62,2014,'2','test',2,2,NULL),(25,62,2014,'2','cái',5230,4564,NULL),(26,62,2014,'3','test',1323,123,NULL),(27,62,2014,'3','test',2313,12323,NULL),(28,62,2014,'2','tét',2,2,NULL),(29,62,2014,'1','kai',234,23434,NULL),(30,62,2014,'2','áo thun nè',214,234,'2014-08-23 11:58:12'),(31,62,2014,'1','bao',89,90,'2014-08-23 12:05:53'),(32,62,2014,'1','bao',89,90,'2014-08-23 12:05:56'),(33,62,2014,'1','bao',89,90,'2014-08-23 12:05:57'),(34,62,2014,'1','bao',89,90,'2014-08-23 12:05:58'),(35,62,2014,'1','bao',89,90,'2014-08-23 12:05:59'),(36,62,2014,'1','bao',89,90,'2014-08-23 12:05:59'),(37,62,2014,'1','bao',89,90,'2014-08-23 12:06:19'),(38,62,2014,'1','bao',89,90,'2014-08-23 12:07:23'),(39,62,2014,'4','cái',54454,54564,'2014-08-23 12:07:58'),(40,64,2014,'2','teest',2123,123,'2014-08-24 03:53:25'),(41,64,2014,'14','teest',3,2,'2014-08-24 06:02:38'),(45,65,2014,'35','m',2432540,2342540,'2014-08-24 09:05:12'),(47,66,2014,'15','m',1000000,1500000,'2014-08-24 12:42:25'),(48,66,2014,'35','tấn',3000,3100,'2014-08-24 12:42:44'),(49,16,2014,'50','tấn',3423,324,'2014-08-29 21:58:39'),(51,10,2014,'48','teest',234,234,'2014-08-29 22:23:39'),(52,86,2014,'48','tấn',3000,3500,'2014-09-06 16:27:08'),(53,86,2014,'45','cái',200,210,'2014-09-06 16:28:56'),(54,86,2014,'31','cái',324,324,'2014-09-06 16:30:16');
+INSERT INTO `san_pham_doanh_nghiep` VALUES (1,61,NULL,0,'1','kg',5215,4584,NULL),(2,61,NULL,0,'1','kg',5215,4584,NULL),(3,61,NULL,0,'3','kg',5215,4584,NULL),(4,61,NULL,0,'3','kg',5215,4584,NULL),(5,61,NULL,0,'3','kg',5215,4584,NULL),(6,61,NULL,0,'3','kg',5215,4584,NULL),(7,61,NULL,0,'3','kg',5215,4584,NULL),(8,61,NULL,2014,'3','kg',5215,4584,NULL),(9,61,NULL,2014,'3','kg',5215,4584,NULL),(10,61,NULL,2014,'3','kg',5215,4584,NULL),(11,61,NULL,2014,'3','kg',5215,4584,NULL),(12,61,NULL,2014,'3','kg',5215,4584,NULL),(13,61,NULL,2014,'3','kg',5215,4584,NULL),(14,61,NULL,2014,'1','test',2005,2005,NULL),(15,62,NULL,2014,'1','test',1234,12345,NULL),(16,62,NULL,2014,'1','test',12,12,NULL),(17,62,NULL,2014,'1','teest',3,23,NULL),(18,62,NULL,2014,'3','tấn',3,23,NULL),(19,62,NULL,2014,'3','tấn',3,23,NULL),(20,62,NULL,2014,'3','teest',234,234,NULL),(21,62,NULL,2014,'4','cái',560000,898645,NULL),(22,62,NULL,2014,'3','cái',3000,3500,NULL),(23,62,NULL,2014,'2','test',2,2,NULL),(24,62,NULL,2014,'2','test',2,2,NULL),(25,62,NULL,2014,'2','cái',5230,4564,NULL),(26,62,NULL,2014,'3','test',1323,123,NULL),(27,62,NULL,2014,'3','test',2313,12323,NULL),(28,62,NULL,2014,'2','tét',2,2,NULL),(29,62,NULL,2014,'1','kai',234,23434,NULL),(30,62,NULL,2014,'2','áo thun nè',214,234,'2014-08-23 11:58:12'),(31,62,NULL,2014,'1','bao',89,90,'2014-08-23 12:05:53'),(32,62,NULL,2014,'1','bao',89,90,'2014-08-23 12:05:56'),(33,62,NULL,2014,'1','bao',89,90,'2014-08-23 12:05:57'),(34,62,NULL,2014,'1','bao',89,90,'2014-08-23 12:05:58'),(35,62,NULL,2014,'1','bao',89,90,'2014-08-23 12:05:59'),(36,62,NULL,2014,'1','bao',89,90,'2014-08-23 12:05:59'),(37,62,NULL,2014,'1','bao',89,90,'2014-08-23 12:06:19'),(38,62,NULL,2014,'1','bao',89,90,'2014-08-23 12:07:23'),(39,62,NULL,2014,'4','cái',54454,54564,'2014-08-23 12:07:58'),(40,64,NULL,2014,'2','teest',2123,123,'2014-08-24 03:53:25'),(41,64,NULL,2014,'14','teest',3,2,'2014-08-24 06:02:38'),(45,65,NULL,2014,'35','m',2432540,2342540,'2014-08-24 09:05:12'),(47,66,NULL,2014,'15','m',1000000,1500000,'2014-08-24 12:42:25'),(48,66,NULL,2014,'35','tấn',3000,3100,'2014-08-24 12:42:44'),(49,16,NULL,2014,'50','tấn',3423,324,'2014-08-29 21:58:39'),(51,10,NULL,2014,'48','teest',234,234,'2014-08-29 22:23:39'),(52,86,NULL,2014,'48','tấn',3000,3500,'2014-09-06 16:27:08'),(53,86,NULL,2014,'45','cái',200,210,'2014-09-06 16:28:56'),(54,86,NULL,2014,'31','cái',324,324,'2014-09-06 16:30:16'),(55,71,1,NULL,'39','cái',1000,1000,'2014-09-08 04:04:18'),(57,71,2,NULL,'34','cái',123,123,'2014-09-08 04:09:13'),(59,71,3,NULL,'31','cái',5484,5484,'2014-09-08 04:42:49'),(61,71,4,NULL,'47','cái',243,243.23,'2014-09-08 04:32:52'),(64,72,1,NULL,'39','cái',10000,10000,'2014-09-08 05:03:38'),(65,72,2,NULL,'48','cái',10000,10000,'2014-09-08 05:03:57');
 /*!40000 ALTER TABLE `san_pham_doanh_nghiep` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1471,4 +1550,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-09-08 11:30:43
+-- Dump completed on 2014-09-08 11:31:35

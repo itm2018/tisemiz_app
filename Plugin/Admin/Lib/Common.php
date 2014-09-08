@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: soncahuynh
@@ -16,11 +17,13 @@ App::uses('NguonThaiNuocThai', 'Admin.Model');
 App::uses('NguonThaiKhiThai', 'Admin.Model');
 App::uses('BienPhapXuLyNuocThai', 'Admin.Model');
 App::uses('NguonGayOnRung', 'Admin.Model');
+App::uses('DanhMucChatThai', 'Admin.Model');
+App::uses('ChatThai', 'Admin.Model');
+App::uses('NguonThai', 'Admin.Model');
 
-class Common
-{
-    public static function getListLoaihinhkinhdoanh()
-    {
+class Common {
+
+    public static function getListLoaihinhkinhdoanh() {
         $result = array();
         $loaihinhkinhdoanh = new Loaihinhdoanhnghiep();
         $list = $loaihinhkinhdoanh->find('all', array('fields' => array('id', 'tenloaihinh')));
@@ -32,8 +35,7 @@ class Common
         return $result;
     }
 
-    public static function getListQuocgia()
-    {
+    public static function getListQuocgia() {
         $result = array();
         $quocgia = new Quocgia();
         $list = $quocgia->find('all', array('fields' => array('id', 'tenquocgia')));
@@ -45,8 +47,7 @@ class Common
         return $result;
     }
 
-    public static function getListNganh()
-    {
+    public static function getListNganh() {
         $result = array();
         $nganh = new Nganh();
         $list = $nganh->find('all', array('fields' => array('id', 'tennganh')));
@@ -58,8 +59,7 @@ class Common
         return $result;
     }
 
-    public static function getListNguyenlieu()
-    {
+    public static function getListNguyenlieu() {
         $result = array();
         $nguyen_lieu = new Nguyenlieu();
         $list = $nguyen_lieu->find('all', array('fields' => array('id', 'tennguyenlieu')));
@@ -71,8 +71,7 @@ class Common
         return $result;
     }
 
-    public static function getListSanPham()
-    {
+    public static function getListSanPham() {
         $result = array();
         $san_pham = new Sanpham();
         $list = $san_pham->find('all', array('fields' => array('id', 'tensanpham')));
@@ -84,9 +83,8 @@ class Common
         return $result;
     }
 
-    public static function getListDanhmucSanPham()
-    {
-        $result = array('0'=>'...vui lòng chọn');
+    public static function getListDanhmucSanPham() {
+        $result = array('0' => '...vui lòng chọn');
         $danh_muc_san_pham = new DanhmucSanPham();
         $list = $danh_muc_san_pham->find('all', array('fields' => array('id', 'tendanhmuc')));
         if (is_array($list) && count($list)) {
@@ -96,14 +94,14 @@ class Common
         }
         return $result;
     }
-    public static function getFullListDanhmucSanPham(){
+
+    public static function getFullListDanhmucSanPham() {
         $danh_muc_san_pham = new DanhmucSanPham();
         $list = $danh_muc_san_pham->find('all');
         return $list;
     }
 
-    public static function getListNguonThaiNuocThai()
-    {
+    public static function getListNguonThaiNuocThai() {
         $result = array();
         $nguon_thai_nuoc_thai = new NguonThaiNuocThai();
         $list = $nguon_thai_nuoc_thai->find('all', array('fields' => array('colMa', 'colTenNguonThai')));
@@ -115,8 +113,7 @@ class Common
         return $result;
     }
 
-    public static function getListBienPhapXuLyNuocThai()
-    {
+    public static function getListBienPhapXuLyNuocThai() {
         $result = array();
         $bien_phap = new BienPhapXuLyNuocThai();
         $list = $bien_phap->find('all', array('fields' => array('id', 'tenbienphap')));
@@ -127,7 +124,8 @@ class Common
         }
         return $result;
     }
-    public static function getListNguonThaiKhiThai(){
+
+    public static function getListNguonThaiKhiThai() {
         $result = array();
         $nguonthai = new NguonThaiKhiThai();
         $list = $nguonthai->find('all', array('fields' => array('colMa', 'colTenNgThai')));
@@ -138,7 +136,8 @@ class Common
         }
         return $result;
     }
-    public static function getListNguonGayOnRung(){
+
+    public static function getListNguonGayOnRung() {
         $result = array();
         $nguonthai = new NguonGayOnRung();
         $list = $nguonthai->find('all', array('fields' => array('colMa', 'colTenNguon')));
@@ -149,13 +148,34 @@ class Common
         }
         return $result;
     }
-    public static function getTenNganh($id){
-        $tennguon='';
-        $nganh=new Nganh();
-        $result=$nganh->findById($id);
-        if($result){
-            $tennguon=$result['Nganh']['tennganh'];
+
+    public static function getTenNganh($id) {
+        $tennguon = '';
+        $nganh = new Nganh();
+        $result = $nganh->findById($id);
+        if ($result) {
+            $tennguon = $result['Nganh']['tennganh'];
         }
         return $tennguon;
     }
+
+    public static function getListDanhMucChatThai() {
+        $danhmuc = new DanhMucChatThai();
+        $list = $danhmuc->find('all');
+        if ($list) {
+            foreach ($list as $dm) {
+                $result[$dm['DanhMucChatThai']['id']] = $dm['DanhMucChatThai']['ma_danhmuc'] . ' - ' . $dm['DanhMucChatThai']['ten_danhmuc'];
+            }
+            return $result;
+        }
+        return array();
+    }
+    public static function getFullListDanhMucChatThai(){
+        $danhmuc = new DanhMucChatThai();
+        $list = $danhmuc->find('all');
+        if($list){
+            return json_encode($list);
+        }
+    }
+
 }

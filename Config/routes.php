@@ -47,12 +47,19 @@ Router::connect('/admin/doanhnghiep/chucnang/type/:type/id_dn/:colMa', array('pl
 Router::connect('/admin/doanhnghiep/capnhat/type/:type/id/:id', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'capnhat'), array('pass' => array('type', 'id'), 'type' => '[0-9]', 'id' => '[0-9]{1,11}'));
 Router::connect('/admin/doanhnghiep/xoacoso', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'xoacoso'));
 Router::connect('/admin/doanhnghiep/getinfo', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'getinfo'));
+Router::connect('/admin/doanhnghiep/chucnangxoa', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'chucnangxoa'));
 //Router::connect('/',array('plugin'=>'Front','controller'=>'News','action'=>'view'),'home','home');
 Router::connect('/', array('plugin' => 'Front', 'controller' => 'Home', 'action' => 'index'));
 Router::connect('/news', array('plugin' => 'Front', 'controller' => 'News', 'action' => 'view'));
 //Router::connect('/tintuc/xem',array('plugin'=>'Front','controller'=>'News','action'=>'view'));
 //Router::connect('/admin/baocao/dulieugiamsatmoitruong',array('plugin'=>'Admin','controller'=>'Baocao','Action'=>'dulieugiamsatmoitruong'));
 // Router::connect('/admin/baocao/xemchitiet/:id',array('plugin'=>'Admin','controller'=>'Baocao','Action'=>'xemchitiet'),array('pass'=>array('id')));
+// 
+//-------------------------------------ThongTinChung------------------------------------------------//
+Router::connect('/admin/thongtinchung/chatthai',array('plugin' => 'Admin', 'controller' => 'ThongTinChung', 'action' => 'chatthai'));
+Router::connect('/admin/thongtinchung/additem',array('plugin' => 'Admin', 'controller' => 'ThongTinChung', 'action' => 'additem'));
+//-------------------------------------EndThongTinChung------------------------------------------------//
+
 Router::connect('/admin/baocao/baocaochatthainguyhai/timkiem',array('plugin'=>'Admin','controller'=>'Baocao','action'=>'baocaochatthainguyhaistep0'));
 Router::connect('/admin/baocao/baocaochatthainguyhai/timkiem/*',array('plugin'=>'Admin','controller'=>'Baocao','action'=>'baocaochatthainguyhaistep0'));
 Router::connect('/admin/baocao/baocaochatthainguyhai/dangkyctnh/:colMa',array('plugin'=>'Admin','controller'=>'Baocao','action'=>'dangkyctnh'),array('pass'=>array('colMa')));

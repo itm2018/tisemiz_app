@@ -59,9 +59,6 @@
                         <tr>
                             <td colspan="2" align="left">
                                 Cập nhật dữ liệu sản xuất cho cơ sở:
-<!--                                <select name="drpCoso" id="drpCoso">
-                                    <option selected="selected" value="785783">Evolable Asia</option>
-                                </select>-->
                                 <?php echo $this->Form->hidden('drpCosoSelected'); ?>
                                 <?php echo $this->Form->input('drpCoso', array('id' => 'drpCoso', 'label' => false, 'div' => false, 'options' => $list_children)); ?>
                             </td>
@@ -83,68 +80,18 @@
                                             <th>
                                                 Tên nguyên liệu
                                             </th>
+                                            <th>
+                                                Đơn vị
+                                            </th>
                                             <th width="60px">
-                                                Số lượng(Kg/năm)
+                                                Số lượng
                                             </th>
                                             <th width="100px" colspan="2">
                                                 Chức năng
                                             </th>
                                         </tr>
-
-<!--                                        <tr onmouseover="this.style.background = '#EEE0C5'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(255, 255, 255);">
-                                            <td align="right">
-                                                1
-                                            </td>
-                                            <td align="left">
-                                                fasdf
-                                            </td>
-                                            <td align="right">
-                                                1.544
-                                            </td>
-                                            <td width="35px" align="center">
-                                                <a href="javascript:updateItem('785784','fasdf','1544','1');">Sửa</a>
-                                            </td>
-                                            <td width="35px" align="center">
-                                                <a href="javascript:doDeleteNL('785784','fasdf','DangKyCNTID=785419&CosoID=785783')">Xóa</a>
-                                            </td>
-                                        </tr>
-
-                                        <tr onmouseover="this.style.background = '#EEE0C5'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(238, 224, 197);">
-                                            <td align="right">
-                                                2
-                                            </td>
-                                            <td align="left">
-                                                fsdfsd
-                                            </td>
-                                            <td align="right">
-                                                32.434
-                                            </td>
-                                            <td width="35px" align="center">
-                                                <a href="javascript:updateItem('785785','fsdfsd','32434','2');">Sửa</a>
-                                            </td>
-                                            <td width="35px" align="center">
-                                                <a href="javascript:doDeleteNL('785785','fsdfsd','DangKyCNTID=785419&CosoID=785783')">Xóa</a>
-                                            </td>
-                                        </tr>-->
-
                                     <tbody id="list-nguyenlieu-coso">
-                                        <tr onmouseover="this.style.background = '#EEE0C5'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(238, 224, 197);">
-                                            <td align="right">
-                                                2
-                                            </td>
-                                            <td align="left">
-                                                fsdfsd
-                                            </td>
-                                            <td align="right">
-                                                32.434
-                                            </td>
-                                            <td width="35px" align="center">
-                                                <a href="javascript:updateItem();">Sửa</a>
-                                            </td>
-                                            <td width="35px" align="center">
-                                                <a href="javascript:doDeleteNL()">Xóa</a>
-                                            </td>
-                                        </tr>
+
                                     </tbody>
                                     <tr>
                                         <td width="60px">
@@ -152,7 +99,10 @@
                                             <input name="hidID" type="hidden" id="hidID">
                                         </td>
                                         <td>
-                                            <input name="txtTenNL" type="text" id="txtTenNL" style="width:100%;">
+                                            <?php echo $this->Form->input('txtTenNL', array('div' => false, 'label' => false, 'id' => 'txtTenNL', 'style' => 'width: 100%;', 'options' => Common::getListNguyenlieu())) ?>
+                                        </td>
+                                        <td width="68px">
+                                            <input name="txtDonViNL" type="text" id="txtDonViNL" style="width:100%;">
                                         </td>
                                         <td width="68px">
                                             <input name="txtSoLuongNL" type="text" id="txtSoLuongNL" style="width:100%;">
@@ -181,41 +131,47 @@
                                 Tên sản phẩm
                             </th>
                             <th width="60px">
-                                Số lượng(Kg/năm)
+                                Đơn vị
+                            </th>
+                            <th width="60px">
+                                Công suất
                             </th>
                             <th width="100px" colspan="2">
                                 Chức năng
                             </th>
                         </tr>
                     <tbody id="list-sanpham-coso">
-
                     </tbody>
-                    <tr>
-                        <td width="60px">
-                            <input name="txtThuTuSP" type="text" value="1" id="txtThuTuSP" style="width:100%;">
-                            <input name="hidIDSP" type="hidden" id="hidIDSP">
-                        </td>
-                        <td>
-                            <input name="txtTenSP" type="text" id="txtTenSP" style="width:100%;">
-                        </td>
-                        <td width="68px">
-                            <input name="txtSoLuongSP" type="text" id="txtSoLuongSP" style="width:100%;">
-                        </td>
-                        <td style="width: 60px" colspan="2" align="center">
-                            <input name="cmdAddSP" type="submit" id="cmdAddSP" style="width: 80px; height: 24px" onclick="KTSP(this)" value="Thêm">
-                        </td>
-                    </tr>
-    </tbody></table>
-</td>
-</tr>
-<tr>
-    <td>
-        <input onclick="__doPostBack('cmdQuayLai', '')" name="cmdQuayLai" type="button" id="cmdQuayLai" style="width: 80px; height: 24px" value="Quay lại">
-        <input type="submit" name="cmdTiep" value="Tiếp tục" id="cmdTiep" style="width:80px;">
+                    <tbody>
+                        <tr>
+                            <td width="60px">
+                                <input name="txtThuTuSP" type="text" value="" id="txtThuTuSP" style="width:100%;">
+                                <input name="hidIDSP" type="hidden" id="hidIDSP">
+                            </td>
+                            <td>
+                                <?php echo $this->Form->input('txtTenSP', array('div' => false, 'label' => false, 'id' => 'txtTenSP', 'style' => 'width: 100%;', 'options' => Common::getListSanPham())); ?>
+                            </td>
+                            <td width="68px">
+                                <input name="txtDVi" type="text" id="txtDVi" style="width:100%;">
+                            </td>
+                            <td width="68px">
+                                <input name="txtCongSuatTT" type="text" id="txtCongSuatTT" style="width:100%;">
+                            </td>
+                            <td style="width: 60px" colspan="2" align="center">
+                                <input name="cmdAddSP" type="submit" id="cmdAddSP" onclick="ThemSPDN();" style="width: 80px; height: 24px" value="Thêm">
+                            </td>
+                        </tr>
+                    </tbody></table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="<?php echo Router::url('/admin/baocao/baocaochatthainguyhai/step1') ?>"><input name="cmdQuayLai" type="button" id="cmdQuayLai" style="width: 80px; height: 24px" value="Quay lại"></a>
+                <a href="<?php echo Router::url('/admin/baocao/baocaochatthainguyhai/step3') ?>"><input type="submit" name="cmdTiep" value="Tiếp tục" id="cmdTiep" style="width:80px;"></a>
 
-    </td>
-</tr>
-</tbody></table>
+            </td>
+        </tr>
+    </tbody></table>
 
 
 
@@ -231,44 +187,96 @@
         $('#drpCoso').trigger("change");
     });
     function renderlist(data) {
-        console.log(data);
+//        console.log(data);
         try {
             var result = JSON.parse(data);
             var nguyenlieus = result["NguyenLieuSanPham"];
             var sanphams = result["SanPhamDoanhNghiep"];
+//            console.log(nguyenlieus);
             var nguyenlieu_html = '';
             nguyenlieus.forEach(function(nl) {
-                nguyenlieu_html += '<tr onmouseover="this.style.background = \'#EEE0C5\'" onmouseout="this.style.background = \'#ffffff\'" style="background: rgb(238, 224, 197);">' +
+                nguyenlieu_html += '<tr onmouseover="this.style.background = \'#EEE0C5\'" onmouseout="this.style.background = \'#ffffff\'">' +
                         '<td align="right">' +
-                        nl["stt"] +
-                        '<input type="hidden" value="' + nl["colMa"] + '">' +
+                        nl["NguyenLieuSanPham"]["stt"] +
+                        '<input type="hidden" value="' + nl["NguyenLieuSanPham"]["colMa"] + '">' +
                         '</td>' +
                         '<td align="left">' +
-                        nl["colNguyenLieu"] +
+                        nl["Nguyenlieu"]["tennguyenlieu"] +
+                        '</td>' +
+                        '<td align="left">' +
+                        nl["NguyenLieuSanPham"]["colDonVi"] +
                         '</td>' +
                         '<td align="right">' +
-                        nl["colLuongSD"] +
+                        nl["NguyenLieuSanPham"]["colLuongSD"] +
                         '</td>' +
                         ' <td width="35px" align="center">' +
-                        '<a href="javascript:updateItem();">Sửa</a>' +
+                        '<a href="javascript:doUpdate(4,' + nl["NguyenLieuSanPham"]["colMa"] + ');">Sửa</a>' +
                         '</td>' +
                         '<td width="35px" align="center">' +
-                        '<a href="javascript:doDeleteNL()">Xóa</a>' +
+                        '<a href="javascript:doDelete(10,' + nl["NguyenLieuSanPham"]["colMa"] + ')">Xóa</a>' +
                         '</td>' +
                         '</tr>';
             });
             $('#list-nguyenlieu-coso').html(nguyenlieu_html);
+            resetThemNLDN();
+            var sanphams_html = '';
+            sanphams.forEach(function(sp) {
+                sanphams_html += '<tr onmouseover="this.style.background = \'#EEE0C5\'" onmouseout="this.style.background = \'#ffffff\'">' +
+                        '<td align="right">' +
+                        sp["SanPhamDoanhNghiep"]["stt"] +
+                        '<input type="hidden" value="' + sp["SanPhamDoanhNghiep"]["colMa"] + '">' +
+                        '</td>' +
+                        '<td align="left">' +
+                        sp["Sanpham"]["tensanpham"] +
+                        '</td>' +
+                        '<td align="left">' +
+                        sp["SanPhamDoanhNghiep"]["colDVi"] +
+                        '</td>' +
+                        '<td align="right">' +
+                        sp["SanPhamDoanhNghiep"]["colCongSuatTT"] +
+                        '</td>' +
+                        ' <td width="35px" align="center">' +
+                        '<a href="javascript:doUpdate(5,' + sp["SanPhamDoanhNghiep"]["colMa"] + ');">Sửa</a>' +
+                        '</td>' +
+                        '<td width="35px" align="center">' +
+                        '<a href="javascript:doDelete(20,' + sp["SanPhamDoanhNghiep"]["colMa"] + ')">Xóa</a>' +
+                        '</td>' +
+                        '</tr>';
+            });
+            $('#list-sanpham-coso').html(sanphams_html);
+            resetThemSPDN();
         } catch (e) {
         }
     }
     function ThemNLDN() {
         var CSSX = $('#drpCoso').val();
         var stt = $('#txtThuTuNL').val();
+        var colDonVi = $('#txtDonViNL').val();
         var txtTenNL = $('#txtTenNL').val();
         var txtSoLuongNL = $('#txtSoLuongNL').val();
         var url = "<?php echo Router::url('/admin/doanhnghiep/getinfo') ?>";
-        var data = {colCSSX: CSSX, stt: stt, tenNguyenlieu: txtTenNL, LuongSD: txtSoLuongNL};
+        var data = {colCSSX: CSSX, stt: stt, colNguyenLieu: txtTenNL, colLuongSD: txtSoLuongNL, colDonVi: colDonVi};
         doPostAjax(url, data, 'renderlist');
+    }
+    function resetThemNLDN() {
+        $('#txtThuTuNL').val('');
+        $('#txtDonViNL').val('');
+        $('#txtSoLuongNL').val('');
+    }
+    function ThemSPDN() {
+        var CSSX = $('#drpCoso').val();
+        var stt = $('#txtThuTuSP').val();
+        var txtTenSanPham = $('#txtTenSP').val();
+        var txtDVi = $('#txtDVi').val();
+        var txtCongSuatTT = $('#txtCongSuatTT').val();
+        var url = "<?php echo Router::url('/admin/doanhnghiep/getinfo') ?>";
+        var data = {colCSSX: CSSX, stt: stt, colSanPham: txtTenSanPham, colCongSuatTT: txtCongSuatTT, colDVi: txtDVi};
+        doPostAjax(url, data, 'renderlist');
+    }
+    function resetThemSPDN() {
+        $('#txtThuTuSP').val('');
+        $('#txtDVi').val('');
+        $('#txtCongSuatTT').val('');
     }
 </script>
 <?php echo $this->element('Admin.Doanhnghieps/backend.js'); ?>

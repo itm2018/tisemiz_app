@@ -566,7 +566,7 @@ class DoanhNghiepsController extends AdminAppController {
                     $this->set('nguyenlieu', $nguyenlieu);
                 }
                 $this->render('Admin.DoanhNghieps/_capnhatnguyenlieu');
-            } elseif ($type = 3) {
+            } elseif ($type == 3) {
                 //cap nhat nguon thai nuoc thai
                 $this->loadModel('Admin.NguonThaiNuocThai');
                 $nguonthainuocthai = $this->NguonThaiNuocThai->findByColma($id);
@@ -585,6 +585,40 @@ class DoanhNghiepsController extends AdminAppController {
                     $this->set('nguonthainuocthai', $nguonthainuocthai);
                 }
                 $this->render('Admin.DoanhNghieps/_capnhatnguonthainuocthai');
+            } elseif ($type == 4) {
+                //cap nhat thong tin nguyen lieu san pham trong form bao cao chat thai nguy hai
+                $this->loadModel('Admin.NguyenLieuSanPham');
+                $nguyenlieusanpham = $this->NguyenLieuSanPham->findByColma($id);
+                if ($this->request->is('post') || $this->request->is('put')) {
+                    $new_data = $this->request->data['NguyenLieuSanPham'];
+                    $this->NguyenLieuSanPham->set($new_data);
+                    if ($this->NguyenLieuSanPham->validates()) {
+                        $updated = $this->NguyenLieuSanPham->save();
+                        if ($updated) {
+                            $this->Session->setFlash('Lưu thành công', 'default', array('class' => 'success'));
+                            $nguyenlieusanpham = $updated;
+                        }
+                    }
+                }
+                $this->request->data = $nguyenlieusanpham;
+                $this->render('Admin.Baocao/_capnhatnguyenlieusanpham');
+            }elseif($type==5){
+                //cap nhat thong tin nguyen lieu san pham trong form bao cao chat thai nguy hai
+                $this->loadModel('Admin.SanPhamDoanhNghiep');
+                $sanphamdoanhnghiep = $this->SanPhamDoanhNghiep->findByColma($id);
+                if ($this->request->is('post') || $this->request->is('put')) {
+                    $new_data = $this->request->data['SanPhamDoanhNghiep'];
+                    $this->SanPhamDoanhNghiep->set($new_data);
+                    if ($this->SanPhamDoanhNghiep->validates()) {
+                        $updated = $this->SanPhamDoanhNghiep->save();
+                        if ($updated) {
+                            $this->Session->setFlash('Lưu thành công', 'default', array('class' => 'success'));
+                            $sanphamdoanhnghiep = $updated;
+                        }
+                    }
+                }
+                $this->request->data = $sanphamdoanhnghiep;
+                $this->render('Admin.Baocao/_capnhatsanphamdoanhnghiep');
             }
         }
     }
@@ -1073,6 +1107,9 @@ class DoanhNghiepsController extends AdminAppController {
         $this->Session->setFlash('Lỗi!!! Không xóa được cơ sở tại thời điểm hiện tại. Vui lòng liên hệ quản trị để được hỗ trợ.');
     }
 
+    /**
+     * response for ajax call getinfo
+     */
     public function getinfo() {
         $this->layout = false;
         $this->autoRender = false;
@@ -1080,17 +1117,32 @@ class DoanhNghiepsController extends AdminAppController {
             if (isset($this->request->data['colMa'])) {
                 $colMa = $this->request->data['colMa'];
                 $this->_loadDoanhNghiepInfo($colMa);
-            }
-            if (isset($this->request->data['colCSSX'])) {
+            } elseif (isset($this->request->data['colCSSX']) && isset($this->request->data['colNguyenLieu'])) {
                 $nguyenlieu['stt'] = (int) $this->request->data['stt'];
                 $nguyenlieu['colCSSX'] = $this->request->data['colCSSX'];
-                $nguyenlieu['colNguyenLieu'] = $this->request->data['tenNguyenlieu'];
-                $nguyenlieu['colLuongSD'] = $this->request->data['LuongSD'];
+                $nguyenlieu['colNguyenLieu'] = $this->request->data['colNguyenLieu'];
+                $nguyenlieu['colDonVi'] = $this->request->data['colDonVi'];
+                $nguyenlieu['colLuongSD'] = $this->request->data['colLuongSD'];
                 $this->loadModel('Admin.NguyenLieuSanPham');
                 $this->NguyenLieuSanPham->set($nguyenlieu);
                 if ($this->NguyenLieuSanPham->validates()) {
-                    if($this->NguyenLieuSanPham->save()){
-                        $this->_loadDoanhNghiepInfo( $this->request->data['colCSSX']);
+                    $nl = $this->NguyenLieuSanPham->save();
+                    if ($nl) {
+                        $this->_loadDoanhNghiepInfo($this->request->data['colCSSX']);
+                    }
+                }
+            } elseif (isset($this->request->data['colCSSX']) && isset($this->request->data['colSanPham'])) {
+                $sanpham['stt'] = (int) $this->request->data['stt'];
+                $sanpham['colCSSX'] = $this->request->data['colCSSX'];
+                $sanpham['colSanPham'] = $this->request->data['colSanPham'];
+                $sanpham['colDVi'] = $this->request->data['colDVi'];
+                $sanpham['colCongSuatTT'] = $this->request->data['colCongSuatTT'];
+                $sanpham['colCongSuatTK'] = $this->request->data['colCongSuatTT'];
+                $this->loadModel('Admin.SanPhamDoanhNghiep');
+                $this->SanPhamDoanhNghiep->set($sanpham);
+                if ($this->SanPhamDoanhNghiep->validates()) {
+                    if ($this->SanPhamDoanhNghiep->save()) {
+                        $this->_loadDoanhNghiepInfo($this->request->data['colCSSX']);
                     }
                 }
             }
@@ -1099,9 +1151,45 @@ class DoanhNghiepsController extends AdminAppController {
 
     private function _loadDoanhNghiepInfo($colMa) {
         $this->loadModel('Admin.DoanhNghiep');
-        $result = $this->DoanhNghiep->findByColma($colMa);
-        if ($result) {
-            echo json_encode($result);
+        $this->loadModel('Admin.SanPhamDoanhNghiep');
+        $this->loadModel('Admin.NguyenLieuSanPham');
+        $nguyenlieus = $this->NguyenLieuSanPham->find('all', array('conditions' => array('colCSSX' => $colMa), 'order' => array('stt' => 'asc')));
+        $sanphams = $this->SanPhamDoanhNghiep->find('all', array('conditions' => array('colCSSX' => $colMa), 'order' => array('stt' => 'asc')));
+        $doanhnghiep = $this->DoanhNghiep->findByColma($colMa);
+        if ($doanhnghiep) {
+            $doanhnghiep['NguyenLieuSanPham'] = $nguyenlieus;
+            $doanhnghiep['SanPhamDoanhNghiep'] = $sanphams;
+            echo json_encode($doanhnghiep);
+        }
+    }
+
+    /**
+     * thuc hien chuc nang xoa cho hau het cac loai du lieu 
+     * bang phuong thuc ajax
+     */
+    public function chucnangxoa() {
+        if ($this->request->is('post') && $this->request->is('ajax')) {
+            $type = $this->request->data['type'];
+            $id = $this->request->data['id'];
+            if ($type == 10) {
+                //xoa nguyen lieu khoi danh sach bao cao chat thai nguy hai cua co so
+                $this->loadModel('Admin.NguyenLieuSanPham');
+                if ($this->NguyenLieuSanPham->delete(array('colMa' => $id))) {
+                    $this->Session->setFlash('Xóa nguyên liệu thành công', 'default', array('class' => 'success'));
+                } else {
+                    $this->Session->setFlash('Lỗi! Nguyên liệu không tồn tại hoặc kết nối bị ngắt');
+                }
+                exit;
+            } elseif ($type == 20) {
+                //xoa san pham khoi danh sach bao cao chat thai nguy hai cua co so
+                $this->loadModel('Admin.SanPhamDoanhNghiep');
+                if ($this->SanPhamDoanhNghiep->delete(array('colMa' => $id))) {
+                    $this->Session->setFlash('Xóa sản phẩm thành công', 'default', array('class' => 'success'));
+                } else {
+                    $this->Session->setFlash('Lỗi! Sản phẩm không tồn tại hoặc kết nối bị ngắt');
+                }
+                exit;
+            }
         }
     }
 
