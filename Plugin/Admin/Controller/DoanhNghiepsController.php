@@ -1073,16 +1073,35 @@ class DoanhNghiepsController extends AdminAppController {
         $this->Session->setFlash('Lỗi!!! Không xóa được cơ sở tại thời điểm hiện tại. Vui lòng liên hệ quản trị để được hỗ trợ.');
     }
 
-    public function get() {
+    public function getinfo() {
         $this->layout = false;
         $this->autoRender = false;
         if ($this->request->is('post') || $this->request->is('ajax')) {
-            $colMa = $this->request->data['colMa'];
-            $this->loadModel('Admin.DoanhNghieps');
-            $result = $this->DoanhNghieps->findByColma($colMa);
-            if ($result) {
-                echo json_decode($result);
+            if (isset($this->request->data['colMa'])) {
+                $colMa = $this->request->data['colMa'];
+                $this->_loadDoanhNghiepInfo($colMa);
             }
+            if (isset($this->request->data['colCSSX'])) {
+                $nguyenlieu['stt'] = (int) $this->request->data['stt'];
+                $nguyenlieu['colCSSX'] = $this->request->data['colCSSX'];
+                $nguyenlieu['colNguyenLieu'] = $this->request->data['tenNguyenlieu'];
+                $nguyenlieu['colLuongSD'] = $this->request->data['LuongSD'];
+                $this->loadModel('Admin.NguyenLieuSanPham');
+                $this->NguyenLieuSanPham->set($nguyenlieu);
+                if ($this->NguyenLieuSanPham->validates()) {
+                    if($this->NguyenLieuSanPham->save()){
+                        $this->_loadDoanhNghiepInfo( $this->request->data['colCSSX']);
+                    }
+                }
+            }
+        }
+    }
+
+    private function _loadDoanhNghiepInfo($colMa) {
+        $this->loadModel('Admin.DoanhNghiep');
+        $result = $this->DoanhNghiep->findByColma($colMa);
+        if ($result) {
+            echo json_encode($result);
         }
     }
 

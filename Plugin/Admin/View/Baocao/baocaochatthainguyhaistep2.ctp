@@ -139,16 +139,16 @@
                                                 32.434
                                             </td>
                                             <td width="35px" align="center">
-                                                <a href="javascript:updateItem('785785','fsdfsd','32434','2');">Sửa</a>
+                                                <a href="javascript:updateItem();">Sửa</a>
                                             </td>
                                             <td width="35px" align="center">
-                                                <a href="javascript:doDeleteNL('785785','fsdfsd','DangKyCNTID=785419&CosoID=785783')">Xóa</a>
+                                                <a href="javascript:doDeleteNL()">Xóa</a>
                                             </td>
                                         </tr>
                                     </tbody>
                                     <tr>
                                         <td width="60px">
-                                            <input name="txtThuTuNL" type="text" value="3" id="txtThuTuNL" style="width:100%;">
+                                            <input name="txtThuTuNL" type="text" value="" id="txtThuTuNL" style="width:100%;">
                                             <input name="hidID" type="hidden" id="hidID">
                                         </td>
                                         <td>
@@ -158,7 +158,7 @@
                                             <input name="txtSoLuongNL" type="text" id="txtSoLuongNL" style="width:100%;">
                                         </td>
                                         <td style="width: 85px" colspan="2" align="center">
-                                            <input name="cmdAddNL" type="submit" id="cmdAddNL" style="width: 80px; height: 24px" onclick="KTNL(this)" value="Thêm">
+                                            <input name="cmdAddNL" type="submit" id="cmdAddNL" style="width: 80px; height: 24px" onclick="ThemNLDN();" value="Thêm">
                                         </td></tr>
                     </tbody></table>
             </td>
@@ -188,34 +188,34 @@
                             </th>
                         </tr>
                     <tbody id="list-sanpham-coso">
-                        
-                    </tbody>
-                        <tr>
-                            <td width="60px">
-                                <input name="txtThuTuSP" type="text" value="1" id="txtThuTuSP" style="width:100%;">
-                                <input name="hidIDSP" type="hidden" id="hidIDSP">
-                            </td>
-                            <td>
-                                <input name="txtTenSP" type="text" id="txtTenSP" style="width:100%;">
-                            </td>
-                            <td width="68px">
-                                <input name="txtSoLuongSP" type="text" id="txtSoLuongSP" style="width:100%;">
-                            </td>
-                            <td style="width: 60px" colspan="2" align="center">
-                                <input name="cmdAddSP" type="submit" id="cmdAddSP" style="width: 80px; height: 24px" onclick="KTSP(this)" value="Thêm">
-                            </td>
-                        </tr>
-                    </tbody></table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input onclick="__doPostBack('cmdQuayLai', '')" name="cmdQuayLai" type="button" id="cmdQuayLai" style="width: 80px; height: 24px" value="Quay lại">
-                <input type="submit" name="cmdTiep" value="Tiếp tục" id="cmdTiep" style="width:80px;">
 
-            </td>
-        </tr>
+                    </tbody>
+                    <tr>
+                        <td width="60px">
+                            <input name="txtThuTuSP" type="text" value="1" id="txtThuTuSP" style="width:100%;">
+                            <input name="hidIDSP" type="hidden" id="hidIDSP">
+                        </td>
+                        <td>
+                            <input name="txtTenSP" type="text" id="txtTenSP" style="width:100%;">
+                        </td>
+                        <td width="68px">
+                            <input name="txtSoLuongSP" type="text" id="txtSoLuongSP" style="width:100%;">
+                        </td>
+                        <td style="width: 60px" colspan="2" align="center">
+                            <input name="cmdAddSP" type="submit" id="cmdAddSP" style="width: 80px; height: 24px" onclick="KTSP(this)" value="Thêm">
+                        </td>
+                    </tr>
     </tbody></table>
+</td>
+</tr>
+<tr>
+    <td>
+        <input onclick="__doPostBack('cmdQuayLai', '')" name="cmdQuayLai" type="button" id="cmdQuayLai" style="width: 80px; height: 24px" value="Quay lại">
+        <input type="submit" name="cmdTiep" value="Tiếp tục" id="cmdTiep" style="width:80px;">
+
+    </td>
+</tr>
+</tbody></table>
 
 
 
@@ -223,15 +223,52 @@
 <script type="text/javascript">
     $(function() {
         $('#drpCoso').bind("change", function() {
-            var colMa =  parseInt($(this).val());
-            var url="<?php echo Router::url('/admin/doanhnghiep/get')?>";
-            var data = {colMa:colMa};
-            doPostAjax(url,data,'renderlist');
+            var colMa = parseInt($(this).val());
+            var url = "<?php echo Router::url('/admin/doanhnghiep/getinfo') ?>";
+            var data = {colMa: colMa};
+            doPostAjax(url, data, 'renderlist');
         });
-         $('#drpCoso').trigger("change");
+        $('#drpCoso').trigger("change");
     });
-    function renderlist(data){
-    console.log(data);
+    function renderlist(data) {
+        console.log(data);
+        try {
+            var result = JSON.parse(data);
+            var nguyenlieus = result["NguyenLieuSanPham"];
+            var sanphams = result["SanPhamDoanhNghiep"];
+            var nguyenlieu_html = '';
+            nguyenlieus.forEach(function(nl) {
+                nguyenlieu_html += '<tr onmouseover="this.style.background = \'#EEE0C5\'" onmouseout="this.style.background = \'#ffffff\'" style="background: rgb(238, 224, 197);">' +
+                        '<td align="right">' +
+                        nl["stt"] +
+                        '<input type="hidden" value="' + nl["colMa"] + '">' +
+                        '</td>' +
+                        '<td align="left">' +
+                        nl["colNguyenLieu"] +
+                        '</td>' +
+                        '<td align="right">' +
+                        nl["colLuongSD"] +
+                        '</td>' +
+                        ' <td width="35px" align="center">' +
+                        '<a href="javascript:updateItem();">Sửa</a>' +
+                        '</td>' +
+                        '<td width="35px" align="center">' +
+                        '<a href="javascript:doDeleteNL()">Xóa</a>' +
+                        '</td>' +
+                        '</tr>';
+            });
+            $('#list-nguyenlieu-coso').html(nguyenlieu_html);
+        } catch (e) {
+        }
+    }
+    function ThemNLDN() {
+        var CSSX = $('#drpCoso').val();
+        var stt = $('#txtThuTuNL').val();
+        var txtTenNL = $('#txtTenNL').val();
+        var txtSoLuongNL = $('#txtSoLuongNL').val();
+        var url = "<?php echo Router::url('/admin/doanhnghiep/getinfo') ?>";
+        var data = {colCSSX: CSSX, stt: stt, tenNguyenlieu: txtTenNL, LuongSD: txtSoLuongNL};
+        doPostAjax(url, data, 'renderlist');
     }
 </script>
 <?php echo $this->element('Admin.Doanhnghieps/backend.js'); ?>
