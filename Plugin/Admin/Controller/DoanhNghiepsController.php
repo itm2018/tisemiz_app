@@ -515,114 +515,6 @@ class DoanhNghiepsController extends AdminAppController {
         }
     }
 
-    public function capnhat($type, $id) {
-        $this->layout = 'popup_beautiful';
-        if ($id && $type) {
-            if ($type == 1) {
-                //cap nhat san pham
-                $this->loadModel('Admin.Sanpham');
-                $sp = $this->Sanpham->findById($id);
-                if ($this->request->is('post')) {
-                    $updating_sp = $this->request->data['Sanpham'];
-                    $updating_sp['id'] = $id;
-                    $updating_sp['create_by'] = $sp['Sanpham']['create_by'];
-                    $updating_sp['update_by'] = $this->Auth->user('username');
-                    $this->Sanpham->set($updating_sp);
-                    if ($this->Sanpham->validates()) {
-                        $updated = $this->Sanpham->save();
-                        if ($updated) {
-                            $sp = $updated;
-                            $this->Session->setFlash('Đã lưu thông tin sản phẩm', 'default', array('class' => 'success'));
-                        }
-                    }
-//                    else {
-//                        $message = '';
-//                        foreach ($this->Sanpham->validationErrors as $error) {
-//                            $message .='<p>' . $error[0] . '</p>';
-//                        }
-//                        $this->Session->setFlash($message);
-//                    }
-                }
-                if ($sp) {
-                    $this->set('sanpham', $sp);
-                }
-                $this->render('Admin.DoanhNghieps/_capnhatsanpham');
-            } elseif ($type == 2) {
-                //cap nhat nguyen lieu
-                $this->loadModel('Admin.Nguyenlieu');
-                $nguyenlieu = $this->Nguyenlieu->findById($id);
-                if ($this->request->is('post')) {
-                    $updating_nl = $this->request->data['Nguyenlieu'];
-                    $this->Nguyenlieu->set($updating_nl);
-                    if ($this->Nguyenlieu->validates()) {
-                        $updated = $this->Nguyenlieu->save();
-                        if ($updated) {
-                            $nguyenlieu = $updated;
-                            $this->Session->setFlash('Đã lưu thông tin nguyên liệu: ' . $nguyenlieu['Nguyenlieu']['tennguyenlieu'], 'default', array('class' => 'success'));
-                        }
-                    }
-                }
-                if ($nguyenlieu) {
-                    $this->set('nguyenlieu', $nguyenlieu);
-                }
-                $this->render('Admin.DoanhNghieps/_capnhatnguyenlieu');
-            } elseif ($type == 3) {
-                //cap nhat nguon thai nuoc thai
-                $this->loadModel('Admin.NguonThaiNuocThai');
-                $nguonthainuocthai = $this->NguonThaiNuocThai->findByColma($id);
-                if ($this->request->is('post')) {
-                    $updating_ntNT = $this->request->data['NguonThaiNuocThai'];
-                    $this->NguonThaiNuocThai->set($updating_ntNT);
-                    if ($this->NguonThaiNuocThai->validates()) {
-                        $updated = $this->NguonThaiNuocThai->save();
-                        if ($updated) {
-                            $nguonthainuocthai = $updated;
-                            $this->Session->setFlash('Đã lưu thông tin nguồn thải nước thải: ' . $nguonthainuocthai['NguonThaiNuocThai']['colTenNguonThai'], 'default', array('class' => 'success'));
-                        }
-                    }
-                }
-                if ($nguonthainuocthai) {
-                    $this->set('nguonthainuocthai', $nguonthainuocthai);
-                }
-                $this->render('Admin.DoanhNghieps/_capnhatnguonthainuocthai');
-            } elseif ($type == 4) {
-                //cap nhat thong tin nguyen lieu san pham trong form bao cao chat thai nguy hai
-                $this->loadModel('Admin.NguyenLieuSanPham');
-                $nguyenlieusanpham = $this->NguyenLieuSanPham->findByColma($id);
-                if ($this->request->is('post') || $this->request->is('put')) {
-                    $new_data = $this->request->data['NguyenLieuSanPham'];
-                    $this->NguyenLieuSanPham->set($new_data);
-                    if ($this->NguyenLieuSanPham->validates()) {
-                        $updated = $this->NguyenLieuSanPham->save();
-                        if ($updated) {
-                            $this->Session->setFlash('Lưu thành công', 'default', array('class' => 'success'));
-                            $nguyenlieusanpham = $updated;
-                        }
-                    }
-                }
-                $this->request->data = $nguyenlieusanpham;
-                $this->render('Admin.Baocao/_capnhatnguyenlieusanpham');
-            }elseif($type==5){
-                //cap nhat thong tin nguyen lieu san pham trong form bao cao chat thai nguy hai
-                $this->loadModel('Admin.SanPhamDoanhNghiep');
-                $sanphamdoanhnghiep = $this->SanPhamDoanhNghiep->findByColma($id);
-                if ($this->request->is('post') || $this->request->is('put')) {
-                    $new_data = $this->request->data['SanPhamDoanhNghiep'];
-                    $this->SanPhamDoanhNghiep->set($new_data);
-                    if ($this->SanPhamDoanhNghiep->validates()) {
-                        $updated = $this->SanPhamDoanhNghiep->save();
-                        if ($updated) {
-                            $this->Session->setFlash('Lưu thành công', 'default', array('class' => 'success'));
-                            $sanphamdoanhnghiep = $updated;
-                        }
-                    }
-                }
-                $this->request->data = $sanphamdoanhnghiep;
-                $this->render('Admin.Baocao/_capnhatsanphamdoanhnghiep');
-            }
-        }
-    }
-
     public function xoadanhmucs() {
         $this->layout = false;
         $this->autoRender = false;
@@ -1189,6 +1081,119 @@ class DoanhNghiepsController extends AdminAppController {
                     $this->Session->setFlash('Lỗi! Sản phẩm không tồn tại hoặc kết nối bị ngắt');
                 }
                 exit;
+            }
+        }
+    }
+
+    /**
+     * response for ajax calling - capnhat
+     * @param type $type
+     * @param type $id
+     */
+    public function capnhat($type, $id) {
+        $this->layout = 'popup_beautiful';
+        if ($id && $type) {
+            if ($type == 1) {
+                //cap nhat san pham
+                $this->loadModel('Admin.Sanpham');
+                $sp = $this->Sanpham->findById($id);
+                if ($this->request->is('post')) {
+                    $updating_sp = $this->request->data['Sanpham'];
+                    $updating_sp['id'] = $id;
+                    $updating_sp['create_by'] = $sp['Sanpham']['create_by'];
+                    $updating_sp['update_by'] = $this->Auth->user('username');
+                    $this->Sanpham->set($updating_sp);
+                    if ($this->Sanpham->validates()) {
+                        $updated = $this->Sanpham->save();
+                        if ($updated) {
+                            $sp = $updated;
+                            $this->Session->setFlash('Đã lưu thông tin sản phẩm', 'default', array('class' => 'success'));
+                        }
+                    }
+//                    else {
+//                        $message = '';
+//                        foreach ($this->Sanpham->validationErrors as $error) {
+//                            $message .='<p>' . $error[0] . '</p>';
+//                        }
+//                        $this->Session->setFlash($message);
+//                    }
+                }
+                if ($sp) {
+                    $this->set('sanpham', $sp);
+                }
+                $this->render('Admin.DoanhNghieps/_capnhatsanpham');
+            } elseif ($type == 2) {
+                //cap nhat nguyen lieu
+                $this->loadModel('Admin.Nguyenlieu');
+                $nguyenlieu = $this->Nguyenlieu->findById($id);
+                if ($this->request->is('post')) {
+                    $updating_nl = $this->request->data['Nguyenlieu'];
+                    $this->Nguyenlieu->set($updating_nl);
+                    if ($this->Nguyenlieu->validates()) {
+                        $updated = $this->Nguyenlieu->save();
+                        if ($updated) {
+                            $nguyenlieu = $updated;
+                            $this->Session->setFlash('Đã lưu thông tin nguyên liệu: ' . $nguyenlieu['Nguyenlieu']['tennguyenlieu'], 'default', array('class' => 'success'));
+                        }
+                    }
+                }
+                if ($nguyenlieu) {
+                    $this->set('nguyenlieu', $nguyenlieu);
+                }
+                $this->render('Admin.DoanhNghieps/_capnhatnguyenlieu');
+            } elseif ($type == 3) {
+                //cap nhat nguon thai nuoc thai
+                $this->loadModel('Admin.NguonThaiNuocThai');
+                $nguonthainuocthai = $this->NguonThaiNuocThai->findByColma($id);
+                if ($this->request->is('post')) {
+                    $updating_ntNT = $this->request->data['NguonThaiNuocThai'];
+                    $this->NguonThaiNuocThai->set($updating_ntNT);
+                    if ($this->NguonThaiNuocThai->validates()) {
+                        $updated = $this->NguonThaiNuocThai->save();
+                        if ($updated) {
+                            $nguonthainuocthai = $updated;
+                            $this->Session->setFlash('Đã lưu thông tin nguồn thải nước thải: ' . $nguonthainuocthai['NguonThaiNuocThai']['colTenNguonThai'], 'default', array('class' => 'success'));
+                        }
+                    }
+                }
+                if ($nguonthainuocthai) {
+                    $this->set('nguonthainuocthai', $nguonthainuocthai);
+                }
+                $this->render('Admin.DoanhNghieps/_capnhatnguonthainuocthai');
+            } elseif ($type == 4) {
+                //cap nhat thong tin nguyen lieu san pham trong form bao cao chat thai nguy hai
+                $this->loadModel('Admin.NguyenLieuSanPham');
+                $nguyenlieusanpham = $this->NguyenLieuSanPham->findByColma($id);
+                if ($this->request->is('post') || $this->request->is('put')) {
+                    $new_data = $this->request->data['NguyenLieuSanPham'];
+                    $this->NguyenLieuSanPham->set($new_data);
+                    if ($this->NguyenLieuSanPham->validates()) {
+                        $updated = $this->NguyenLieuSanPham->save();
+                        if ($updated) {
+                            $this->Session->setFlash('Lưu thành công', 'default', array('class' => 'success'));
+                            $nguyenlieusanpham = $updated;
+                        }
+                    }
+                }
+                $this->request->data = $nguyenlieusanpham;
+                $this->render('Admin.Baocao/_capnhatnguyenlieusanpham');
+            } elseif ($type == 5) {
+                //cap nhat thong tin nguyen lieu san pham trong form bao cao chat thai nguy hai
+                $this->loadModel('Admin.SanPhamDoanhNghiep');
+                $sanphamdoanhnghiep = $this->SanPhamDoanhNghiep->findByColma($id);
+                if ($this->request->is('post') || $this->request->is('put')) {
+                    $new_data = $this->request->data['SanPhamDoanhNghiep'];
+                    $this->SanPhamDoanhNghiep->set($new_data);
+                    if ($this->SanPhamDoanhNghiep->validates()) {
+                        $updated = $this->SanPhamDoanhNghiep->save();
+                        if ($updated) {
+                            $this->Session->setFlash('Lưu thành công', 'default', array('class' => 'success'));
+                            $sanphamdoanhnghiep = $updated;
+                        }
+                    }
+                }
+                $this->request->data = $sanphamdoanhnghiep;
+                $this->render('Admin.Baocao/_capnhatsanphamdoanhnghiep');
             }
         }
     }

@@ -170,10 +170,19 @@ class Common {
         }
         return array();
     }
-    public static function getFullListDanhMucChatThai(){
+
+    public static function getFullListDanhMucChatThai() {
         $danhmuc = new DanhMucChatThai();
         $list = $danhmuc->find('all');
-        if($list){
+        if (is_array($list)) {
+            return json_encode($list);
+        }
+    }
+
+    public static function getFullListNguonThai() {
+        $nguon_thai = new NguonThai();
+        $list = $nguon_thai->find('all');
+        if (is_array($list)) {
             return json_encode($list);
         }
     }

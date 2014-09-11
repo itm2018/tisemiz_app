@@ -42,11 +42,11 @@
         var height = 400;
         var left = parseInt((screen.availWidth / 2) - (width / 2));
         var top = parseInt((screen.availHeight / 2) - (height / 2));
-        var PPwindow3 = window.open("<?php echo Router::url('/admin/doanhnghiep/capnhat/type/'); ?>" + type + '/id/' + id, "_blank", "width=" + width + ",height=" + height + ",toolbar=no,directories=no,status=yes, menubar=no,scrollbars=yes,resizable=yes,border=thin,left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "");
+        var PPwindow3 = window.open("<?php echo Router::url('/admin/commonfunction/capnhat/type/'); ?>" + type + '/id/' + id, "_blank", "width=" + width + ",height=" + height + ",toolbar=no,directories=no,status=yes, menubar=no,scrollbars=yes,resizable=yes,border=thin,left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "");
         PPwindow3.focus();
     }
     function doDelete(type, id) {
-        var url = "<?php echo Router::url('/admin/doanhnghiep/chucnangxoa'); ?>";
+        var url = "<?php echo Router::url('/admin/commonfunction/chucnangxoa'); ?>";
         var data = {type: type, id: id};
         if (type === 10) {
             if (confirm("Bạn muốn xóa dòng này khỏi danh sách nguyên liệu của cơ sở?")) {
@@ -60,11 +60,17 @@
             } else {
                 return false;
             }
+        } else if (type === 30) {
+            if (confirm("Bạn muốn xóa dòng này khỏi danh sách chất thải nguy hại?")) {
+                doPostAjax(url, data);
+            } else {
+                return false;
+            }
         }
     }
-    function doAddItem(type, data){
+    function doAddItem(type, data) {
         var url = "<?php echo Router::url('/admin/thongtinchung/additem'); ?>";
-        doPostAjax(url,data);
+        doPostAjax(url, data);
     }
     function showLoading() {
         var div = '<div id="indicator" style="display: none;text-align: center; width: 100%; height: 100%; margin: auto; position: fixed; z-index: 999; background-color: #000; opacity: 0.7; left: 0; right: 0; top: 0; bottom: 0; vertical-align: middle;"><div style="position: relative; top: 45%; font-size: 14pt; color: #ccc; font-style: italic;">Đang xử lý...</div></div>';
