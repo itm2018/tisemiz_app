@@ -173,7 +173,7 @@ class Common {
 
     public static function getFullListDanhMucChatThai() {
         $danhmuc = new DanhMucChatThai();
-        $list = $danhmuc->find('all');
+        $list = $danhmuc->find('all',array('order'=>'ma_danhmuc asc'));
         if (is_array($list)) {
             return json_encode($list);
         }

@@ -97,6 +97,9 @@
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
                                 <li>
+                                    <a href="<?php echo $this->Html->url('/admin/dashboards'); ?>">Bảng điều khiển</a>
+                                </li>
+                                <li>
                                     <a href="<?php echo $this->Html->url('/admin/doanhnghiep/lietke'); ?>">Doanh nghiệp</a>
                                 </li>
                                 <li class="dropdown">

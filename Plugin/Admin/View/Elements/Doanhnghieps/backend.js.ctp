@@ -66,6 +66,18 @@
             } else {
                 return false;
             }
+        }else if (type === 40) {
+            if (confirm("Bạn muốn xóa danh mục chất thải")) {
+                doPostAjax(url, data);
+            } else {
+                return false;
+            }
+        }else if (type === 50) {
+            if (confirm("Bạn muốn xóa nguồn thải")) {
+                doPostAjax(url, data);
+            } else {
+                return false;
+            }
         }
     }
     function doAddItem(type, data) {

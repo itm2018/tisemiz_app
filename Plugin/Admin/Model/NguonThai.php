@@ -14,37 +14,38 @@ App::uses('AdminAppModel', 'Admin.Model');
  */
 class NguonThai extends AdminAppModel {
 
-    public $useTable = 'nguon_thai';
-    public $name = 'NguonThai';
-    public $belongsTo = array(
-        'DanhMucChatThai' => array(
-            'className' => 'Admin.DanhMucChatThai',
-            'foreignKey' => 'id_danhmucchatthai'
-        )
-    );
-    public $hasMany = array(
-        'ChatThai' => array(
-            'className' => 'Admin.ChatThai',
-            'foreignKey' => 'id_nguonthai'
-        )
-    );
-    public $validate=array(
-        'ma_nguonthai'=>array(
-            'notEmpty' => array(
-                'rule' => 'notEmpty',
-                'required' => true,
-                'allowEmpty' => false,
-                'message' => 'Tên danh mục là bắt buộc'
-            )
-        ),
-        'ten_nguonthai'=>array(
-            'notEmpty' => array(
-                'rule' => 'notEmpty',
-                'required' => true,
-                'allowEmpty' => false,
-                'message' => 'Tên danh mục là bắt buộc'
-            )
-        ),
-    );
+	public $useTable = 'nguon_thai';
+	public $name = 'NguonThai';
+	public $belongsTo = array(
+		'DanhMucChatThai' => array(
+			'className' => 'Admin.DanhMucChatThai',
+			'foreignKey' => 'id_danhmucchatthai'
+		)
+	);
+	public $hasMany = array(
+		'ChatThai' => array(
+			'className' => 'Admin.ChatThai',
+			'foreignKey' => 'id_nguonthai',
+			'order' => 'ChatThai.ma_chatthai asc'
+		)
+	);
+	public $validate = array(
+		'ma_nguonthai' => array(
+			'notEmpty' => array(
+				'rule' => 'notEmpty',
+				'required' => true,
+				'allowEmpty' => false,
+				'message' => 'Tên danh mục là bắt buộc'
+			)
+		),
+		'ten_nguonthai' => array(
+			'notEmpty' => array(
+				'rule' => 'notEmpty',
+				'required' => true,
+				'allowEmpty' => false,
+				'message' => 'Tên danh mục là bắt buộc'
+			)
+		),
+	);
 
 }
