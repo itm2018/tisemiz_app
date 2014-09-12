@@ -1,3 +1,4 @@
+<div style="width: 800px; margin: 0 auto; padding: 2px;">
 <table id="table2" cellspacing="0" cellpadding="0" width="780px" border="0">
     <tbody><tr>
             <td>
@@ -412,3 +413,4 @@
             </td>
         </tr>
     </tbody></table>
+</div>

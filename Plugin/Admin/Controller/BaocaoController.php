@@ -1291,7 +1291,15 @@ class BaocaoController extends AdminAppController {
         return $result;
     }
     public function baocaochatthainguyhaistep3() {
-        
+        $colMa_doanhnghiep = $this->Session->read('colMaDoanhNghiepBaocaoCTNH');
+        $this->loadModel('Admin.DoanhNghiep');
+        $doanhnghiep = $this->DoanhNghiep->findByColma($colMa_doanhnghiep);
+        if(!$doanhnghiep['Children']){
+            $this->Session->setFlash('Vui lòng chọn thông tin doanh nghiệp cần cập nhật thông tin nguồn thải nguy hại');
+            $this->redirect('/admin/baocao/baocaochatthainguyhai/step1');
+        }
+        $list_children=$this->_getListChildrenCoso($doanhnghiep['Children']);
+        $this->set('list_children',$list_children);
     }
 
     public function baocaochatthainguyhaistep4() {

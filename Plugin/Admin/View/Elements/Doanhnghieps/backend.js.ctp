@@ -34,7 +34,15 @@
         var height = 400;
         var left = parseInt((screen.availWidth / 2) - (width / 2));
         var top = parseInt((screen.availHeight / 2) - (height / 2));
-        var PPwindow2 = window.open("<?php echo Router::url('/admin/doanhnghiep/chucnang/type/'); ?>" + type, "_blank", "width=" + width + ",height=" + height + ",toolbar=no,directories=no,status=yes, menubar=no,scrollbars=yes,resizable=yes,border=thin,left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "");
+        var PPwindow2 = window.open("<?php echo Router::url('/admin/commonfunction/chucnang/type/'); ?>" + type, "_blank", "width=" + width + ",height=" + height + ",toolbar=no,directories=no,status=yes, menubar=no,scrollbars=yes,resizable=yes,border=thin,left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "");
+        PPwindow2.focus();
+    }
+    function PopUpUpdate(type, madn) {
+        var width = 800;
+        var height = 400;
+        var left = parseInt((screen.availWidth / 2) - (width / 2));
+        var top = parseInt((screen.availHeight / 2) - (height / 2));
+        var PPwindow2 = window.open("<?php echo Router::url('/admin/commonfunction/chucnang/type/'); ?>" + type + '/id_dn/' + madn, "_blank", "width=" + width + ",height=" + height + ",toolbar=no,directories=no,status=yes, menubar=no,scrollbars=yes,resizable=yes,border=thin,left=" + left + ",top=" + top + "screenX=" + left + ",screenY=" + top + "");
         PPwindow2.focus();
     }
     function doUpdate(type, id) {

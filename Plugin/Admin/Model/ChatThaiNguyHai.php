@@ -7,7 +7,7 @@ App::uses('AdminAppModel', 'Admin.Model');
  *
  */
 class ChatThaiNguyHai extends AdminAppModel {
-
+    public $saved=array();
     /**
      * Use table
      *
@@ -30,6 +30,12 @@ class ChatThaiNguyHai extends AdminAppModel {
             $this->data['ChatThaiNguyHai']['colThoiGian'] = $thoigian->format('Y-m-d');
         }
         parent::beforeSave($options);
+    }
+    public function afterSave($created, $options = array()) {
+        parent::afterSave($created, $options);
+        if($created){
+            $this->saved[]=$this->getLastInsertID();
+        }
     }
 
 }
