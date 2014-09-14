@@ -46,7 +46,7 @@
         PPwindow2.focus();
     }
     function doUpdate(type, id) {
-        var width = 800;
+        var width = 1100;
         var height = 400;
         var left = parseInt((screen.availWidth / 2) - (width / 2));
         var top = parseInt((screen.availHeight / 2) - (height / 2));
@@ -74,14 +74,32 @@
             } else {
                 return false;
             }
-        }else if (type === 40) {
-            if (confirm("Bạn muốn xóa danh mục chất thải")) {
+        } else if (type === 40) {
+            if (confirm("Bạn muốn xóa danh mục chất thải?")) {
                 doPostAjax(url, data);
             } else {
                 return false;
             }
-        }else if (type === 50) {
-            if (confirm("Bạn muốn xóa nguồn thải")) {
+        } else if (type === 50) {
+            if (confirm("Bạn muốn xóa nguồn thải?")) {
+                doPostAjax(url, data);
+            } else {
+                return false;
+            }
+        } else if (type === 90) {
+            if (confirm("Bạn muốn xóa dòng này khỏi danh sách chất thải nguy hại của cơ sở?")) {
+                doPostAjax(url, data);
+            } else {
+                return false;
+            }
+        }else if (type === 100) {
+            if (confirm("Bạn muốn xóa file này?")) {
+                doPostAjax(url, data);
+            } else {
+                return false;
+            }
+        }else if (type === 200) {
+            if (confirm("Bạn muốn xóa văn bản này?")) {
                 doPostAjax(url, data);
             } else {
                 return false;

@@ -77,3 +77,15 @@ a:hover{
         height: 25px;
     }
 }
+.gotoplink li{
+    list-style: none;
+    background: url(/img/page_top_icon.png) center no-repeat;
+    padding: 5px;
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+}
+.gotoplink li a{
+    height: 35px;
+    width: 35px;
+}

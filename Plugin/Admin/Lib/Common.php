@@ -20,6 +20,8 @@ App::uses('NguonGayOnRung', 'Admin.Model');
 App::uses('DanhMucChatThai', 'Admin.Model');
 App::uses('ChatThai', 'Admin.Model');
 App::uses('NguonThai', 'Admin.Model');
+App::uses('Loaivanban', 'Admin.Model');
+App::uses('Linhvucvanban', 'Admin.Model');
 
 class Common {
 
@@ -173,7 +175,7 @@ class Common {
 
     public static function getFullListDanhMucChatThai() {
         $danhmuc = new DanhMucChatThai();
-        $list = $danhmuc->find('all',array('order'=>'ma_danhmuc asc'));
+        $list = $danhmuc->find('all', array('order' => 'ma_danhmuc asc'));
         if (is_array($list)) {
             return json_encode($list);
         }
@@ -185,6 +187,26 @@ class Common {
         if (is_array($list)) {
             return json_encode($list);
         }
+    }
+
+    public static function getListLoaivanban() {
+        $loaivanban = new Loaivanban();
+        $list = $loaivanban->find('all');
+        $result[''] = '[-- Chọn một loại văn bản --]';
+        foreach ($list as $key => $loai) {
+            $result[$loai['Loaivanban']['id']] = $loai['Loaivanban']['tenloai'];
+        }
+        return $result;
+    }
+
+    public static function getListLinhvucvanban() {
+        $lvvanban = new Linhvucvanban();
+        $list = $lvvanban->find('all');
+        $result[''] = '[-- Chọn một loại lĩnh vực --]';
+        foreach ($list as $key => $loai) {
+            $result[$loai['Linhvucvanban']['id']] = $loai['Linhvucvanban']['linhvuc'];
+        }
+        return $result;
     }
 
 }

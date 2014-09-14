@@ -179,6 +179,7 @@
                     </div>
                 </div>
             </div>
+            <div style="float:right;"><ul class="gotoplink" id="gotoplink"><a href="#top" title="Lên dầu trang"><li></li></a></ul></div>
             <!--footer-->
             <div id="footer" class="navbar-footer">
                 <div class="container">
@@ -193,6 +194,17 @@
                 </div>
             </div>
             <!--end footer-->
+            <script>
+
+            $(function() {
+                $("#gotoplink").click(function() {
+                    $('html,body').animate({scrollTop: 0}, 'fast');
+                    return false;
+                });
+
+            });
+
+        </script>
         </div>
     </body>
 </html>

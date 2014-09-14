@@ -98,11 +98,13 @@ class DoanhNghiep extends AdminAppModel {
         ),
         'SanPhamDoanhNghiep' => array(
             'className' => 'Admin.SanPhamDoanhNghiep',
-            'foreignKey' => 'colCSSX'
+            'foreignKey' => 'colCSSX',
+            'order'=>'stt asc'
         ),
         'NguyenLieuSanPham' => array(
             'className' => 'Admin.NguyenLieuSanPham',
-            'foreignKey' => 'colCSSX'
+            'foreignKey' => 'colCSSX',
+            'order'=>'stt asc'
         ),
         'NhienLieuDoanhNghiep' => array(
             'className' => 'Admin.NhienLieuDoanhNghiep',
@@ -144,6 +146,26 @@ class DoanhNghiep extends AdminAppModel {
             'className' => 'Admin.ChatThaiNguyHai',
             'foreignKey' => 'colCSSX'
         ),
+        'ChatThaiNguyHaiThongThuong' => array(
+            'className' => 'Admin.ChatThaiNguyHai',
+            'foreignKey' => 'colCSSX',
+            'conditions' => array('ChatThaiNguyHaiThongThuong.is_tonluu' => 0,'ChatThaiNguyHaiThongThuong.is_phatsinhthuongxuyen' => 0,'ChatThaiNguyHaiThongThuong.is_tuxuly' => 0)
+        ),
+        'ChatThaiNguyHaiTonLuu' => array(
+            'className' => 'Admin.ChatThaiNguyHai',
+            'foreignKey' => 'colCSSX',
+            'conditions' => array('ChatThaiNguyHaiTonLuu.is_tonluu' => 1)
+        ),
+        'ChatThaiNguyHaiPhatSinhThuongXuyen' => array(
+            'className' => 'Admin.ChatThaiNguyHai',
+            'foreignKey' => 'colCSSX',
+            'conditions' => array('ChatThaiNguyHaiPhatSinhThuongXuyen.is_phatsinhthuongxuyen' => 1)
+        ),
+        'ChatThaiNguyHaiTuXuLy' => array(
+            'className' => 'Admin.ChatThaiNguyHai',
+            'foreignKey' => 'colCSSX',
+            'conditions' => array('ChatThaiNguyHaiTuXuLy.is_tuxuly' => 1)
+        ),
         'DoanhNghiepThongTinTuanThuBvmt' => array(
             'className' => 'Admin.DoanhNghiepThongTinTuanThuBvmt',
             'foreignKey' => 'colMaDN'
@@ -169,33 +191,32 @@ class DoanhNghiep extends AdminAppModel {
     );
 
     public function beforeSave($options = array()) {
-            if (!empty($this->data['DoanhNghiep']['colNamHopDong'])) {
-                $date = explode('/', $this->data['DoanhNghiep']['colNamHopDong']);
-                if (empty($date)) {
-                    $date = explode('-', $this->data['DoanhNghiep']['colNamHopDong']);
-                }
-                $this->data['DoanhNghiep']['colNamHopDong'] = date('Y-m-d', strtotime($date[1] . '/' . $date[0] . '/'
-                                . $date[2]));
+        if (!empty($this->data['DoanhNghiep']['colNamHopDong'])) {
+            $date = explode('/', $this->data['DoanhNghiep']['colNamHopDong']);
+            if (empty($date)) {
+                $date = explode('-', $this->data['DoanhNghiep']['colNamHopDong']);
             }
-            if (!empty($this->data['DoanhNghiep']['ngaycapchungnhanKDDT'])) {
-                $date = array(1970, 1, 1);
-                $date = explode('/', $this->data['DoanhNghiep']['ngaycapchungnhanKDDT']);
-                if (empty($date)) {
-                    $date = explode('-', $this->data['DoanhNghiep']['ngaycapchungnhanKDDT']);
-                }
-                $this->data['DoanhNghiep']['ngaycapchungnhanKDDT'] = date('Y-m-d', strtotime($date[1] . '/' . $date[0] . '/'
-                                . $date[2]));
+            $this->data['DoanhNghiep']['colNamHopDong'] = date('Y-m-d', strtotime($date[1] . '/' . $date[0] . '/'
+                            . $date[2]));
+        }
+        if (!empty($this->data['DoanhNghiep']['ngaycapchungnhanKDDT'])) {
+            $date = array(1970, 1, 1);
+            $date = explode('/', $this->data['DoanhNghiep']['ngaycapchungnhanKDDT']);
+            if (empty($date)) {
+                $date = explode('-', $this->data['DoanhNghiep']['ngaycapchungnhanKDDT']);
             }
-            if (!empty($this->data['DoanhNghiep']['ngaycapcmndgiamdoc'])) {
-                $date = array(1970, 1, 1);
-                $date = explode('/', $this->data['DoanhNghiep']['ngaycapcmndgiamdoc']);
-                if (empty($date)) {
-                    $date = explode('-', $this->data['DoanhNghiep']['ngaycapcmndgiamdoc']);
-                }
-                $this->data['DoanhNghiep']['ngaycapcmndgiamdoc'] = date('Y-m-d', strtotime($date[1] . '/' . $date[0] . '/'
-                                . $date[2]));
+            $this->data['DoanhNghiep']['ngaycapchungnhanKDDT'] = date('Y-m-d', strtotime($date[1] . '/' . $date[0] . '/'
+                            . $date[2]));
+        }
+        if (!empty($this->data['DoanhNghiep']['ngaycapcmndgiamdoc'])) {
+            $date = array(1970, 1, 1);
+            $date = explode('/', $this->data['DoanhNghiep']['ngaycapcmndgiamdoc']);
+            if (empty($date)) {
+                $date = explode('-', $this->data['DoanhNghiep']['ngaycapcmndgiamdoc']);
             }
-        
+            $this->data['DoanhNghiep']['ngaycapcmndgiamdoc'] = date('Y-m-d', strtotime($date[1] . '/' . $date[0] . '/'
+                            . $date[2]));
+        }
     }
 
     public function saveAssociated($data = null, $options = array()) {

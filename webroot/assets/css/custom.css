@@ -5,7 +5,9 @@ Define custom css for application
     Created on : 04-06-2014, 23:00:58
     Author     : soncahuynh
 */
-
+.content{
+    min-height: 600px;
+}
 span.required,
 .error-message{
     color: #F00;

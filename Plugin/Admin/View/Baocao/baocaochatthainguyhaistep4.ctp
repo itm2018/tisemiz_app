@@ -60,7 +60,8 @@
                                                 <td>
                                                     <table class="grid" id="Table5" border="0" cellpadding="0" cellspacing="0" width="780px">
 
-                                                        <tbody><tr>
+                                                        <thead>
+                                                            <tr>
                                                                 <th width="40px">
                                                                     Thứ tự
                                                                 </th>
@@ -74,58 +75,47 @@
                                                                     Chức năng
                                                                 </th>
                                                             </tr>
-
-                                                            <tr onmouseover="this.style.background = '#EEE0C5'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(255, 255, 255);">
-                                                                <td align="center">
-                                                                    1
-                                                                </td>
-                                                                <td>
-                                                                    index
-                                                                </td>
-                                                                <td width="35px" align="center">
-                                                                    <a href="../HoSoKemTheo\CNT785419\index_04.jpg">Xem</a>
-                                                                </td>
-                                                                <td width="35px" align="center">
-                                                                    <a href="javascript:updateItem('785421','index','1');">Sửa</a>
-                                                                </td>
-                                                                <td width="35px" align="center">
-                                                                    <a href="javascript:doDelete('785421','index','DangKyCNTID=785419&CosoID=785783')">Xóa</a>
-                                                                </td>
-                                                            </tr>
-
-                                                            <tr onmouseover="this.style.background = '#EEE0C5'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(255, 255, 255);">
-                                                                <td align="center">
-                                                                    2
-                                                                </td>
-                                                                <td>
-                                                                    vsadf
-                                                                </td>
-                                                                <td width="35px" align="center">
-                                                                    <a href="../HoSoKemTheo\CNT785419\5.jpg">Xem</a>
-                                                                </td>
-                                                                <td width="35px" align="center">
-                                                                    <a href="javascript:updateItem('785792','vsadf','2');">Sửa</a>
-                                                                </td>
-                                                                <td width="35px" align="center">
-                                                                    <a href="javascript:doDelete('785792','vsadf','DangKyCNTID=785419&CosoID=785783')">Xóa</a>
-                                                                </td>
-                                                            </tr>
-
-
+                                                        </thead>
+                                                        <tbody id="list-ho-so-kem-theo">
+                                                            <?php if (isset($listhosokemtheo) && count($listhosokemtheo)): ?>
+                                                                <?php foreach ($listhosokemtheo as $hoso): ?>
+                                                                    <tr onmouseover="this.style.background = '#EEE0C5'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(255, 255, 255);">
+                                                                        <td align="center">
+                                                                            <?php echo $hoso['Hosokemtheo']['stt'] ?>
+                                                                        </td>
+                                                                        <td>
+                                                                            <?php echo $hoso['Hosokemtheo']['tenhoso'] ?>
+                                                                        </td>
+                                                                        <td width="35px" align="center">
+                                                                            <a target="_blank" href="<?php echo Router::url('/admin/baocaos/').$hoso['Hosokemtheo']['filepath'] ?>">Xem</a>
+                                                                        </td>
+                                                                        <td width="35px" align="center">
+                                                                            <a href="javascript:doUpdate(15,<?php echo $hoso['Hosokemtheo']['id']?>);">Sửa</a>
+                                                                        </td>
+                                                                        <td width="35px" align="center">
+                                                                            <a href="javascript:doDelete(100,<?php echo $hoso['Hosokemtheo']['id']?>);">Xóa</a>
+                                                                        </td>
+                                                                    </tr>
+                                                                <?php endforeach; ?>
+                                                            <?php endif; ?>
+                                                        </tbody>
+                                                        <tbody>
+                                                            <?php echo $this->Form->create('Hosokemtheo', array('type' => 'file')) ?>
                                                             <tr>
                                                                 <td style="width: 30px">
-                                                                    <input name="txtThuTu" type="text" value="3" id="txtThuTu" style="width:98%;">
-                                                                    <input name="hidID" type="hidden" id="hidID" style="width: 136px">
+                                                                    <?php echo $this->Form->input('stt', array('div' => false, 'label' => false, 'type' => 'text', 'style' => 'width: 98%','required'=>'required')) ?>
+                                                                    <?php echo $this->Form->hidden('colMaBaocao', array('value' => $colMaBaocao)) ?>
                                                                 </td>
-                                                                <td style="width: 229px">
-                                                                    <input name="txtTen" type="text" id="txtTen" style="width:100%;">
+                                                                <td style="width: 150px">
+                                                                    <?php echo $this->Form->input('tenhoso', array('div' => false, 'label' => false, 'type' => 'text', 'style' => 'width: 98%','required'=>'required')) ?>
                                                                 </td>
                                                                 <td>
-                                                                    <input name="FileInput" type="file" id="FileInput">
+                                                                    <?php echo $this->Form->input('tenfile', array('div' => false, 'label' => false, 'type' => 'file', 'style' => 'width: 98%','required'=>'required')) ?>
                                                                 </td>
                                                                 <td style="width: 80px" align="center">
-                                                                    <input name="cmdAdd" type="submit" id="cmdAdd" style="width: 80px; height: 24px" onclick="KT(this)" value="Cập nhật">
+                                                                    <?php echo $this->Form->submit('Cập nhật', array('div' => false, 'label' => false, 'style' => 'width: 80px; height: 24px')) ?>
                                                                 </td></tr>
+                                                            <?php echo $this->Form->end() ?>
                                                         </tbody></table>
                                                 </td>
                                             </tr>
@@ -164,9 +154,8 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input onclick="__doPostBack('cmdQuayLai', '')" name="cmdQuayLai" type="button" id="cmdQuayLai" style="width: 70px; height: 24px" value="Quay lại">&nbsp;
-
-                                    <input type="submit" name="cmdTiep" value="Tiếp theo" id="cmdTiep" style="width:68px;">
+                                    <a href="<?php echo Router::url('/admin/baocao/baocaochatthainguyhai/step3') ?>"><input name="cmdQuayLai" type="button" id="cmdQuayLai" style="width: 80px; height: 24px" value="Quay lại"></a>
+                    <a href="<?php echo Router::url('/admin/baocao/baocaochatthainguyhai/step5') ?>"><input type="submit" name="cmdTiep" value="Tiếp tục" id="cmdTiep" style="width:80px;"></a>
                                 </td>
                             </tr>
                         </tbody></table>
@@ -174,3 +163,4 @@
             </tr>
         </tbody></table>
 </div>
+<?php echo $this->element('Admin.Doanhnghieps/backend.js'); ?>

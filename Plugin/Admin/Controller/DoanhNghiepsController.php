@@ -516,6 +516,13 @@ class DoanhNghiepsController extends AdminAppController {
                     throw new NotFoundException();
                 }
                 $this->render('Admin.Baocao/_capnhatchatthainguyhaicoso');
+                $this->loadModel('Admin.ChatThaiNguyHai');
+                //lay stt lon nhat nhung chat_thai_nguy_hai co colCSSX=$colMa
+                $max = $this->ChatThaiNguyHai->find('first', array('conditions' => array('colCSSX' => $colMa), 'fields' => array('max(stt) as stt'), 'group' => 'colCSSX'));
+                if ($max) {
+                    $start_stt = $max[0]['stt'] + 1;
+                    $this->set('start_stt', $start_stt);
+                }
                 if ($this->request->is('post') || $this->request->is('put')) {
                     if (isset($this->request->data['ChatThai'])) {
                         $data = $this->request->data['ChatThai'];
@@ -551,7 +558,7 @@ class DoanhNghiepsController extends AdminAppController {
                                 $chatthainguyhai_doanhnghiep[$i]['colMa'] = $data['colMa'][$i];
                             }
                         }
-                        $this->loadModel('Admin.ChatThaiNguyHai');
+
                         $saved_chatthainguyhais = $this->ChatThaiNguyHai->saveAll($chatthainguyhai_doanhnghiep);
                         if ($saved_chatthainguyhais) {
                             foreach ($chat_thais as $key => $chat_thai) {
@@ -579,21 +586,181 @@ class DoanhNghiepsController extends AdminAppController {
                                 $this->set('list_chatthainguyhai_updated', $list_chatthainguyhai_updated);
                             }
                         }
-                        //lay stt lon nhat nhung chat_thai_nguy_hai co colCSSX=$colMa
-                        $max = $this->ChatThaiNguyHai->find('first', array('conditions' => array('colCSSX' => $colMa), 'fields' => array('max(stt) as stt'), 'group' => 'colCSSX'));
-                        $start_stt = $max[0]['stt'] + 1;
-                        $this->set('start_stt', $start_stt);
+
+
                         $this->set('chatthais', $chat_thais);
                         $this->request->data = null;
                         $this->render('Admin.Baocao/_thongtinchatthaicoso');
                     }
                 }
             } elseif ($type == 13) {
-                $arr_MCTNH = $this->Session->read('listMaCTNH');
-                if (!$arr_MCTNH) {
-                    $this->redirect('/admin/commonfunction/chucnang/type/12');
+                //cap nhat danh sach chat thai nguy hai ton luu
+                if (!$colMa || !is_numeric($colMa)) {
+                    throw new NotFoundException();
                 }
-                $this->render('Admin.Baocao/_thongtinchatthaicoso');
+                $this->render('Admin.Baocao/_capnhatchatthainguyhaicoso');
+                $this->loadModel('Admin.ChatThaiNguyHai');
+                //lay stt lon nhat nhung chat_thai_nguy_hai co colCSSX=$colMa
+                $max = $this->ChatThaiNguyHai->find('first', array('conditions' => array('colCSSX' => $colMa, 'is_tonluu' => 1), 'fields' => array('max(stt) as stt'), 'group' => 'colCSSX'));
+                if ($max) {
+                    $start_stt = $max[0]['stt'] + 1;
+                    $this->set('start_stt', $start_stt);
+                }
+                if ($this->request->is('post') || $this->request->is('put')) {
+                    if (isset($this->request->data['ChatThai'])) {
+                        $data = $this->request->data['ChatThai'];
+                        if (isset($data['listMaCTNH']) && $data['listMaCTNH']) {
+                            $arr_MCTNH = explode(',', $data['listMaCTNH']);
+                            if ($arr_MCTNH) {
+                                $this->Session->write('listMaCTNH', $arr_MCTNH);
+                                $this->loadModel('Admin.ChatThai');
+                                $chat_thais = $this->ChatThai->find('all', array('conditions' => array('ma_chatthai' => $arr_MCTNH)));
+                                $this->Session->write('chatthais', $chat_thais);
+                                $this->set('chatthais', $chat_thais);
+                                $this->render('Admin.Baocao/_thongtinchatthaicoso');
+//                            $this->redirect('/admin/commonfunction/chucnang/type/13');
+                            }
+                        }
+                    }
+                    if (isset($this->request->data['ChatThaiNguyHai'])) {
+                        $chat_thais = $this->Session->read('chatthais');
+                        $data = $this->request->data['ChatThaiNguyHai'];
+                        $chatthainguyhai_doanhnghiep = array();
+                        $count = count($chat_thais);
+                        for ($i = 0; $i < $count; ++$i) {
+                            $chatthainguyhai_doanhnghiep[$i] = array(
+                                'colCSSX' => $colMa,
+                                'stt' => $data['stt'][$i],
+                                'ma_chatthai' => $chat_thais[$i]['ChatThai']['ma_chatthai'],
+                                'colDangCThai' => $chat_thais[$i]['ChatThai']['ten_chatthai'],
+                                'colTongKL' => $data['colTongKL'][$i],
+                                'tt_tontai' => $data['tt_tontai'][$i],
+                                'is_tonluu' => 1
+                            );
+                            //for update
+                            if (isset($data['colMa'][$i])) {
+                                $chatthainguyhai_doanhnghiep[$i]['colMa'] = $data['colMa'][$i];
+                            }
+                        }
+
+                        $saved_chatthainguyhais = $this->ChatThaiNguyHai->saveAll($chatthainguyhai_doanhnghiep);
+                        if ($saved_chatthainguyhais) {
+                            foreach ($chat_thais as $key => $chat_thai) {
+                                if (isset($this->ChatThaiNguyHai->saved[$key]) && $this->ChatThaiNguyHai->saved[$key]) {
+                                    $chat_thais[$key]['ChatThai']['colMa'] = $this->ChatThaiNguyHai->saved[$key];
+                                }
+                            }
+                            $this->Session->write('chatthais', $chat_thais);
+//                            pr($chat_thais);
+                            $this->Session->setFlash('Lưu thành công', 'default', array('class' => 'success'));
+                        }
+//                        pr($chatthainguyhai_doanhnghiep);
+                        //goi lai danh sach chat thai
+                        $chat_thais = $this->Session->read('chatthais');
+                        //lay nhung dong da cap nhat
+                        $colMa_updated = array();
+                        foreach ($chat_thais as $key => $chat_thai) {
+                            if (isset($chat_thai['ChatThai']['colMa']) && $chat_thai['ChatThai']['colMa']) {
+                                $colMa_updated[] = $chat_thai['ChatThai']['colMa'];
+                            }
+                        }
+                        if (count($colMa_updated)) {
+                            $list_chatthainguyhai_updated = $this->ChatThaiNguyHai->find('all', array('conditions' => array('colMa' => $colMa_updated)));
+                            if ($list_chatthainguyhai_updated) {
+                                $this->set('list_chatthainguyhai_updated', $list_chatthainguyhai_updated);
+                            }
+                        }
+
+
+                        $this->set('chatthais', $chat_thais);
+                        $this->request->data = null;
+                        $this->render('Admin.Baocao/_thongtinchatthaicoso');
+                    }
+                }
+            } elseif ($type == 14) {
+                //cap nhat danh sach chat thai nguy hai thong tnuong phat sinh
+                if (!$colMa || !is_numeric($colMa)) {
+                    throw new NotFoundException();
+                }
+                $this->render('Admin.Baocao/_capnhatchatthainguyhaicoso');
+                $this->loadModel('Admin.ChatThaiNguyHai');
+                //lay stt lon nhat nhung chat_thai_nguy_hai co colCSSX=$colMa
+                $max = $this->ChatThaiNguyHai->find('first', array('conditions' => array('colCSSX' => $colMa, 'is_phatsinhthuongxuyen' => 1), 'fields' => array('max(stt) as stt'), 'group' => 'colCSSX'));
+                if ($max) {
+                    $start_stt = $max[0]['stt'] + 1;
+                    $this->set('start_stt', $start_stt);
+                }
+                if ($this->request->is('post') || $this->request->is('put')) {
+                    if (isset($this->request->data['ChatThai'])) {
+                        $data = $this->request->data['ChatThai'];
+                        if (isset($data['listMaCTNH']) && $data['listMaCTNH']) {
+                            $arr_MCTNH = explode(',', $data['listMaCTNH']);
+                            if ($arr_MCTNH) {
+                                $this->Session->write('listMaCTNH', $arr_MCTNH);
+                                $this->loadModel('Admin.ChatThai');
+                                $chat_thais = $this->ChatThai->find('all', array('conditions' => array('ma_chatthai' => $arr_MCTNH)));
+                                $this->Session->write('chatthais', $chat_thais);
+                                $this->set('chatthais', $chat_thais);
+                                $this->render('Admin.Baocao/_thongtinchatthaicoso');
+//                            $this->redirect('/admin/commonfunction/chucnang/type/13');
+                            }
+                        }
+                    }
+                    if (isset($this->request->data['ChatThaiNguyHai'])) {
+                        $chat_thais = $this->Session->read('chatthais');
+                        $data = $this->request->data['ChatThaiNguyHai'];
+                        $chatthainguyhai_doanhnghiep = array();
+                        $count = count($chat_thais);
+                        for ($i = 0; $i < $count; ++$i) {
+                            $chatthainguyhai_doanhnghiep[$i] = array(
+                                'colCSSX' => $colMa,
+                                'stt' => $data['stt'][$i],
+                                'ma_chatthai' => $chat_thais[$i]['ChatThai']['ma_chatthai'],
+                                'colDangCThai' => $chat_thais[$i]['ChatThai']['ten_chatthai'],
+                                'colTongKL' => $data['colTongKL'][$i],
+                                'tt_tontai' => $data['tt_tontai'][$i],
+                                'is_phatsinhthuongxuyen' => 1
+                            );
+                            //for update
+                            if (isset($data['colMa'][$i])) {
+                                $chatthainguyhai_doanhnghiep[$i]['colMa'] = $data['colMa'][$i];
+                            }
+                        }
+
+                        $saved_chatthainguyhais = $this->ChatThaiNguyHai->saveAll($chatthainguyhai_doanhnghiep);
+                        if ($saved_chatthainguyhais) {
+                            foreach ($chat_thais as $key => $chat_thai) {
+                                if (isset($this->ChatThaiNguyHai->saved[$key]) && $this->ChatThaiNguyHai->saved[$key]) {
+                                    $chat_thais[$key]['ChatThai']['colMa'] = $this->ChatThaiNguyHai->saved[$key];
+                                }
+                            }
+                            $this->Session->write('chatthais', $chat_thais);
+//                            pr($chat_thais);
+                            $this->Session->setFlash('Lưu thành công', 'default', array('class' => 'success'));
+                        }
+//                        pr($chatthainguyhai_doanhnghiep);
+                        //goi lai danh sach chat thai
+                        $chat_thais = $this->Session->read('chatthais');
+                        //lay nhung dong da cap nhat
+                        $colMa_updated = array();
+                        foreach ($chat_thais as $key => $chat_thai) {
+                            if (isset($chat_thai['ChatThai']['colMa']) && $chat_thai['ChatThai']['colMa']) {
+                                $colMa_updated[] = $chat_thai['ChatThai']['colMa'];
+                            }
+                        }
+                        if (count($colMa_updated)) {
+                            $list_chatthainguyhai_updated = $this->ChatThaiNguyHai->find('all', array('conditions' => array('colMa' => $colMa_updated)));
+                            if ($list_chatthainguyhai_updated) {
+                                $this->set('list_chatthainguyhai_updated', $list_chatthainguyhai_updated);
+                            }
+                        }
+
+
+                        $this->set('chatthais', $chat_thais);
+                        $this->request->data = null;
+                        $this->render('Admin.Baocao/_thongtinchatthaicoso');
+                    }
+                }
             }
         }
     }
@@ -1205,6 +1372,45 @@ class DoanhNghiepsController extends AdminAppController {
                     
                 }
                 exit;
+            } elseif ($type == 90) {
+                //xoa chat thai nguy hai khoi danh sach ctnh cua co so
+                $this->loadModel('Admin.ChatThaiNguyHai');
+                try {
+                    if ($this->ChatThaiNguyHai->delete(array('colMa' => $id))) {
+                        $this->Session->setFlash('Xóa chất thải nguy hại thành công', 'default', array('class' => 'success'));
+                    } else {
+                        $this->Session->setFlash('Lỗi! Chất thải nguy hại không tồn tại hoặc kết nối bị ngắt');
+                    }
+                } catch (Exception $ex) {
+                    
+                }
+                exit;
+            }elseif($type==100){
+                 //xoa file khoi danh sach bao cao chat thai nguy hai
+                $this->loadModel('Admin.Hosokemtheo');
+                try {
+                    if ($this->Hosokemtheo->delete(array('id' => $id))) {
+                        $this->Session->setFlash('Xóa file thành công', 'default', array('class' => 'success'));
+                    } else {
+                        $this->Session->setFlash('Lỗi! File không tồn tại hoặc kết nối bị ngắt');
+                    }
+                } catch (Exception $ex) {
+                    
+                }
+                exit;
+            }elseif($type==200){
+                 //xoa van ban phap quy
+                $this->loadModel('Admin.Vanbanphapquy');
+                try {
+                    if ($this->Vanbanphapquy->delete(array('id' => $id))) {
+                        $this->Session->setFlash('Xóa văn bản thành công', 'default', array('class' => 'success'));
+                    } else {
+                        $this->Session->setFlash('Lỗi! Văn bản không tồn tại hoặc kết nối bị ngắt');
+                    }
+                } catch (Exception $ex) {
+                    
+                }
+                exit;
             }
         }
     }
@@ -1396,6 +1602,96 @@ class DoanhNghiepsController extends AdminAppController {
                 }
                 $this->request->data = $nguon_thai;
                 $this->render('Admin.ThongTinChung/_capnhatnguonthai');
+            } elseif ($type == 9) {
+                if (!$id) {
+                    throw new NotFoundException();
+                }
+                $this->loadModel('Admin.ChatThaiNguyHai');
+                $chat_thai_nguy_hai = $this->ChatThaiNguyHai->findByColma($id);
+                if ($this->request->is('put')) {
+                    $new_data = $this->request->data['ChatThaiNguyHai'];
+                    $this->ChatThaiNguyHai->set($new_data);
+                    if ($this->ChatThaiNguyHai->validates()) {
+                        $updated = null;
+                        try {
+                            $updated = $this->ChatThaiNguyHai->save();
+                        } catch (Exception $ex) {
+                            if ($ex->getCode() == 23000) {
+                                $this->Session->setFlash('Lỗi: Mã chất thải nguy hại đã tồn tại');
+                            } else {
+                                $this->Session->setFlash('Lỗi: ' . $ex->getMessage());
+                            }
+                        }
+                        if ($updated) {
+                            $this->Session->setFlash('Lưu thành công', 'default', array('class' => 'success'));
+                            $chat_thai_nguy_hai = $updated;
+                        }
+                    }
+                }
+
+                $this->request->data = $chat_thai_nguy_hai;
+                //cap nhat thong tin chat thai nguy hai
+                $this->render('Admin.Baocao/_capnhatchatthainguyhai');
+            } elseif ($type == 10) {
+                if (!$id) {
+                    throw new NotFoundException();
+                }
+                $this->loadModel('Admin.ChatThaiNguyHai');
+                $chat_thai_nguy_hai = $this->ChatThaiNguyHai->findByColma($id);
+                if ($this->request->is('put')) {
+                    $new_data = $this->request->data['ChatThaiNguyHai'];
+                    $this->ChatThaiNguyHai->set($new_data);
+                    if ($this->ChatThaiNguyHai->validates()) {
+                        $updated = null;
+                        try {
+                            $updated = $this->ChatThaiNguyHai->save();
+                        } catch (Exception $ex) {
+                            if ($ex->getCode() == 23000) {
+                                $this->Session->setFlash('Lỗi: Mã chất thải nguy hại đã tồn tại');
+                            } else {
+                                $this->Session->setFlash('Lỗi: ' . $ex->getMessage());
+                            }
+                        }
+                        if ($updated) {
+                            $this->Session->setFlash('Lưu thành công', 'default', array('class' => 'success'));
+                            $chat_thai_nguy_hai = $updated;
+                        }
+                    }
+                }
+
+                $this->request->data = $chat_thai_nguy_hai;
+                //cap nhat thong tin chat thai nguy hai
+                $this->render('Admin.Baocao/_capnhatchatthainguyhaituxuly');
+            }elseif($type==15){
+                //cap nhat file
+                if (!$id) {
+                    throw new NotFoundException();
+                }
+                $this->loadModel('Admin.Hosokemtheo');
+                $hosokemtheo = $this->Hosokemtheo->findById($id);
+                if ($this->request->is('put')) {
+                    $new_data = $this->request->data['Hosokemtheo'];
+                    $this->Hosokemtheo->set($new_data);
+                    if ($this->Hosokemtheo->validates()) {
+                        $updated = null;
+                        try {
+                            $updated = $this->Hosokemtheo->save();
+                        } catch (Exception $ex) {
+                            if ($ex->getCode() == 23000) {
+                                $this->Session->setFlash('Lỗi: Mã hồ sơ đã tồn tại');
+                            } else {
+                                $this->Session->setFlash('Lỗi: ' . $ex->getMessage());
+                            }
+                        }
+                        if ($updated) {
+                            $this->Session->setFlash('Lưu thành công', 'default', array('class' => 'success'));
+                            $hosokemtheo = $updated;
+                        }
+                    }
+                }
+
+                $this->request->data = $hosokemtheo;
+                $this->render('Admin.Baocao/_capnhathosokemtheo');
             }
         }
     }

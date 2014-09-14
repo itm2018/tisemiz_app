@@ -1018,7 +1018,7 @@ class BaocaoController extends AdminAppController {
                 $result = $this->Paginator->paginate('Baocaogsmt', array(
 //                    'id_user' => $this->Auth->user('id'), //gioi han chi xem nhung bao cao user hien hanh da tao
 //					'tungay <= ' => $startdate->format('Y-m-d'),
-//					'denngay >= ' => $enddate->format('Y-m-d')
+//					'tungay >= ' => $enddate->format('Y-m-d')
                 ));
                 $this->set('result', $result);
             }
@@ -1163,11 +1163,14 @@ class BaocaoController extends AdminAppController {
         $this->autoRender = false;
         if ($this->request->is('post')) {
             if ($colMa) {
-//                $this->loadModel('Admin.DoanhNghiep');
-//                $doanhnghiep = $this->DoanhNghiep->findByColma($colMa);
-//                if ($doanhnghiep) {
-                $this->Session->write('colMaDoanhNghiepBaocaoCTNH', $colMa);
-//                }
+                $this->loadModel('Admin.Baocaochatthainguyhai');
+                $baocao = $this->Baocaochatthainguyhai->create();
+                $baocao['colCSSX'] = $colMa;
+                $baocao['created_date'] = date('Y-m-d');
+                if ($baocao = $this->Baocaochatthainguyhai->save($baocao)) {
+                    $this->Session->write('CurrentBaocaochatthainguyhai', $baocao);
+                    $this->Session->write('colMaDoanhNghiepBaocaoCTNH', $colMa);
+                }
                 $this->redirect('/admin/baocao/baocaochatthainguyhai/step1');
             }
         }
@@ -1276,46 +1279,257 @@ class BaocaoController extends AdminAppController {
         $colMa_doanhnghiep = $this->Session->read('colMaDoanhNghiepBaocaoCTNH');
         $this->loadModel('Admin.DoanhNghiep');
         $doanhnghiep = $this->DoanhNghiep->findByColma($colMa_doanhnghiep);
-        if(!$doanhnghiep['Children']){
+        if (!$doanhnghiep['Children']) {
             $this->Session->setFlash('Vui lòng chọn thông tin doanh nghiệp cần cập nhật thông tin nguồn thải nguy hại');
             $this->redirect('/admin/baocao/baocaochatthainguyhai/step1');
         }
-        $list_children=$this->_getListChildrenCoso($doanhnghiep['Children']);
-        $this->set('list_children',$list_children);
+        $list_children = $this->_getListChildrenCoso($doanhnghiep['Children']);
+        $this->set('list_children', $list_children);
     }
-    private function _getListChildrenCoso($list){
-        $result=array();
-        foreach ($list as $dn){
-            $result[$dn['colMa']]=$dn['colTen'];
+
+    private function _getListChildrenCoso($list) {
+        $result = array();
+        foreach ($list as $dn) {
+            $result[$dn['colMa']] = $dn['colTen'];
         }
         return $result;
     }
+
     public function baocaochatthainguyhaistep3() {
         $colMa_doanhnghiep = $this->Session->read('colMaDoanhNghiepBaocaoCTNH');
         $this->loadModel('Admin.DoanhNghiep');
         $doanhnghiep = $this->DoanhNghiep->findByColma($colMa_doanhnghiep);
-        if(!$doanhnghiep['Children']){
+        if (!$doanhnghiep['Children']) {
             $this->Session->setFlash('Vui lòng chọn thông tin doanh nghiệp cần cập nhật thông tin nguồn thải nguy hại');
             $this->redirect('/admin/baocao/baocaochatthainguyhai/step1');
         }
-        $list_children=$this->_getListChildrenCoso($doanhnghiep['Children']);
-        $this->set('list_children',$list_children);
+        $list_children = $this->_getListChildrenCoso($doanhnghiep['Children']);
+        $this->set('list_children', $list_children);
     }
 
     public function baocaochatthainguyhaistep4() {
-        
+        $colMa_doanhnghiep = $this->Session->read('colMaDoanhNghiepBaocaoCTNH');
+        $this->loadModel('Admin.DoanhNghiep');
+        $doanhnghiep = $this->DoanhNghiep->findByColma($colMa_doanhnghiep);
+        if (!$doanhnghiep['Children']) {
+            $this->Session->setFlash('Vui lòng chọn thông tin doanh nghiệp cần cập nhật thông tin nguồn thải nguy hại');
+            $this->redirect('/admin/baocao/baocaochatthainguyhai/step1');
+        }
+        $baocao = $this->Session->read('CurrentBaocaochatthainguyhai');
+        if (!$baocao) {
+            $this->Session->setFlash('Vui lòng chọn thông tin doanh nghiệp cần cập nhật thông tin nguồn thải nguy hại');
+            $this->redirect('/admin/baocao/baocaochatthainguyhai/step1');
+        }
+        $this->set('colMaBaocao', $baocao['Baocaochatthainguyhai']['colMa']);
+        $this->loadModel('Admin.Hosokemtheo');
+        if ($this->request->is('post')) {
+            $upload_dir = UPLOAD_DIR;
+            $hosokemtheo = $this->request->data['Hosokemtheo'];
+            if (move_uploaded_file($hosokemtheo['tenfile']['tmp_name'], $upload_dir . $hosokemtheo['tenfile']['name'])) {
+
+                $data = $hosokemtheo;
+                $data['tenfile'] = $hosokemtheo['tenfile']['name'];
+                $data['filepath'] = $hosokemtheo['tenfile']['name'];
+                $data['filesize'] = $hosokemtheo['tenfile']['size'];
+                $this->Hosokemtheo->set($data);
+                if ($this->Hosokemtheo->validates()) {
+                    $saved = $this->Hosokemtheo->save();
+                    if ($saved) {
+                        $this->Session->setFlash('Upload thành công', 'default', array('class' => 'success'));
+                        $this->redirect($this->here);
+                    }
+                }
+            } else {
+                $this->Session->setFlash('Lỗi! Không thể upload file.Chú ý dung lượng file < 2MB');
+            }
+        }
+        $listhskt = $this->Hosokemtheo->find('all', array('colMaBaocao' => $baocao['Baocaochatthainguyhai']['colMa']));
+        $this->set('listhosokemtheo', $listhskt);
     }
 
     public function baocaochatthainguyhaistep5() {
-        
+        $colMa_doanhnghiep = $this->Session->read('colMaDoanhNghiepBaocaoCTNH');
+        $this->loadModel('Admin.DoanhNghiep');
+        $doanhnghiep = $this->DoanhNghiep->findByColma($colMa_doanhnghiep);
+        if (!$doanhnghiep['Children']) {
+            $this->Session->setFlash('Vui lòng chọn thông tin doanh nghiệp cần cập nhật thông tin nguồn thải nguy hại');
+            $this->redirect('/admin/baocao/baocaochatthainguyhai/step1');
+        }
+        $baocao = $this->Session->read('CurrentBaocaochatthainguyhai');
+        if (!$baocao) {
+            $this->Session->setFlash('Vui lòng chọn thông tin doanh nghiệp cần cập nhật thông tin nguồn thải nguy hại');
+            $this->redirect('/admin/baocao/baocaochatthainguyhai/step1');
+        }
+//        pr($doanhnghiep);
+        $this->loadModel('Admin.NguyenLieuSanPham');
+        $this->loadModel('Admin.SanPhamDoanhNghiep');
+        $this->loadModel('Admin.Baocaochatthainguyhai');
+        $baocaochatthainguyhai = $this->Baocaochatthainguyhai->findByColma($baocao['Baocaochatthainguyhai']['colMa']);
+        $this->set('baocaochatthainguyhai', $baocaochatthainguyhai);
+//       pr($baocaochatthainguyhai);
+        $children_doanhnghiep = $doanhnghiep['Children'];
+        foreach ($children_doanhnghiep as $key => $child) {
+            $colMaChild = $child['colMa'];
+            $child_info = $this->DoanhNghiep->findByColma($colMaChild);
+            $doanhnghiep['Children'][$key]['DoanhNghiep'] = $child_info;
+            foreach ($doanhnghiep['Children'][$key]['DoanhNghiep']['NguyenLieuSanPham'] as $keyc => $nlspc) {
+                $nlsp = $this->NguyenLieuSanPham->findByColma($nlspc['colMa']);
+                $doanhnghiep['Children'][$key]['DoanhNghiep']['NguyenLieuSanPham'][$keyc]['NguyenLieuSanPham'] = $nlsp;
+            }
+            foreach ($doanhnghiep['Children'][$key]['DoanhNghiep']['SanPhamDoanhNghiep'] as $keyc => $spc) {
+                $sp = $this->SanPhamDoanhNghiep->findByColma($spc['colMa']);
+                $doanhnghiep['Children'][$key]['DoanhNghiep']['SanPhamDoanhNghiep'][$keyc]['SanPhamDoanhNghiep'] = $sp;
+            }
+        }
+//        pr($doanhnghiep);
+        $this->set('colMaBaocao', $baocao['Baocaochatthainguyhai']['colMa']);
+        $this->set('doanhnghiep', $doanhnghiep);
+        if ($this->request->is('post')) {
+            $this->loadModel('Admin.Baocaochatthainguyhai');
+            $baocao_saving = $baocao['Baocaochatthainguyhai'];
+            $baocao_saving['status'] = 1;
+            if ($this->Baocaochatthainguyhai->save($baocao_saving)) {
+                $this->Session->setFlash('Lưu thành công', 'default', array('class' => 'success'));
+                $this->Session->delete('colMaDoanhNghiepBaocaoCTNH');
+                $this->Session->delete('CurrentBaocaochatthainguyhai');
+                $this->redirect('/admin/baocao/danhsachbaocaochatthainguyhai');
+            }
+        }
     }
 
+    public function update($id) {
+        if($id){
+            $this->loadModel('Admin.Baocaochatthainguyhai');
+            $baocao=$this->Baocaochatthainguyhai->findByColma($id);
+            if($baocao){
+                $this->Session->write('CurrentBaocaochatthainguyhai',$baocao);
+                $this->Session->write('colMaDoanhNghiepBaocaoCTNH',$baocao['Baocaochatthainguyhai']['colCSSX']);
+                $this->redirect('/admin/baocao/baocaochatthainguyhai/step1');
+            }else{
+                $this->Session->setFlash('Không tìm thấy báo cáo');
+                $this->redirect('/admin/baocao/baocaochatthainguyhai/timkiem');
+            }
+        }
+    }
     public function chatthainguyhaiphatsinh() {
         
     }
 
     public function chatthainguyhaitonluu() {
         
+    }
+
+    public function themchatthainguyhai() {
+        $this->layout = false;
+        $this->autoRender = false;
+        if ($this->request->is('post')) {
+            $chatthainguyhai = $this->request->data;
+            $this->loadModel('Admin.ChatThaiNguyHai');
+            $this->ChatThaiNguyHai->set($chatthainguyhai);
+            if ($this->ChatThaiNguyHai->validates()) {
+                if ($this->ChatThaiNguyHai->save()) {
+                    $this->Session->setFlash('Lưu thành công', 'default', array('class' => 'success'));
+                }
+            }
+        }
+    }
+
+    public function review() {
+        $this->layout = 'review';
+        $colMa_doanhnghiep = $this->Session->read('colMaDoanhNghiepBaocaoCTNH');
+        $this->loadModel('Admin.DoanhNghiep');
+        $doanhnghiep = $this->DoanhNghiep->findByColma($colMa_doanhnghiep);
+        if (!$doanhnghiep['Children']) {
+            $this->Session->setFlash('Vui lòng chọn thông tin doanh nghiệp cần cập nhật thông tin nguồn thải nguy hại');
+            $this->redirect('/admin/baocao/baocaochatthainguyhai/step1');
+        }
+        $baocao = $this->Session->read('CurrentBaocaochatthainguyhai');
+        if (!$baocao) {
+            $this->Session->setFlash('Vui lòng chọn thông tin doanh nghiệp cần cập nhật thông tin nguồn thải nguy hại');
+            $this->redirect('/admin/baocao/baocaochatthainguyhai/step1');
+        }
+//        pr($doanhnghiep);
+        $this->loadModel('Admin.NguyenLieuSanPham');
+        $this->loadModel('Admin.SanPhamDoanhNghiep');
+        $this->loadModel('Admin.Baocaochatthainguyhai');
+        $baocaochatthainguyhai = $this->Baocaochatthainguyhai->findByColma($baocao['Baocaochatthainguyhai']['colMa']);
+        $this->set('baocaochatthainguyhai', $baocaochatthainguyhai);
+//       pr($baocaochatthainguyhai);
+        $children_doanhnghiep = $doanhnghiep['Children'];
+        foreach ($children_doanhnghiep as $key => $child) {
+            $colMaChild = $child['colMa'];
+            $child_info = $this->DoanhNghiep->findByColma($colMaChild);
+            $doanhnghiep['Children'][$key]['DoanhNghiep'] = $child_info;
+            foreach ($doanhnghiep['Children'][$key]['DoanhNghiep']['NguyenLieuSanPham'] as $keyc => $nlspc) {
+                $nlsp = $this->NguyenLieuSanPham->findByColma($nlspc['colMa']);
+                $doanhnghiep['Children'][$key]['DoanhNghiep']['NguyenLieuSanPham'][$keyc]['NguyenLieuSanPham'] = $nlsp;
+            }
+            foreach ($doanhnghiep['Children'][$key]['DoanhNghiep']['SanPhamDoanhNghiep'] as $keyc => $spc) {
+                $sp = $this->SanPhamDoanhNghiep->findByColma($spc['colMa']);
+                $doanhnghiep['Children'][$key]['DoanhNghiep']['SanPhamDoanhNghiep'][$keyc]['SanPhamDoanhNghiep'] = $sp;
+            }
+        }
+        $this->set('colMaBaocao', $baocao['Baocaochatthainguyhai']['colMa']);
+        $this->set('doanhnghiep', $doanhnghiep);
+    }
+
+    public function ketxuatword() {
+
+        $this->layout = 'review';
+        $colMa_doanhnghiep = $this->Session->read('colMaDoanhNghiepBaocaoCTNH');
+        $this->loadModel('Admin.DoanhNghiep');
+        $doanhnghiep = $this->DoanhNghiep->findByColma($colMa_doanhnghiep);
+        if (!$doanhnghiep['Children']) {
+            $this->Session->setFlash('Vui lòng chọn thông tin doanh nghiệp cần cập nhật thông tin nguồn thải nguy hại');
+            $this->redirect('/admin/baocao/baocaochatthainguyhai/step1');
+        }
+        $baocao = $this->Session->read('CurrentBaocaochatthainguyhai');
+        if (!$baocao) {
+            $this->Session->setFlash('Vui lòng chọn thông tin doanh nghiệp cần cập nhật thông tin nguồn thải nguy hại');
+            $this->redirect('/admin/baocao/baocaochatthainguyhai/step1');
+        }
+//        pr($doanhnghiep);
+        $this->loadModel('Admin.NguyenLieuSanPham');
+        $this->loadModel('Admin.SanPhamDoanhNghiep');
+        $this->loadModel('Admin.Baocaochatthainguyhai');
+        $baocaochatthainguyhai = $this->Baocaochatthainguyhai->findByColma($baocao['Baocaochatthainguyhai']['colMa']);
+        $this->set('baocaochatthainguyhai', $baocaochatthainguyhai);
+//       pr($baocaochatthainguyhai);
+        $children_doanhnghiep = $doanhnghiep['Children'];
+        foreach ($children_doanhnghiep as $key => $child) {
+            $colMaChild = $child['colMa'];
+            $child_info = $this->DoanhNghiep->findByColma($colMaChild);
+            $doanhnghiep['Children'][$key]['DoanhNghiep'] = $child_info;
+            foreach ($doanhnghiep['Children'][$key]['DoanhNghiep']['NguyenLieuSanPham'] as $keyc => $nlspc) {
+                $nlsp = $this->NguyenLieuSanPham->findByColma($nlspc['colMa']);
+                $doanhnghiep['Children'][$key]['DoanhNghiep']['NguyenLieuSanPham'][$keyc]['NguyenLieuSanPham'] = $nlsp;
+            }
+            foreach ($doanhnghiep['Children'][$key]['DoanhNghiep']['SanPhamDoanhNghiep'] as $keyc => $spc) {
+                $sp = $this->SanPhamDoanhNghiep->findByColma($spc['colMa']);
+                $doanhnghiep['Children'][$key]['DoanhNghiep']['SanPhamDoanhNghiep'][$keyc]['SanPhamDoanhNghiep'] = $sp;
+            }
+        }
+        $this->set('colMaBaocao', $baocao['Baocaochatthainguyhai']['colMa']);
+        $this->set('doanhnghiep', $doanhnghiep);
+        $docname = 'BaoCaoCTNH_' . $doanhnghiep['DoanhNghiep']['colTen'];
+        header("Content-type: application/vnd.ms-word");
+        header("Content-Disposition: attachment;Filename=$docname.doc");
+    }
+
+    public function danhsachbaocaochatthainguyhai() {
+        $trang_thais = array(
+            0 => 'Đang soạn',
+            1 => 'Đang tiếp nhận',
+            2 => 'Thụ lý',
+            3 => 'Chờ duyệt',
+            4 => 'Chờ cấp sổ',
+            5 => 'Đã cấp sổ',
+        );
+        $this->loadModel('Admin.Baocaochatthainguyhai');
+        $this->Paginator->settings = array('limit' => 50);
+        $data = $this->Paginator->paginate('Baocaochatthainguyhai');
+        $this->set('data', $data);
+        $this->set('trangthais', $trang_thais);
     }
 
 }
