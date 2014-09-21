@@ -20,10 +20,10 @@ $this->Paginator->options(array(
         display: none;
     }
 </style>
-<div class="main-header">
+<!--<div class="main-header">
     <h2>Doanh nghiệp</h2>
     <em>Liệt kê danh sách doanh nghiệp</em>
-</div>
+</div>-->
 
 <div class="main-content">
     <!-- JQUERY DATA TABLE -->
@@ -67,7 +67,7 @@ $this->Paginator->options(array(
             <table id="jqGridDn" class="table table-sorting table-striped table-hover datatable ui-jqgrid-htable" cellpadding="0" cellspacing="0" width="100%">
                 <thead>
                     <tr>
-                        <th class="sorting"><?php echo $this->Paginator->sort('colMa', __('ID')); ?></th>
+                        <th class="sorting">STT</th>
                         <th class="sorting"><?php echo $this->Paginator->sort('colTen', __('Tên DN')); ?></th>
                         <!--<th class="sorting"><?php // echo $this->Paginator->sort('colTenTAnh',__('Tên Tiếng Anh')); ?></th>-->
                         <th class="sorting"><?php echo $this->Paginator->sort('colDiaChi', __('Địa chỉ')); ?></th>
@@ -85,9 +85,10 @@ $this->Paginator->options(array(
                     </tr>
                 </thead>
                 <tbody>
+                    <?php $stt=($this->Paginator->param('page')-1)*$this->Paginator->param('limit')+1;?>
                     <?php foreach ($data as $doanhNghiep): ?>
                         <tr>
-                            <td><?php echo h($doanhNghiep['DoanhNghiep']['colMa']); ?>&nbsp;</td>
+                            <td><?php echo $stt; ?>&nbsp;</td>
                             <td><?php echo h($doanhNghiep['DoanhNghiep']['colTen']); ?>&nbsp;</td>
                             <!--<td><?php // echo h($doanhNghiep['DoanhNghiep']['colTenTAnh']);  ?>&nbsp;</td>-->
                             <td><?php echo h($doanhNghiep['DoanhNghiep']['colDiaChi']); ?>&nbsp;</td>
@@ -106,6 +107,7 @@ $this->Paginator->options(array(
                                 <?php echo $this->Form->postLink(__('Xóa'), array('plugin' => 'admin', 'controller' => 'doanhnghiep','action' => 'delete', $doanhNghiep['DoanhNghiep']['colMa']), null, __('Are you sure you want to delete # %s?', $doanhNghiep['DoanhNghiep']['colMa'])); ?>
                             </td>
                         </tr>
+                        <?php ++$stt;?>
                     <?php endforeach; ?>
 
                 </tbody>

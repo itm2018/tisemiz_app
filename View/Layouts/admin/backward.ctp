@@ -184,7 +184,7 @@
             <div id="footer" class="navbar-footer">
                 <div class="container">
                     <div class="navbar-header">
-                        <a href="javascript:void();" class="navbar-brand">Tisemiz</a>
+                        <a href="javascript:void();" class="navbar-brand">©Tisemiz - 2014 - Alright reserved</a>
                         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>

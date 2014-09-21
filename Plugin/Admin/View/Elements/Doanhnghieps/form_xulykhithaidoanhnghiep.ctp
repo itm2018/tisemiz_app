@@ -42,7 +42,7 @@
                 <tr class="<?php echo $classes[$i]; ?>">
                     <td>
                         <input type="hidden" name="colMa" value="<?php echo $ntnm['XuLyKhiThaiDoanhNghiep']['colMa'] ?>">
-                        <?php echo date('d/m/Y', strtotime($ntnm['XuLyKhiThaiDoanhNghiep']['colThoiGian'])) ?>
+                        <?php echo $ntnm['XuLyKhiThaiDoanhNghiep']['colThoiGian'] ?>
                     </td>
                     <td>
                         <?php echo h($ntnm['NguonThaiKhiThai']['colTenNgThai']) ?>
@@ -83,7 +83,7 @@
     </tbody>
     <tbody>
         <tr>
-            <td colspan="8">
+            <td colspan="9">
             </td>
             <td>
                 <button type="submit" name="delete" class="btn btn-danger" id="btn-xoa-bienphapxulykhithaidoanhnghiep">Xóa</button>
@@ -102,9 +102,9 @@
         <!--<button id="button-them-nguonthaikhithai" class="add-group" type="button"></button>-->
     </div>
     <div class="form-group">
-        <label for="inputNam" class="col-sm-2 control-label">Thời điểm <span class="text-danger">*</span></label>
+        <label for="inputNam" class="col-sm-2 control-label">Năm <span class="text-danger">*</span></label>
         <?php
-        echo $this->Form->input('colThoiGian', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control requiredInput validate-date', 'tentruong' => 'Thời điểm', 'type' => 'text', 'placeholder' => __('dd/mm/yyyy'), 'id' => 'txtcolThoiGian_KhiThai'))
+        echo $this->Form->input('colThoiGian', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control requiredInput', 'tentruong' => 'Năm', 'type' => 'text'))
         ;
         ?>
     </div>
@@ -115,46 +115,60 @@
         ;
         ?>
     </div>
-    <div class="form-group">
+<table class="table-checkbox">
+    <tr>
+        <td><div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <?php
             echo $this->Form->input('colChuaXLy', array('div' => array('class' => 'checkbox'), 'label' => __('Chưa xử lý'), 'type' => 'checkbox'))
             ;
             ?>
         </div>
-    </div>
-    <div class="form-group">
+    </div></td>
+        <td><div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <?php
             echo $this->Form->input('colOngKhoi', array('div' => array('class' => 'checkbox'), 'label' => __('Ống khói'), 'type' => 'checkbox'))
             ;
             ?>
         </div>
-    </div>
-    <div class="form-group">
+    </div></td>
+    </tr>
+    <tr>
+        <td><div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <?php
             echo $this->Form->input('colHapPhu', array('div' => array('class' => 'checkbox'), 'label' => __('Hấp phụ'), 'type' => 'checkbox'))
             ;
             ?>
         </div>
-    </div>
-    <div class="form-group">
+    </div></td>
+        <td><div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <?php
             echo $this->Form->input('colHapThu', array('div' => array('class' => 'checkbox'), 'label' => __('Hấp thụ'), 'type' => 'checkbox'))
             ;
             ?>
         </div>
-    </div>
-    <div class="form-group">
+    </div></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <?php
             echo $this->Form->input('colBienPhapKhac', array('div' => array('class' => 'checkbox'), 'label' => __('Khác'), 'type' => 'checkbox', 'id' => 'colBienPhapKhac'))
             ;
             ?>
         </div>
-    </div>
+    </div></td>
+    </tr>
+</table>
+    
+    
+    
+    
+    
     <div class="form-group" style="display: none" id="divMotaBienPhapKhac">
         <label for="inputNam" class="col-sm-2 control-label">Mô tả</label>
         <?php
@@ -235,7 +249,7 @@
                     var i = 0;
                     parsed.forEach(function(bpxlnt) {
                         html += '<tr class="' + classes[i] + '">\n\
-                <td><input type="hidden" name="colMa" value="' + bpxlnt['XuLyKhiThaiDoanhNghiep']['colMa'] + '">' + formatDate(new Date(getDateFromFormat(bpxlnt['XuLyKhiThaiDoanhNghiep']['colThoiGian'], 'yyyy-MM-dd HH:mm:ss')), 'dd/MM/yyyy') + '</td>\n\
+                <td><input type="hidden" name="colMa" value="' + bpxlnt['XuLyKhiThaiDoanhNghiep']['colMa'] + '">' + parseInt(bpxlnt['XuLyKhiThaiDoanhNghiep']['colThoiGian']) + '</td>\n\
     <td>' + bpxlnt['NguonThaiKhiThai']['colTenNgThai'] + '</td><td>' + bpxlnt['XuLyKhiThaiDoanhNghiep']['colNguonPSinh'] + '</td>\n\
     <td>' + echoBoolValue(bpxlnt['XuLyKhiThaiDoanhNghiep']['colChuaXLy']) + '</td>\n\
     <td>' + echoBoolValue(bpxlnt['XuLyKhiThaiDoanhNghiep']['colOngKhoi']) + '</td>\n\

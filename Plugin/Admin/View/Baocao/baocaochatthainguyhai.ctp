@@ -106,13 +106,13 @@ echo $this->Form->input('colDiaChi', array('type' => 'text', 'class' => '',
                                                 </tr>
                                                 <tr>
                                                     <th class="bold">
-                                                        Loại hình (ngành nghề) hoạt động (tối đa 6)
+                                                        Loại hình (ngành nghề) hoạt động
                                                     </th>
                                                     <td align="left">
 <?php
 echo $this->Form->input('nganh', array(
 //            'class' => 'form-control multiselect',
-    'multiple' => 'multiple',
+//    'multiple' => 'multiple',
     'div' => array('class' => 'col-sm-6'), 'label' => false,
     'style' => 'display: none',
     'id' => 'nganh-all',
@@ -318,7 +318,7 @@ echo $this->Form->input('noicapcmndgiamdoc', array('type' => 'text',
 <?php
 echo $this->Form->input('DoanhNghiep.CoSo.nganh', array(
 //            'class' => 'form-control multiselect',
-    'multiple' => 'multiple',
+//    'multiple' => 'multiple',
     'div' => array('class' => 'col-sm-6'), 'label' => false,
 //            'style' => 'display: none',
     'id' => 'nganh-all-CS',

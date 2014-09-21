@@ -195,25 +195,25 @@ class ThongTinChungController extends AdminAppController {
             'limit' => 30
         );
         $conditions = array();
-        if (!empty($this->request->query('id_loai'))) {
+        if (($this->request->query('id_loai'))) {
             $id_loai = $this->request->query('id_loai');
             if ($id_loai) {
                 $conditions['id_loai'] = $id_loai;
             }
         }
-        if (!empty($this->request->query('kyhieu1'))) {
+        if (($this->request->query('kyhieu1'))) {
             $kyhieu1 = $this->request->query('kyhieu1');
             if ($kyhieu1) {
                 $conditions['kyhieu LIKE'] = "%$kyhieu1%";
             }
         }
-        if (!empty($this->request->query('kyhieu'))) {
+        if (($this->request->query('kyhieu'))) {
             $kyhieu = $this->request->query('kyhieu');
             if ($kyhieu) {
                 $conditions['kyhieu LIKE'] = "%$kyhieu%";
             }
         }
-        if (!empty($this->request->query('id_linhvuc'))) {
+        if (($this->request->query('id_linhvuc'))) {
             $id_linhvuc = $this->request->query('id_linhvuc');
             if ($id_linhvuc) {
                 $conditions['id_linhvuc'] = $id_linhvuc;

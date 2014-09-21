@@ -3,6 +3,9 @@
     <thead>
         <tr>
             <th>
+                Tháng
+            </th>
+            <th>
                 Năm
             </th>
             <th>
@@ -29,7 +32,7 @@
         ?>
         <?php if (isset($listsanpham) && count($listsanpham)): ?>
             <?php foreach ($listsanpham as $sp): ?>
-                <tr class="<?php echo $classes[$i]; ?>"><td><input type="hidden" name="colMa" value="<?php echo $sp['SanPhamDoanhNghiep']['colMa']; ?>"><?php echo $sp['SanPhamDoanhNghiep']['colNam']; ?></td><td><?php echo $sp['Sanpham']['tensanpham']; ?></td><td><?php echo $sp['SanPhamDoanhNghiep']['colDVi']; ?></td><td><?php echo $sp['SanPhamDoanhNghiep']['colCongSuatTK']; ?></td><td><?php echo $sp['SanPhamDoanhNghiep']['colCongSuatTT']; ?></td><td><input type="checkbox" name="deleterow#"></td></tr>
+        <tr class="<?php echo $classes[$i]; ?>"><td><?php echo $sp['SanPhamDoanhNghiep']['colThang']?></td><td><input type="hidden" name="colMa" value="<?php echo $sp['SanPhamDoanhNghiep']['colMa']; ?>"><?php echo $sp['SanPhamDoanhNghiep']['colNam']; ?></td><td><?php echo $sp['Sanpham']['tensanpham']; ?></td><td><?php echo $sp['SanPhamDoanhNghiep']['colDVi']; ?></td><td><?php echo $sp['SanPhamDoanhNghiep']['colCongSuatTK']; ?></td><td><?php echo $sp['SanPhamDoanhNghiep']['colCongSuatTT']; ?></td><td><input type="checkbox" name="deleterow#"></td></tr>
                 <?php
                 ++$i;
                 if ($i == 3) {
@@ -40,8 +43,17 @@
         <?php endif; ?>
     </tbody>
     <tbody>
+<!--        <tr>
+            <td><input type="hidden"><input style="width: 100%"></td>
+            <td><input style="width: 100%"></td>
+            <td><input style="width: 10style0%"></td>
+            <td><input style="width: 100%"></td>
+            <td><input style="width: 100%"></td>
+            <td><input style="width: 100%"></td>
+            <td><button class="btn btn-success">Sửa</button></td>
+        </tr>-->
         <tr>
-            <td colspan="5">
+            <td colspan="6">
             </td>
             <td>
                 <button type="submit" name="delete" id="btn-xoa-danhsach-sanpham-doanhnghiep" class="btn btn-danger">Xóa</button>
@@ -50,6 +62,13 @@
     </tbody>
 </table>
 <?php echo $this->Form->create('SanPhamDoanhNghiep', array('url' => Router::url('/admin/doanhnghiep/themsanpham'), 'method' => 'post', 'class' => 'form-horizontal', 'id' => 'FormSanPhamDoanhNghiep', 'role' => 'form')); ?>
+<div class="form-group">
+    <label for="inputThang" class="col-sm-2 control-label">Tháng</label>
+    <?php
+    echo $this->Form->input('colThang', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control', 'options' => Common::getListThang()))
+    ;
+    ?>
+</div>
 <div class="form-group">
     <label for="inputTongdtxd" class="col-sm-2 control-label">Danh mục sản phẩm</label>
     <?php
@@ -154,7 +173,7 @@
                 var classes = ['', 'active', 'success', 'warning'];
                 var i = 0;
                 products.forEach(function(sp) {
-                    html += '<tr class="' + classes[i] + '"><td><input type="hidden" name="colMa" value="' + sp['SanPhamDoanhNghiep']['colMa'] + '">' + sp['SanPhamDoanhNghiep']['colNam'] + '</td><td>' + sp['Sanpham']['tensanpham'] + '</td><td>' + sp['SanPhamDoanhNghiep']['colDVi'] + '</td><td>' + sp['SanPhamDoanhNghiep']['colCongSuatTK'] + '</td><td>' + sp['SanPhamDoanhNghiep']['colCongSuatTT'] + '</td><td><input type="checkbox" name="deleterow#"></td></tr>';
+                    html += '<tr class="' + classes[i] + '"><td>' + parseInt(sp['SanPhamDoanhNghiep']['colThang']) + '</td><td><input type="hidden" name="colMa" value="' + sp['SanPhamDoanhNghiep']['colMa'] + '">' + parseInt(sp['SanPhamDoanhNghiep']['colNam']) + '</td><td>' + sp['Sanpham']['tensanpham'] + '</td><td>' + sp['SanPhamDoanhNghiep']['colDVi'] + '</td><td>' + sp['SanPhamDoanhNghiep']['colCongSuatTK'] + '</td><td>' + sp['SanPhamDoanhNghiep']['colCongSuatTT'] + '</td><td><input type="checkbox" name="deleterow#"></td></tr>';
                     ++i;
                     if (i == 3) {
                         i = 0;

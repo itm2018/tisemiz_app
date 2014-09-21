@@ -3,7 +3,10 @@
     <thead>
         <tr>
             <th>
-                Thời Gian
+                Tháng
+            </th>
+            <th>
+                Năm
             </th>
             <th>
                 Nguồn thải
@@ -30,10 +33,8 @@
             <?php $i = 0; ?>
             <?php foreach ($listnuocthainhamay as $ntnm): ?>
                 <tr class="<?php echo $classes[$i]; ?>">
-                    <td>
-                        <input type="hidden" name="colMa" value="<?php echo $ntnm['NuocThaiNhaMay']['colMa'] ?>">
-                        <?php echo date('d/m/Y', strtotime($ntnm['NuocThaiNhaMay']['colThoiGian'])) ?>
-                    </td>
+                    <td><?php echo $ntnm['NuocThaiNhaMay']['colThang'] ?></td>
+                    <td><input type="hidden" name="colMa" value="<?php echo $ntnm['NuocThaiNhaMay']['colMa'] ?>"><?php echo $ntnm['NuocThaiNhaMay']['colNam'] ?></td>
                     <td>
                         <?php echo $ntnm['NguonThaiNuocThai']['colTenNguonThai'] ?>
                     </td>
@@ -64,7 +65,7 @@
     </tbody>
     <tbody
         <tr>
-            <td colspan="6">
+            <td colspan="8">
             </td>
             <td>
                 <button type="submit" name="delete" class="btn btn-danger" id="btn-xoa-nuocthainhamay">Xóa</button>
@@ -75,13 +76,16 @@
 <p><h3>THÔNG TIN NƯỚC THẢI</h3></p>
 <?php echo $this->Form->create('NuocThaiNhaMay', array('method' => 'post', 'role' => 'form', 'class' => 'form-horizontal', 'id' => 'FormNuocThaiNhaMay')); ?>
 <div class="form-group">
+    <label for="inputThang" class="col-sm-2 control-label">Tháng</label>
+    <?php
+    echo $this->Form->input('colThang', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control', 'options' => Common::getListThang()))
+    ;
+    ?>
+</div>
+<div class="form-group">
     <label for="inputNguonthai" class="col-sm-2 control-label">Nguồn thải</label>
     <?php echo $this->Form->input('colNguonThai', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control requiredInput', 'options' => Common::getListNguonThaiNuocThai())); ?>
     <button id="button-them-nguonthainuocthai" class="add-group" type="button"></button>
-</div>
-<div class="form-group">
-    <label for="inputNam" class="col-sm-2 control-label">Thời điểm <span class="text-danger">*</span></label>
-    <?php echo $this->Form->input('colThoiGian', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control requiredInput validate-date', 'type' => 'text', 'placeholder' => __('dd/mm/yyyy'), 'id' => 'textColThoigian', 'tentruong' => 'Thời gian')); ?>
 </div>
 <div class="form-group">
     <label for="inputLuuluong" class="col-sm-2 control-label">Lưu lượng thải(m3/ngày)<span class="text-danger">*</span></label>
@@ -166,11 +170,11 @@
                 parsed.forEach(function(ntnm) {
                     console.log(ntnm);
                     html += '<tr class="' + classes[i] + '">\n\
-            <td><input type="hidden" name="colMa" value="' + ntnm['NuocThaiNhaMay']['colMa'] + '">' + formatDate(new Date(getDateFromFormat(ntnm['NuocThaiNhaMay']['colThoiGian'], 'yyyy-MM-dd HH:mm:ss')), 'dd/MM/yyyy') + '</td>\n\
-<td>' + ntnm['NguonThaiNuocThai']['colTenNguonThai'] + '</td><td>' + ntnm['NuocThaiNhaMay']['colLLuongThai'] + '</td>\n\
+            <td><input type="hidden" name="colMa" value="' + ntnm['NuocThaiNhaMay']['colMa'] + '">' + parseInt(ntnm['NuocThaiNhaMay']['colThang']) + '</td>\n\
+<td>' + parseInt(ntnm['NguonThaiNuocThai']['colNam']) + '</td><td>' + ntnm['NguonThaiNuocThai']['colTenNguonThai'] + '</td><td>' + parseFloat(ntnm['NuocThaiNhaMay']['colLLuongThai']) + '</td>\n\
 <td>' + ntnm['NuocThaiNhaMay']['colNguonPSinh'] + '</td>\n\
-<td>' + ntnm['NuocThaiNhaMay']['colLLXLyTK'] + '</td>\n\
-<td>' + ntnm['NuocThaiNhaMay']['colLLXLyTT'] + '</td>\n\
+<td>' + parseFloat(ntnm['NuocThaiNhaMay']['colLLXLyTK']) + '</td>\n\
+<td>' + parseFloat(ntnm['NuocThaiNhaMay']['colLLXLyTT']) + '</td>\n\
 <td><input type="checkbox" name="deleterow' + ntnm['NuocThaiNhaMay']['colMa'] + '"></td>\n\
 </tr>';
                     ++i;

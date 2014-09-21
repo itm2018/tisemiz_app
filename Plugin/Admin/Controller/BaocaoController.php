@@ -1186,25 +1186,26 @@ class BaocaoController extends AdminAppController {
                 /*
                  * update list nganh
                  */
-                if (isset($data_doanhnghiep['nganh']) && is_array($data_doanhnghiep['nganh']) && count($data_doanhnghiep['nganh'])) {
-                    $listnganh = array_values($data_doanhnghiep['nganh']);
-                    foreach ($listnganh as $key => $value) {
-                        if (!is_numeric($value)) {
-                            unset($listnganh[$key]);
-                        }
-                    }
-                    $i = 1;
-                    foreach ($listnganh as $nganh_id) {
-                        $data_doanhnghiep['colMaNganh' . $i] = $nganh_id;
-                        ++$i;
-                    }
-                    //dat lai gia tri cac colMaNganh khac
-                    if ($i < 6) {
-                        for ($j = $i; $j <= 6; $j++) {
-                            $key = 'colMaNganh' . $j;
-                            $data_doanhnghiep[$key] = '';
-                        }
-                    }
+                if (isset($data_doanhnghiep['nganh']) && $data_doanhnghiep['nganh']) {
+//                    $listnganh = array_values($data_doanhnghiep['nganh']);
+//                    foreach ($listnganh as $key => $value) {
+//                        if (!is_numeric($value)) {
+//                            unset($listnganh[$key]);
+//                        }
+//                    }
+//                    $i = 1;
+//                    foreach ($listnganh as $nganh_id) {
+//                        $data_doanhnghiep['colMaNganh' . $i] = $nganh_id;
+//                        ++$i;
+//                    }
+//                    //dat lai gia tri cac colMaNganh khac
+//                    if ($i < 6) {
+//                        for ($j = $i; $j <= 6; $j++) {
+//                            $key = 'colMaNganh' . $j;
+//                            $data_doanhnghiep[$key] = '';
+//                        }
+//                    }
+                    $data_doanhnghiep['colMaNganh1']=$data_doanhnghiep['nganh'];
                 }
                 //end update list nganh
                 $this->DoanhNghiep->set($data_doanhnghiep);
@@ -1529,6 +1530,7 @@ class BaocaoController extends AdminAppController {
         $this->Paginator->settings = array('limit' => 50);
         $data = $this->Paginator->paginate('Baocaochatthainguyhai');
         $this->set('data', $data);
+        pr($data);
         $this->set('trangthais', $trang_thais);
     }
 

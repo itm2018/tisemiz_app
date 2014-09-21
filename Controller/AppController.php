@@ -73,7 +73,7 @@ class AppController extends Controller {
             $this->Security->csrfCheck = false;
         }
         $this->Auth->authorize = 'Controller';
-        $this->Auth->allow(array('register', 'success', 'view', 'index','chitiet','dodownload'));
+        $this->Auth->allow(array('register', 'success', 'view', 'index','chitiet','dodownload','lienhe'));
         $this->Security->unlockedActions = array('login', 'themmoi', 'themnguyenlieudoanhnghiep', 'xoacoso','get');
     }
 

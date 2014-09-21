@@ -3,6 +3,9 @@
     <thead>
         <tr>
             <th>
+                Tháng
+            </th>
+            <th>
                 Năm
             </th>
             <th>
@@ -27,6 +30,9 @@
             <?php $i = 0; ?>
             <?php foreach ($listnguyenlieu as $nl): ?>
                 <tr class="<?php echo $classes[$i]; ?>">
+                    <td>
+                        <?php echo $nl['NguyenLieuSanPham']['colThang']?>
+                    </td>
                     <td>
                         <input type="hidden" name="colMa" value="<?php echo $nl['NguyenLieuSanPham']['colMa'] ?>">
                         <?php echo $nl['NguyenLieuSanPham']['colNam'] ?>
@@ -58,7 +64,7 @@
     </tbody>
     <tbody>
         <tr>
-            <td colspan="5">
+            <td colspan="6">
             </td>
             <td>
                 <button type="submit" name="delete" class="btn btn-danger" id="button-xoa-nguyenlieu-doanhnghiep">Xóa</button>
@@ -67,6 +73,13 @@
     </tbody>
 </table>
     <?php echo $this->Form->create('NguyenLieuSanPham', array('method' => 'post', 'class' => 'form-horizontal', 'role' => 'form', 'id' => 'FormNguyenLieuSanPham')); ?>
+<div class="form-group">
+    <label for="inputThang" class="col-sm-2 control-label">Tháng</label>
+    <?php
+    echo $this->Form->input('colThang', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control', 'options' => Common::getListThang()))
+    ;
+    ?>
+</div>
 <div class="form-group">
     <label for="inputTongdtxd" class="col-sm-2 control-label">Nguyên liệu</label>
     <?php
@@ -92,7 +105,7 @@
 <div class="form-group">
     <label for="inputSoca" class="col-sm-2 control-label">Lượng dự trữ</label>
     <?php
-    echo $this->Form->input('colLuongDTru', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'type' => 'number', 'class' => 'form-control requiredInput',
+    echo $this->Form->input('colLuongDTru', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'type' => 'number', 'class' => 'form-control',
     ));
     ?>
 </div>
@@ -156,11 +169,11 @@
                 var i = 0;
                 parsed.forEach(function(nl) {
 //                    console.log(nl);
-                    html += '<tr class="' + classes[i] + '">\n\
-            <td><input type="hidden" name="colMa" value="' + nl['NguyenLieuSanPham']['colMa'] + '">' + nl['NguyenLieuSanPham']['colNam'] + '</td>\n\
+                    html += '<tr class="' + classes[i] + '"><td>' + parseInt(nl['NguyenLieuSanPham']['colThang']) + '</td>\n\
+            <td><input type="hidden" name="colMa" value="' + nl['NguyenLieuSanPham']['colMa'] + '">' + parseInt(nl['NguyenLieuSanPham']['colNam']) + '</td>\n\
 <td>' + nl['Nguyenlieu']['tennguyenlieu'] + '</td><td>' + nl['NguyenLieuSanPham']['colDonVi'] + '</td>\n\
-<td>' + nl['NguyenLieuSanPham']['colLuongSD'] + '</td>\n\
-<td>' + nl['NguyenLieuSanPham']['colLuongDTru'] + '</td>\n\
+<td>' + parseFloat(nl['NguyenLieuSanPham']['colLuongSD']) + '</td>\n\
+<td>' + parseFloat(nl['NguyenLieuSanPham']['colLuongDTru']) + '</td>\n\
 <td><input type="checkbox" name="deleterow' + nl['NguyenLieuSanPham']['colMa'] + '"></td>\n\
 </tr>';
                     ++i;

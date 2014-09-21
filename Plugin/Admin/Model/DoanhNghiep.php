@@ -177,6 +177,10 @@ class DoanhNghiep extends AdminAppModel {
         'Children' => array(
             'className' => 'Admin.DoanhNghiep',
             'foreignKey' => 'colMaDNME',
+        ),
+        'Baocaochatthainguyhai'=>array(
+            'className'=>'Admin.Baocaochatthainguyhai',
+            'foreignKey'=>'colCSSX'
         )
     );
     public $belongsTo = array(

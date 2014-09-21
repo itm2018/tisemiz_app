@@ -51,6 +51,7 @@ Router::connect('/admin/commonfunction/chucnangxoa', array('plugin' => 'Admin', 
 //Router::connect('/',array('plugin'=>'Front','controller'=>'News','action'=>'view'),'home','home');
 Router::connect('/', array('plugin' => 'Front', 'controller' => 'Home', 'action' => 'index'));
 Router::connect('/dodownload', array('plugin' => 'Front', 'controller' => 'News', 'action' => 'dodownload'));
+Router::connect('/lienhe', array('plugin' => 'Front', 'controller' => 'News', 'action' => 'lienhe'));
 Router::connect('/vanbanphapquy', array('plugin' => 'Front', 'controller' => 'News', 'action' => 'view'));
 Router::connect('/vanbanphapquy/*', array('plugin' => 'Front', 'controller' => 'News', 'action' => 'view'));
 Router::connect('/chitiet/vanbanphapquy/:id', array('plugin' => 'Front', 'controller' => 'News', 'action' => 'chitiet'),array('pass'=>array('id')));

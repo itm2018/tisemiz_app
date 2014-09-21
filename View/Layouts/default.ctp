@@ -153,6 +153,9 @@
                                 <li>
                                     <?php echo $this->Html->link('Quản lý', '/admin/dashboards'); ?>
                                 </li>
+                                <li>
+                                    <?php echo $this->Html->link('Liên hệ', '/lienhe'); ?>
+                                </li>
                             </ul>
                             <!--<form class="navbar-form navbar-left" role="search">
                                     <div class="form-group">
@@ -229,7 +232,7 @@
             <div id="footer" class="navbar-footer">
                 <div class="container">
                     <div class="navbar-header">
-                        <a href="javascript:void();" class="navbar-brand">Tisemiz</a>
+                        <a href="javascript:void();" class="navbar-brand">©Tisemiz - 2014 - Alright reserved</a>
                         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>

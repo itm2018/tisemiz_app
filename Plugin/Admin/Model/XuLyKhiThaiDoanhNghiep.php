@@ -30,11 +30,11 @@ class XuLyKhiThaiDoanhNghiep extends AdminAppModel {
     public $validate = array(
     );
 
-    public function beforeSave($options = array()) {
-        if (isset($this->data['XuLyKhiThaiDoanhNghiep']['colThoiGian']) && $this->data['XuLyKhiThaiDoanhNghiep']['colThoiGian']) {
-            $thoigian = date_create_from_format('d/m/Y', $this->data['XuLyKhiThaiDoanhNghiep']['colThoiGian']);
-            $this->data['XuLyKhiThaiDoanhNghiep']['colThoiGian'] = $thoigian->format('Y-m-d');
-        }
-        parent::beforeSave($options);
-    }
+//    public function beforeSave($options = array()) {
+//        if (isset($this->data['XuLyKhiThaiDoanhNghiep']['colThoiGian']) && $this->data['XuLyKhiThaiDoanhNghiep']['colThoiGian']) {
+//            $thoigian = date_create_from_format('d/m/Y', $this->data['XuLyKhiThaiDoanhNghiep']['colThoiGian']);
+//            $this->data['XuLyKhiThaiDoanhNghiep']['colThoiGian'] = $thoigian->format('Y-m-d');
+//        }
+//        parent::beforeSave($options);
+//    }
 }

@@ -36,18 +36,6 @@ class NuocThaiNhaMay extends AdminAppModel {
                 'message' => 'Chưa chọn doanh nghiệp của dữ liệu nước thải nhà máy'
             )
         ),
-        'colThoiGian' => array(
-            'notEmty' => array(
-                'rule' => 'notEmpty',
-                'required' => true,
-                'allowEmpty' => false,
-                'message' => 'Chưa chọn thời gian của dữ liệu nước thải nhà máy'
-            ),
-            'date' => array(
-                'rule' => array('date', 'dmy'),
-                'message' => 'Ngày không đúng định dạng'
-            )
-        ),
         'colNguonThai' => array(
             'notEmty' => array(
                 'rule' => 'notEmpty',
@@ -101,13 +89,5 @@ class NuocThaiNhaMay extends AdminAppModel {
             )
         ),
     );
-
-    public function beforeSave($options = array()) {
-        if (isset($this->data['NuocThaiNhaMay']['colThoiGian']) && $this->data['NuocThaiNhaMay']['colThoiGian']) {
-            $thoigian = date_create_from_format('d/m/Y', $this->data['NuocThaiNhaMay']['colThoiGian']);
-            $this->data['NuocThaiNhaMay']['colThoiGian'] = $thoigian->format('Y-m-d');
-        }
-        parent::beforeSave($options);
-    }
 
 }

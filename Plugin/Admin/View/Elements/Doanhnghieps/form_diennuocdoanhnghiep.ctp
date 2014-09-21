@@ -3,6 +3,9 @@
     <thead>
         <tr>
             <th>
+                Tháng
+            </th>
+            <th>
                 Năm
             </th>
             <th>
@@ -24,6 +27,7 @@
             <?php $i = 0; ?>
             <?php foreach ($listdiennuoc as $pw): ?>
                 <tr class="<?php echo $classes[$i]; ?>">
+                    <td><?php echo $pw['DienNuocDoanhNghiep']['colThang'] ?></td>
                     <td>
                         <input type="hidden" name="colMa" value="<?php echo $pw['DienNuocDoanhNghiep']['colMa'] ?>">
                         <?php echo $pw['DienNuocDoanhNghiep']['colNam'] ?>
@@ -52,7 +56,7 @@
     </tbody>
     <tbody>
         <tr>
-            <td colspan="4">
+            <td colspan="5">
             </td>
             <td>
                 <button type="submit" name="delete" class="btn btn-danger" id="btn-xoa-diennuoc">Xóa</button>
@@ -61,6 +65,13 @@
     </tbody>
 </table>
 <?php echo $this->Form->create('DienNuocDoanhNghiep', array('method' => 'post', 'class' => 'form-horizontal', 'role' => 'form', 'id' => 'FormDienNuocDoanhNghiep')); ?>
+<div class="form-group">
+    <label for="inputThang" class="col-sm-2 control-label">Tháng</label>
+    <?php
+    echo $this->Form->input('colThang', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control', 'options' => Common::getListThang()))
+    ;
+    ?>
+</div>
 <div class="form-group">
     <label for="colLoaiTThu" class="col-sm-2 control-label">Loại tiêu thụ</label>
     <?php
@@ -132,7 +143,7 @@ echo $this->Form->input(null, array('type' => 'reset', 'class' => 'btn btn-info'
                 var classes = ['', 'active', 'success', 'warning'];
                 var i = 0;
                 powerwaters.forEach(function(sp) {
-                    html += '<tr class="' + classes[i] + '"><td><input type="hidden" name="colMa" value="' + sp['DienNuocDoanhNghiep']['colMa'] + '">' + sp['DienNuocDoanhNghiep']['colNam'] + '</td><td>' + sp['DienNuocDoanhNghiep']['colLoaiTThu'] + '</td><td>' + sp['DienNuocDoanhNghiep']['colLuongSD'] + '</td><td>' + sp['DienNuocDoanhNghiep']['colSoNgaySuDung'] + '</td><td><input type="checkbox" name="deleterow' + sp['DienNuocDoanhNghiep']['colMa'] + '"></td></tr>';
+                    html += '<tr class="' + classes[i] + '"><td>' + parseInt(sp['DienNuocDoanhNghiep']['colThang']) + '</td><td><input type="hidden" name="colMa" value="' + sp['DienNuocDoanhNghiep']['colMa'] + '">' + parseInt(sp['DienNuocDoanhNghiep']['colNam']) + '</td><td>' + sp['DienNuocDoanhNghiep']['colLoaiTThu'] + '</td><td>' + parseFloat(sp['DienNuocDoanhNghiep']['colLuongSD']) + '</td><td>' + parseInt(sp['DienNuocDoanhNghiep']['colSoNgaySuDung']) + '</td><td><input type="checkbox" name="deleterow' + sp['DienNuocDoanhNghiep']['colMa'] + '"></td></tr>';
                     ++i;
                     if (i == 3) {
                         i = 0;

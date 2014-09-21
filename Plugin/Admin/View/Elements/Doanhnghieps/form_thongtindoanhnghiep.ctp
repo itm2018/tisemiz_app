@@ -5,6 +5,7 @@ echo $this->Form->create('DoanhNghiep', array('type' => 'file', 'class' => 'form
 <h4>Thông tin chung</h4>
 <div class="form-group">
     <div class="image-view"><img border="0" src="<?php echo isset($this->data['DoanhNghiep']['colHinhAnh']) ? $this->data['DoanhNghiep']['colHinhAnh'] : Router::url('/admin/img/no-images.jpg'); ?>" alt="Hình ảnh đại diện doanh nghiệp" width="304" height="228"></div>
+    <div class="select-image"><?php echo $this->Form->input('colHinhAnh', array('type' => 'file', 'class' => '','div' => false, 'label' => 'Hình ảnh'));?></div>
     <?php echo $this->Form->input('colMa', array('type' => 'hidden', 'class' => 'form-control', 'div' => array('class' => 'col-sm-10'), 'label' => false)); ?>
     <label for="inputNamnhaplieu" class="col-sm-2 control-label">Năm nhập liệu <span class="required">*</span></label>
     <?php
@@ -27,13 +28,7 @@ echo $this->Form->create('DoanhNghiep', array('type' => 'file', 'class' => 'form
         'div' => array('class' => 'col-sm-6'), 'label' => false));
     ?>
 </div>
-<div class="form-group">
-    <label for="colHinhAnh" class="col-sm-2 control-label">Hình ảnh</label>
-    <?php
-    echo $this->Form->input('colHinhAnh', array('type' => 'file', 'class' => 'form-control',
-        'div' => array('class' => 'col-sm-6'), 'label' => false));
-    ?>
-</div>
+
 <div class="form-group">
     <label for="inputGiamDoc" class="col-sm-2 control-label">Giám đốc</label>
     <?php
@@ -72,13 +67,13 @@ echo $this->Form->create('DoanhNghiep', array('type' => 'file', 'class' => 'form
         'div' => array('class' => 'col-sm-6'), 'label' => false));
     ?>
 </div>
-<div class="form-group">
+<!--<div class="form-group">
     <label for="inputGiayPhepHD" class="col-sm-2 control-label">Giấy phép đầu tư</label>
     <?php
-    echo $this->Form->input('colGiayPhepDT', array('type' => 'text', 'class' => 'form-control',
-        'div' => array('class' => 'col-sm-6'), 'label' => false));
+//    echo $this->Form->input('colGiayPhepDT', array('type' => 'text', 'class' => 'form-control',
+//        'div' => array('class' => 'col-sm-6'), 'label' => false));
     ?>
-</div>
+</div>-->
 <div class="form-group">
     <label for="inputQuitrinhSanXuat" class="col-sm-2 control-label">Qui trình sản xuất</label>
     <?php
@@ -116,12 +111,12 @@ echo $this->Form->create('DoanhNghiep', array('type' => 'file', 'class' => 'form
     ?>
 </div>
 <div class="form-group">
-    <label for="inputNganh" class="col-sm-2 control-label">Ngành (lựa chọn tối đa là 6)</label>
+    <label for="inputNganh" class="col-sm-2 control-label">Ngành</label>
     <div class="col-sm-10">
 
         <?php
         echo $this->Form->input('nganh', array('class' => 'form-control multiselect',
-            'multiple' => 'multiple',
+//            'multiple' => 'multiple',
             'div' => false, 'label' => false, 'style' => 'display: none',
             'id' => 'nganh-all',
             'options' => Common::getListNganh()));

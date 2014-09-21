@@ -109,38 +109,48 @@
         ;
         ?>
     </div>
-    <div class="form-group">
+<table class="table-checkbox">
+    <tr>
+        <td><div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <?php
             echo $this->Form->input('colKhongXLy', array('div' => array('class' => 'checkbox'), 'label' => __('Không xử lý'), 'type' => 'checkbox'))
             ;
             ?>
         </div>
-    </div>
-    <div class="form-group">
+    </div></td>
+        <td><div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <?php
             echo $this->Form->input('colCheChan', array('div' => array('class' => 'checkbox'), 'label' =>__('Che chắn'), 'type' => 'checkbox'))
             ;
             ?>
         </div>
-    </div>
-    <div class="form-group">
+    </div></td>
+    </tr>
+    <tr>
+        <td><div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <?php
             echo $this->Form->input('colBocCachAm', array('div' => array('class' => 'checkbox'), 'label' => __('Bọc cách âm'), 'type' => 'checkbox'))
             ;
             ?>
         </div>
-    </div>
-    <div class="form-group">
+    </div></td>
+        <td><div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <?php
             echo $this->Form->input('colBienPhapKhac', array('div' => array('class' => 'checkbox'), 'label' => __('Khác'), 'type' => 'checkbox', 'id' => 'colBienPhapKhac_OnRung'))
             ;
             ?>
         </div>
-    </div>
+    </div></td>
+    </tr>
+</table>
+    
+    
+    
+    
     <div class="form-group" style="display: none" id="divMotaBienPhapKhacOnRung">
         <label for="inputNam" class="col-sm-2 control-label">Mô tả</label>
         <?php

@@ -3,6 +3,9 @@
     <thead>
         <tr>
             <th>
+                Tháng
+            </th>
+            <th>
                 Năm
             </th>
             <th>
@@ -30,6 +33,9 @@
             <?php $i = 0; ?>
             <?php foreach ($listnhienlieu as $nl): ?>
                 <tr class="<?php echo $classes[$i]; ?>">
+                    <td>
+                        <?php echo $nl['NhienLieuDoanhNghiep']['colThang'] ?>
+                    </td>
                     <td>
                         <input type="hidden" name="colMa" value="<?php echo $nl['NhienLieuDoanhNghiep']['colMa'] ?>">
                         <?php echo $nl['NhienLieuDoanhNghiep']['colNam'] ?>
@@ -64,7 +70,7 @@
     </tbody>
     <tbody
         <tr>
-            <td colspan="6">
+            <td colspan="7">
             </td>
             <td>
                 <button type="submit" name="delete" class="btn btn-danger" id="btn-xoa-nhienlieudoanhnghiep">Xóa</button>
@@ -73,6 +79,13 @@
     </tbody>
 </table>
 <?php echo $this->Form->create('NhienLieuDoanhNghiep', array('method' => 'post', 'class' => 'form-horizontal', 'role' => 'form', 'id' => 'FormNhienLieuDoanhNghiep')); ?>
+<div class="form-group">
+    <label for="inputThang" class="col-sm-2 control-label">Tháng</label>
+    <?php
+    echo $this->Form->input('colThang', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control', 'options' => Common::getListThang()))
+    ;
+    ?>
+</div>
 <div class="form-group">
     <label for="colNhienLieu" class="col-sm-2 control-label">Nhiên liệu</label>
     <?php echo $this->Form->input('colNhienLieu', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control requiredInput','type'=>'text'))
@@ -160,10 +173,10 @@
                 parsed.forEach(function(nl) {
 //                    console.log(nl);
                     html += '<tr class="' + classes[i] + '">\n\
-            <td><input type="hidden" name="colMa" value="' + nl['NhienLieuDoanhNghiep']['colMa'] + '">' + nl['NhienLieuDoanhNghiep']['colNam'] + '</td>\n\
+            <td>' + parseInt(nl['NhienLieuDoanhNghiep']['colThang']) + '</td><td><input type="hidden" name="colMa" value="' + nl['NhienLieuDoanhNghiep']['colMa'] + '">' + parseInt(nl['NhienLieuDoanhNghiep']['colNam']) + '</td>\n\
 <td>' + nl['NhienLieuDoanhNghiep']['colNhienLieu'] + '</td><td>' + nl['NhienLieuDoanhNghiep']['colDonVi'] + '</td>\n\
-<td>' + nl['NhienLieuDoanhNghiep']['colLuongSD'] + '</td>\n\
-<td>' + nl['NhienLieuDoanhNghiep']['colSoNgaySD'] + '</td>\n\
+<td>' + parseInt(nl['NhienLieuDoanhNghiep']['colLuongSD']) + '</td>\n\
+<td>' + parseInt(nl['NhienLieuDoanhNghiep']['colSoNgaySD']) + '</td>\n\
 <td>' + nl['NhienLieuDoanhNghiep']['colMDichSD'] + '</td>\n\
 <td><input type="checkbox" name="deleterow' + nl['NhienLieuDoanhNghiep']['colMa'] + '"></td>\n\
 </tr>';

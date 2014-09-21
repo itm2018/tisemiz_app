@@ -104,15 +104,17 @@
     ;
     ?>
 </div>
-<div class="form-group">
+<table class="table-checkbox">
+    <tr>
+        <td><div class="form-group">
     <div class="col-sm-offset-2 col-sm-6">
         <?php
         echo $this->Form->input('colNTSHoat', array('div' => array('class' => 'checkbox'), 'label' => __('Sinh hoạt'), 'type' => 'checkbox'))
         ;
         ?>
     </div>
-</div>
-<div class="form-group">
+</div></td>
+        <td><div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
 
         <?php
@@ -120,8 +122,10 @@
         ;
         ?>
     </div>
-</div>
-<div class="form-group">
+</div></td>
+    </tr>
+    <tr>
+        <td><div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
 
         <?php
@@ -129,8 +133,8 @@
         ;
         ?>
     </div>
-</div>
-<div class="form-group">
+</div></td>
+        <td><div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
 
         <?php
@@ -138,8 +142,11 @@
         ;
         ?>
     </div>
-</div>
-<div class="form-group">
+</div></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
 
         <?php
@@ -147,7 +154,15 @@
         ;
         ?>
     </div>
-</div>
+</div></td>
+        
+    </tr>
+</table>
+
+
+
+
+
 <div class="form-group" style="display: none" id="MotaNguonKhac">
     <label for="inputNam" class="col-sm-2 control-label">Mô tả</label>
     <?php

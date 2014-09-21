@@ -21,9 +21,9 @@
     <ul class="list-thongtinchung">
         <li><a href="<?php echo Router::url('/admin/thongtinchung/chatthai')?>">Thông tin chất thải</a></li>
         <li><a href="<?php echo Router::url('/admin/commonfunction/chucnang/type/3',true)?>" target="_blank">Thông tin nguyên liệu</a></li>
-        <li><a href="<?php echo Router::url('/admin/commonfunction/chucnang/type/1')?>">Danh mục sản phẩm</a></li>
-        <li><a href="<?php echo Router::url('/admin/commonfunction/chucnang/type/2')?>">Sản phẩm</a></li>
-        <li><a href="<?php echo Router::url('/admin/thongtinchung/vanbanphapquy')?>">Văn bản pháp quy</a></li>
+        <li><a href="<?php echo Router::url('/admin/commonfunction/chucnang/type/1')?>" target="_blank">Danh mục sản phẩm</a></li>
+        <li><a href="<?php echo Router::url('/admin/commonfunction/chucnang/type/2')?>" target="_blank">Sản phẩm</a></li>
+        <li><a href="<?php echo Router::url('/admin/thongtinchung/vanbanphapquy')?>" target="_blank">Văn bản pháp quy</a></li>
     </ul>
 </div>
 <!-- /main-content -->

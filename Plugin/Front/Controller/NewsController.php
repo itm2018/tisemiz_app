@@ -19,25 +19,25 @@ class NewsController extends FrontAppController {
             'limit' => 30
         );
         $conditions = array();
-        if (!empty($this->request->query('id_loai'))) {
+        if (($this->request->query('id_loai'))) {
             $id_loai = $this->request->query('id_loai');
             if ($id_loai) {
                 $conditions['id_loai'] = $id_loai;
             }
         }
-        if (!empty($this->request->query('kyhieu1'))) {
+        if (($this->request->query('kyhieu1'))) {
             $kyhieu1 = $this->request->query('kyhieu1');
             if ($kyhieu1) {
                 $conditions['kyhieu LIKE'] = "%$kyhieu1%";
             }
         }
-        if (!empty($this->request->query('kyhieu'))) {
+        if (($this->request->query('kyhieu'))) {
             $kyhieu = $this->request->query('kyhieu');
             if ($kyhieu) {
                 $conditions['kyhieu LIKE'] = "%$kyhieu%";
             }
         }
-        if (!empty($this->request->query('id_linhvuc'))) {
+        if (($this->request->query('id_linhvuc'))) {
             $id_linhvuc = $this->request->query('id_linhvuc');
             if ($id_linhvuc) {
                 $conditions['id_linhvuc'] = $id_linhvuc;
@@ -84,4 +84,23 @@ class NewsController extends FrontAppController {
         }
     }
 
+    public function lienhe(){
+        if($this->request->is('post')){
+            $data=$this->request->data['Contact'];
+            $this->loadModel('Contact');
+            $this->Contact->set($data);
+            if($this->Contact->validates()){
+                $saved=false;
+                try{
+                    $saved=$this->Contact->save();
+                } catch (Exception $ex) {
+
+                }
+                if($saved){
+                    $this->Session->setFlash('Gửi liên hệ thành công', 'default',array('class'=>'success'));
+                    $this->redirect($this->here);
+                }
+            }
+        }
+    }
 }

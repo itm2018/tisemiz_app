@@ -163,36 +163,49 @@ ul#steps{
 .nav-steps{
     margin: 0 auto;
     margin-left: 50px;
-    
+
 }
 .nav-tabs li.active{
     background-color: #0a0;
 }
 .image-view{
-        right: 10px;
-        margin: 0 10px 10px 10px;
-        border: solid 1px #ccc;
-        display: inline;
-        padding: 0;
-        z-index: 10;
-        position: absolute;
-        text-align: center;
-        vertical-align: middle;
-        border-radius: 2px;
-    }
-    .add-group{
+    right: 10px;
+    margin: 0 10px 10px 10px;
+    border: solid 1px #ccc;
+    display: inline;
+    padding: 0;
+    z-index: 10;
+    position: absolute;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 2px;
+}
+.select-image{
+    width: 310px;
+    right: 10px;
+    margin: 230px 10px 10px 10px;
+    /*border: solid 1px #ccc;*/
+    display: inline;
+    padding: 0;
+    z-index: 10;
+    position: absolute;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 2px;
+}
+.add-group{
     background: url('../img/button_add.png') center no-repeat;
     width: 33px;
     height: 33px;
     background-color: transparent;
     border: none;
     margin-top: 2px;
-    }
-    input.error,
-    select.error{
-        background-color:#F4A08F; border:#BF0A09 solid 2px !important;
-    }
-    .gotoplink li{
+}
+input.error,
+select.error{
+    background-color:#F4A08F; border:#BF0A09 solid 2px !important;
+}
+.gotoplink li{
     list-style: none;
     background: url(/img/page_top_icon.png) center no-repeat;
     padding: 5px;
@@ -203,4 +216,8 @@ ul#steps{
 .gotoplink li a{
     height: 35px;
     width: 35px;
+}
+.table-checkbox{
+    width: 40%;
+    margin: 0 auto;
 }
