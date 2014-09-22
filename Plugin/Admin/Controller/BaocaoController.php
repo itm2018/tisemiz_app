@@ -1530,7 +1530,6 @@ class BaocaoController extends AdminAppController {
         $this->Paginator->settings = array('limit' => 50);
         $data = $this->Paginator->paginate('Baocaochatthainguyhai');
         $this->set('data', $data);
-        pr($data);
         $this->set('trangthais', $trang_thais);
     }
 
