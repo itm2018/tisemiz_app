@@ -440,7 +440,7 @@
             var url = "<?php echo Router::url('/admin/baocao/themchatthainguyhai') ?>";
             var data = $('#formChatThaiDoanhNghiepTuXuLy').serialize();
             data.colCSSX = $('#drpCoso').val();
-                    doPostAjax(url, data, 'myfunction');
+                    doPostAjax(url, data);
         });
     });
     function myfunction(data) {

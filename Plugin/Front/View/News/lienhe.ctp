@@ -59,7 +59,7 @@
                 <fieldset class="block-labels">
                     <legend></legend>
                     <h4>Thông tin liên hệ</h4>
-                    
+
                     <p class="description"></p>
                     <table class="table-contact">
                         <tr>
@@ -101,7 +101,7 @@
                         </tr>
                         <tr>
                             <td>Nội dung (*)</td>
-                            <td><?php echo $this->Form->input('noidung', array('div' => false, 'label' => false, 'type' => 'textarea')) ?></td>
+                            <td><?php echo $this->Form->input('noidung', array('div' => false, 'label' => false, 'type' => 'textarea', 'maxlength' => 1500, 'placeholder' => '(tối đa 1500 ký tự)')) ?></td>
                         </tr>
                     </table>
 

@@ -1164,14 +1164,16 @@ class BaocaoController extends AdminAppController {
         if ($this->request->is('post')) {
             if ($colMa) {
                 $this->loadModel('Admin.Baocaochatthainguyhai');
-                $baocao = $this->Baocaochatthainguyhai->create();
                 $baocao['colCSSX'] = $colMa;
-                $baocao['created_date'] = date('Y-m-d');
+                $baocao['created_date'] = date('Y-m-d H:i:s');
                 if ($baocao = $this->Baocaochatthainguyhai->save($baocao)) {
                     $this->Session->write('CurrentBaocaochatthainguyhai', $baocao);
                     $this->Session->write('colMaDoanhNghiepBaocaoCTNH', $colMa);
+                    $this->redirect('/admin/baocao/baocaochatthainguyhai/step1');
+                }else{
+                    $this->redirect('/admin/baocao/baocaochatthainguyhai/step0');
                 }
-                $this->redirect('/admin/baocao/baocaochatthainguyhai/step1');
+                
             }
         }
     }
@@ -1344,7 +1346,7 @@ class BaocaoController extends AdminAppController {
                 $this->Session->setFlash('Lỗi! Không thể upload file.Chú ý dung lượng file < 2MB');
             }
         }
-        $listhskt = $this->Hosokemtheo->find('all', array('colMaBaocao' => $baocao['Baocaochatthainguyhai']['colMa']));
+        $listhskt = $this->Hosokemtheo->find('all', array('conditions'=>array('colMaBaocao' => $baocao['Baocaochatthainguyhai']['colMa'])));
         $this->set('listhosokemtheo', $listhskt);
     }
 

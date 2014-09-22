@@ -67,7 +67,7 @@
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                 </tbody></table>
-                                                                                            <table>
+                                                                                            <table style="text-align: left;">
                                                                                                 <tbody><tr>
                                                                                                         <td colspan="3">
                                                                                                             <span id="Label15" style="font-family:Times New Roman;font-weight:bold;">1. Phần khai chung về chủ nguồn thải CTNH:</span>
@@ -157,12 +157,12 @@
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                 </tbody></table>
-                                                                                            <table id="tblDanhSachCoSo" cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                                                            <table id="tblDanhSachCoSo" cellpadding="0" cellspacing="0" border="0" width="100%" style="text-align: left;">
                                                                                                 <tbody>
                                                                                                     <?php foreach ($doanhnghiep['Children'] as $key => $child): ?>
                                                                                                         <tr>
                                                                                                             <td>
-                                                                                                                <table cellpadding="0" cellspacing="0" border="0" width="100%"><tbody><tr><td colspan="3" style="padding-top:15px">Tên (nếu có): <?php echo h($child['colTen']) ?></td></tr><tr><td colspan="3">Địa chỉ: <?php echo h($child['colDiaChi']) ?></td></tr><tr><td colspan="3">Loại hình (ngành nghề) hoạt động: </td></tr><tr><td> Điện thoại: <?php echo h($child['colDienThoai']) ?></td><td> Fax: <?php echo h($child['colFax']) ?></td><td> Email: <?php echo h($child['colEmail']) ?></td></tr><tr><td> Giấy đăng ký kinh doanh (nếu có) số: <?php echo h($child['colGiayPhepKD']) ?></td><td> Ngày cấp: <?php echo!empty($child['ngaycapchungnhanKDDT']) ? date('d/m/Y', strtotime($child['ngaycapchungnhanKDDT'])) : ''; ?></td><td> Nơi cấp: <?php echo h($child['noicapchungnhanKDDT']) ?></td></tr></tbody></table>
+                                                                                                                <table cellpadding="0" cellspacing="0" border="0" width="100%" style="text-align: left;"><tbody><tr><td colspan="3" style="padding-top:15px; text-align: left;">Tên (nếu có): <?php echo h($child['colTen']) ?></td></tr><tr><td colspan="3">Địa chỉ: <?php echo h($child['colDiaChi']) ?></td></tr><tr><td colspan="3">Loại hình (ngành nghề) hoạt động: </td></tr><tr><td> Điện thoại: <?php echo h($child['colDienThoai']) ?></td><td> Fax: <?php echo h($child['colFax']) ?></td><td> Email: <?php echo h($child['colEmail']) ?></td></tr><tr><td> Giấy đăng ký kinh doanh (nếu có) số: <?php echo h($child['colGiayPhepKD']) ?></td><td> Ngày cấp: <?php echo!empty($child['ngaycapchungnhanKDDT']) ? date('d/m/Y', strtotime($child['ngaycapchungnhanKDDT'])) : ''; ?></td><td> Nơi cấp: <?php echo h($child['noicapchungnhanKDDT']) ?></td></tr></tbody></table>
                                                                                                             </td>
                                                                                                         </tr>
                                                                                                     <?php endforeach; ?>
@@ -177,7 +177,7 @@
                                                                 </td>
                                                             </tr>
                                                         </tbody></table>
-                                                    <table id="Table32" height="auto" cellspacing="0" cellpadding="0" width="780px" border="0">
+                                                    <table id="Table32" height="auto" cellspacing="0" cellpadding="0" width="780px" border="0" style="text-align: left;">
                                                         <tbody><tr>
                                                                 <td style="padding-right: 5px; padding-left: 5px; padding-bottom: 5px; padding-top: 5px;
                                                                     font-size: 17px;">
@@ -196,7 +196,7 @@
                                                                     <table id="tblDSNL" cellpadding="0" cellspacing="0" border="0" width="100%">
                                                                         <?php foreach ($doanhnghiep['Children'] as $child): ?>
                                                                             <tbody>
-                                                                                <tr><td align="left"><b><?php echo h($child['colTen']) ?></b></td></tr>
+                                                                                <tr><td align="left"><b><?php echo (count($doanhnghiep['Children'])>1)?h($child['colTen']):'' ?></b></td></tr>
                                                                                 <tr>
                                                                                     <td><table class="grid" cellspacing="0" cellpadding="0" width="100%" border="0">
                                                                                             <tbody>
@@ -233,7 +233,7 @@
                                                                     <table id="tblDSSP" cellpadding="0" cellspacing="0" border="0" width="100%">
                                                                         <tbody>
                                                                             <?php foreach ($doanhnghiep['Children'] as $child): ?>
-                                                                                <tr><td align="left"><b><?php echo h($child['colTen']) ?></b></td></tr>
+                                                                                <tr><td align="left"><b><?php echo (count($doanhnghiep['Children'])>1)?h($child['colTen']):'' ?></b></td></tr>
                                                                                 <tr>
                                                                                     <td>
                                                                                         <table class="grid" cellspacing="0" cellpadding="0" width="100%" border="0">
@@ -272,7 +272,7 @@
                                                                 </td>
                                                             </tr>
                                                             <?php foreach ($doanhnghiep['Children'] as $child): ?>
-                                                                <tr><td align="left"><b><?php echo h($child['colTen']) ?></b></td></tr>
+                                                                <tr><td align="left"><b><?php echo (count($doanhnghiep['Children'])>1)?h($child['colTen']):'' ?></b></td></tr>
                                                                 <tr>
                                                                     <td style="padding-right: 5px; padding-left: 5px; padding-bottom: 5px; padding-top: 5px;">
                                                                         <table id="tblCTNHPS" cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -319,7 +319,7 @@
                                                                 </td>
                                                             </tr>
                                                             <?php foreach ($doanhnghiep['Children'] as $child): ?>
-                                                                <tr><td align="left"><b><?php echo h($child['colTen']) ?></b></td></tr>
+                                                                <tr><td align="left"><b><?php echo (count($doanhnghiep['Children'])>1)?h($child['colTen']):'' ?></b></td></tr>
                                                                 <tr>
                                                                     <td style="padding-right: 5px; padding-left: 5px; padding-bottom: 5px; padding-top: 5px;">
                                                                         <table id="tblCTTT" cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -362,7 +362,7 @@
                                                                 </td>
                                                             </tr>
                                                             <?php foreach ($doanhnghiep['Children'] as $child): ?>
-                                                                <tr><td align="left"><b><?php echo h($child['colTen']) ?></b></td></tr>
+                                                                <tr><td align="left"><b><?php echo (count($doanhnghiep['Children'])>1)?h($child['colTen']):'' ?></b></td></tr>
                                                                 <tr>
                                                                     <td style="padding-right: 5px; padding-left: 5px; padding-bottom: 5px; padding-top: 5px;">
                                                                         <table id="tblCTNHTL" cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -411,7 +411,7 @@
                                                                 </td>
                                                             </tr>
                                                             <?php foreach ($doanhnghiep['Children'] as $child): ?>
-                                                                <tr><td align="left"><b><?php echo h($child['colTen']) ?></b></td></tr>
+                                                                <tr><td align="left"><b><?php echo (count($doanhnghiep['Children'])>1)?h($child['colTen']):'' ?></b></td></tr>
                                                                 <tr>
                                                                     <td style="padding-right: 5px; padding-left: 5px; padding-bottom: 5px; padding-top: 5px;">
                                                                         <table id="tblCTNHCS" cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -492,7 +492,7 @@
                                                                 </td>
                                                             </tr>
                                                         </tbody></table>
-                                                    <table>
+                                                    <table style="text-align: left;">
                                                         <tbody><tr>
                                                                 <td style="height: 49px;font-family: Time New Romans; font-size: 13pt;">
                                                                     Tôi xin cam đoan rằng những thông tin cung cấp ở trên là đúng sự thật. Đề nghị quý

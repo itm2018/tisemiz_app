@@ -1,5 +1,6 @@
 <?php
 
+App::uses('CakeEmail', 'Network/Email');
 /**
  * Created by PhpStorm.
  * User: soncahuynh
@@ -84,23 +85,35 @@ class NewsController extends FrontAppController {
         }
     }
 
-    public function lienhe(){
-        if($this->request->is('post')){
-            $data=$this->request->data['Contact'];
+    public function lienhe() {
+        if ($this->request->is('post')) {
+            $data = $this->request->data['Contact'];
             $this->loadModel('Contact');
             $this->Contact->set($data);
-            if($this->Contact->validates()){
-                $saved=false;
-                try{
-                    $saved=$this->Contact->save();
+            if ($this->Contact->validates()) {
+                $saved = false;
+                try {
+                    $saved = $this->Contact->save();
                 } catch (Exception $ex) {
-
+                    
                 }
-                if($saved){
-                    $this->Session->setFlash('Gửi liên hệ thành công', 'default',array('class'=>'success'));
+                if ($saved) {
+                    $email = new CakeEmail('gmail');
+                    try{
+                        $email->template('contact',false)
+                            ->viewVars($data)
+                            ->subject($data['tieude'])
+                            ->emailFormat('html')
+                            ->to('info.tisemiz@gmail.com')
+                            ->send();
+                    } catch (Exception $ex) {
+
+                    }
+                    $this->Session->setFlash('Gửi liên hệ thành công', 'default', array('class' => 'success'));
                     $this->redirect($this->here);
                 }
             }
         }
     }
+
 }

@@ -209,20 +209,32 @@ class Common {
         return $result;
     }
 
-    public static function getListThang(){
+    public static function getListThang() {
         return array(
-            '1'=>'Tháng 1',
-            '2'=>'Tháng 2',
-            '3'=>'Tháng 3',
-            '4'=>'Tháng 4',
-            '5'=>'Tháng 5',
-            '6'=>'Tháng 6',
-            '7'=>'Tháng 7',
-            '8'=>'Tháng 8',
-            '9'=>'Tháng 9',
-            '10'=>'Tháng 10',
-            '11'=>'Tháng 11',
-            '12'=>'Tháng 12',
+            '1' => 'Tháng 1',
+            '2' => 'Tháng 2',
+            '3' => 'Tháng 3',
+            '4' => 'Tháng 4',
+            '5' => 'Tháng 5',
+            '6' => 'Tháng 6',
+            '7' => 'Tháng 7',
+            '8' => 'Tháng 8',
+            '9' => 'Tháng 9',
+            '10' => 'Tháng 10',
+            '11' => 'Tháng 11',
+            '12' => 'Tháng 12',
         );
     }
+
+    public static function getUserIP() {
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+        return $ip;
+    }
+
 }
