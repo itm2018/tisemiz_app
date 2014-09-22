@@ -10,8 +10,7 @@ echo $this->Form->create('DoanhNghiep', array('type' => 'file', 'class' => 'form
     <label for="inputNamnhaplieu" class="col-sm-2 control-label">Năm nhập liệu <span class="required">*</span></label>
     <?php
     echo $this->Form->input('nam', array('type' => 'number', 'class' => 'form-control',
-        'div' => array('class' => 'col-sm-6'), 'label' => false,
-        'value' => date('Y')));
+        'div' => array('class' => 'col-sm-6'), 'label' => false));
     ?>
 </div>
 <div class="form-group">

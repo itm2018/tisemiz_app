@@ -8,6 +8,26 @@
             PopUp(2);
         });
     });
+    function echoDate(value){
+        if(!value){
+            return '';
+        }
+        return formatDate(new Date(getDateFromFormat(value, 'yyyy-MM-dd HH:mm:ss')), 'dd/MM/yyyy')
+    }
+    function echoNull(value) {
+        if (!value) {
+            value = '';
+        }
+        return value;
+    }
+    function echoBoolValue(value) {
+        if (value === true || value === "true")
+        {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
     function doPostAjax(url, data, callbackfn) {
         $.ajax({
             beforeSend: function(XMLHttpRequest) {

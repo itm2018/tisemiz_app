@@ -177,7 +177,7 @@
                 var classes = ['', 'active', 'success', 'warning'];
                 var i = 0;
                 underwaters.forEach(function(sp) {
-                    html += '<tr class="' + classes[i] + '"><td><input type="hidden" name="colMa" value="' + sp['NuocNgamDoanhNghiep']['colMa'] + '">' + sp['NuocNgamDoanhNghiep']['colNam'] + '</td><td>' + sp['NuocNgamDoanhNghiep']['colMaGK'] + '</td><td>' + sp['NuocNgamDoanhNghiep']['colViTri'] + '</td><td>' + sp['NuocNgamDoanhNghiep']['colX'] + '</td><td>' + sp['NuocNgamDoanhNghiep']['colY'] + '</td><td>' + sp['NuocNgamDoanhNghiep']['colCongSuat'] + '</td><td>' + sp['NuocNgamDoanhNghiep']['colLLuong'] + '</td><td>' + sp['NuocNgamDoanhNghiep']['colSoGiayPhep'] + '</td><td>' + sp['NuocNgamDoanhNghiep']['colGhiChu'] + '</td><td><input type="checkbox" name="deleterow' + sp['NuocNgamDoanhNghiep']['colMa'] + '"></td></tr>';
+                    html += '<tr class="' + classes[i] + '"><td><input type="hidden" name="colMa" value="' + sp['NuocNgamDoanhNghiep']['colMa'] + '">' + sp['NuocNgamDoanhNghiep']['colNam'] + '</td><td>' + sp['NuocNgamDoanhNghiep']['colMaGK'] + '</td><td>' + sp['NuocNgamDoanhNghiep']['colViTri'] + '</td><td>' + parseFloat(sp['NuocNgamDoanhNghiep']['colX']) + '</td><td>' + parseFloat(sp['NuocNgamDoanhNghiep']['colY']) + '</td><td>' + sp['NuocNgamDoanhNghiep']['colCongSuat'] + '</td><td>' + sp['NuocNgamDoanhNghiep']['colLLuong'] + '</td><td>' + sp['NuocNgamDoanhNghiep']['colSoGiayPhep'] + '</td><td>' + sp['NuocNgamDoanhNghiep']['colGhiChu'] + '</td><td><input type="checkbox" name="deleterow' + sp['NuocNgamDoanhNghiep']['colMa'] + '"></td></tr>';
                     ++i;
                     if (i == 3) {
                         i = 0;

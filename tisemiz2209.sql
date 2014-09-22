@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.39, for Win32 (x86)
+-- MySQL dump 10.13  Distrib 5.6.16, for Win32 (x86)
 --
 -- Host: localhost    Database: tisemiz
 -- ------------------------------------------------------
--- Server version	5.5.39
+-- Server version	5.6.16
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -85,7 +85,7 @@ CREATE TABLE `aros` (
   `lft` int(10) DEFAULT NULL,
   `rght` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,6 +94,7 @@ CREATE TABLE `aros` (
 
 LOCK TABLES `aros` WRITE;
 /*!40000 ALTER TABLE `aros` DISABLE KEYS */;
+INSERT INTO `aros` VALUES (1,NULL,'User',20,NULL,1,2);
 /*!40000 ALTER TABLE `aros` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -138,11 +139,12 @@ CREATE TABLE `baocaochatthainguyhai` (
   `colCSSX` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `created_date` datetime NOT NULL,
-  `updated_date` datetime DEFAULT NULL,
+  `updated_date` timestamp NULL DEFAULT NULL,
   `tungay` date NOT NULL,
   `denngay` date NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`colMa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,7 +153,32 @@ CREATE TABLE `baocaochatthainguyhai` (
 
 LOCK TABLES `baocaochatthainguyhai` WRITE;
 /*!40000 ALTER TABLE `baocaochatthainguyhai` DISABLE KEYS */;
+INSERT INTO `baocaochatthainguyhai` VALUES (12,81,0,'2014-09-22 19:40:05',NULL,'0000-00-00','0000-00-00',1),(13,81,0,'2014-09-22 19:41:27',NULL,'0000-00-00','0000-00-00',1),(14,70,0,'2014-09-22 20:20:38',NULL,'0000-00-00','0000-00-00',1);
 /*!40000 ALTER TABLE `baocaochatthainguyhai` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `baocaochatthainguyhai_coso`
+--
+
+DROP TABLE IF EXISTS `baocaochatthainguyhai_coso`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `baocaochatthainguyhai_coso` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `colMaBaocao` int(11) NOT NULL,
+  `colMaCoso` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `baocaochatthainguyhai_coso`
+--
+
+LOCK TABLES `baocaochatthainguyhai_coso` WRITE;
+/*!40000 ALTER TABLE `baocaochatthainguyhai_coso` DISABLE KEYS */;
+/*!40000 ALTER TABLE `baocaochatthainguyhai_coso` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -242,7 +269,7 @@ CREATE TABLE `bien_phap_xu_ly_nuoc_thai` (
 
 LOCK TABLES `bien_phap_xu_ly_nuoc_thai` WRITE;
 /*!40000 ALTER TABLE `bien_phap_xu_ly_nuoc_thai` DISABLE KEYS */;
-INSERT INTO `bien_phap_xu_ly_nuoc_thai` VALUES (1,'Xả vào tuyến nước mưa'),(2,'Xả vào tuyến mước bẩn'),(3,'Song chắn rác'),(4,'Tuyến nổi'),(5,'Lắng'),(6,'Keo tụ'),(7,'Điều chỉnh pH'),(8,'Sinh học kỵ khí'),(9,'Lắng 2'),(10,'Lọc'),(11,'Khử trùng'),(12,'Ép bon');
+INSERT INTO `bien_phap_xu_ly_nuoc_thai` VALUES (1,'Xả vào tuyến nước mưa'),(2,'Xả vào tuyến mước bẩn'),(3,'Xả vào tuyến cống chung'),(4,'Tuyến nổi'),(5,'Lắng'),(6,'Keo tụ'),(7,'Lọc'),(8,'Sinh học kỵ khí'),(9,'Sinh học hiếu khí'),(10,'Khử trùng'),(11,'Ép bùn'),(12,'Khác');
 /*!40000 ALTER TABLE `bien_phap_xu_ly_nuoc_thai` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -299,8 +326,13 @@ CREATE TABLE `chat_thai_nguy_hai` (
   `ma_chatthai` varchar(45) DEFAULT NULL,
   `tt_tontai` varchar(45) DEFAULT NULL,
   `stt` int(11) DEFAULT NULL,
+  `is_tonluu` tinyint(1) NOT NULL DEFAULT '0',
+  `is_phatsinhthuongxuyen` tinyint(1) NOT NULL DEFAULT '0',
+  `is_tuxuly` tinyint(1) NOT NULL DEFAULT '0',
+  `phuonganxuly` varchar(1000) DEFAULT NULL,
+  `mucdoxuly` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`colMa`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=119 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -309,7 +341,7 @@ CREATE TABLE `chat_thai_nguy_hai` (
 
 LOCK TABLES `chat_thai_nguy_hai` WRITE;
 /*!40000 ALTER TABLE `chat_thai_nguy_hai` DISABLE KEYS */;
-INSERT INTO `chat_thai_nguy_hai` VALUES (3,'0000-00-00 00:00:00',66,'test','trasetj','jasjdf','jsdfj',1,0,'fsdjofj','jfosjdf','jfsodjf','2014-08-07 00:00:00','2014-08-28 21:40:15',NULL,NULL,NULL),(4,'0000-00-00 00:00:00',10,'chất thải rắn','100','chất thải rắn','lưu',1,0,'','','','2014-08-06 00:00:00','2014-09-12 11:32:05',NULL,NULL,NULL),(5,NULL,71,'Cặn thải có khả năng sinh axit từ quá trình chế biến quặng sunfua','12',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:31:40','010101','Rắn/lỏng/bùn',1),(6,NULL,71,'Các loại cặn thải khác có chứa các thành phần nguy hại','123',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:31:40','010102','Rắn/lỏng/bùn',2),(7,NULL,71,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng sắt','1234',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:31:40','010103','Rắn/lỏng/bùn',3),(8,NULL,71,'Cặn thải có khả năng sinh axit từ quá trình chế biến quặng sunfua','13214',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:42:24','010101','Rắn/lỏng/bùn',1),(9,NULL,71,'Các loại cặn thải khác có chứa các thành phần nguy hại','4325',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:42:24','010102','Rắn/lỏng/bùn',2),(10,NULL,71,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng sắt','2454',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:42:24','010103','Rắn/lỏng/bùn',3),(11,NULL,71,'Cặn thải có khả năng sinh axit từ quá trình chế biến quặng sunfua','132141',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:43:41','010101','Rắn/lỏng/bùn',1),(12,NULL,71,'Các loại cặn thải khác có chứa các thành phần nguy hại','13234',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:43:41','010102','Rắn/lỏng/bùn',2),(13,NULL,71,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng sắt','13234',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:43:41','010103','Rắn/lỏng/bùn',3),(14,NULL,71,'Cặn thải có khả năng sinh axit từ quá trình chế biến quặng sunfua','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:43:48','010101','Rắn/lỏng/bùn',1),(15,NULL,71,'Các loại cặn thải khác có chứa các thành phần nguy hại','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:43:48','010102','Rắn/lỏng/bùn',2),(16,NULL,71,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng sắt','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:43:48','010103','Rắn/lỏng/bùn',3),(17,NULL,71,'Cặn thải có khả năng sinh axit từ quá trình chế biến quặng sunfua','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:50:24','010101','Rắn/lỏng/bùn',1),(18,NULL,71,'Các loại cặn thải khác có chứa các thành phần nguy hại','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:50:24','010102','Rắn/lỏng/bùn',2),(19,NULL,71,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng sắt','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:50:24','010103','Rắn/lỏng/bùn',3),(20,NULL,71,'Cặn thải có khả năng sinh axit từ quá trình chế biến quặng sunfua','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:51:16','010101','Rắn/lỏng/bùn',1),(21,NULL,71,'Các loại cặn thải khác có chứa các thành phần nguy hại','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:51:16','010102','Rắn/lỏng/bùn',2),(22,NULL,71,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng sắt','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:51:16','010103','Rắn/lỏng/bùn',3),(23,NULL,71,'Cặn thải có khả năng sinh axit từ quá trình chế biến quặng sunfua','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:52:24','010101','Rắn/lỏng/bùn',1),(24,NULL,71,'Các loại cặn thải khác có chứa các thành phần nguy hại','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:52:24','010102','Rắn/lỏng/bùn',2),(25,NULL,71,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng sắt','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:52:24','010103','Rắn/lỏng/bùn',3),(26,NULL,71,'Cặn thải có khả năng sinh axit từ quá trình chế biến quặng sunfua','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:55:31','010101','Rắn/lỏng/bùn',1),(27,NULL,71,'Các loại cặn thải khác có chứa các thành phần nguy hại','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:55:31','010102','Rắn/lỏng/bùn',2),(28,NULL,71,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng sắt','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:55:31','010103','Rắn/lỏng/bùn',3),(29,NULL,71,'Cặn thải có khả năng sinh axit từ quá trình chế biến quặng sunfua','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:57:35','010101','Rắn/lỏng/bùn',1),(30,NULL,71,'Các loại cặn thải khác có chứa các thành phần nguy hại','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:57:35','010102','Rắn/lỏng/bùn',2),(31,NULL,71,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng sắt','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:57:35','010103','Rắn/lỏng/bùn',3),(32,NULL,71,'Cặn thải có khả năng sinh axit từ quá trình chế biến quặng sunfua','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:57:46','010101','Rắn/lỏng/bùn',1),(33,NULL,71,'Các loại cặn thải khác có chứa các thành phần nguy hại','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:57:46','010102','Rắn/lỏng/bùn',2),(34,NULL,71,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng sắt','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:57:46','010103','Rắn/lỏng/bùn',3),(35,NULL,71,'Cặn thải có khả năng sinh axit từ quá trình chế biến quặng sunfua','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 12:00:12','010101','Rắn/lỏng/bùn',1),(36,NULL,71,'Các loại cặn thải khác có chứa các thành phần nguy hại','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 12:00:12','010102','Rắn/lỏng/bùn',2),(37,NULL,71,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng sắt','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 12:00:12','010103','Rắn/lỏng/bùn',3),(38,NULL,71,'Cặn thải có khả năng sinh axit từ quá trình chế biến quặng sunfua','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 12:00:20','010101','Rắn/lỏng/bùn',1),(39,NULL,71,'Các loại cặn thải khác có chứa các thành phần nguy hại','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 12:00:20','010102','Rắn/lỏng/bùn',2),(40,NULL,71,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng sắt','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 12:00:20','010103','Rắn/lỏng/bùn',3),(41,NULL,71,'Cặn thải có khả năng sinh axit từ quá trình chế biến quặng sunfua','5234',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 12:03:01','010101','Rắn/lỏng/bùn',1),(42,NULL,71,'Các loại cặn thải khác có chứa các thành phần nguy hại','234',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 12:03:01','010102','Rắn/lỏng/bùn',2),(43,NULL,71,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng sắt','2345',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 12:03:01','010103','Rắn/lỏng/bùn',3),(44,NULL,71,'Cặn thải có khả năng sinh axit từ quá trình chế biến quặng sunfua','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 12:03:12','010101','Rắn/lỏng/bùn',1),(45,NULL,71,'Các loại cặn thải khác có chứa các thành phần nguy hại','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 12:03:12','010102','Rắn/lỏng/bùn',2),(46,NULL,71,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng sắt','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 12:03:12','010103','Rắn/lỏng/bùn',3),(47,NULL,71,'Cặn thải có khả năng sinh axit từ quá trình chế biến quặng sunfua','fasdf',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 12:04:36','010101','Rắn/lỏng/bùn',1),(48,NULL,71,'Các loại cặn thải khác có chứa các thành phần nguy hại','ádf',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 12:04:36','010102','Rắn/lỏng/bùn',2),(49,NULL,71,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng sắt','sdf',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 12:04:36','010103','Rắn/lỏng/bùn',3),(50,NULL,71,'Cặn thải có khả năng sinh axit từ quá trình chế biến quặng sunfua','3324',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 12:05:03','010101','Rắn',7),(51,NULL,71,'Các loại cặn thải khác có chứa các thành phần nguy hại','43534',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 12:05:03','010102','Rắn/lỏng/bùn',8),(52,NULL,71,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng sắt','23434',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 12:05:03','010103','lỏng',9),(53,NULL,72,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng kim loại màu bằng phương pháp ','1245',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:44:40','010201','Rắn/lỏng/bùn',1);
+INSERT INTO `chat_thai_nguy_hai` VALUES (3,'0000-00-00 00:00:00',66,'test','trasetj','jasjdf','jsdfj',1,0,'fsdjofj','jfosjdf','jfsodjf','2014-08-07 00:00:00','2014-08-28 21:40:15',NULL,NULL,NULL,0,0,0,NULL,NULL),(4,'0000-00-00 00:00:00',10,'chất thải rắn','100','chất thải rắn','lưu',1,0,'','','','2014-08-06 00:00:00','2014-09-12 11:32:05',NULL,NULL,NULL,0,0,0,NULL,NULL),(5,NULL,71,'Cặn thải có khả năng sinh axit từ quá trình chế biến quặng sunfua coloruan','1200',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:31:40','010101','Rắn',1,0,0,0,NULL,NULL),(6,NULL,71,'Các loại cặn thải khác có chứa các thành phần nguy hại','123',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:31:40','010102','Rắn/lỏng/bùn',2,0,0,0,NULL,NULL),(7,NULL,71,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng sắt','1234',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:31:40','010103','Rắn/lỏng/bùn',3,0,0,0,NULL,NULL),(53,NULL,72,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng kim loại màu bằng phương pháp ','1245',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-12 11:44:40','010201','Rắn/lỏng/bùn',1,0,0,0,NULL,NULL),(56,NULL,72,'Axit sunfuric và axit sunfurơ thải','12',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-13 04:04:25','020101','Rắn/lỏng/bùn',1,0,0,0,NULL,NULL),(57,NULL,72,'Axit clohydric thải','12',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-13 04:04:25','020102','Rắn/lỏng/bùn',2,0,0,0,NULL,NULL),(58,NULL,72,'Axit flohydric thải','3',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-13 04:04:25','020103','Rắn/lỏng/bùn',3,0,0,0,NULL,NULL),(59,NULL,72,'Axit photphoric và axit photphorơ thải','34',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-13 04:04:25','020104','Rắn/lỏng/bùn',4,0,0,0,NULL,NULL),(60,NULL,72,'Axit nitric và axit nitrơ thải','435',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-13 04:04:25','020105','Rắn/lỏng/bùn',5,0,0,0,NULL,NULL),(61,NULL,72,'Các loại axit thải khác','5345',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-13 04:04:25','020106','Rắn/lỏng/bùn',6,0,0,0,NULL,NULL),(62,NULL,71,'Axit sunfuric và axit sunfurơ thải','123',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-13 04:55:54','020101','Rắn/lỏng/bùn',4,0,0,0,NULL,NULL),(63,NULL,71,'Axit clohydric thải','3445',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-13 04:55:54','020102','Rắn/lỏng/bùn',5,0,0,0,NULL,NULL),(64,NULL,71,'Chất thải chứa asen','33455',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-13 04:56:39','020401','Rắn/lỏng',6,0,0,0,NULL,NULL),(65,NULL,71,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng kim loại màu bằng phương pháp ','123',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-13 05:18:26','010201','Rắn/lỏng/bùn',1,1,0,0,NULL,NULL),(66,NULL,71,'Bùn thải và chất thải có chứa dầu từ quá trình khoan','1234',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-13 05:35:54','010301','Rắn/lỏng/bùn',2,1,0,0,NULL,NULL),(67,NULL,71,'Natri hydroxit và kali hydroxit thải','1324',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-13 05:46:21','020201','Rắn/lỏng/bùn',1,0,1,0,NULL,NULL),(68,NULL,71,'Các loại bazơ thải khác','4546',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-13 05:46:21','020202','Rắn/lỏng/bùn',2,0,1,0,NULL,NULL),(69,NULL,71,'Các loại hắc ín thải','123434',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-13 05:54:07','010501','Rắn/lỏng/bùn',3,0,1,0,NULL,NULL),(70,NULL,72,'chất thải tự xử lý 2','154',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-13 06:39:27','0115145','rắn',1,0,0,1,'đốt','triệt để'),(71,NULL,71,'chất thải tự xử lý','234',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-13 06:40:02','234','324',1,0,0,1,'ủ','sơ xài'),(72,NULL,70,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng kim loại màu bằng phương pháp ','121',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-21 18:42:11','010201','Rắn/lỏng/bùn',1,0,0,0,NULL,NULL),(73,NULL,80,'Cặn thải có khả năng sinh axit từ quá trình chế biến quặng sunfua','24',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-21 18:57:08','010101','Rắn/lỏng/bùn',1,0,0,0,NULL,NULL),(74,NULL,80,'Các loại cặn thải khác có chứa các thành phần nguy hại','23412',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-21 18:57:08','010102','Rắn/lỏng/bùn',2,0,0,0,NULL,NULL),(75,NULL,80,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng sắt','434',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-21 18:57:08','010103','Rắn/lỏng/bùn',3,0,0,0,NULL,NULL),(76,NULL,80,'Chất thải có chứa thuỷ ngân','232',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-21 18:57:35','010601','Rắn/lỏng/bùn',1,0,1,0,NULL,NULL),(77,NULL,70,'Axit sunfuric và axit sunfurơ thải','1233',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:23:12','020101','Rắn/lỏng/bùn',1,1,0,0,NULL,NULL),(78,NULL,70,'Axit clohydric thải','14234',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:23:12','020102','Rắn/lỏng/bùn',2,1,0,0,NULL,NULL),(79,NULL,70,'Axit flohydric thải','4343',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:23:12','020103','Rắn/lỏng/bùn',3,1,0,0,NULL,NULL),(80,NULL,70,'Axit photphoric và axit photphorơ thải','434',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:23:12','020104','Rắn/lỏng/bùn',4,1,0,0,NULL,NULL),(81,NULL,70,'Axit nitric và axit nitrơ thải','343',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:23:12','020105','Rắn/lỏng/bùn',5,1,0,0,NULL,NULL),(82,NULL,70,'Các loại axit thải khác','43434',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:23:12','020106','Rắn/lỏng/bùn',6,1,0,0,NULL,NULL),(83,NULL,70,'axit','123',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:24:00','','rắn/lỏng',1,0,0,1,'đốt','triệt để'),(84,NULL,70,'axit','123',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:24:07','','rắn/lỏng',1,0,0,1,'đốt','triệt để'),(85,NULL,70,'axit','123',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:24:26','','rắn/lỏng',1,0,0,1,'đốt','triệt để'),(86,NULL,81,'Bùn thải từ thiết bị khử muối','12',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:44:40','010401','Rắn/lỏng/bùn',1,0,0,0,NULL,NULL),(87,NULL,81,'Bùn đáy bể','323',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:44:40','010402','Rắn/lỏng/bùn',2,0,0,0,NULL,NULL),(88,NULL,81,'Bùn thải chứa axit','232',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:44:40','010403','Rắn/lỏng/bùn',3,0,0,0,NULL,NULL),(89,NULL,81,'Dầu tràn','232',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:44:40','010404','Rắn/lỏng/bùn',4,0,0,0,NULL,NULL),(90,NULL,81,'Bùn thải có chứa dầu từ hoạt động bảo dưỡng cơ sở, máy móc, trang thiết bị','5654',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:44:40','010405','Rắn/lỏng/bùn',5,0,0,0,NULL,NULL),(91,NULL,81,'Các loại hắc ín thải','ưer',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:44:40','010406','Rắn/lỏng/bùn',6,0,0,0,NULL,NULL),(92,NULL,81,'Bùn thải có chứa các thành phần nguy hại từ quá trình xử lý nước thải','rưer',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:44:40','010407','Rắn/lỏng/bùn',7,0,0,0,NULL,NULL),(93,NULL,81,'Chất thải từ quá trình làm sạch nhiên liệu bằng bazơ','12323',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:44:40','010408','Rắn/lỏng/bùn',8,0,0,0,NULL,NULL),(94,NULL,81,'Dầu thải chứa axit','34234',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:44:40','010409','Rắn/lỏng/bùn',9,0,0,0,NULL,NULL),(95,NULL,81,'Vật liệu lọc bằng đất sét đã qua sử dụng','234',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:44:40','010410','Rắn/lỏng/bùn',10,0,0,0,NULL,NULL),(96,NULL,81,'Cặn thải có khả năng sinh axit từ quá trình chế biến quặng sunfua','12',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:44:58','010101','Rắn/lỏng/bùn',11,0,0,0,NULL,NULL),(97,NULL,81,'Các loại cặn thải khác có chứa các thành phần nguy hại','324',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:44:58','010102','Rắn/lỏng/bùn',12,0,0,0,NULL,NULL),(98,NULL,81,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng sắt','545',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:44:58','010103','Rắn/lỏng/bùn',13,0,0,0,NULL,NULL),(99,NULL,81,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng kim loại màu bằng phương pháp ','123',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:45:27','010201','Rắn/lỏng/bùn',1,0,1,0,NULL,NULL),(100,NULL,81,'Axit sunfuric và axit sunfurơ thải','34234',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:45:27','020101','Rắn/lỏng/bùn',2,0,1,0,NULL,NULL),(101,NULL,81,'Axit clohydric thải','234',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:45:27','020102','Rắn/lỏng/bùn',3,0,1,0,NULL,NULL),(102,NULL,81,'Axit flohydric thải','324',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:45:27','020103','Rắn/lỏng/bùn',4,0,1,0,NULL,NULL),(103,NULL,81,'Axit photphoric và axit photphorơ thải','234',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:45:27','020104','Rắn/lỏng/bùn',5,0,1,0,NULL,NULL),(104,NULL,81,'Axit nitric và axit nitrơ thải','234',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:45:27','020105','Rắn/lỏng/bùn',6,0,1,0,NULL,NULL),(105,NULL,81,'Các loại axit thải khác','545',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:45:27','020106','Rắn/lỏng/bùn',7,0,1,0,NULL,NULL),(106,NULL,81,'Chất thải có chứa các thành phần nguy hại từ quá trình chế biến quặng kim loại màu bằng phương pháp ','343',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:45:53','010201','Rắn/lỏng/bùn',1,1,0,0,NULL,NULL),(107,NULL,81,'rác thải nhà máy','8989',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:46:23','','rắn/ bùn',1,0,0,1,'đốt ','sơ chế'),(108,NULL,81,'bùn đáy','5644',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 12:48:00','','bùn',2,0,0,1,'hút và phơi đáy','toàn bộ'),(109,NULL,88,'Bùn thải từ thiết bị khử muối','23',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 13:18:19','010401','Rắn/lỏng/bùn',1,0,0,0,NULL,NULL),(110,NULL,88,'Bùn đáy bể','2323',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 13:18:19','010402','Rắn/lỏng/bùn',2,0,0,0,NULL,NULL),(111,NULL,88,'Bùn thải chứa axit','2323',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 13:18:19','010403','Rắn/lỏng/bùn',3,0,0,0,NULL,NULL),(112,NULL,88,'Dầu tràn','2323',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 13:18:19','010404','Rắn/lỏng/bùn',4,0,0,0,NULL,NULL),(113,NULL,88,'Bùn thải có chứa dầu từ hoạt động bảo dưỡng cơ sở, máy móc, trang thiết bị','23223',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 13:18:19','010405','Rắn/lỏng/bùn',5,0,0,0,NULL,NULL),(114,NULL,88,'Các loại hắc ín thải','23',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 13:18:19','010406','Rắn/lỏng/bùn',6,0,0,0,NULL,NULL),(115,NULL,88,'Bùn thải có chứa các thành phần nguy hại từ quá trình xử lý nước thải','45345',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 13:18:19','010407','Rắn/lỏng/bùn',7,0,0,0,NULL,NULL),(116,NULL,88,'Chất thải từ quá trình làm sạch nhiên liệu bằng bazơ','4534',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 13:18:19','010408','Rắn/lỏng/bùn',8,0,0,0,NULL,NULL),(117,NULL,88,'Dầu thải chứa axit','3454',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 13:18:20','010409','Rắn/lỏng/bùn',9,0,0,0,NULL,NULL),(118,NULL,88,'Vật liệu lọc bằng đất sét đã qua sử dụng','435',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-09-22 13:18:20','010410','Rắn/lỏng/bùn',10,0,0,0,NULL,NULL);
 /*!40000 ALTER TABLE `chat_thai_nguy_hai` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -379,6 +411,38 @@ LOCK TABLES `co_quan_quan_ly` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `contact`
+--
+
+DROP TABLE IF EXISTS `contact`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `donvi` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `hoten` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `chucvu` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `diachi` varchar(450) COLLATE utf8_unicode_ci NOT NULL,
+  `dienthoai` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `fax` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `tieude` varchar(455) COLLATE utf8_unicode_ci NOT NULL,
+  `noidung` longtext COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `contact`
+--
+
+LOCK TABLES `contact` WRITE;
+/*!40000 ALTER TABLE `contact` DISABLE KEYS */;
+INSERT INTO `contact` VALUES (1,'','','','','','','','',''),(2,'','','','','','','','',''),(3,'','','','','','','','',''),(4,'','sadas','','fasdf','234324','','dfasdf@gmail.com','fasdf','fas fasd'),(5,'','sadas','','fasdf','234324','','dfasdf@gmail.com','fasdf','fas fasd'),(6,'','sadas','','fasdf','234324','','huynhsonca@gmail.com','fasdf','fas fasd'),(7,'','sadas','','fasdf','234324','','huynhsonca@gmail.com','fasdf','fas fasd'),(8,'','sadas','','fasdf','234324','','huynhsonca@gmail.com','fasdf','fas fasd'),(9,'','fasdf fas fasdf','fasd fsadf','fa fasdfa','896789','','huynhsonca@gmail.com','e234235','fasdfasdfa fasdf ádf'),(10,'ctu','Nguyen Van Tru','Tong Bi Thu','Ca Mau','089744546','0211454444','huynhsonca@gmail.com','Lien he','day la noi dung duoc lien he'),(11,'ctu','Nguyen Van Tru','Tong Bi Thu','Ca Mau','089744546','0211454444','huynhsonca@gmail.com','Lien he','day la noi dung duoc lien he'),(12,'ctu','Nguyen Van Tru','Tong Bi Thu','Ca Mau','089744546','0211454444','huynhsonca@gmail.com','Lien he','day la noi dung duoc lien he'),(13,'ctu','Nguyen Van Tru','Tong Bi Thu','Ca Mau','089744546','0211454444','huynhsonca@gmail.com','Lien he','day la noi dung duoc lien he'),(14,'test','Huynh Son Ca','manager','HCM','0214548','021545','huynhsonca@gmail.com','Ban san pham di ','A layout contains presentation code that wraps around a view. Anything you want to see in all of your views should be placed in a layout.\r\n\r\nCakePHP’s default layout is located at /app/View/Layouts/default.ctp. If you want to change the overall look of your application, then this is the right place to start, because controller-rendered view code is placed inside of the default layout when the page is rendered.\r\n\r\nOther layout files should be placed in /app/View/Layouts. When you create a layout, you need to tell CakePHP where to place the output of your views. To do so, make sure your layout includes a place for $this->fetch(\'content\') Here’s an example of what a default layout might look like:'),(15,'test','test','tset','Ca Mau','234324','0211454444','huynhsonca@gmail.com','423445','fasd fasdfasdfas fasdfsadf'),(16,'EVA','HUynh son ca','giam doc','HCM C','054878','15648478','huynhsonca@gmail.com','Can ho tro su dung','CakeEmail\r\nclass CakeEmail(mixed $config = null)\r\nCakeEmail is a new class to send email. With this class you can send email from any place in your application. In addition to using the EmailComponent from your controller, you can also send mail from Shells and Models.\r\n\r\nThis class replaces the EmailComponent and gives more flexibility in sending emails. For example, you can create your own transports to send email instead of using the provided SMTP and Mail transports.\r\n\r\nBasic usage\r\nFirst of all, you should ensure the class is loaded using App::uses():'),(17,'test','fasdf fas fasdf','fasd fsadf','fasdf','234324','34234','huynhsonca@gmail.com','ftestaetaset','CakeEmail\r\nclass CakeEmail(mixed $config = null)\r\nCakeEmail is a new class to send email. With this class you can send email from any place in your application. In addition to using the EmailComponent from your controller, you can also send mail from Shells and Models.\r\n\r\nThis class replaces the EmailComponent and gives more flexibility in sending emails. For example, you can create your own transports to send email instead of using the provided SMTP and Mail transports.\r\n\r\nBasic usage\r\nFirst of all, you should ensure the class is loaded using App::uses():CakeEmail\r\nclass CakeEmail(mixed $config = null)\r\nCakeEmail is a new class to send email. With this class you can send email from any place in your application. In addition to using the EmailComponent from your controller, you can also send mail from Shells and Models.\r\n\r\nThis class replaces the EmailComponent and gives more flexibility in sending emails. For example, you can create your own transports to send email instead of using the provided SMTP and Mail transports.\r\n\r\nBasic usage\r\nFirst of all, you should ensure the class is loaded using App::uses():CakeEmail\r\nclass CakeEmail(mixed $config = null)\r\nCakeEmail is a new class to send email. With this class you can send email from any place in your application. In addition to using the EmailComponent from your controller, you can also send mail from Shells and Models.\r\n\r\nThis class replaces the EmailComponent and gives more flexibility in sending emails. For example, you'),(18,'test','fasdf fas fasdf','fasd fsadf','fasdf','234324','34234','huynhsonca@gmail.com','ftestaetaset','CakeEmail\r\nclass CakeEmail(mixed $config = null)\r\nCakeEmail is a new class to send email. With this class you can send email from any place in your application. In addition to using the EmailComponent from your controller, you can also send mail from Shells and Models.\r\n\r\nThis class replaces the EmailComponent and gives more flexibility in sending emails. For example, you can create your own transports to send email instead of using the provided SMTP and Mail transports.\r\n\r\nBasic usage\r\nFirst of all, you should ensure the class is loaded using App::uses():CakeEmail\r\nclass CakeEmail(mixed $config = null)\r\nCakeEmail is a new class to send email. With this class you can send email from any place in your application. In addition to using the EmailComponent from your controller, you can also send mail from Shells and Models.\r\n\r\nThis class replaces the EmailComponent and gives more flexibility in sending emails. For example, you can create your own transports to send email instead of using the provided SMTP and Mail transports.\r\n\r\nBasic usage\r\nFirst of all, you should ensure the class is loaded using App::uses():CakeEmail\r\nclass CakeEmail(mixed $config = null)\r\nCakeEmail is a new class to send email. With this class you can send email from any place in your application. In addition to using the EmailComponent from your controller, you can also send mail from Shells and Models.\r\n\r\nThis class replaces the EmailComponent and gives more flexibility in sending emails. For example, you'),(19,'test','fasdf fas fasdf','fasd fsadf','fasdf','234324','34234','huynhsonca@gmail.com','ftestaetaset','CakeEmail\r\nclass CakeEmail(mixed $config = null)\r\nCakeEmail is a new class to send email. With this class you can send email from any place in your application. In addition to using the EmailComponent from your controller, you can also send mail from Shells and Models.\r\n\r\nThis class replaces the EmailComponent and gives more flexibility in sending emails. For example, you can create your own transports to send email instead of using the provided SMTP and Mail transports.\r\n\r\nBasic usage\r\nFirst of all, you should ensure the class is loaded using App::uses():CakeEmail\r\nclass CakeEmail(mixed $config = null)\r\nCakeEmail is a new class to send email. With this class you can send email from any place in your application. In addition to using the EmailComponent from your controller, you can also send mail from Shells and Models.\r\n\r\nThis class replaces the EmailComponent and gives more flexibility in sending emails. For example, you can create your own transports to send email instead of using the provided SMTP and Mail transports.\r\n\r\nBasic usage\r\nFirst of all, you should ensure the class is loaded using App::uses():CakeEmail\r\nclass CakeEmail(mixed $config = null)\r\nCakeEmail is a new class to send email. With this class you can send email from any place in your application. In addition to using the EmailComponent from your controller, you can also send mail from Shells and Models.\r\n\r\nThis class replaces the EmailComponent and gives more flexibility in sending emails. For example, you'),(20,'fasd','fasdasfdfas','fdasdfas','fasdfasdf','5345346','34563456','huynhsonca@gmail.com','fasdf','fasdfasdf');
+/*!40000 ALTER TABLE `contact` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `danh_muc_chat_thai`
 --
 
@@ -442,12 +506,13 @@ CREATE TABLE `dien_nuoc_doanh_nghiep` (
   `colMa` int(11) NOT NULL AUTO_INCREMENT,
   `colCSSX` int(11) DEFAULT NULL,
   `colNam` int(4) DEFAULT NULL,
+  `colThang` int(4) DEFAULT NULL,
   `colLoaiTThu` varchar(50) DEFAULT NULL,
   `colLuongSD` varchar(100) DEFAULT NULL,
   `colSoNgaySuDung` float DEFAULT NULL,
   `created` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`colMa`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -456,7 +521,7 @@ CREATE TABLE `dien_nuoc_doanh_nghiep` (
 
 LOCK TABLES `dien_nuoc_doanh_nghiep` WRITE;
 /*!40000 ALTER TABLE `dien_nuoc_doanh_nghiep` DISABLE KEYS */;
-INSERT INTO `dien_nuoc_doanh_nghiep` VALUES (4,66,2014,'234g','200',200,'2014-08-24 13:30:33'),(5,66,2014,'324t','13',2334,'2014-08-24 13:36:16'),(6,66,2014,'2345f','3',23545,'2014-08-24 13:36:54'),(7,10,2014,'fasdf','dfasdf',123,'2014-08-29 22:24:02');
+INSERT INTO `dien_nuoc_doanh_nghiep` VALUES (4,66,2014,NULL,'234g','200',200,'2014-08-24 13:30:33'),(5,66,2014,NULL,'324t','13',2334,'2014-08-24 13:36:16'),(6,66,2014,NULL,'2345f','3',23545,'2014-08-24 13:36:54'),(7,10,2014,NULL,'fasdf','dfasdf',123,'2014-08-29 22:24:02'),(8,10,2014,1,'Điện','1232',2323,'2014-09-21 16:44:03'),(9,10,2014,5,'nước','4334.32',23,'2014-09-21 16:45:49'),(10,10,2014,1,'nước','4334.32',23,'2014-09-21 16:46:05');
 /*!40000 ALTER TABLE `dien_nuoc_doanh_nghiep` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -492,11 +557,11 @@ CREATE TABLE `doanh_nghiep` (
   `colLinhVucHD` tinytext,
   `colCongsuat` varchar(500) DEFAULT NULL,
   `colQuocGia` int(11) DEFAULT NULL,
-  `colQTrinhSX` tinytext,
-  `colMoTaKT` tinytext,
-  `colMoTaNT` tinytext,
-  `colMoTaRT` tinytext,
-  `colGhiChu` tinytext,
+  `colQTrinhSX` longtext,
+  `colMoTaKT` longtext,
+  `colMoTaNT` longtext,
+  `colMoTaRT` longtext,
+  `colGhiChu` longtext,
   `colHinhAnh` blob,
   `nam` int(4) DEFAULT NULL,
   `status` tinyint(4) DEFAULT NULL,
@@ -508,7 +573,7 @@ CREATE TABLE `doanh_nghiep` (
   `create_by` varchar(45) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `saving_status` tinyint(4) NOT NULL DEFAULT '0',
-  `thongtinkiennghibvmt` text,
+  `thongtinkiennghibvmt` longtext,
   `colMaDNME` int(11) DEFAULT NULL,
   `colMaQLCTNH` varchar(45) DEFAULT NULL,
   `lacanhan` tinyint(1) NOT NULL DEFAULT '0',
@@ -518,7 +583,7 @@ CREATE TABLE `doanh_nghiep` (
   `ngaycapcmndgiamdoc` datetime DEFAULT NULL,
   `noicapcmndgiamdoc` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`colMa`)
-) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -527,7 +592,7 @@ CREATE TABLE `doanh_nghiep` (
 
 LOCK TABLES `doanh_nghiep` WRITE;
 /*!40000 ALTER TABLE `doanh_nghiep` DISABLE KEYS */;
-INSERT INTO `doanh_nghiep` VALUES (10,'Công ty TNHH Tiến Phát','Tien Phat Ltd.','Lô số 2, KCN Tân Bình, Quận Tân Bình, Tp. HCM','(08)3456789','(08)35647890','tienphat@gmail.com','369258147','Đông Á Bank Nam Sài Gòn',29,21,'2013-07-23 00:00:00','BTX0934834885','BTX0934834885',2,3,4,5,6,8,9,NULL,'',2,'',NULL,NULL,NULL,NULL,'/uploads/5.jpg',2014,0,'Huỳnh Sơn Ca','Huỳnh Sơn Ca','0933754549','Hóc Môn','May mặc, quần áo, hàng xuất khẩu',NULL,16,1,'<p>fasd sdf fdsaf</p>',NULL,'TDGDG',1,'2014-09-16 00:00:00','Sở Công Thương HCM','381456789','2012-06-19 00:00:00','Cà Mau'),(70,'Tân Lợi Ltd','fasdf','KCN Bình Điền, Q. Bình Thạnh','08234235','08234235','test@abc.com','32454467','Vietcombank',NULL,NULL,'1970-01-01 00:00:00','','',1,1,3,4,NULL,NULL,NULL,NULL,'',1,'',NULL,NULL,NULL,NULL,'/uploads/220520101225.jpg',2014,0,'Trần Cao','Cao Lỗ','0123457799','HCM','',NULL,16,1,NULL,70,'',1,'2014-09-16 00:00:00','','264878897','2014-09-16 00:00:00','HCM'),(71,'Công ty TNHH Tiến Phát 2',NULL,'Lô số 3, KCN Tân Bình, Quận Tân Bình, Tp. HCM3','(08)3456345','','tienphat2@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,'',NULL,16,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,10,NULL,0,NULL,'',NULL,NULL,NULL),(72,'Công ty TNHH Tiến Phát 3',NULL,'Lô số 4, KCN Tân Bình, Quận Tân Bình, Tp. HCM','(08)3456343','','tienphat3@gmail.com',NULL,NULL,45245,24352400,NULL,NULL,'BTX0934834883',NULL,6,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,10,NULL,0,NULL,'',NULL,NULL,NULL),(75,'Công ty TNHH Tiến Phát 4',NULL,'Lô số 4, KCN Tân Bình, Quận Tân Bình, Tp. HCM3','(08)3456345','','tienphat4@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,10,NULL,0,NULL,'',NULL,NULL,NULL),(77,'Công ty TNHH Tiến Phát 5',NULL,'Lô số 3, KCN Tân Bình, Quận Tân Bình, Tp. HCM3','(08)3456345','','tienphat3@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,10,NULL,0,NULL,'',NULL,NULL,NULL),(79,'Công ty TNHH Tiến Phát 6',NULL,'Lô số 4, KCN Tân Bình, Quận Tân Bình, Tp. HCM3','(08)3456343','','tienphat4@gmail.com',NULL,NULL,21334.3,2345.2,NULL,NULL,'BX1245677',NULL,3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,10,NULL,0,'2005-09-06 00:00:00','Bình Dương',NULL,NULL,NULL),(80,'Công ty TNHH Tiến Phát 1021',NULL,'Lô số 4, KCN Tân Bình, Quận Tân Bình, Tp. HCM3','(08)3456789','','tienphat8@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,'',NULL,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,10,NULL,0,NULL,'',NULL,NULL,NULL),(81,'Công ty TNHH Tiến Phát 101',NULL,'Lô số 2, KCN Tân Bình, Quận Tân Bình, Tp. HCM','(08)3456345','','tienphat3@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,'',NULL,5,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,10,NULL,0,NULL,'',NULL,NULL,NULL),(83,'Công ty TNHH TIến phát 14',NULL,'HCM, Lô 14','(08)3456345','(08)35647890','tienphat3@gmail.com',NULL,NULL,45245,24352400,NULL,NULL,'BTX0934834883',NULL,3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,10,NULL,0,'1999-09-15 00:00:00','',NULL,NULL,NULL),(84,'Tiến phát',NULL,'HCM-CITY Tan Phu Dist','(08)3456345','','tienphatxd@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,'BN32434',NULL,7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,10,NULL,0,'2000-01-20 00:00:00','fasdfdsf',NULL,NULL,NULL),(86,'Tiến phát 10','Tien Phat LTd','Lô số 4, KCN Tân Bình, Quận Tân Bình, Tp. HCM3','(08)3456343','','tienphat10@gmail.com','',NULL,NULL,NULL,'2000-06-22 00:00:00','','',1,2,3,4,5,6,7,NULL,'',1,'',NULL,NULL,NULL,NULL,'/uploads/220520101225.jpg',2014,0,'','',NULL,NULL,'',NULL,16,1,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL),(87,'Tiến phát','','Lô số 2, KCN Tân Bình, Quận Tân Bình, Tp. HCM','(08)3456343','','tienphat3@gmail.com','',NULL,NULL,NULL,'1970-01-01 00:00:00','','',1,8,11,NULL,NULL,NULL,NULL,NULL,'',1,'',NULL,NULL,NULL,NULL,'/uploads/220520101225.jpg',2014,0,'','',NULL,NULL,'',NULL,16,1,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `doanh_nghiep` VALUES (70,'Tân Lợi Ltd','fasdf','KCN Bình Điền, Q. Bình Thạnh','08234235','08234235','test@abc.com','32454467','Vietcombank',NULL,NULL,'1970-01-01 00:00:00','','',1,4,3,4,NULL,NULL,NULL,NULL,'',1,'',NULL,NULL,NULL,NULL,'/uploads/220520101225.jpg',2014,0,'Trần Cao','Cao Lỗ','0123457799','HCM','',NULL,16,1,NULL,70,'',1,'2014-09-16 00:00:00','','264878897','2014-09-16 00:00:00','HCM'),(71,'Công ty TNHH Tiến Phát 2',NULL,'Lô số 3, KCN Tân Bình, Quận Tân Bình, Tp. HCM3','(08)3456345','','tienphat2@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,'',NULL,16,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,10,NULL,0,NULL,'',NULL,NULL,NULL),(72,'Công ty TNHH Tiến Phát 3',NULL,'Lô số 4, KCN Tân Bình, Quận Tân Bình, Tp. HCM','(08)3456343','','tienphat3@gmail.com',NULL,NULL,45245,24352400,NULL,NULL,'BTX0934834883',NULL,6,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,10,NULL,0,NULL,'',NULL,NULL,NULL),(75,'Công ty TNHH Tiến Phát 4',NULL,'Lô số 4, KCN Tân Bình, Quận Tân Bình, Tp. HCM3','(08)3456345','','tienphat4@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,10,NULL,0,NULL,'',NULL,NULL,NULL),(77,'Công ty TNHH Tiến Phát 5',NULL,'Lô số 3, KCN Tân Bình, Quận Tân Bình, Tp. HCM3','(08)3456345','','tienphat3@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,10,NULL,0,NULL,'',NULL,NULL,NULL),(79,'Công ty TNHH Tiến Phát 6',NULL,'Lô số 4, KCN Tân Bình, Quận Tân Bình, Tp. HCM3','(08)3456343','','tienphat4@gmail.com',NULL,NULL,21334.3,2345.2,NULL,NULL,'BX1245677',NULL,3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,10,NULL,0,'2005-09-06 00:00:00','Bình Dương',NULL,NULL,NULL),(80,'Công ty TNHH Tiến Phát 1021',NULL,'Lô số 4, KCN Tân Bình, Quận Tân Bình, Tp. HCM3','(08)3456789','','tienphat8@gmail.com','','',NULL,NULL,NULL,NULL,'',NULL,5,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','',NULL,NULL,NULL,0,NULL,80,'',0,NULL,'','',NULL,''),(81,'Công ty TNHH Tiến Phát 101',NULL,'Lô số 2, KCN Tân Bình, Quận Tân Bình, Tp. HCM','(08)3456345','','tienphat3@gmail.com','','',NULL,NULL,NULL,NULL,'',NULL,5,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','','',NULL,NULL,NULL,0,NULL,81,'',0,NULL,'','',NULL,''),(83,'Công ty TNHH TIến phát 14',NULL,'HCM, Lô 14','(08)3456345','(08)35647890','tienphat3@gmail.com',NULL,NULL,45245,24352400,NULL,NULL,'BTX0934834883',NULL,3,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,10,NULL,0,'1999-09-15 00:00:00','',NULL,NULL,NULL),(84,'Tiến phát',NULL,'HCM-CITY Tan Phu Dist','(08)3456345','','tienphatxd@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,'BN32434',NULL,7,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,10,NULL,0,'2000-01-20 00:00:00','fasdfdsf',NULL,NULL,NULL),(86,'Tiến phát 10','Tien Phat LTd','Lô số 4, KCN Tân Bình, Quận Tân Bình, Tp. HCM3','(08)3456343','','tienphat10@gmail.com','',NULL,NULL,NULL,'2000-06-22 00:00:00','','',1,2,3,4,5,6,7,NULL,'',1,'',NULL,NULL,NULL,NULL,'/uploads/220520101225.jpg',2014,0,'','',NULL,NULL,'',NULL,16,1,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL),(87,'Tiến phát','','Lô số 2, KCN Tân Bình, Quận Tân Bình, Tp. HCM','(08)3456343','','tienphat3@gmail.com','',NULL,NULL,NULL,'1970-01-01 00:00:00','','',1,8,11,NULL,NULL,NULL,NULL,NULL,'',1,'',NULL,NULL,NULL,NULL,'/uploads/220520101225.jpg',2014,0,'','',NULL,NULL,'',NULL,16,1,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL),(88,'Cty TNHH TP 101.2',NULL,'Hưng Phú, Q.8, Tp. HCM','08154150','','hungphuco@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,'',NULL,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,81,NULL,0,NULL,'',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `doanh_nghiep` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -545,7 +610,7 @@ CREATE TABLE `doanh_nghiep_thong_tin_tuan_thu_bvmt` (
   `daco` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`,`colMaDN`,`colMaTailieu`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -554,7 +619,7 @@ CREATE TABLE `doanh_nghiep_thong_tin_tuan_thu_bvmt` (
 
 LOCK TABLES `doanh_nghiep_thong_tin_tuan_thu_bvmt` WRITE;
 /*!40000 ALTER TABLE `doanh_nghiep_thong_tin_tuan_thu_bvmt` DISABLE KEYS */;
-INSERT INTO `doanh_nghiep_thong_tin_tuan_thu_bvmt` VALUES (10,67,1,1),(57,66,3,1),(58,66,4,1),(59,66,7,1),(60,66,8,1),(61,66,9,1),(62,66,10,1),(63,66,11,1),(64,16,1,1),(65,16,4,1),(66,16,7,1),(67,10,1,1),(68,10,2,1),(69,10,3,1);
+INSERT INTO `doanh_nghiep_thong_tin_tuan_thu_bvmt` VALUES (10,67,1,1),(57,66,3,1),(58,66,4,1),(59,66,7,1),(60,66,8,1),(61,66,9,1),(62,66,10,1),(63,66,11,1),(64,16,1,1),(65,16,4,1),(66,16,7,1),(70,10,1,1),(71,10,2,1),(72,10,3,1),(73,10,13,1);
 /*!40000 ALTER TABLE `doanh_nghiep_thong_tin_tuan_thu_bvmt` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -718,10 +783,10 @@ CREATE TABLE `hoat_dong_san_xuat` (
   `colNVienGT` varchar(50) DEFAULT NULL,
   `colSoCaSX` float DEFAULT NULL,
   `colSuatAn` varchar(50) DEFAULT NULL,
-  `colQTrinhSX` tinytext,
+  `colQTrinhSX` longtext,
   `colNoiCapSuatAn` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`colMa`)
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -730,8 +795,38 @@ CREATE TABLE `hoat_dong_san_xuat` (
 
 LOCK TABLES `hoat_dong_san_xuat` WRITE;
 /*!40000 ALTER TABLE `hoat_dong_san_xuat` DISABLE KEYS */;
-INSERT INTO `hoat_dong_san_xuat` VALUES (1,52,NULL,NULL,203145,'425',NULL,4,'5004','<p>test</p>',2),(2,52,NULL,NULL,203145,'425',NULL,4,'5004','<p>test</p>',2),(3,NULL,NULL,NULL,4127350,'1236',NULL,3,'4789','<p>qui tr&igrave;nh c&ocirc;ng nghệ sản xuất hiện đại tr&ecirc;n d&acirc;y chuyền c&ocirc;ng nghệ Đ&agrave;i Loan</p>',NULL),(4,NULL,NULL,NULL,4127350,'1236',NULL,3,'4789','<p>qui tr&igrave;nh c&ocirc;ng nghệ sản xuất hiện đại tr&ecirc;n d&acirc;y chuyền c&ocirc;ng nghệ Đ&agrave;i Loan</p>',NULL),(5,55,NULL,NULL,234873,'4234',NULL,2,'23','<p>hoatj ddong san xuat kinh doanh</p>',2),(6,55,NULL,NULL,20343,'82374',NULL,2,'434','<p>NGUYỄN VĂN H&Oacute;A</p>',NULL),(7,55,NULL,NULL,123,'1213',NULL,4,'434','<p>NGUYỄN VĂN H&Oacute;A</p>',NULL),(8,55,NULL,NULL,123,'1213',NULL,4,'434','<p>NGUYỄN VĂN H&Oacute;A</p>',NULL),(9,55,NULL,NULL,123,'1213',NULL,4,'434','<p>NGUYỄN VĂN H&Oacute;A</p>',NULL),(10,55,NULL,NULL,123,'1213',NULL,4,'434','<p>NGUYỄN VĂN H&Oacute;A</p>',2),(11,55,NULL,NULL,123,'1213',NULL,4,'434','<p>NGUYỄN VĂN H&Oacute;A</p>',2),(12,55,NULL,NULL,123,'1213',NULL,4,'434','<p>NGUYỄN VĂN H&Oacute;A</p>',2),(13,55,NULL,NULL,123,'1213',NULL,4,'434','<p>NGUYỄN VĂN H&Oacute;A</p>',2),(14,55,NULL,NULL,123,'1213',NULL,4,'434','<p>NGUYỄN VĂN H&Oacute;A</p>',2),(15,55,NULL,NULL,123,'1213',NULL,4,'434','<p>NGUYỄN VĂN H&Oacute;A</p>',2),(16,55,NULL,NULL,123,'1213',NULL,4,'434','<p>NGUYỄN VĂN H&Oacute;A</p>',2),(17,55,NULL,NULL,203145,'4234532',NULL,34345,'2','<p>t&eacute;t</p>',2),(18,55,0,NULL,203145,'4234532',NULL,34345,'2','<p>t&eacute;t</p>',2),(19,55,0,NULL,203145,'4234532',NULL,34345,'2','<p>t&eacute;t</p>',2),(20,55,0,NULL,203145,'4234532',NULL,34345,'2','<p>t&eacute;t</p>',2),(21,55,2014,NULL,203145,'4234532',NULL,34345,'2','<p>t&eacute;t</p>',2),(22,55,2014,NULL,203145,'4234532',NULL,34345,'2','<p>t&eacute;t</p>',2),(23,55,2014,NULL,203145,'4234532',NULL,34345,'2','<p>t&eacute;t</p>',2),(24,55,2014,NULL,203145,'4234532',NULL,34345,'2','<p>t&eacute;t</p>',2),(25,55,2014,NULL,3241230,'4124245',NULL,1234,'324','<p>this is technology progress</p>',2),(26,55,2014,NULL,3241230,'4124245',NULL,1234,'324','<p>this is technology progress</p>',2),(27,55,2014,NULL,203145,'425232',NULL,4,'4343','<p>t&eacute;t tet</p>',2),(28,59,2014,NULL,203145,'425232',NULL,4,'4343','<p>Đ&acirc;y l&agrave; th&ocirc;ng tin hoạt động sản xuất của doanh nghiệp</p>',2),(29,59,2014,NULL,203145,'425232',NULL,4,'4343','<p>Đ&acirc;y l&agrave; th&ocirc;ng tin hoạt động sản xuất của doanh nghiệp</p>',2),(30,59,2014,NULL,203145,'425232',NULL,4,'4343','<p>Đ&acirc;y l&agrave; th&ocirc;ng tin hoạt động sản xuất của doanh nghiệp</p>',2),(31,59,2014,NULL,203145,'425232',NULL,3,'','',NULL),(32,59,2014,NULL,203145,'425232',NULL,3,'','',NULL),(33,59,2014,NULL,203145,'425',NULL,3,'434','<p>this is tet</p>',2),(34,59,2014,NULL,203145,'425',NULL,3,'434','<p>this is tet</p>',2),(35,59,2014,NULL,203145,'425',NULL,3,'434','<p>Đ&acirc;y l&agrave; qui tr&igrave;nh c&ocirc;ng nghệ sản xuất của doanh nghiệp</p>',2),(36,59,2014,NULL,203145,'425',NULL,3,'434','<p><img src=\"../../../assets/tinymce/plugins/uploads/images.jpg\" alt=\"\" width=\"240\" height=\"210\" />Đ&acirc;y l&agrave; qui tr&igrave;nh c&ocirc;ng nghệ sản xuất của doanh nghiệp</p>',2),(37,60,2014,NULL,203145,'425',NULL,3,'','',2),(38,60,2014,NULL,203145,'425',NULL,3,'','<p>test</p>',2),(39,60,2014,NULL,203145,'425',NULL,3,'','<p>test</p>',2),(57,61,2014,NULL,203145,'425232',NULL,4,'456','<p>th&ocirc;ng tin hoạt động sản xuất của ty&nbsp;</p>',2),(62,62,2014,NULL,203145,'425',NULL,3,'434','<p>test</p>',2),(63,64,2014,NULL,203145,'425',NULL,3,'434','<p>đ&acirc;y l&agrave; qui tr&igrave;nh c&ocirc;ng nghệ sản xuất</p>',NULL),(65,65,2014,NULL,213214,'2353245',NULL,5234540,'523456','<p>52345</p>',NULL),(67,66,2014,NULL,203145,'425232',NULL,3,'434','<p>test</p>',2),(68,16,2014,NULL,123,'23',NULL,23,'2134','<p>23434 fasdf fasd fsdf</p>\r\n<p>asdfas fadf</p>',2),(69,10,2014,NULL,12345,'2323',NULL,0,'2445','<p>&eacute;df</p>',NULL),(70,69,2014,NULL,203145,'425232',NULL,3,'ádf','<p>dfasdf</p>',2),(72,86,2014,NULL,1200,'234',NULL,3,'234','<p>test</p>',2);
+INSERT INTO `hoat_dong_san_xuat` VALUES (1,52,NULL,NULL,203145,'425',NULL,4,'5004','<p>test</p>',2),(2,52,NULL,NULL,203145,'425',NULL,4,'5004','<p>test</p>',2),(3,NULL,NULL,NULL,4127350,'1236',NULL,3,'4789','<p>qui tr&igrave;nh c&ocirc;ng nghệ sản xuất hiện đại tr&ecirc;n d&acirc;y chuyền c&ocirc;ng nghệ Đ&agrave;i Loan</p>',NULL),(4,NULL,NULL,NULL,4127350,'1236',NULL,3,'4789','<p>qui tr&igrave;nh c&ocirc;ng nghệ sản xuất hiện đại tr&ecirc;n d&acirc;y chuyền c&ocirc;ng nghệ Đ&agrave;i Loan</p>',NULL),(5,55,NULL,NULL,234873,'4234',NULL,2,'23','<p>hoatj ddong san xuat kinh doanh</p>',2),(6,55,NULL,NULL,20343,'82374',NULL,2,'434','<p>NGUYỄN VĂN H&Oacute;A</p>',NULL),(7,55,NULL,NULL,123,'1213',NULL,4,'434','<p>NGUYỄN VĂN H&Oacute;A</p>',NULL),(8,55,NULL,NULL,123,'1213',NULL,4,'434','<p>NGUYỄN VĂN H&Oacute;A</p>',NULL),(9,55,NULL,NULL,123,'1213',NULL,4,'434','<p>NGUYỄN VĂN H&Oacute;A</p>',NULL),(10,55,NULL,NULL,123,'1213',NULL,4,'434','<p>NGUYỄN VĂN H&Oacute;A</p>',2),(11,55,NULL,NULL,123,'1213',NULL,4,'434','<p>NGUYỄN VĂN H&Oacute;A</p>',2),(12,55,NULL,NULL,123,'1213',NULL,4,'434','<p>NGUYỄN VĂN H&Oacute;A</p>',2),(13,55,NULL,NULL,123,'1213',NULL,4,'434','<p>NGUYỄN VĂN H&Oacute;A</p>',2),(14,55,NULL,NULL,123,'1213',NULL,4,'434','<p>NGUYỄN VĂN H&Oacute;A</p>',2),(15,55,NULL,NULL,123,'1213',NULL,4,'434','<p>NGUYỄN VĂN H&Oacute;A</p>',2),(16,55,NULL,NULL,123,'1213',NULL,4,'434','<p>NGUYỄN VĂN H&Oacute;A</p>',2),(17,55,NULL,NULL,203145,'4234532',NULL,34345,'2','<p>t&eacute;t</p>',2),(18,55,0,NULL,203145,'4234532',NULL,34345,'2','<p>t&eacute;t</p>',2),(19,55,0,NULL,203145,'4234532',NULL,34345,'2','<p>t&eacute;t</p>',2),(20,55,0,NULL,203145,'4234532',NULL,34345,'2','<p>t&eacute;t</p>',2),(21,55,2014,NULL,203145,'4234532',NULL,34345,'2','<p>t&eacute;t</p>',2),(22,55,2014,NULL,203145,'4234532',NULL,34345,'2','<p>t&eacute;t</p>',2),(23,55,2014,NULL,203145,'4234532',NULL,34345,'2','<p>t&eacute;t</p>',2),(24,55,2014,NULL,203145,'4234532',NULL,34345,'2','<p>t&eacute;t</p>',2),(25,55,2014,NULL,3241230,'4124245',NULL,1234,'324','<p>this is technology progress</p>',2),(26,55,2014,NULL,3241230,'4124245',NULL,1234,'324','<p>this is technology progress</p>',2),(27,55,2014,NULL,203145,'425232',NULL,4,'4343','<p>t&eacute;t tet</p>',2),(28,59,2014,NULL,203145,'425232',NULL,4,'4343','<p>Đ&acirc;y l&agrave; th&ocirc;ng tin hoạt động sản xuất của doanh nghiệp</p>',2),(29,59,2014,NULL,203145,'425232',NULL,4,'4343','<p>Đ&acirc;y l&agrave; th&ocirc;ng tin hoạt động sản xuất của doanh nghiệp</p>',2),(30,59,2014,NULL,203145,'425232',NULL,4,'4343','<p>Đ&acirc;y l&agrave; th&ocirc;ng tin hoạt động sản xuất của doanh nghiệp</p>',2),(31,59,2014,NULL,203145,'425232',NULL,3,'','',NULL),(32,59,2014,NULL,203145,'425232',NULL,3,'','',NULL),(33,59,2014,NULL,203145,'425',NULL,3,'434','<p>this is tet</p>',2),(34,59,2014,NULL,203145,'425',NULL,3,'434','<p>this is tet</p>',2),(35,59,2014,NULL,203145,'425',NULL,3,'434','<p>Đ&acirc;y l&agrave; qui tr&igrave;nh c&ocirc;ng nghệ sản xuất của doanh nghiệp</p>',2),(36,59,2014,NULL,203145,'425',NULL,3,'434','<p><img src=\"../../../assets/tinymce/plugins/uploads/images.jpg\" alt=\"\" width=\"240\" height=\"210\" />Đ&acirc;y l&agrave; qui tr&igrave;nh c&ocirc;ng nghệ sản xuất của doanh nghiệp</p>',2),(37,60,2014,NULL,203145,'425',NULL,3,'','',2),(38,60,2014,NULL,203145,'425',NULL,3,'','<p>test</p>',2),(39,60,2014,NULL,203145,'425',NULL,3,'','<p>test</p>',2),(57,61,2014,NULL,203145,'425232',NULL,4,'456','<p>th&ocirc;ng tin hoạt động sản xuất của ty&nbsp;</p>',2),(62,62,2014,NULL,203145,'425',NULL,3,'434','<p>test</p>',2),(63,64,2014,NULL,203145,'425',NULL,3,'434','<p>đ&acirc;y l&agrave; qui tr&igrave;nh c&ocirc;ng nghệ sản xuất</p>',NULL),(65,65,2014,NULL,213214,'2353245',NULL,5234540,'523456','<p>52345</p>',NULL),(67,66,2014,NULL,203145,'425232',NULL,3,'434','<p>test</p>',2),(68,16,2014,NULL,123,'23',NULL,23,'2134','<p>23434 fasdf fasd fsdf</p>\r\n<p>asdfas fadf</p>',2),(70,69,2014,NULL,203145,'425232',NULL,3,'ádf','<p>dfasdf</p>',2),(72,86,2014,NULL,1200,'234',NULL,3,'234','<p>test</p>',2),(75,10,2014,NULL,12345,'2323',NULL,0,'2445','',NULL);
 /*!40000 ALTER TABLE `hoat_dong_san_xuat` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `hosokemtheo`
+--
+
+DROP TABLE IF EXISTS `hosokemtheo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `hosokemtheo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `colMaBaocao` int(11) NOT NULL,
+  `stt` int(11) DEFAULT NULL,
+  `tenhoso` varchar(100) NOT NULL,
+  `tenfile` varchar(100) NOT NULL,
+  `filepath` varchar(200) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `filesize` float DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `hosokemtheo`
+--
+
+LOCK TABLES `hosokemtheo` WRITE;
+/*!40000 ALTER TABLE `hosokemtheo` DISABLE KEYS */;
+INSERT INTO `hosokemtheo` VALUES (4,7,1,'kcn xfsdf','1.jpg','1.jpg','2014-09-21 18:58:08',287819),(5,8,2,'dsafasdf','84_7_1357099676_16_Tai nha may Co khi Pho Yen - Thai Nguyen.jpg','84_7_1357099676_16_Tai nha may Co khi Pho Yen - Thai Nguyen.jpg','2014-09-21 18:58:21',1130860),(6,13,1,'ảnh số 8','8.jpg','8.jpg','2014-09-22 12:51:03',296294),(7,13,2,'toan canh','toancanhKCN.JPG','toancanhKCN.JPG','2014-09-22 12:55:59',1362380),(8,14,2,'hình 9','9.jpg','9.jpg','2014-09-22 13:21:08',229821);
+/*!40000 ALTER TABLE `hosokemtheo` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -870,6 +965,31 @@ LOCK TABLES `kiem_soat_o_nhiem` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `linhvucvanban`
+--
+
+DROP TABLE IF EXISTS `linhvucvanban`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `linhvucvanban` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `linhvuc` varchar(100) DEFAULT NULL,
+  `id_parent` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `linhvucvanban`
+--
+
+LOCK TABLES `linhvucvanban` WRITE;
+/*!40000 ALTER TABLE `linhvucvanban` DISABLE KEYS */;
+INSERT INTO `linhvucvanban` VALUES (1,'Doanh nghiệp',NULL),(2,'Đầu tư',NULL),(3,'Lao động',NULL),(4,'Môi trường',NULL),(5,'Xây dựng',NULL),(6,'Xuất nhập khẩu',NULL),(7,'Khác',NULL),(8,'Cấp phép xây dựng',5),(9,'Nhà ở công dân',5),(10,'Qui hoạch',5),(11,'Thầu xây dựng nước ngoài',5),(12,'Chung',5);
+/*!40000 ALTER TABLE `linhvucvanban` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `loaichatthairan`
 --
 
@@ -905,7 +1025,7 @@ CREATE TABLE `loaihinhdoanhnghiep` (
   `created` datetime DEFAULT NULL,
   `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -914,8 +1034,32 @@ CREATE TABLE `loaihinhdoanhnghiep` (
 
 LOCK TABLES `loaihinhdoanhnghiep` WRITE;
 /*!40000 ALTER TABLE `loaihinhdoanhnghiep` DISABLE KEYS */;
-INSERT INTO `loaihinhdoanhnghiep` VALUES (1,'Công ty TNHH',NULL,'2014-06-13 11:31:05'),(2,'Công ty Cổ phần',NULL,'2014-06-13 11:31:05'),(3,'Công ty Liên Doanh',NULL,'2014-06-13 11:31:05'),(4,'Công ty Nhà Nước',NULL,'2014-06-13 11:31:05');
+INSERT INTO `loaihinhdoanhnghiep` VALUES (1,'Công ty TNHH',NULL,'2014-06-13 11:31:05'),(2,'Doanh Nghiệp Tư Nhân',NULL,'2014-09-21 15:11:37'),(3,'Công ty Liên Doanh',NULL,'2014-06-13 11:31:05'),(4,'Công ty Nhà Nước',NULL,'2014-06-13 11:31:05'),(5,'Công ty Cổ phần',NULL,'2014-09-21 15:11:37');
 /*!40000 ALTER TABLE `loaihinhdoanhnghiep` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `loaivanban`
+--
+
+DROP TABLE IF EXISTS `loaivanban`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `loaivanban` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tenloai` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `loaivanban`
+--
+
+LOCK TABLES `loaivanban` WRITE;
+/*!40000 ALTER TABLE `loaivanban` DISABLE KEYS */;
+INSERT INTO `loaivanban` VALUES (1,'Chỉ Thị'),(2,'Báo Cáo'),(3,'Nghị định'),(4,'Quyết định'),(5,'Thông tư '),(6,'Kế hoạch'),(7,'Thông tư liên tịch'),(8,'Thông báo'),(9,'Luật'),(10,'Phụ lục'),(11,'Công văn liên sở'),(12,'Quy chuẩn kỹ thuật quốc gia'),(13,'Công văn'),(14,'Lệnh');
+/*!40000 ALTER TABLE `loaivanban` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -933,7 +1077,7 @@ CREATE TABLE `nganh` (
   `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `create_by` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -942,7 +1086,7 @@ CREATE TABLE `nganh` (
 
 LOCK TABLES `nganh` WRITE;
 /*!40000 ALTER TABLE `nganh` DISABLE KEYS */;
-INSERT INTO `nganh` VALUES (1,'Ắc qui',NULL,NULL,'2014-08-28 19:28:04',NULL),(2,'Thuốc BVTV',NULL,NULL,'2014-08-28 19:28:04',NULL),(3,'Cơ khí',NULL,NULL,'2014-08-28 19:28:04',NULL),(4,'Hóa chất',NULL,NULL,'2014-08-28 19:28:04',NULL),(5,'Dệt may',NULL,NULL,'2014-08-28 19:28:04',NULL),(6,'Cao su, nhựa',NULL,NULL,'2014-08-28 19:28:04',NULL),(7,'Nhuộm, wash, in hoa vải',NULL,NULL,'2014-08-28 19:28:04',NULL),(8,'Thực phẩm',NULL,NULL,'2014-08-28 19:28:04',NULL),(9,'Thuộc da',NULL,NULL,'2014-08-28 19:28:04',NULL),(10,'Xi mạ',NULL,NULL,'2014-08-28 19:28:04',NULL),(11,'Chế biến thực phẩm',NULL,NULL,'2014-09-06 00:23:37',NULL),(12,'Dầu khí',NULL,NULL,'2014-09-06 00:23:37',NULL),(13,'Dược',NULL,NULL,'2014-09-06 00:23:37',NULL),(14,'Điện',NULL,NULL,'2014-09-06 00:23:37',NULL),(15,'Điện tử',NULL,NULL,'2014-09-06 00:23:37',NULL),(16,'Khoáng sản',NULL,NULL,'2014-09-06 00:23:37',NULL),(17,'Luyện kim',NULL,NULL,'2014-09-06 00:23:37',NULL),(18,'Nông nghiệp',NULL,NULL,'2014-09-06 00:23:37',NULL),(19,'Quản lý, xử lý nước, nước thải, chất thải',NULL,NULL,'2014-09-06 00:23:37',NULL),(20,'Sản xuất hàng tiêu dùng',NULL,NULL,'2014-09-06 00:23:37',NULL),(21,'Sản xuất vật liệu cơ bản (cao su, nhựa, thủy tinh...)',NULL,NULL,'2014-09-06 00:23:37',NULL),(22,'Sản xuất vật liệu xây dựng',NULL,NULL,'2014-09-06 00:23:37',NULL),(23,'Xây dựng',NULL,NULL,'2014-09-06 00:23:37',NULL),(24,'Y tế và thú y',NULL,NULL,'2014-09-06 00:23:37',NULL),(25,'Ngành khác',NULL,NULL,'2014-09-06 00:23:37',NULL);
+INSERT INTO `nganh` VALUES (1,'Dược phẩm',NULL,NULL,'2014-09-21 15:19:20',NULL),(2,'Điện/điện tử',NULL,NULL,'2014-09-21 15:19:20',NULL),(3,'Giấy/sản phẩm từ giấy',NULL,NULL,'2014-09-21 15:19:20',NULL),(4,'Cơ khí',NULL,NULL,'2014-09-21 15:19:20',NULL),(5,'Cao su/nhựa',NULL,NULL,'2014-09-21 15:19:20',NULL),(6,'Hóa chất',NULL,NULL,'2014-09-21 15:19:20',NULL),(7,'Phân bón/thuốc trừ sâu',NULL,NULL,'2014-09-21 15:19:20',NULL),(8,'Dệt may',NULL,NULL,'2014-09-21 15:19:20',NULL),(9,'Gỗ/sản phẩm gỗ',NULL,NULL,'2014-09-21 15:19:20',NULL),(10,'Chế biến thực phẩm',NULL,NULL,'2014-09-21 15:19:20',NULL),(11,'Chế biến nông sản',NULL,NULL,'2014-09-21 15:19:20',NULL),(12,'Khác',NULL,NULL,'2014-09-21 15:19:20',NULL);
 /*!40000 ALTER TABLE `nganh` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -958,7 +1102,7 @@ CREATE TABLE `nguon_gay_on_rung` (
   `colTenNguon` varchar(50) DEFAULT NULL,
   `colGhiChu` tinytext,
   PRIMARY KEY (`colMa`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -967,7 +1111,7 @@ CREATE TABLE `nguon_gay_on_rung` (
 
 LOCK TABLES `nguon_gay_on_rung` WRITE;
 /*!40000 ALTER TABLE `nguon_gay_on_rung` DISABLE KEYS */;
-INSERT INTO `nguon_gay_on_rung` VALUES (1,'Chạy mát phát điện',NULL),(2,'Chạy máy sản xuất',NULL);
+INSERT INTO `nguon_gay_on_rung` VALUES (1,'Hoạt động của công nhân viên',NULL),(2,'Hoạt động sản xuất',NULL),(3,'Khác',NULL);
 /*!40000 ALTER TABLE `nguon_gay_on_rung` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1019,7 +1163,7 @@ CREATE TABLE `nguon_thai_khi_thai` (
 
 LOCK TABLES `nguon_thai_khi_thai` WRITE;
 /*!40000 ALTER TABLE `nguon_thai_khi_thai` DISABLE KEYS */;
-INSERT INTO `nguon_thai_khi_thai` VALUES (1,'Khí Thải/Mùi',NULL),(2,'Bụi',NULL),(3,'Khói Thải Lò Hơi',NULL),(4,'Khói Từ Máy Sấy Đốt',NULL),(5,'Máy Phát Dự Phòng',NULL);
+INSERT INTO `nguon_thai_khi_thai` VALUES (1,'Khí thải/Bụi',NULL),(2,'Mùi hôi',NULL),(3,'Khí thải lò hơi',NULL),(4,'Khói từ sấy, đốt',NULL),(5,'Máy phát điện dự phòng',NULL);
 /*!40000 ALTER TABLE `nguon_thai_khi_thai` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1060,6 +1204,7 @@ CREATE TABLE `nguyen_lieu_san_pham` (
   `colMa` int(11) NOT NULL AUTO_INCREMENT,
   `colCSSX` int(11) DEFAULT NULL,
   `colNam` int(4) DEFAULT NULL,
+  `colThang` int(4) DEFAULT NULL,
   `colNguyenLieu` int(11) DEFAULT NULL,
   `colDonVi` varchar(50) DEFAULT NULL,
   `colLuongSD` float DEFAULT NULL,
@@ -1067,7 +1212,7 @@ CREATE TABLE `nguyen_lieu_san_pham` (
   `created` timestamp NULL DEFAULT NULL,
   `stt` int(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`colMa`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1076,7 +1221,7 @@ CREATE TABLE `nguyen_lieu_san_pham` (
 
 LOCK TABLES `nguyen_lieu_san_pham` WRITE;
 /*!40000 ALTER TABLE `nguyen_lieu_san_pham` DISABLE KEYS */;
-INSERT INTO `nguyen_lieu_san_pham` VALUES (1,65,2014,5,'kg',2354240,235245,'2014-08-24 10:37:05',0),(2,65,2014,5,'kg',2354240,235245,'2014-08-24 10:39:03',0),(3,65,2014,3,'tấn',3000,3500,'2014-08-24 11:03:13',0),(4,65,2014,3,'tấn',3000,3500,'2014-08-24 11:04:14',0),(5,65,2014,3,'tấn',3000,3500,'2014-08-24 11:04:18',0),(13,65,2014,8,'cái',213242,34324,'2014-08-24 11:33:11',0),(14,66,2014,3,'tấn',1000,1100,'2014-08-24 12:43:13',0),(15,10,2014,3,'ư3f',1212,1212,'2014-08-29 22:23:50',0),(16,86,2014,1,'tấn',300,34,'2014-09-06 16:55:53',0),(23,71,NULL,5,'tấn',324,NULL,'2014-09-08 04:25:30',3),(24,71,NULL,2,'tấn',1000,NULL,'2014-09-08 04:26:44',2),(25,71,NULL,6,'m',900456,NULL,'2014-09-08 04:32:21',4),(26,71,NULL,1,'tấn',90.34,NULL,'2014-09-08 04:34:36',1),(27,72,NULL,2,'tấn',45,NULL,'2014-09-08 05:02:03',1),(28,72,NULL,3,'tấn',100,NULL,'2014-09-08 05:02:15',2),(29,71,NULL,7,'m',1000000,NULL,'2014-09-12 08:40:27',5);
+INSERT INTO `nguyen_lieu_san_pham` VALUES (1,65,2014,NULL,5,'kg',2354240,235245,'2014-08-24 10:37:05',0),(2,65,2014,NULL,5,'kg',2354240,235245,'2014-08-24 10:39:03',0),(3,65,2014,NULL,3,'tấn',3000,3500,'2014-08-24 11:03:13',0),(4,65,2014,NULL,3,'tấn',3000,3500,'2014-08-24 11:04:14',0),(5,65,2014,NULL,3,'tấn',3000,3500,'2014-08-24 11:04:18',0),(13,65,2014,NULL,8,'cái',213242,34324,'2014-08-24 11:33:11',0),(14,66,2014,NULL,3,'tấn',1000,1100,'2014-08-24 12:43:13',0),(16,86,2014,NULL,1,'tấn',300,34,'2014-09-06 16:55:53',0),(23,71,NULL,NULL,5,'tấn',324,NULL,'2014-09-08 04:25:30',3),(24,71,NULL,NULL,2,'tấn',1000,NULL,'2014-09-08 04:26:44',2),(25,71,NULL,NULL,6,'m',900456,NULL,'2014-09-08 04:32:21',4),(26,71,NULL,NULL,1,'tấn',90.34,NULL,'2014-09-08 04:34:36',1),(27,72,NULL,NULL,2,'tấn',45,NULL,'2014-09-08 05:02:03',1),(28,72,NULL,NULL,3,'tấn',100,NULL,'2014-09-08 05:02:15',2),(29,71,NULL,NULL,7,'m',1000000,NULL,'2014-09-12 08:40:27',5),(30,10,2014,1,2,'tấn',2343,NULL,'2014-09-21 16:18:04',0),(31,10,2014,3,5,'kg',3243,NULL,'2014-09-21 16:20:14',0),(32,10,2014,1,7,'tấn',234,NULL,'2014-09-21 16:21:44',0),(33,10,2014,2,6,'m3',3434,NULL,'2014-09-21 16:34:42',0),(34,10,2014,2,6,'sdf',234,NULL,'2014-09-21 16:36:54',0),(35,70,NULL,NULL,2,'12',2,NULL,'2014-09-21 18:41:46',1),(36,80,NULL,NULL,6,'fsdaf',23434,NULL,'2014-09-21 18:56:38',1),(37,80,NULL,NULL,5,'sadf',232,NULL,'2014-09-21 18:56:45',2),(38,70,NULL,NULL,5,'12',1544,NULL,'2014-09-22 12:22:29',2),(39,81,NULL,NULL,2,'kg',12345,NULL,'2014-09-22 12:43:02',1),(40,81,NULL,NULL,5,'kg',1456,NULL,'2014-09-22 12:43:20',2),(41,81,NULL,NULL,7,'kg',454,NULL,'2014-09-22 12:55:31',3),(42,88,NULL,NULL,2,'kg',45,NULL,'2014-09-22 13:17:27',1),(43,88,NULL,NULL,6,'kg',4584,NULL,'2014-09-22 13:17:36',2);
 /*!40000 ALTER TABLE `nguyen_lieu_san_pham` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1093,7 +1238,7 @@ CREATE TABLE `nguyenlieu` (
   `created` timestamp NULL DEFAULT NULL,
   `create_by` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1102,7 +1247,7 @@ CREATE TABLE `nguyenlieu` (
 
 LOCK TABLES `nguyenlieu` WRITE;
 /*!40000 ALTER TABLE `nguyenlieu` DISABLE KEYS */;
-INSERT INTO `nguyenlieu` VALUES (1,'Củi khô','2014-01-31 22:05:05',NULL),(2,'Trấu','2014-01-31 22:05:05',NULL),(3,'Than Đá','2014-01-31 22:05:05',NULL),(5,'Gỗ thông','2014-01-31 22:05:05',NULL),(6,'Nhựa PVC','2014-01-31 22:05:05',NULL),(7,'Vãi Cotton','2014-01-31 22:05:05',NULL),(8,'Vãi Silk','2014-01-31 22:05:05',NULL),(9,'Dầu','2014-01-31 22:05:05',NULL),(10,'Xăng AO','2014-01-31 22:05:05',NULL),(12,'Lụa Ấn Độ','2014-08-24 12:13:45',NULL),(14,'Lụa Châu ÂU','2014-08-24 12:15:09',NULL);
+INSERT INTO `nguyenlieu` VALUES (1,'Củi khô','2014-01-31 22:05:05',NULL),(2,'Trấu','2014-01-31 22:05:05',NULL),(5,'Gỗ thông','2014-01-31 22:05:05',NULL),(6,'Nhựa PVC','2014-01-31 22:05:05',NULL),(7,'Vãi Cotton','2014-01-31 22:05:05',NULL),(8,'Vãi Silk','2014-01-31 22:05:05',NULL),(9,'Dầu','2014-01-31 22:05:05',NULL),(10,'Xăng AO','2014-01-31 22:05:05',NULL),(12,'Lụa Ấn Độ','2014-08-24 12:13:45',NULL);
 /*!40000 ALTER TABLE `nguyenlieu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1117,6 +1262,7 @@ CREATE TABLE `nhien_lieu_doanh_nghiep` (
   `colMa` int(11) NOT NULL AUTO_INCREMENT,
   `colCSSX` int(11) DEFAULT NULL,
   `colNam` int(4) DEFAULT NULL,
+  `colThang` int(4) DEFAULT NULL,
   `colNhienLieu` varchar(50) DEFAULT NULL,
   `colDonVi` varchar(50) DEFAULT NULL,
   `colLuongSD` float DEFAULT NULL,
@@ -1124,7 +1270,7 @@ CREATE TABLE `nhien_lieu_doanh_nghiep` (
   `colMDichSD` varchar(300) DEFAULT NULL,
   `created` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`colMa`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1133,7 +1279,7 @@ CREATE TABLE `nhien_lieu_doanh_nghiep` (
 
 LOCK TABLES `nhien_lieu_doanh_nghiep` WRITE;
 /*!40000 ALTER TABLE `nhien_lieu_doanh_nghiep` DISABLE KEYS */;
-INSERT INTO `nhien_lieu_doanh_nghiep` VALUES (3,66,2014,'than củi','tấn',900,153,'đốt','2014-08-26 09:54:06'),(4,66,2014,'than đá','tấn',900,365,'đốt lò phản ứng hạt nhân','2014-08-26 09:54:45'),(5,66,2014,'dfasd','ádf',3423,231,'***','2014-08-26 09:56:22'),(6,10,2014,'fasdf','ádf',324324,234,'4234','2014-08-29 22:24:31');
+INSERT INTO `nhien_lieu_doanh_nghiep` VALUES (3,66,2014,NULL,'than củi','tấn',900,153,'đốt','2014-08-26 09:54:06'),(4,66,2014,NULL,'than đá','tấn',900,365,'đốt lò phản ứng hạt nhân','2014-08-26 09:54:45'),(5,66,2014,NULL,'dfasd','ádf',3423,231,'***','2014-08-26 09:56:22'),(7,10,2014,3,'petrol','kg',2,3,'12','2014-09-21 16:52:29'),(8,10,2014,12,'than đá','tấn',234,434,'df f','2014-09-21 16:55:29'),(9,10,2014,1,'54','dsf',34,23,'dfsf','2014-09-21 16:55:53'),(10,10,2014,2,'234','ádf',324,23,'fsdfasdf','2014-09-21 16:56:45');
 /*!40000 ALTER TABLE `nhien_lieu_doanh_nghiep` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1181,17 +1327,17 @@ DROP TABLE IF EXISTS `nuoc_thai_nha_may`;
 CREATE TABLE `nuoc_thai_nha_may` (
   `colMa` int(11) NOT NULL AUTO_INCREMENT,
   `colCSSX` int(11) NOT NULL,
-  `colThoiGian` datetime DEFAULT NULL,
   `colNguonThai` int(11) NOT NULL,
   `colLLuongThai` decimal(11,2) NOT NULL DEFAULT '0.00',
   `colNguonPSinh` varchar(500) DEFAULT NULL,
-  `colLLXLyTK` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `colLLXLyTT` decimal(11,2) NOT NULL DEFAULT '0.00',
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `colLLXLyTK` decimal(11,2) DEFAULT '0.00',
+  `colLLXLyTT` decimal(11,2) DEFAULT '0.00',
+  `created` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `colNguonNT` varchar(100) DEFAULT NULL,
   `colNam` int(4) DEFAULT NULL,
+  `colThang` int(4) DEFAULT NULL,
   PRIMARY KEY (`colMa`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1200,7 +1346,7 @@ CREATE TABLE `nuoc_thai_nha_may` (
 
 LOCK TABLES `nuoc_thai_nha_may` WRITE;
 /*!40000 ALTER TABLE `nuoc_thai_nha_may` DISABLE KEYS */;
-INSERT INTO `nuoc_thai_nha_may` VALUES (35,66,'2014-08-12 00:00:00',1,23545.00,'kiểm tra',234.00,324.00,'2014-08-26 14:16:03',NULL,2014),(36,66,'2014-08-21 00:00:00',3,23434.00,'asdfsdfxcvvz g gdfgg',24.00,434.00,'2014-08-26 14:18:34',NULL,2014),(37,66,'2014-08-05 00:00:00',4,234.44,'dfadf fasdf',324.00,34.00,'2014-08-26 14:18:59',NULL,2014),(38,66,'2014-08-07 00:00:00',1,2332.34,'4rfesr fasd fsadfas fasdfa fsadfasdfasd fasdf',23434.00,234.45,'2014-08-26 14:19:25',NULL,2014),(40,66,'2014-08-08 00:00:00',1,2123.00,'121',121.00,12.00,'2014-08-26 15:06:16',NULL,2014),(41,10,'2014-08-20 00:00:00',3,21343.00,'fasdf',234324.00,234.00,'2014-08-29 22:25:16',NULL,2014);
+INSERT INTO `nuoc_thai_nha_may` VALUES (35,66,1,23545.00,'kiểm tra',234.00,324.00,'2014-08-26 14:16:03',NULL,2014,NULL),(36,66,3,23434.00,'asdfsdfxcvvz g gdfgg',24.00,434.00,'2014-08-26 14:18:34',NULL,2014,NULL),(37,66,4,234.44,'dfadf fasdf',324.00,34.00,'2014-08-26 14:18:59',NULL,2014,NULL),(38,66,1,2332.34,'4rfesr fasd fsadfas fasdfa fsadfasdfasd fasdf',23434.00,234.45,'2014-08-26 14:19:25',NULL,2014,NULL),(40,66,1,2123.00,'121',121.00,12.00,'2014-08-26 15:06:16',NULL,2014,NULL),(42,10,3,243.00,'fsdf',2143.00,234.00,'2014-09-21 17:18:03',NULL,2014,2),(45,10,4,234.00,'fasdfsdf',NULL,NULL,'2014-09-21 17:29:32',NULL,2014,10);
 /*!40000 ALTER TABLE `nuoc_thai_nha_may` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1276,13 +1422,14 @@ CREATE TABLE `san_pham_doanh_nghiep` (
   `colCSSX` int(11) DEFAULT NULL,
   `stt` int(4) DEFAULT NULL,
   `colNam` int(4) DEFAULT NULL,
+  `colThang` int(4) DEFAULT NULL,
   `colSanPham` varchar(50) DEFAULT NULL,
   `colDVi` varchar(50) DEFAULT NULL,
   `colCongSuatTK` float DEFAULT NULL,
   `colCongSuatTT` float DEFAULT NULL,
   `created` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`colMa`)
-) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1291,7 +1438,7 @@ CREATE TABLE `san_pham_doanh_nghiep` (
 
 LOCK TABLES `san_pham_doanh_nghiep` WRITE;
 /*!40000 ALTER TABLE `san_pham_doanh_nghiep` DISABLE KEYS */;
-INSERT INTO `san_pham_doanh_nghiep` VALUES (1,61,NULL,0,'1','kg',5215,4584,NULL),(2,61,NULL,0,'1','kg',5215,4584,NULL),(3,61,NULL,0,'3','kg',5215,4584,NULL),(4,61,NULL,0,'3','kg',5215,4584,NULL),(5,61,NULL,0,'3','kg',5215,4584,NULL),(6,61,NULL,0,'3','kg',5215,4584,NULL),(7,61,NULL,0,'3','kg',5215,4584,NULL),(8,61,NULL,2014,'3','kg',5215,4584,NULL),(9,61,NULL,2014,'3','kg',5215,4584,NULL),(10,61,NULL,2014,'3','kg',5215,4584,NULL),(11,61,NULL,2014,'3','kg',5215,4584,NULL),(12,61,NULL,2014,'3','kg',5215,4584,NULL),(13,61,NULL,2014,'3','kg',5215,4584,NULL),(14,61,NULL,2014,'1','test',2005,2005,NULL),(15,62,NULL,2014,'1','test',1234,12345,NULL),(16,62,NULL,2014,'1','test',12,12,NULL),(17,62,NULL,2014,'1','teest',3,23,NULL),(18,62,NULL,2014,'3','tấn',3,23,NULL),(19,62,NULL,2014,'3','tấn',3,23,NULL),(20,62,NULL,2014,'3','teest',234,234,NULL),(21,62,NULL,2014,'4','cái',560000,898645,NULL),(22,62,NULL,2014,'3','cái',3000,3500,NULL),(23,62,NULL,2014,'2','test',2,2,NULL),(24,62,NULL,2014,'2','test',2,2,NULL),(25,62,NULL,2014,'2','cái',5230,4564,NULL),(26,62,NULL,2014,'3','test',1323,123,NULL),(27,62,NULL,2014,'3','test',2313,12323,NULL),(28,62,NULL,2014,'2','tét',2,2,NULL),(29,62,NULL,2014,'1','kai',234,23434,NULL),(30,62,NULL,2014,'2','áo thun nè',214,234,'2014-08-23 11:58:12'),(31,62,NULL,2014,'1','bao',89,90,'2014-08-23 12:05:53'),(32,62,NULL,2014,'1','bao',89,90,'2014-08-23 12:05:56'),(33,62,NULL,2014,'1','bao',89,90,'2014-08-23 12:05:57'),(34,62,NULL,2014,'1','bao',89,90,'2014-08-23 12:05:58'),(35,62,NULL,2014,'1','bao',89,90,'2014-08-23 12:05:59'),(36,62,NULL,2014,'1','bao',89,90,'2014-08-23 12:05:59'),(37,62,NULL,2014,'1','bao',89,90,'2014-08-23 12:06:19'),(38,62,NULL,2014,'1','bao',89,90,'2014-08-23 12:07:23'),(39,62,NULL,2014,'4','cái',54454,54564,'2014-08-23 12:07:58'),(40,64,NULL,2014,'2','teest',2123,123,'2014-08-24 03:53:25'),(41,64,NULL,2014,'14','teest',3,2,'2014-08-24 06:02:38'),(45,65,NULL,2014,'35','m',2432540,2342540,'2014-08-24 09:05:12'),(47,66,NULL,2014,'15','m',1000000,1500000,'2014-08-24 12:42:25'),(48,66,NULL,2014,'35','tấn',3000,3100,'2014-08-24 12:42:44'),(49,16,NULL,2014,'50','tấn',3423,324,'2014-08-29 21:58:39'),(51,10,NULL,2014,'48','teest',234,234,'2014-08-29 22:23:39'),(52,86,NULL,2014,'48','tấn',3000,3500,'2014-09-06 16:27:08'),(53,86,NULL,2014,'45','cái',200,210,'2014-09-06 16:28:56'),(54,86,NULL,2014,'31','cái',324,324,'2014-09-06 16:30:16'),(55,71,1,NULL,'39','cái',1000,1000,'2014-09-08 04:04:18'),(57,71,2,NULL,'34','cái',123,123,'2014-09-08 04:09:13'),(59,71,3,NULL,'31','cái',5484,5484,'2014-09-08 04:42:49'),(64,72,1,NULL,'39','cái',10000,10000,'2014-09-08 05:03:38'),(65,72,2,NULL,'48','cái',10000,10000,'2014-09-08 05:03:57');
+INSERT INTO `san_pham_doanh_nghiep` VALUES (1,61,NULL,0,NULL,'1','kg',5215,4584,NULL),(2,61,NULL,0,NULL,'1','kg',5215,4584,NULL),(3,61,NULL,0,NULL,'3','kg',5215,4584,NULL),(4,61,NULL,0,NULL,'3','kg',5215,4584,NULL),(5,61,NULL,0,NULL,'3','kg',5215,4584,NULL),(6,61,NULL,0,NULL,'3','kg',5215,4584,NULL),(7,61,NULL,0,NULL,'3','kg',5215,4584,NULL),(8,61,NULL,2014,NULL,'3','kg',5215,4584,NULL),(9,61,NULL,2014,NULL,'3','kg',5215,4584,NULL),(10,61,NULL,2014,NULL,'3','kg',5215,4584,NULL),(11,61,NULL,2014,NULL,'3','kg',5215,4584,NULL),(12,61,NULL,2014,NULL,'3','kg',5215,4584,NULL),(13,61,NULL,2014,NULL,'3','kg',5215,4584,NULL),(14,61,NULL,2014,NULL,'1','test',2005,2005,NULL),(15,62,NULL,2014,NULL,'1','test',1234,12345,NULL),(16,62,NULL,2014,NULL,'1','test',12,12,NULL),(17,62,NULL,2014,NULL,'1','teest',3,23,NULL),(18,62,NULL,2014,NULL,'3','tấn',3,23,NULL),(19,62,NULL,2014,NULL,'3','tấn',3,23,NULL),(20,62,NULL,2014,NULL,'3','teest',234,234,NULL),(21,62,NULL,2014,NULL,'4','cái',560000,898645,NULL),(22,62,NULL,2014,NULL,'3','cái',3000,3500,NULL),(23,62,NULL,2014,NULL,'2','test',2,2,NULL),(24,62,NULL,2014,NULL,'2','test',2,2,NULL),(25,62,NULL,2014,NULL,'2','cái',5230,4564,NULL),(26,62,NULL,2014,NULL,'3','test',1323,123,NULL),(27,62,NULL,2014,NULL,'3','test',2313,12323,NULL),(28,62,NULL,2014,NULL,'2','tét',2,2,NULL),(29,62,NULL,2014,NULL,'1','kai',234,23434,NULL),(30,62,NULL,2014,NULL,'2','áo thun nè',214,234,'2014-08-23 11:58:12'),(31,62,NULL,2014,NULL,'1','bao',89,90,'2014-08-23 12:05:53'),(32,62,NULL,2014,NULL,'1','bao',89,90,'2014-08-23 12:05:56'),(33,62,NULL,2014,NULL,'1','bao',89,90,'2014-08-23 12:05:57'),(34,62,NULL,2014,NULL,'1','bao',89,90,'2014-08-23 12:05:58'),(35,62,NULL,2014,NULL,'1','bao',89,90,'2014-08-23 12:05:59'),(36,62,NULL,2014,NULL,'1','bao',89,90,'2014-08-23 12:05:59'),(37,62,NULL,2014,NULL,'1','bao',89,90,'2014-08-23 12:06:19'),(38,62,NULL,2014,NULL,'1','bao',89,90,'2014-08-23 12:07:23'),(39,62,NULL,2014,NULL,'4','cái',54454,54564,'2014-08-23 12:07:58'),(40,64,NULL,2014,NULL,'2','teest',2123,123,'2014-08-24 03:53:25'),(41,64,NULL,2014,NULL,'14','teest',3,2,'2014-08-24 06:02:38'),(45,65,NULL,2014,NULL,'35','m',2432540,2342540,'2014-08-24 09:05:12'),(47,66,NULL,2014,NULL,'15','m',1000000,1500000,'2014-08-24 12:42:25'),(48,66,NULL,2014,NULL,'35','tấn',3000,3100,'2014-08-24 12:42:44'),(49,16,NULL,2014,NULL,'50','tấn',3423,324,'2014-08-29 21:58:39'),(52,86,NULL,2014,NULL,'48','tấn',3000,3500,'2014-09-06 16:27:08'),(53,86,NULL,2014,NULL,'45','cái',200,210,'2014-09-06 16:28:56'),(54,86,NULL,2014,NULL,'31','cái',324,324,'2014-09-06 16:30:16'),(55,71,1,NULL,NULL,'39','cái',1000,1000,'2014-09-08 04:04:18'),(57,71,2,NULL,NULL,'34','cái',123,123,'2014-09-08 04:09:13'),(59,71,3,NULL,NULL,'31','cái',5484,5484,'2014-09-08 04:42:49'),(64,72,1,NULL,NULL,'39','cái',10000,10000,'2014-09-08 05:03:38'),(65,72,2,NULL,NULL,'48','cái',10000,10000,'2014-09-08 05:03:57'),(67,10,NULL,2014,2,'48','tấn',13,34,'2014-09-21 16:02:31'),(68,10,NULL,2014,3,'46','tấn',345,435,'2014-09-21 16:04:21'),(69,10,NULL,2014,1,'48','test',343,324,'2014-09-21 16:07:57'),(70,10,NULL,2014,1,'50','test',324,234,'2014-09-21 16:36:38'),(71,10,NULL,2014,3,'48','cái',234,423,'2014-09-21 18:36:39'),(73,80,1,NULL,NULL,'37','fsd',213,213,'2014-09-21 18:56:53'),(74,81,1,NULL,NULL,'34','tấn',300,300,'2014-09-22 12:43:45'),(75,81,2,NULL,NULL,'39','chiếc',10000,10000,'2014-09-22 12:44:13'),(76,88,1,NULL,NULL,'34','cái',908,908,'2014-09-22 13:17:45'),(77,88,2,NULL,NULL,'46','cái',264,264,'2014-09-22 13:17:55');
 /*!40000 ALTER TABLE `san_pham_doanh_nghiep` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1361,11 +1508,11 @@ DROP TABLE IF EXISTS `thong_tin_tuan_thu_bvmt`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `thong_tin_tuan_thu_bvmt` (
   `colMa` int(11) NOT NULL AUTO_INCREMENT,
-  `colTentailieu` varchar(50) DEFAULT NULL,
+  `colTentailieu` text,
   `colStt` int(11) NOT NULL DEFAULT '0',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`colMa`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1374,7 +1521,7 @@ CREATE TABLE `thong_tin_tuan_thu_bvmt` (
 
 LOCK TABLES `thong_tin_tuan_thu_bvmt` WRITE;
 /*!40000 ALTER TABLE `thong_tin_tuan_thu_bvmt` DISABLE KEYS */;
-INSERT INTO `thong_tin_tuan_thu_bvmt` VALUES (1,'Luật bảo vệ môi trường 2005',1,'2014-08-28 21:47:56'),(2,'\"Sổ đăng ký nguồn thải\" chất nguy hại',2,'2014-08-28 21:47:56'),(3,'Quy chế quản lý nhà nước về môi trường đối với các',3,'2014-08-28 21:47:56'),(4,'Nghị Định 81/2006/NĐ-CP',4,'2014-08-28 21:47:56'),(5,'Lập hồ sơ để được cấp Chứng nhận đạt tiêu chuẩn mô',5,'2014-08-28 21:48:10'),(6,'Lập hồ sơ báo cáo nghiệm thu môi trường',6,'2014-08-28 21:48:10'),(7,'Kê khai và nộp phí bảo vệ môi trường đối với nước ',7,'2014-08-28 21:48:10'),(8,'Chứng nhận ISO9000',8,'2014-08-28 21:48:10'),(9,'Chứng nhận HACCAP',9,'2014-08-28 21:48:10'),(10,'Triển khai sản xuất sach hơn',10,'2014-08-28 21:48:10'),(11,'Các hoạt động khác',11,'2014-08-28 21:48:10');
+INSERT INTO `thong_tin_tuan_thu_bvmt` VALUES (1,'Quyết định phê duyệt báo cáo đánh giá tác động môi trường',1,'2014-09-21 18:09:57'),(2,'Thông báo chấp nhận bản cam kết đạt chuẩn  môi trường',2,'2014-09-21 18:09:57'),(3,'Quyết định phê duyệt đề án bảo vệ môi trường chi tiết/đơn giản',3,'2014-09-21 18:09:57'),(4,'Giấy xác nhận hoàn thành các công trình, biện pháp bảo vệ môi trường',4,'2014-09-21 18:09:57'),(5,'Sổ đăng ký chủ nguồn thải chất thải nguy hại ',5,'2014-09-21 18:07:51'),(6,'Giấy phép khai thác nước ngầm ',6,'2014-09-21 18:07:51'),(7,'Giây phép xả thải',7,'2014-09-21 18:07:51'),(8,'Giấy phép xin đấu nối',8,'2014-09-21 18:07:51'),(9,'Kê khai và nộp phí bảo vệ môi trường đối với nước ',9,'2014-09-21 18:07:51'),(10,'Chứng nhận ISO',10,'2014-09-21 18:07:51'),(11,'Chứng nhận HACCAP',11,'2014-09-21 18:07:51'),(12,'Triển khai sản xuất sạch hơn',0,'2014-09-21 18:07:51'),(13,'Khác ',0,'2014-09-21 18:07:51');
 /*!40000 ALTER TABLE `thong_tin_tuan_thu_bvmt` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1424,11 +1571,11 @@ CREATE TABLE `user` (
   `email` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `status` tinyint(1) DEFAULT '0',
-  `role` int(11) DEFAULT NULL,
+  `role_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1437,7 +1584,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (2,'huynhsonca','huynhsonca@gmail.com','85496c56aa43cc81deb09c6dff14abc8c29aaeb5d6d2a1f4fc1fe22fe0a3ad85',1,NULL),(3,'admin','cahiepsi@yahoo.com','85496c56aa43cc81deb09c6dff14abc8c29aaeb5d6d2a1f4fc1fe22fe0a3ad85',0,NULL),(4,'administrator','admin@tisemiz.com.vn','196832cbf926cee7d42abca03703fc143409a2cac7fbbab6781b75fa24ac57d4',0,NULL),(5,'user1','user1@tabikobo.com','d698cbf30c0d9e7442dadbd1f60485bc35d56df63c712ec22a3ff2b9ee9ac6d2',0,NULL),(6,'testuser','titi@gmail.com','a1eb3b4e81fa4fc3fa1b753a274030e1dcd9d22cc4ca39b326f6b312221703fe',0,NULL),(7,'user2','user2@gmail.com','f7fc6d320b5d2cefb2d7916ebf0bbb0b39b60d3a6aa5cd48e8f1d9efd0ede3b8',0,NULL),(9,'user3','user3@gmail.com','85496c56aa43cc81deb09c6dff14abc8c29aaeb5d6d2a1f4fc1fe22fe0a3ad85',0,NULL),(10,'huynhsonca1','huynhsonca1@gmail.com','0dfae5cb2187dc41db639e448427ee2a499b609efbb9f876309d33a3df8c3f1e',0,NULL),(11,'huynhsonca2','huynhsonca2@gmail.com','dfdada88f9528afceb3e0f67bb2c10b8829f6e0bbafee1cd6691436070414ac7',0,NULL),(12,'huynhsonca434','huynhsonca4@gmail.com','09c0a0ee235d86a68473895b76973112c780f4116570ac0708fde16419121f7a',0,NULL),(13,'admin-admin','admin@gmail.com','09dc3a96f528b7a4f99c6307da3b96b4e69f48b2058614475caf3d1d53905a6a',0,NULL),(14,'huynhsonca3','huynhsonca3@gmail.com','12e4c8bc5df9f3d0683ce005f14ff38b8523c9ae3fbf833d5b74bddca616d024',0,NULL),(15,'huynhsonca5','huynhsonca5@gmail.com','12e4c8bc5df9f3d0683ce005f14ff38b8523c9ae3fbf833d5b74bddca616d024',0,NULL),(16,'admin-tisemiz','admin@tisemiz.com','caf44f0c6cee8d9c398a07a1cbd0a05e998931778c69cb877a34799ebe2d3fac',1,NULL);
+INSERT INTO `user` VALUES (2,'huynhsonca','huynhsonca@gmail.com','85496c56aa43cc81deb09c6dff14abc8c29aaeb5d6d2a1f4fc1fe22fe0a3ad85',1,NULL),(3,'admin','cahiepsi@yahoo.com','85496c56aa43cc81deb09c6dff14abc8c29aaeb5d6d2a1f4fc1fe22fe0a3ad85',0,NULL),(4,'administrator','admin@tisemiz.com.vn','196832cbf926cee7d42abca03703fc143409a2cac7fbbab6781b75fa24ac57d4',0,NULL),(5,'user1','user1@tabikobo.com','d698cbf30c0d9e7442dadbd1f60485bc35d56df63c712ec22a3ff2b9ee9ac6d2',0,NULL),(6,'testuser','titi@gmail.com','a1eb3b4e81fa4fc3fa1b753a274030e1dcd9d22cc4ca39b326f6b312221703fe',0,NULL),(7,'user2','user2@gmail.com','f7fc6d320b5d2cefb2d7916ebf0bbb0b39b60d3a6aa5cd48e8f1d9efd0ede3b8',0,NULL),(9,'user3','user3@gmail.com','85496c56aa43cc81deb09c6dff14abc8c29aaeb5d6d2a1f4fc1fe22fe0a3ad85',0,NULL),(10,'huynhsonca1','huynhsonca1@gmail.com','0dfae5cb2187dc41db639e448427ee2a499b609efbb9f876309d33a3df8c3f1e',0,NULL),(11,'huynhsonca2','huynhsonca2@gmail.com','dfdada88f9528afceb3e0f67bb2c10b8829f6e0bbafee1cd6691436070414ac7',0,NULL),(12,'huynhsonca434','huynhsonca4@gmail.com','09c0a0ee235d86a68473895b76973112c780f4116570ac0708fde16419121f7a',0,NULL),(13,'admin-admin','admin@gmail.com','09dc3a96f528b7a4f99c6307da3b96b4e69f48b2058614475caf3d1d53905a6a',0,NULL),(14,'huynhsonca3','huynhsonca3@gmail.com','12e4c8bc5df9f3d0683ce005f14ff38b8523c9ae3fbf833d5b74bddca616d024',0,NULL),(15,'huynhsonca5','huynhsonca5@gmail.com','12e4c8bc5df9f3d0683ce005f14ff38b8523c9ae3fbf833d5b74bddca616d024',0,NULL),(16,'admin-tisemiz','admin@tisemiz.com','caf44f0c6cee8d9c398a07a1cbd0a05e998931778c69cb877a34799ebe2d3fac',1,NULL),(17,'cahiepsi','cahiepsi1@yahoo.com','c70c7dee07327da27dfbd890836fc27c9d940faa9f5ed58708f363d91b6ef729',0,NULL),(18,'cahiepsi2','cahiepsi2@yahoo.com','c70c7dee07327da27dfbd890836fc27c9d940faa9f5ed58708f363d91b6ef729',0,NULL),(19,'cahiepsi3','cahiepsi3@gmail.com','610b11b4999f45dc1e9886129a8a2466429b4ca48e17b4f78adf48ea81d50c62',0,NULL),(20,'cahiepsi33','cahiepsi33@gmail.com','610b11b4999f45dc1e9886129a8a2466429b4ca48e17b4f78adf48ea81d50c62',0,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1450,25 +1597,30 @@ DROP TABLE IF EXISTS `vanbanphapquy`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `vanbanphapquy` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `kyhieu` varchar(50) NOT NULL,
+  `kyhieu` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `ngayky` datetime DEFAULT NULL,
   `ngayhieuluc` datetime DEFAULT NULL,
   `ngaybanhanh` datetime DEFAULT NULL,
   `ngayhethieuluc` datetime DEFAULT NULL,
-  `coquanbanhanh` varchar(100) DEFAULT NULL,
-  `nguon` varchar(50) DEFAULT NULL,
-  `tukhoa` varchar(500) DEFAULT NULL,
-  `tukhoalienquan` varchar(500) DEFAULT NULL,
-  `noidung` varchar(500) DEFAULT NULL,
-  `ghichu` varchar(500) DEFAULT NULL,
-  `nguoiky` varchar(100) DEFAULT NULL,
+  `coquanbanhanh` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nguon` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tukhoa` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tukhoalienquan` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `noidung` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ghichu` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nguoiky` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `url` varchar(500) DEFAULT NULL,
-  `mota` varchar(500) DEFAULT NULL,
-  `kichthuoc` varchar(100) DEFAULT NULL,
+  `path` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mota` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `kichthuoc` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `solantai` int(11) DEFAULT NULL,
+  `id_loai` int(11) DEFAULT NULL,
+  `id_linhvuc` int(11) DEFAULT NULL,
+  `tenfile` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tenvanban` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `stt` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1477,6 +1629,7 @@ CREATE TABLE `vanbanphapquy` (
 
 LOCK TABLES `vanbanphapquy` WRITE;
 /*!40000 ALTER TABLE `vanbanphapquy` DISABLE KEYS */;
+INSERT INTO `vanbanphapquy` VALUES (13,'BTN/676/TN','2007-12-11 00:00:00',NULL,'2007-12-10 00:00:00',NULL,'','','','','','','','2014-09-13 21:54:10',NULL,'','7986',6,13,5,'Jiem-validator.pdf','Quy định về chất thải nguy hại cho doanh ngiệp trong niên 2014',NULL);
 /*!40000 ALTER TABLE `vanbanphapquy` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1500,10 +1653,10 @@ CREATE TABLE `xu_ly_khi_thai_doanh_nghiep` (
   `colBienPhapKhac` tinyint(1) NOT NULL DEFAULT '0',
   `colMotaBienPhapKhac` varchar(200) NOT NULL DEFAULT '',
   `colGhiChu` varchar(200) DEFAULT NULL,
-  `colThoiGian` datetime DEFAULT NULL,
+  `colThoiGian` int(4) DEFAULT NULL,
   `created` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`colMa`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1512,7 +1665,7 @@ CREATE TABLE `xu_ly_khi_thai_doanh_nghiep` (
 
 LOCK TABLES `xu_ly_khi_thai_doanh_nghiep` WRITE;
 /*!40000 ALTER TABLE `xu_ly_khi_thai_doanh_nghiep` DISABLE KEYS */;
-INSERT INTO `xu_ly_khi_thai_doanh_nghiep` VALUES (15,2014,66,1,'fdasdfasdf',1,1,0,0,1,'fasdf','fasdf','2014-08-05 00:00:00','2014-08-27 22:28:44'),(16,2014,66,2,'tsafasfd',1,0,1,0,1,'fsdfa fasdfsd','fasdfasdf','2014-11-11 00:00:00','2014-08-27 22:29:01'),(17,2014,66,4,'fsadfa fasfdsdfaf',1,0,0,1,0,'ádfsdf','fasdfasdf','2014-08-07 00:00:00','2014-08-27 22:29:21');
+INSERT INTO `xu_ly_khi_thai_doanh_nghiep` VALUES (15,2014,66,1,'fdasdfasdf',1,1,0,0,1,'fasdf','fasdf',2147483647,'2014-08-27 22:28:44'),(16,2014,66,2,'tsafasfd',1,0,1,0,1,'fsdfa fasdfsd','fasdfasdf',2147483647,'2014-08-27 22:29:01'),(17,2014,66,4,'fsadfa fasfdsdfaf',1,0,0,1,0,'ádfsdf','fasdfasdf',2147483647,'2014-08-27 22:29:21'),(18,2014,10,2,'àdfa',1,1,0,0,1,'ádf','fasdf',2013,'2014-09-21 17:56:46');
 /*!40000 ALTER TABLE `xu_ly_khi_thai_doanh_nghiep` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1595,4 +1748,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-09-12 18:48:48
+-- Dump completed on 2014-09-22 22:12:29

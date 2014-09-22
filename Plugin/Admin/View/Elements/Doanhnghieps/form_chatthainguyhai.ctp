@@ -42,7 +42,7 @@
                 <tr class="<?php echo $classes[$i]; ?>">
                     <td>
                         <input type="hidden" name="colMa" value="<?php echo $xlctNH['ChatThaiNguyHai']['colMa'] ?>">
-                        <?php echo date('d/m/Y', strtotime($xlctNH['ChatThaiNguyHai']['colThoiGian'])) ?>
+                        <?php echo $xlctNH['ChatThaiNguyHai']['colThoiGian'] ? date('d/m/Y', strtotime($xlctNH['ChatThaiNguyHai']['colThoiGian'])) : '' ?>
                     </td>
                     <td>
                         <?php echo h($xlctNH['ChatThaiNguyHai']['colDangCThai']) ?>
@@ -229,14 +229,14 @@
                 var i = 0;
                 parsed.forEach(function(bpxlctNH) {
                     html += '<tr class="' + classes[i] + '">\n\
-            <td><input type="hidden" name="colMa" value="' + bpxlctNH['ChatThaiNguyHai']['colMa'] + '">' + formatDate(new Date(getDateFromFormat(bpxlctNH['ChatThaiNguyHai']['colThoiGian'], 'yyyy-MM-dd HH:mm:ss')), 'dd/MM/yyyy') + '</td>\n\
-<td>' + bpxlctNH['ChatThaiNguyHai']['colDangCThai'] + '</td><td>' + bpxlctNH['ChatThaiNguyHai']['colTongKL'] + '</td><td>' + bpxlctNH['ChatThaiNguyHai']['colNguonPSinh'] + '</td>\n\
-<td>' + bpxlctNH['ChatThaiNguyHai']['colHThucLuu'] + '</td>\n\
+            <td><input type="hidden" name="colMa" value="' + bpxlctNH['ChatThaiNguyHai']['colMa'] + '">' + echoDate(bpxlctNH['ChatThaiNguyHai']['colThoiGian']) + '</td>\n\
+<td>' + bpxlctNH['ChatThaiNguyHai']['colDangCThai'] + '</td><td>' + parseFloat(bpxlctNH['ChatThaiNguyHai']['colTongKL']) + '</td><td>' + echoNull(bpxlctNH['ChatThaiNguyHai']['colNguonPSinh']) + '</td>\n\
+<td>' + echoNull(bpxlctNH['ChatThaiNguyHai']['colHThucLuu']) + '</td>\n\
 <td>' + echoBoolValue(bpxlctNH['ChatThaiNguyHai']['colBanRa']) + '</td>\n\
 <td>' + echoBoolValue(bpxlctNH['ChatThaiNguyHai']['colThaiBo']) + '</td>\n\
-<td>' + bpxlctNH['ChatThaiNguyHai']['colDViThuMua'] + '</td>\n\
-<td>' + bpxlctNH['ChatThaiNguyHai']['colDinhKyThuMua'] + '</td>\n\
-<td>' + bpxlctNH['ChatThaiNguyHai']['colGhiChu'] + '</td>\n\
+<td>' + echoNull(bpxlctNH['ChatThaiNguyHai']['colDViThuMua']) + '</td>\n\
+<td>' + echoNull(bpxlctNH['ChatThaiNguyHai']['colDinhKyThuMua']) + '</td>\n\
+<td>' + echoNull(bpxlctNH['ChatThaiNguyHai']['colGhiChu']) + '</td>\n\
 <td><input type="checkbox" name="deleterow' + bpxlctNH['ChatThaiNguyHai']['colMa'] + '"></td>\n\
 </tr>';
                     ++i;
@@ -269,12 +269,6 @@
         });
         return false;
     }
-    function echoBoolValue(value) {
-        if (value === true || value === "true")
-        {
-            return 1;
-        } else {
-            return 0;
-        }
-    }
+    
+    
 </script>
