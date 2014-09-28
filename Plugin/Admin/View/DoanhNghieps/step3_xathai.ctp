@@ -1,24 +1,16 @@
-
-
-
-<div class="main-header">
-    <h2>Thêm mới doanh nghiệp</h2>
-    <em>lưu ý chọn năm nhập liệu</em>
-
-</div>
-<br>
 <table>
     <tr>
         <td>
             <div class="nav-steps">
-            <ul id="steps">
-                <a href="<?php echo Router::url('/admin/doanhnghiep/themmoi');?>"><li class="tab1 active">1</li></a>
-                <a href="<?php echo Router::url('/admin/doanhnghiep/themmoi/step2');?>"><li class="tab2 active">2</li></a>
-                <li class="tab3 active">3</li>
-                <a href="<?php echo Router::url('/admin/doanhnghiep/themmoi/step4');?>"><li class="tab4">4</li></a>
-                <a href="<?php echo Router::url('/admin/doanhnghiep/themmoi/step5');?>"><li class="tab5">5</li></a>
-                <li class="tab6">6</li>
-            </ul>
+                <ul id="steps">
+                    <a href="<?php echo Router::url('/admin/doanhnghiep/themmoi'); ?>"><li class="active">1</li></a>
+                    <a href="<?php echo Router::url('/admin/doanhnghiep/themmoi/step2'); ?>"><li class="active">2</li></a>
+                    <li class="active">3</li>
+                    <a href="<?php echo Router::url('/admin/doanhnghiep/themmoi/step4'); ?>"><li>4</li></a>
+                    <a href="<?php echo Router::url('/admin/doanhnghiep/themmoi/step5'); ?>"><li>5</li></a>
+                    <a href="<?php echo Router::url('/admin/doanhnghiep/themmoi/step6'); ?>"><li>6</li></a>
+                    <li>7</li>
+                </ul>
             </div>
         </td>
     </tr>
@@ -28,28 +20,31 @@
     <!--form_main-->
     <div class="tabbable" id="tabs-9834">
         <ul class="nav nav-tabs">
-            <li>
+            <li class="tab1">
                 <a href="#panel-1" data-toggle="tab">Thông tin doanh nghiệp</a>
             </li>
-            <li id="tab-hdsx">
+            <li class="tab2">
                 <a href="#panel-2" data-toggle="tab">Hoạt động sản xuất</a>
             </li>
-            <li class="active">
+            <li class="tab3 active">
                 <a href="#panel-3" data-toggle="tab">Xả thải</a>
             </li>
-            <li>
-                <a href="#panel-4" data-toggle="tab">Hoạt động bảo vệ môi trường</a>
+            <li class="tab4">
+                <a href="#panel-4" data-toggle="tab">Giám sát định kỳ</a>
             </li>
-            <li>
-                <a href="#panel-5" data-toggle="tab">Kiến nghị</a>
+            <li class="tab5">
+                <a href="#panel-5" data-toggle="tab">Hoạt động bảo vệ môi trường</a>
+            </li>
+            <li class="tab6">
+                <a href="#panel-6" data-toggle="tab">Kiến nghị</a>
             </li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane" id="panel-1">
-                
+
             </div>
             <div class="tab-pane" id="panel-2">
-                
+
             </div>
             <div class="tab-pane active" id="panel-3">
                 <br>
@@ -90,27 +85,27 @@
                         </div>
                         <div class="tab-pane" id="panel-khithai">
                             <!-- form xu ly khi thai doanh nghiep-->
-                            <?php echo $this->element('Admin.Doanhnghieps/form_xulykhithaidoanhnghiep');?>
+                            <?php echo $this->element('Admin.Doanhnghieps/form_xulykhithaidoanhnghiep'); ?>
                             <!-- end form xu ly khi thai doanh nhgiep-->
                         </div>
                         <div class="tab-pane" id="panel-tiengonrung">
                             <!--tiengonrung-->
-                            <?php echo $this->element('Admin.Doanhnghieps/form_xulytiengonrung');?>
+                            <?php echo $this->element('Admin.Doanhnghieps/form_xulytiengonrung'); ?>
                             <!--/tiengonrung-->
                         </div>
                         <div class="tab-pane" id="panel-racsinhhoat">
                             <!--racsinhhoat-->
-                            <?php echo $this->element('Admin.Doanhnghieps/form_racthaisinhhoat');?>
+                            <?php echo $this->element('Admin.Doanhnghieps/form_racthaisinhhoat'); ?>
                             <!--/racsinhhoat-->
                         </div>
                         <div class="tab-pane" id="panel-chatthaicongnghiep">
                             <!--chatthaicongnghiep-->
-                            <?php echo $this->element('Admin.Doanhnghieps/form_chatthairancongnghiep');?>
+                            <?php echo $this->element('Admin.Doanhnghieps/form_chatthairancongnghiep'); ?>
                             <!--/chatthaicongnghiep-->
                         </div>
                         <div class="tab-pane" id="panel-chatthainguyhai">
                             <!--chatthainguyhai-->
-                            <?php echo $this->element('Admin.Doanhnghieps/form_chatthainguyhai');?>
+                            <?php echo $this->element('Admin.Doanhnghieps/form_chatthainguyhai'); ?>
                             <!--/chatthainguyhai-->
                         </div>
                     </div>
@@ -118,10 +113,13 @@
 
             </div>
             <div class="tab-pane" id="panel-4">
-               
+
             </div>
             <div class="tab-pane" id="panel-5">
-                
+
+            </div>
+            <div class="tab-pane" id="panel-6">
+
             </div>
         </div>
     </div>

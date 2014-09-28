@@ -9,9 +9,10 @@ Router::connect('/admin/doanhnghiep/themmoi', array('plugin' => 'Admin', 'contro
 Router::connect('/admin/doanhnghiep/themmoi/step2', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'step2Hoatdongsanxuat'));
 Router::connect('/admin/doanhnghiep/themmoi/step2/:tab', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'step2Hoatdongsanxuat'), array('pass' => array('tab')));
 Router::connect('/admin/doanhnghiep/themmoi/step3', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'step3Xathai'));
-Router::connect('/admin/doanhnghiep/themmoi/step4', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'step4Hoatdongbaovemoitruong'));
-Router::connect('/admin/doanhnghiep/themmoi/step5', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'step5Kiennghi'));
-Router::connect('/admin/doanhnghiep/themmoi/step6', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'step6Hoantat'));
+Router::connect('/admin/doanhnghiep/themmoi/step4', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'step4Giamsatdinhky'));
+Router::connect('/admin/doanhnghiep/themmoi/step5', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'step5Hoatdongbaovemoitruong'));
+Router::connect('/admin/doanhnghiep/themmoi/step6', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'step6Kiennghi'));
+Router::connect('/admin/doanhnghiep/themmoi/step7', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'step7Hoantat'));
 Router::connect('/admin/doanhnghiep/edit/:id', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'edit'), array('pass' => array('id')));
 Router::connect('/admin/doanhnghiep/delete/:id', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'delete'), array('pass' => array('id')));
 Router::connect('/admin/doanhnghiep/themsanpham', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'themsanpham'));

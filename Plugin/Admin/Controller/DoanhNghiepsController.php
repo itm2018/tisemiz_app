@@ -139,7 +139,7 @@ class DoanhNghiepsController extends AdminAppController {
 //                            $doanhnghiepdata[$key] = '';
 //                        }
 //                    }
-                    $doanhnghiepdata['colMaNganh1']=$doanhnghiepdata['nganh'];
+                    $doanhnghiepdata['colMaNganh1'] = $doanhnghiepdata['nganh'];
                 }
                 //gan colMa cua doanh nghiep neu dang dang ton tai trong session
                 if (isset($savingDoanhNghiep['DoanhNghiep']['colMa']) && $savingDoanhNghiep['DoanhNghiep']['colMa']) {
@@ -184,7 +184,7 @@ class DoanhNghiepsController extends AdminAppController {
             $this->set('tab', $tab);
         }
         $savingDoanhNghiep = $this->Session->read('savingDoanhNghiep');
-        if (!isset($savingDoanhNghiep['DoanhNghiep']) || count(array_unique(array_values($savingDoanhNghiep['DoanhNghiep']))) <= 1) {
+        if (!isset($savingDoanhNghiep['DoanhNghiep']) || empty($savingDoanhNghiep['DoanhNghiep'])) {
             $this->Session->setFlash('Xin nhập thông tin doanh nghiệp');
             $this->redirect('/admin/doanhnghiep/themmoi');
         }
@@ -207,17 +207,17 @@ class DoanhNghiepsController extends AdminAppController {
                 }
             }
         }
-        $listnhienlieu = $this->DoanhNghiep->NhienLieuDoanhNghiep->find('all', array('conditions' => array('ColCSSX' => $savingDoanhNghiep['DoanhNghiep']['colMa']), 'order' => array('NhienLieuDoanhNghiep.colThang' => 'ASC','NhienLieuDoanhNghiep.created' => 'ASC')));
+        $listnhienlieu = $this->DoanhNghiep->NhienLieuDoanhNghiep->find('all', array('conditions' => array('ColCSSX' => $savingDoanhNghiep['DoanhNghiep']['colMa']), 'order' => array('NhienLieuDoanhNghiep.colThang' => 'ASC', 'NhienLieuDoanhNghiep.created' => 'ASC')));
         $this->set('listnhienlieu', $listnhienlieu);
         $listnuocngam = $this->DoanhNghiep->NuocNgamDoanhNghiep->find('all', array('conditions' => array('ColCSSX' => $savingDoanhNghiep['DoanhNghiep']['colMa']), 'order' => array('NuocNgamDoanhNghiep.created' => 'ASC')));
         $this->set('listnuocngam', $listnuocngam);
-        $listdiennuoc = $this->DoanhNghiep->DienNuocDoanhNghiep->find('all', array('conditions' => array('ColCSSX' => $savingDoanhNghiep['DoanhNghiep']['colMa']), 'order' => array('DienNuocDoanhNghiep.colThang' => 'ASC','DienNuocDoanhNghiep.created' => 'ASC')));
+        $listdiennuoc = $this->DoanhNghiep->DienNuocDoanhNghiep->find('all', array('conditions' => array('ColCSSX' => $savingDoanhNghiep['DoanhNghiep']['colMa']), 'order' => array('DienNuocDoanhNghiep.colThang' => 'ASC', 'DienNuocDoanhNghiep.created' => 'ASC')));
         $this->set('listdiennuoc', $listdiennuoc);
-        $listnguyenlieu = $this->DoanhNghiep->NguyenLieuSanPham->find('all', array('conditions' => array('ColCSSX' => $savingDoanhNghiep['DoanhNghiep']['colMa']), 'order' => array('NguyenLieuSanPham.colThang' => 'ASC','NguyenLieuSanPham.created' => 'ASC')));
+        $listnguyenlieu = $this->DoanhNghiep->NguyenLieuSanPham->find('all', array('conditions' => array('ColCSSX' => $savingDoanhNghiep['DoanhNghiep']['colMa']), 'order' => array('NguyenLieuSanPham.colThang' => 'ASC', 'NguyenLieuSanPham.created' => 'ASC')));
         $classes = array('none', 'active', 'success', 'warning');
         $this->set('listnguyenlieu', $listnguyenlieu);
         $this->set('classes', $classes);
-        $listsanpham = $this->DoanhNghiep->SanPhamDoanhNghiep->find('all', array('conditions' => array('ColCSSX' => $savingDoanhNghiep['DoanhNghiep']['colMa']), 'order' => array('SanPhamDoanhNghiep.colThang' => 'ASC','SanPhamDoanhNghiep.created' => 'ASC')));
+        $listsanpham = $this->DoanhNghiep->SanPhamDoanhNghiep->find('all', array('conditions' => array('ColCSSX' => $savingDoanhNghiep['DoanhNghiep']['colMa']), 'order' => array('SanPhamDoanhNghiep.colThang' => 'ASC', 'SanPhamDoanhNghiep.created' => 'ASC')));
         $this->set('listsanpham', $listsanpham);
         $after_savingDoanhNghiep = $this->Session->read('savingDoanhNghiep');
         if (isset($after_savingDoanhNghiep['HoatDongSanXuat']) && $after_savingDoanhNghiep['HoatDongSanXuat']) {
@@ -227,7 +227,7 @@ class DoanhNghiepsController extends AdminAppController {
 
     public function step3Xathai() {
         $savingDoanhNghiep = $this->Session->read('savingDoanhNghiep');
-        if (!isset($savingDoanhNghiep['DoanhNghiep']) || !$savingDoanhNghiep['DoanhNghiep']) {
+        if (!isset($savingDoanhNghiep['DoanhNghiep']) || empty($savingDoanhNghiep['DoanhNghiep'])) {
             $this->Session->setFlash('Xin nhập thông tin doanh nghiệp');
             $this->redirect('/admin/doanhnghiep/themmoi');
         }
@@ -250,7 +250,11 @@ class DoanhNghiepsController extends AdminAppController {
         $this->set('listbienphapxulychatthainguyhai', $listbienphapxulychatthainguyhai);
     }
 
-    public function step4Hoatdongbaovemoitruong() {
+    public function step4Giamsatdinhky() {
+        
+    }
+
+    public function step5Hoatdongbaovemoitruong() {
         $savingDoanhNghiep = $this->Session->read('savingDoanhNghiep');
         if (!isset($savingDoanhNghiep['DoanhNghiep']) || !$savingDoanhNghiep['DoanhNghiep']) {
             $this->Session->setFlash('Xin nhập thông tin doanh nghiệp');
@@ -266,11 +270,13 @@ class DoanhNghiepsController extends AdminAppController {
         if ($this->request->is('post')) {
             $data = $this->request->data['DoanhNghiepThongTinTuanThuBvmt'];
             $DoanhNghiepThongTinTuanThuBvmt = array();
-            foreach ($data['daco'] as $colMaTailieu) {
-                $DoanhNghiepThongTinTuanThuBvmt[] = array(
-                    'colMaDN' => $colMaDN,
-                    'colMaTailieu' => $colMaTailieu
-                );
+            if (isset($data['daco'])) {
+                foreach ($data['daco'] as $colMaTailieu) {
+                    $DoanhNghiepThongTinTuanThuBvmt[] = array(
+                        'colMaDN' => $colMaDN,
+                        'colMaTailieu' => $colMaTailieu
+                    );
+                }
             }
             //xoa het cac du lieu hien co trong bang lien quan den DN co ma $colMaDN neu co va them du lieu moi
             if ($this->DoanhNghiepThongTinTuanThuBvmt->deleteAll(array('colMaDN' => $colMaDN)) &&
@@ -282,7 +288,7 @@ class DoanhNghiepsController extends AdminAppController {
         $this->set('list_checked', $dn_tt_tuanthu_bvmt);
     }
 
-    public function step5Kiennghi() {
+    public function step6Kiennghi() {
         $savingDoanhNghiep = $this->Session->read('savingDoanhNghiep');
         if (!isset($savingDoanhNghiep['DoanhNghiep']) || !$savingDoanhNghiep['DoanhNghiep']) {
             $this->Session->setFlash('Xin nhập thông tin doanh nghiệp');
@@ -306,7 +312,7 @@ class DoanhNghiepsController extends AdminAppController {
             } else {
                 $this->Session->setFlash('Có lỗi xảy ra trong quá trình lưu dữ liệu');
             }
-            $this->redirect('/admin/doanhnghiep/themmoi/step5');
+            $this->redirect('/admin/doanhnghiep/themmoi/step6');
         }
 //        $savingKiennghi = $this->Session->read('savingKiennghi');
         $aftersaveDoanhNghiep = $this->Session->read('savingDoanhNghiep');
@@ -316,7 +322,7 @@ class DoanhNghiepsController extends AdminAppController {
         }
     }
 
-    public function step6Hoantat() {
+    public function step7Hoantat() {
         if ($this->request->is('post') || $this->request->is('put')) {
             $savingDoanhNghiep = $this->Session->read('savingDoanhNghiep');
             if (!isset($savingDoanhNghiep['DoanhNghiep']) || !$savingDoanhNghiep['DoanhNghiep']) {
@@ -357,7 +363,7 @@ class DoanhNghiepsController extends AdminAppController {
                 $this->SanPhamDoanhNghiep->save();
                 $this->loadModel('Admin.DoanhNghiep');
                 $saving_dn = $this->DoanhNghiep->findByColma($savingDoanhNghiep['DoanhNghiep']['colMa']);
-                $listsanpham = $this->DoanhNghiep->SanPhamDoanhNghiep->find('all', array('conditions' => array('ColCSSX' => $savingDoanhNghiep['DoanhNghiep']['colMa']), 'order' => array('SanPhamDoanhNghiep.colThang' => 'ASC','SanPhamDoanhNghiep.created' => 'ASC')));
+                $listsanpham = $this->DoanhNghiep->SanPhamDoanhNghiep->find('all', array('conditions' => array('ColCSSX' => $savingDoanhNghiep['DoanhNghiep']['colMa']), 'order' => array('SanPhamDoanhNghiep.colThang' => 'ASC', 'SanPhamDoanhNghiep.created' => 'ASC')));
                 if ($saving_dn) {
                     $this->Session->write('savingDoanhNghiep', $saving_dn);
                     echo json_encode($listsanpham);
@@ -385,7 +391,7 @@ class DoanhNghiepsController extends AdminAppController {
                 $this->DienNuocDoanhNghiep->save();
                 $this->loadModel('Admin.DoanhNghiep');
                 $saving_dn = $this->DoanhNghiep->findByColma($savingDoanhNghiep['DoanhNghiep']['colMa']);
-                $listdiennuoc = $this->DoanhNghiep->DienNuocDoanhNghiep->find('all', array('conditions' => array('ColCSSX' => $savingDoanhNghiep['DoanhNghiep']['colMa']), 'order' => array('DienNuocDoanhNghiep.colThang' => 'ASC','DienNuocDoanhNghiep.created' => 'ASC')));
+                $listdiennuoc = $this->DoanhNghiep->DienNuocDoanhNghiep->find('all', array('conditions' => array('ColCSSX' => $savingDoanhNghiep['DoanhNghiep']['colMa']), 'order' => array('DienNuocDoanhNghiep.colThang' => 'ASC', 'DienNuocDoanhNghiep.created' => 'ASC')));
                 if ($saving_dn) {
                     $this->Session->write('savingDoanhNghiep', $saving_dn);
                     echo json_encode($listdiennuoc);
@@ -999,7 +1005,7 @@ class DoanhNghiepsController extends AdminAppController {
             if ($this->NguyenLieuSanPham->validates()) {
                 if ($this->NguyenLieuSanPham->save()) {
                     $current_doanhnghiep = $this->DoanhNghiep->findByColma($savingDoanhNghiep['DoanhNghiep']['colMa']);
-                    $listnguyenlieu = $this->DoanhNghiep->NguyenLieuSanPham->find('all', array('conditions' => array('ColCSSX' => $savingDoanhNghiep['DoanhNghiep']['colMa']), 'order' => array('NguyenLieuSanPham.colThang' => 'ASC','NguyenLieuSanPham.created' => 'ASC')));
+                    $listnguyenlieu = $this->DoanhNghiep->NguyenLieuSanPham->find('all', array('conditions' => array('ColCSSX' => $savingDoanhNghiep['DoanhNghiep']['colMa']), 'order' => array('NguyenLieuSanPham.colThang' => 'ASC', 'NguyenLieuSanPham.created' => 'ASC')));
                     if ($current_doanhnghiep) {
                         $this->Session->write('savingDoanhNghiep', $current_doanhnghiep);
                         echo json_encode($listnguyenlieu);
@@ -1026,7 +1032,7 @@ class DoanhNghiepsController extends AdminAppController {
             if ($this->NhienLieuDoanhNghiep->validates()) {
                 if ($this->NhienLieuDoanhNghiep->save()) {
                     $current_doanhnghiep = $this->DoanhNghiep->findByColma($savingDoanhNghiep['DoanhNghiep']['colMa']);
-                    $listnhienlieu = $this->DoanhNghiep->NhienLieuDoanhNghiep->find('all', array('conditions' => array('ColCSSX' => $savingDoanhNghiep['DoanhNghiep']['colMa']), 'order' => array('NhienLieuDoanhNghiep.colThang' => 'ASC','NhienLieuDoanhNghiep.created' => 'ASC')));
+                    $listnhienlieu = $this->DoanhNghiep->NhienLieuDoanhNghiep->find('all', array('conditions' => array('ColCSSX' => $savingDoanhNghiep['DoanhNghiep']['colMa']), 'order' => array('NhienLieuDoanhNghiep.colThang' => 'ASC', 'NhienLieuDoanhNghiep.created' => 'ASC')));
                     if ($current_doanhnghiep) {
                         $this->Session->write('savingDoanhNghiep', $current_doanhnghiep);
                         echo json_encode($listnhienlieu);
@@ -1072,22 +1078,22 @@ class DoanhNghiepsController extends AdminAppController {
             $nuocthainhamay['colNam'] = $savingDoanhNghiep['DoanhNghiep']['nam'];
             $this->loadModel('Admin.NuocThaiNhaMay');
             $this->NuocThaiNhaMay->set($nuocthainhamay);
-            
+
             if ($this->NuocThaiNhaMay->validates()) {
-                try{
-                    $saved=$this->NuocThaiNhaMay->save();
+                try {
+                    $saved = $this->NuocThaiNhaMay->save();
                 } catch (Exception $ex) {
+                    
                 }
                 if ($saved) {
                     $current_doanhnghiep = $this->DoanhNghiep->findByColma($savingDoanhNghiep['DoanhNghiep']['colMa']);
-                    $listnuocthainhamay = $this->DoanhNghiep->NuocThaiNhaMay->find('all', array('conditions' => array('colCSSX' => $savingDoanhNghiep['DoanhNghiep']['colMa']), 'order' => array('NuocThaiNhaMay.colThang' => 'ASC','NuocThaiNhaMay.created' => 'ASC')));
+                    $listnuocthainhamay = $this->DoanhNghiep->NuocThaiNhaMay->find('all', array('conditions' => array('colCSSX' => $savingDoanhNghiep['DoanhNghiep']['colMa']), 'order' => array('NuocThaiNhaMay.colThang' => 'ASC', 'NuocThaiNhaMay.created' => 'ASC')));
                     if ($current_doanhnghiep) {
                         $this->Session->write('savingDoanhNghiep', $current_doanhnghiep);
                         echo json_encode($listnuocthainhamay);
                     }
                 }
             }
-           
         }
     }
 
@@ -1393,8 +1399,8 @@ class DoanhNghiepsController extends AdminAppController {
                     
                 }
                 exit;
-            }elseif($type==100){
-                 //xoa file khoi danh sach bao cao chat thai nguy hai
+            } elseif ($type == 100) {
+                //xoa file khoi danh sach bao cao chat thai nguy hai
                 $this->loadModel('Admin.Hosokemtheo');
                 try {
                     if ($this->Hosokemtheo->delete(array('id' => $id))) {
@@ -1406,8 +1412,8 @@ class DoanhNghiepsController extends AdminAppController {
                     
                 }
                 exit;
-            }elseif($type==200){
-                 //xoa van ban phap quy
+            } elseif ($type == 200) {
+                //xoa van ban phap quy
                 $this->loadModel('Admin.Vanbanphapquy');
                 try {
                     if ($this->Vanbanphapquy->delete(array('id' => $id))) {
@@ -1670,7 +1676,7 @@ class DoanhNghiepsController extends AdminAppController {
                 $this->request->data = $chat_thai_nguy_hai;
                 //cap nhat thong tin chat thai nguy hai
                 $this->render('Admin.Baocao/_capnhatchatthainguyhaituxuly');
-            }elseif($type==15){
+            } elseif ($type == 15) {
                 //cap nhat file
                 if (!$id) {
                     throw new NotFoundException();
