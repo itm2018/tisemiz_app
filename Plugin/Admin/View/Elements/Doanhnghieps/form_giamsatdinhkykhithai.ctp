@@ -1,10 +1,12 @@
 <p><h3>4.1. GIÁM SÁT ĐỊNH KỲ KHÍ THẢI</h3></p>
 
 <?php echo $this->Form->create('KetQuaGiamSatDinhKyKhiThai', array('method' => 'post', 'class' => 'form-horizontal', 'role' => 'form', 'id' => 'FormKetQuaGiamSatDinhKyKhiThai')); ?>
+<?php echo $this->Form->hidden('type', array('value' => 1)); ?>
+<?php echo $this->Form->hidden('id'); ?>
 <div class="form-group">
     <label class="col-sm-2 control-label">Vị trí đo</label>
     <?php
-    echo $this->Form->input('id_vi_tri_do', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control requiredInput'))
+    echo $this->Form->input('vi_tri', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control requiredInput'))
     ?>
 </div>
 <div class="form-group">
@@ -43,12 +45,13 @@
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
         <?php
-        echo $this->Form->button(__('Kết quả giám sát'), array('class' => 'btn btn-primary',
-            'div' => false, 'label' => false, 'type' => 'button', 'id' => 'btn-nhap-kqgsdk-khithai'));
+//        echo $this->Form->button(__('Kết quả giám sát'), array('class' => 'btn btn-primary',
+//            'div' => false, 'label' => false, 'type' => 'button', 'id' => 'btn-nhap-kqgsdk-khithai'));
         ?>
     </div>
 </div>
 <?php echo $this->Form->end(); ?>
+<div class="scroll">
 <table class="table">
     <thead>
         <tr>
@@ -64,41 +67,45 @@
             <th>
                 Ngày nhập
             </th>
+            <th>KQGS</th>
             <th>
                 Xóa
             </th>
         </tr>
     </thead>
-    <tbody id="list-vitrido">
-        <?php if (isset($listnguyenlieu) && count($listnguyenlieu)): ?>
+    <tbody id="list-vitridokhithai">
+        <?php if (isset($vitridokhithai) && count($vitridokhithai)): ?>
             <?php $i = 0; ?>
-            <?php foreach ($listnguyenlieu as $nl): ?>
-                <tr class="<?php echo $classes[$i]; ?>">
+            <?php $stt = 1; ?>
+            <?php foreach ($vitridokhithai as $point): ?>
+                <tr class="<?php echo $classes[$i]; ?>" title="click để cập nhật">
+                    <input type="hidden" name="id" value="<?php echo h($point['ViTriDoKhiThai']['id']) ?>"/>
+                    <td style="display: none" class="mota"><?php echo h($point['ViTriDoKhiThai']['mota'])?></td>
                     <td>
-                        <?php echo $nl['NguyenLieuSanPham']['colThang'] ?>
+                        <?php echo $stt ?>
+                    </td>
+                    <td class="vitri">
+                        <?php echo h($point['ViTriDoKhiThai']['vi_tri']) ?>
+                    </td>
+                    <td class="ngaygiamsat">
+                        <?php echo date('d/m/Y', strtotime($point['ViTriDoKhiThai']['ngay_giam_sat'])) ?>
+                    </td>
+                    <td class="ngaynhap">
+                        <?php echo!empty($point['ViTriDoKhiThai']['ngay_nhap']) ? date('d/m/Y', strtotime($point['ViTriDoKhiThai']['ngay_nhap'])) : ''; ?>
                     </td>
                     <td>
-                        <input type="hidden" name="colMa" value="<?php echo $nl['NguyenLieuSanPham']['colMa'] ?>">
-                        <?php echo $nl['NguyenLieuSanPham']['colNam'] ?>
+                        <?php
+                        echo $this->Form->button(__('Kết quả giám sát'), array('class' => 'btn btn-primary',
+                            'div' => false, 'label' => false, 'type' => 'button', 'id' => 'btn-nhap-kqgsdk-khithai','onclick'=>'javascript:PopUpUpdate(30,'.h($point['ViTriDoKhiThai']['id']).')'));
+                        ?>
                     </td>
                     <td>
-                        <?php echo $nl['Nguyenlieu']['tennguyenlieu'] ?>
-                    </td>
-                    <td>
-                        <?php echo $nl['NguyenLieuSanPham']['colDonVi'] ?>
-                    </td>
-                    <td>
-                        <?php echo $nl['NguyenLieuSanPham']['colLuongSD'] ?>
-                    </td>
-                    <td>
-                        <?php echo $nl['NguyenLieuSanPham']['colLuongDTru'] ?>
-                    </td>
-                    <td>
-                        <input type="checkbox" name="deleterow<?php echo $nl['NguyenLieuSanPham']['colMa'] ?>">
+                        <input type="checkbox" name="deleterow<?php echo $point['ViTriDoKhiThai']['id'] ?>">
                     </td>
                 </tr>
                 <?php
                 ++$i;
+                ++$stt;
                 if ($i == 3) {
                     $i = 0;
                 }
@@ -108,45 +115,63 @@
     </tbody>
     <tbody>
         <tr>
-            <td colspan="4">
+            <td colspan="5">
             </td>
             <td>
-                <button type="submit" name="delete" class="btn btn-danger" id="button-xoa-nguyenlieu-doanhnghiep">Xóa</button>
+                <button type="submit" name="delete" class="btn btn-danger" id="button-xoa-vitrido-doanhnghiep">Xóa</button>
             </td>
         </tr>
     </tbody>
 </table>
+    </div>
 <script type="text/javascript">
     $(function() {
+        $(document).tooltip();
         $('#ngaygiamsat').datepicker();
         $('#ngaynhap').datepicker();
         $('#btn-luu-thongtin-nguyenlieusx').bind('click', function() {
 
         });
-        $('#btn-nhap-kqgsdk-khithai').bind('click', function() {
-            PopUpUpdate(3,1);
-        });
-        $('#button-xoa-nguyenlieu-doanhnghiep').bind('click', function() {
+//        $('#btn-nhap-kqgsdk-khithai').bind('click', function() {
+//            PopUpUpdate(3, 1);
+//        });
+        $('#button-xoa-vitrido-doanhnghiep').bind('click', function() {
             var list_colMa = [];
-            $('#list-materials tr').each(function() {
-                var colMa = $(this).find('input[name="colMa"]').first();
+            $('#list-vitridokhithai tr').each(function() {
+                var id = $(this).find('input[name="id"]').first();
                 var checkbox = $(this).find('input[type="checkbox"]');
                 if (checkbox.prop('checked') == true) {
-                    list_colMa.push(colMa.val());
+                    list_colMa.push(id.val());
                 }
             });
             if (list_colMa.length == 0) {
-                alert('Xin chọn nguyên liệu cần xóa');
+                alert('Xin chọn vị trí đo cần xóa');
                 return false;
             }
-            if (confirm('Bạn xác nhận muốn xóa những nguyên liệu này khỏi danh sách hiện tại')) {
-                xoaDanhsachNguyenlieu(list_colMa);
+            if (confirm('Bạn xác nhận muốn xóa những vị trí này khỏi danh sách hiện tại')) {
+                xoaDanhSachVitrido(list_colMa);
             } else {
                 return false;
             }
         });
-        var validation_nguyenlieu = Validator.init('#FormNguyenLieuSanPham', 'doAddNguyenLieuSX');
+//        var validation_nguyenlieu = Validator.init('#FormNguyenLieuSanPham', 'doAddNguyenLieuSX');
+        $('#list-vitridokhithai tr').bind('click', function() {
+            var vitri = $.trim($(this).find('.vitri').html());
+            $('#KetQuaGiamSatDinhKyKhiThaiViTri').val(vitri);
+            var id = $(this).children('input[name="id"]').val();
+            $('#KetQuaGiamSatDinhKyKhiThaiId').val(id);
+            var ngaygiamsat=$.trim($(this).children('.ngaygiamsat').html());
+            $('#ngaygiamsat').val(ngaygiamsat);
+            var ngaynhap=$.trim($(this).children('.ngaynhap').html());
+            $('#ngaynhap').val(ngaynhap);
+            var mota=$.trim($(this).children('.mota').text());
+//            $('#mota').html(mota);
+            tinyMCE.activeEditor.setContent(mota);
+        });
     });
+    function copydata() {
+
+    }
     function doAddNguyenLieuSX() {
         $.ajax({
             beforeSend: function(XMLHttpRequest) {
@@ -177,14 +202,14 @@
                         i = 0;
                     }
                 });
-                $('#list-materials').html(html);
+                $('#list-vitridokhithai').html(html);
                 $('#btn-reset-nguyenlieusanpham').trigger('click');
             },
             url: "<?php echo Router::url('/admin/doanhnghiep/themnguyenlieudoanhnghiep') ?>"
         });
         return false;
     }
-    function xoaDanhsachNguyenlieu(list_colMa) {
+    function xoaDanhSachVitrido(list_colMa) {
         $.ajax({
             beforeSend: function(XMLHttpRequest) {
                 showLoading();
@@ -197,7 +222,7 @@
             success: function(data, textStatus) {
                 window.location.reload();
             },
-            url: "<?php echo Router::url('/admin/doanhnghiep/xoadanhsachnguyenlieudoanhnghiep') ?>"
+            url: "<?php echo Router::url('/admin/doanhnghiep/xoadanhsachvitrido') ?>"
         });
         return false;
     }

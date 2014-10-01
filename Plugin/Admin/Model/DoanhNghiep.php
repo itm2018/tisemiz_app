@@ -99,12 +99,12 @@ class DoanhNghiep extends AdminAppModel {
         'SanPhamDoanhNghiep' => array(
             'className' => 'Admin.SanPhamDoanhNghiep',
             'foreignKey' => 'colCSSX',
-            'order'=>'stt asc'
+            'order' => 'stt asc'
         ),
         'NguyenLieuSanPham' => array(
             'className' => 'Admin.NguyenLieuSanPham',
             'foreignKey' => 'colCSSX',
-            'order'=>'stt asc'
+            'order' => 'stt asc'
         ),
         'NhienLieuDoanhNghiep' => array(
             'className' => 'Admin.NhienLieuDoanhNghiep',
@@ -149,7 +149,7 @@ class DoanhNghiep extends AdminAppModel {
         'ChatThaiNguyHaiThongThuong' => array(
             'className' => 'Admin.ChatThaiNguyHai',
             'foreignKey' => 'colCSSX',
-            'conditions' => array('ChatThaiNguyHaiThongThuong.is_tonluu' => 0,'ChatThaiNguyHaiThongThuong.is_phatsinhthuongxuyen' => 0,'ChatThaiNguyHaiThongThuong.is_tuxuly' => 0)
+            'conditions' => array('ChatThaiNguyHaiThongThuong.is_tonluu' => 0, 'ChatThaiNguyHaiThongThuong.is_phatsinhthuongxuyen' => 0, 'ChatThaiNguyHaiThongThuong.is_tuxuly' => 0)
         ),
         'ChatThaiNguyHaiTonLuu' => array(
             'className' => 'Admin.ChatThaiNguyHai',
@@ -178,9 +178,24 @@ class DoanhNghiep extends AdminAppModel {
             'className' => 'Admin.DoanhNghiep',
             'foreignKey' => 'colMaDNME',
         ),
-        'Baocaochatthainguyhai'=>array(
-            'className'=>'Admin.Baocaochatthainguyhai',
-            'foreignKey'=>'colCSSX'
+        'Baocaochatthainguyhai' => array(
+            'className' => 'Admin.Baocaochatthainguyhai',
+            'foreignKey' => 'colCSSX'
+        ),
+        'ViTriDoKhiThai' => array(
+            'className' => 'Admin.ViTriDo',
+            'foreignKey' => 'colCSSX',
+            'conditions' => array('ViTriDoKhiThai.type' => 1)
+        ),
+        'ViTriDoNuocThai' => array(
+            'className' => 'Admin.ViTriDo',
+            'foreignKey' => 'colCSSX',
+            'conditions' => array('ViTriDoNuocThai.type' => 2)
+        ),
+        'ViTriDoDoRung' => array(
+            'className' => 'Admin.ViTriDo',
+            'foreignKey' => 'colCSSX',
+            'conditions' => array('ViTriDoDoRung.type' => 3)
         )
     );
     public $belongsTo = array(

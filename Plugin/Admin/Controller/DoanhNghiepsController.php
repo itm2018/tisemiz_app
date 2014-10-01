@@ -251,7 +251,31 @@ class DoanhNghiepsController extends AdminAppController {
     }
 
     public function step4Giamsatdinhky() {
-        
+        //kiem tra thong tin doanh nghiep dang nhap
+        $savingDoanhNghiep = $this->Session->read('savingDoanhNghiep');
+        if (!isset($savingDoanhNghiep['DoanhNghiep']) || empty($savingDoanhNghiep['DoanhNghiep'])) {
+            $this->Session->setFlash('Xin nhập thông tin doanh nghiệp');
+            $this->redirect('/admin/doanhnghiep/themmoi');
+        }
+        if($this->request->is('post')||$this->request->is('put')){
+            $this->loadModel('Admin.ViTriDo');
+            $data=$this->request->data['KetQuaGiamSatDinhKyKhiThai'];
+            $data['colCSSX']=$savingDoanhNghiep['DoanhNghiep']['colMa'];
+            $this->ViTriDo->set($data);
+            if($this->ViTriDo->validates()){
+               if($this->ViTriDo->save()){
+                   $this->Session->setFlash('Lưu thành công','default',array('class'=>'success'));
+                   $this->redirect($this->here);
+               }else{
+                   $this->Session->setFlash('Có lỗi xảy ra. Kiểm tra kết nối');
+               }
+            }
+        }
+        $this->loadModel('Admin.DoanhNghiep');
+        $vitridokhithai=$this->DoanhNghiep->ViTriDoKhiThai->find('all',array('conditions'=>array('colCSSX'=>$savingDoanhNghiep['DoanhNghiep']['colMa'])));
+        $this->set('vitridokhithai',$vitridokhithai);
+        $classes = array('none', 'active', 'success', 'warning');
+        $this->set('classes', $classes);
     }
 
     public function step5Hoatdongbaovemoitruong() {
@@ -770,6 +794,30 @@ class DoanhNghiepsController extends AdminAppController {
                     }
                 }
             }
+            elseif($type==30){
+//                pr($colMa);
+                $this->loadModel('Admin.ViTriDo');
+                $vitrodo=$this->ViTriDo->findById($colMa);
+                if(!empty($vitrodo)){
+                    $this->set('vitrido',$vitrodo);
+                }else{
+                    throw new NotFoundException();
+                }
+                if($this->request->is('post')||$this->request->is('put')){
+                    $this->loadModel('Admin.KetQuaGiamSatDinhKyKhiThai');
+                    $data=$this->request->data['KetQuaGiamSatDinhKyKhiThai'];
+                    $this->KetQuaGiamSatDinhKyKhiThai->set($data);
+                    if($this->KetQuaGiamSatDinhKyKhiThai->validates()){
+                        $saveOk=$this->KetQuaGiamSatDinhKyKhiThai->save();
+                        if($saveOk){
+                            $this->Session->setFlash('Lưu thành công','default',array('class'=>'success'));
+                        }else{
+                            $this->Session->setFlash('Lỗi trong quá trình lưu thông tin. Xin kiểm tra lại kết nối');
+                        }
+                    }
+                }
+                $this->render('Admin.Giamsatdinhky/_ketquagiamsatkhithai');
+            }
         }
     }
 
@@ -972,6 +1020,17 @@ class DoanhNghiepsController extends AdminAppController {
             $this->loadModel('Admin.ChatThaiNguyHai');
             if ($this->ChatThaiNguyHai->deleteAll(array('ChatThaiNguyHai.colMa' => $colMas))) {
                 $this->Session->setFlash('Đã xóa thông tin ra khỏi danh sách biện pháp xử lý chất thải nguy hại của doanh nghiệp', 'default', array('class' => 'success'));
+            }
+        }
+    }
+    public function xoadanhsachvitrido(){
+        $this->layout = false;
+        $this->autoRender = false;
+        if ($this->request->is('post')) {
+            $colMas = $this->request->data['listcolMa'];
+            $this->loadModel('Admin.ViTriDo');
+            if ($this->ViTriDo->deleteAll(array('ViTriDo.id' => $colMas))) {
+                $this->Session->setFlash('Đã xóa thông tin ra khỏi danh sách vị trí đo', 'default', array('class' => 'success'));
             }
         }
     }

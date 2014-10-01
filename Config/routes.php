@@ -43,6 +43,7 @@ Router::connect('/admin/doanhnghiep/xoadanhsachbienphapxulyonrungdoanhnghiep', a
 Router::connect('/admin/doanhnghiep/xoadanhsachbienphapxulyracthaisinhhoat', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'xoadanhsachbienphapxulyracthaisinhhoat'));
 Router::connect('/admin/doanhnghiep/xoadanhsachbienphapxulychatthaicongnghiep', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'xoadanhsachbienphapxulychatthaicongnghiep'));
 Router::connect('/admin/doanhnghiep/xoadanhsachbienphapxulychatthainguyhai', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'xoadanhsachbienphapxulychatthainguyhai'));
+Router::connect('/admin/doanhnghiep/xoadanhsachvitrido', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'xoadanhsachvitrido'));
 Router::connect('/admin/commonfunction/chucnang/type/:type', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'chucnang'), array('pass' => array('type'), 'type' => '[0-9]{1,3}'));
 Router::connect('/admin/commonfunction/chucnang/type/:type/id_dn/:colMa', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'chucnang'), array('pass' => array('type','colMa'), 'type' => '[0-9]{1,3}'));
 Router::connect('/admin/commonfunction/capnhat/type/:type/id/:id', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'capnhat'), array('pass' => array('type', 'id'), 'type' => '[0-9]{1,3}', 'id' => '[0-9]{1,11}'));

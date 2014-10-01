@@ -221,3 +221,11 @@ select.error{
     width: 40%;
     margin: 0 auto;
 }
+.table tr:hover{
+    background: #ccc;
+    cursor: pointer;
+}
+.scroll{
+    max-height: 300px;
+    overflow: scroll;
+}
