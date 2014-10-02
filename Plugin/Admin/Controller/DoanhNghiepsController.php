@@ -803,19 +803,22 @@ class DoanhNghiepsController extends AdminAppController {
                 }else{
                     throw new NotFoundException();
                 }
+                $this->loadModel('Admin.KetQuaGiamSatDinhKyKhiThai');
                 if($this->request->is('post')||$this->request->is('put')){
-                    $this->loadModel('Admin.KetQuaGiamSatDinhKyKhiThai');
                     $data=$this->request->data['KetQuaGiamSatDinhKyKhiThai'];
                     $this->KetQuaGiamSatDinhKyKhiThai->set($data);
                     if($this->KetQuaGiamSatDinhKyKhiThai->validates()){
                         $saveOk=$this->KetQuaGiamSatDinhKyKhiThai->save();
                         if($saveOk){
                             $this->Session->setFlash('Lưu thành công','default',array('class'=>'success'));
+                            $this->redirect($this->here);
                         }else{
                             $this->Session->setFlash('Lỗi trong quá trình lưu thông tin. Xin kiểm tra lại kết nối');
                         }
                     }
                 }
+                $list_ketqua=$this->KetQuaGiamSatDinhKyKhiThai->find('all',array('conditions'=>array('id_vi_tri_do'=>$colMa)));
+                $this->set('list_ketqua',$list_ketqua);
                 $this->render('Admin.Giamsatdinhky/_ketquagiamsatkhithai');
             }
         }
@@ -1031,6 +1034,17 @@ class DoanhNghiepsController extends AdminAppController {
             $this->loadModel('Admin.ViTriDo');
             if ($this->ViTriDo->deleteAll(array('ViTriDo.id' => $colMas))) {
                 $this->Session->setFlash('Đã xóa thông tin ra khỏi danh sách vị trí đo', 'default', array('class' => 'success'));
+            }
+        }
+    }
+    public function xoadanhsachketquagiamsat(){
+        $this->layout = false;
+        $this->autoRender = false;
+        if ($this->request->is('post')) {
+            $colMas = $this->request->data['listcolMa'];
+            $this->loadModel('Admin.KetQuaGiamSatDinhKyKhiThai');
+            if ($this->KetQuaGiamSatDinhKyKhiThai->deleteAll(array('KetQuaGiamSatDinhKyKhiThai.id' => $colMas))) {
+                $this->Session->setFlash('Đã xóa thông tin ra khỏi danh sách kết quả giám sát', 'default', array('class' => 'success'));
             }
         }
     }
