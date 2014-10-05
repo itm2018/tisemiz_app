@@ -1,11 +1,15 @@
 <h2>NHẬP THÔNG TIN - Kết quả giám sát khí thải</h2>
 <?php echo $this->Form->create('KetQuaGiamSatDinhKyKhiThai') ?>
-<?php echo $this->Form->hidden('id_vi_tri_do', array('value' => $vitrido['ViTriDo']['id'])) ?>
+<?php echo $this->Form->hidden('id_vi_tri_do', array('value' => isset($vitrido['ViTriDo']['id'])
+		?$vitrido['ViTriDo']['id']:'')) ?>
 <?php echo $this->Form->hidden('id') ?>
 <table class="">
     <tr>
         <th>Giám sát<span class="required">(*)</span> </th>
-        <td><?php echo $this->Form->input('vi_tri', array('value' => $vitrido['ViTriDo']['vi_tri'], 'disabled' => 'disabled', 'div' => false, 'label' => false)) ?></td>
+        <td><?php echo $this->Form->input('vi_tri', array('value' => isset($vitrido['ViTriDo']['vi_tri'])
+			?$vitrido['ViTriDo']['vi_tri']:'',
+			'disabled' => 'disabled', 'div' => false,
+														  'label' => false)) ?></td>
     </tr>
     <tr>
         <th>Chỉ tiêu<span class="required">(*)</span> </th>
@@ -29,7 +33,7 @@
     </tr>
     <tr>
         <td colspan="2"><input type="submit" value="Đồng ý" class="btn btn-primary">
-            <input type="button" onclick="window.opener.location.reload(); window.close();" value="Kết thúc" class="btn btn-custom-secondary"></td>
+            <input type="button" onclick="window.close();" value="Kết thúc" class="btn btn-custom-secondary"></td>
     </tr>
 </table>
 <?php echo $this->Form->end();?>
@@ -41,7 +45,7 @@
             <th>Giá trị cận trên</th>
             <th>Giá trị cận dưới</th>
             <th>Giá trị cận trung bình</th>
-            <th>Ghichú</th>
+            <th>Ghi  	chú</th>
             <th>Xóa</th>
         </tr>
     </thead>
@@ -118,7 +122,7 @@
             success: function(data, textStatus) {
                 window.location.reload();
             },
-            url: "<?php echo Router::url('/admin/doanhnghiep/xoadanhsachketquagiamsat') ?>"
+            url: "<?php echo Router::url('/admin/doanhnghiep/xoadanhsachketquagiamsatkhithai') ?>"
         });
         return false;
     }

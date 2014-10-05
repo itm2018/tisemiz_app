@@ -57,8 +57,11 @@
                             <a id="step2-panel-nguyenlieu" href="#panel-nguyenlieu" data-toggle="tab">Nguyên liệu</a>
                         </li>
                         <li class="canclick">
-                            <a id="step2-panel-diennuoc" href="#panel-diennuoc" data-toggle="tab">Điện nước</a>
+                            <a id="step2-panel-dien" href="#panel-dien" data-toggle="tab">Điện</a>
                         </li>
+						<li class="canclick">
+							<a id="step2-panel-nuoc" href="#panel-nuoc" data-toggle="tab">Nước</a>
+						</li>
                         <li class="canclick">
                             <a id="step2-panel-nuocngam" href="#panel-nuocngam" data-toggle="tab">Nước ngầm</a>
                         </li>
@@ -67,7 +70,7 @@
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane active" id="panel-tongquan">
+                        <div class="tab-pane<?php if(!$activetab) echo ' active'?>" id="panel-tongquan">
                             <!--form thong tin hoat dong san xuat -->
                             <?php echo $this->element('Admin.Doanhnghieps/form_hoatdongsanxuat'); ?>
                             <!--end form thong tin hoat dong san xuat-->
@@ -83,11 +86,16 @@
                             <?php echo $this->element('Admin.Doanhnghieps/form_nguyenlieusanpham'); ?>
                             <!--end form nguyen lieu-->
                         </div>
-                        <div class="tab-pane" id="panel-diennuoc">
+                        <div class="tab-pane" id="panel-dien">
                             <!--form dien nươc-->
                             <?php echo $this->element('Admin.Doanhnghieps/form_diennuocdoanhnghiep'); ?>
                             <!--end form dien nuoc-->
                         </div>
+						<div class="tab-pane" id="panel-nuoc">
+							<!--form nươc-->
+							<?php echo $this->element('Admin.Doanhnghieps/form_nuocdoanhnghiep'); ?>
+							<!--end form nuoc-->
+						</div>
                         <div class="tab-pane" id="panel-nuocngam">
                             <!--form nuoc ngam-->
                             <?php echo $this->element('Admin.Doanhnghieps/form_nuocngamdoanhnghiep'); ?>
@@ -127,15 +135,43 @@
 //    var fullbaseUrl = '<?php // echo Router::fullBaseUrl() ?>';
 //    var baseUrl = '<?php // echo Router::url('/admin/doanhnghiep/themmoi/step2') ?>';
     $(function() {
+		$('.table').tooltip();
         $('ul.nav-tabs li').click(function(event) {
             if (!$(this).hasClass('active') && !$(this).hasClass('canclick')) {
                 alert('Vui lòng nhập thông tin hoạt động sản xuất');
                 return false;
             }
         });
-//        $('#step2-panel-sanpham').bind('click', function() {
-//            window.location.href = fullbaseUrl + baseUrl + '/panel-sanpham';
-//        });
+		<?php if(isset($activetab) && $activetab=='sanpham'):?>
+			$('#panel-sanpham').addClass('active');
+			$('a[href="#panel-sanpham"]').parent('li').addClass('active');
+		 	$('a[href="#panel-sanpham"]').parent('li').parent('ul').children('li:first').removeClass('active');
+		<?php endif;?>
+		<?php if(isset($activetab) && $activetab=='nguyenlieu'):?>
+		$('#panel-nguyenlieu').addClass('active');
+		$('a[href="#panel-nguyenlieu"]').parent('li').addClass('active');
+		$('a[href="#panel-nguyenlieu"]').parent('li').parent('ul').children('li:first').removeClass('active');
+		<?php endif;?>
+		<?php if(isset($activetab) && $activetab=='dien'):?>
+		$('#panel-dien').addClass('active');
+		$('a[href="#panel-dien"]').parent('li').addClass('active');
+		$('a[href="#panel-dien"]').parent('li').parent('ul').children('li:first').removeClass('active');
+		<?php endif;?>
+		<?php if(isset($activetab) && $activetab=='nuoc'):?>
+		$('#panel-nuoc').addClass('active');
+		$('a[href="#panel-nuoc"]').parent('li').addClass('active');
+		$('a[href="#panel-nuoc"]').parent('li').parent('ul').children('li:first').removeClass('active');
+		<?php endif;?>
+		<?php if(isset($activetab) && $activetab=='nuocngam'):?>
+		$('#panel-nuocngam').addClass('active');
+		$('a[href="#panel-nuocngam"]').parent('li').addClass('active');
+		$('a[href="#panel-nuocngam"]').parent('li').parent('ul').children('li:first').removeClass('active');
+		<?php endif;?>
+		<?php if(isset($activetab) && $activetab=='nhienlieu'):?>
+		$('#panel-nhienlieu').addClass('active');
+		$('a[href="#panel-nhienlieu"]').parent('li').addClass('active');
+		$('a[href="#panel-nhienlieu"]').parent('li').parent('ul').children('li:first').removeClass('active');
+		<?php endif;?>
     });
 </script>
 <?php echo $this->element('Admin.Doanhnghieps/backend.js'); ?>

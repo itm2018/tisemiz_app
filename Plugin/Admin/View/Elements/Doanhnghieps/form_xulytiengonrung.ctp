@@ -253,21 +253,9 @@
             return false;
         }
         function xoaDanhSachBienPhapXuLyOnRung(list_colMa) {
-            $.ajax({
-                beforeSend: function(XMLHttpRequest) {
-                    showLoading();
-                },
-                complete: function(XMLHttpRequest, textStatus) {
-                    hideLoading();
-                },
-                data: {listcolMa: list_colMa},
-                type: "post",
-                success: function(data, textStatus) {
-                    //                console.log(data)
-                    window.location.reload();
-                },
-                url: "<?php echo Router::url('/admin/doanhnghiep/xoadanhsachbienphapxulyonrungdoanhnghiep') ?>"
-            });
+			var data={listcolMa: list_colMa},
+				url="<?php echo Router::url('/admin/doanhnghiep/xoadanhsachbienphapxulyonrungdoanhnghiep') ?>";
+           	doPostAjax(url,data,'redirecttiengonrung');
             return false;
         }
         function echoBoolValue(value) {

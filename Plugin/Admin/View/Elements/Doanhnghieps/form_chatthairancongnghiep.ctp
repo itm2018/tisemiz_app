@@ -13,10 +13,10 @@
                 Tổng khối lượng
             </th>
             <th>
-                Nguồn phát sinh chủ yếu
+                Nguồn phát sinh<br> chủ yếu
             </th>
             <th>
-                Hình thức lưu giữ
+                Hình thức<br> lưu giữ
             </th>
             <th>
                 Bán ra
@@ -30,6 +30,9 @@
             <th>
                 Định kỳ thu mua
             </th>
+			<th>
+				Ghi chú
+			</th>
             <th>
                 Xóa
             </th>
@@ -252,21 +255,9 @@
         return false;
     }
     function xoaDanhSachBienPhapChatThaiCongNghiep(list_colMa) {
-        $.ajax({
-            beforeSend: function(XMLHttpRequest) {
-                showLoading();
-            },
-            complete: function(XMLHttpRequest, textStatus) {
-                hideLoading();
-            },
-            data: {listcolMa: list_colMa},
-            type: "post",
-            success: function(data, textStatus) {
-                //                console.log(data)
-                window.location.reload();
-            },
-            url: "<?php echo Router::url('/admin/doanhnghiep/xoadanhsachbienphapxulychatthaicongnghiep') ?>"
-        });
+        var data={listcolMa: list_colMa},
+			url= "<?php echo Router::url('/admin/doanhnghiep/xoadanhsachbienphapxulychatthaicongnghiep') ?>";
+		doPostAjax(url,data,'redirectchatthaicongnghiep');
         return false;
     }
     function echoBoolValue(value) {

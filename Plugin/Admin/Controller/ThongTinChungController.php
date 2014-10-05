@@ -14,7 +14,7 @@ App::uses('Common', 'Admin.Lib');
  * @author cahs <huynhsonca@gmail.com>
  */
 class ThongTinChungController extends AdminAppController {
-
+	public $helpers = array('Paginator');
     public $layout = 'admin/backward';
 
     public function chatthai() {

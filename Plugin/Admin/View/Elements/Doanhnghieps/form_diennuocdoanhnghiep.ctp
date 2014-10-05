@@ -1,46 +1,55 @@
-<p><h3>2.3.ĐIỆN NƯỚC</h3></p>
+<p><h3>2.3.1 ĐIỆN</h3></p>
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th rowspan="2">
                 Tháng
             </th>
-            <th>
+            <th rowspan="2">
                 Năm
             </th>
-            <th>
+            <th rowspan="2">
                 Loại tiêu thụ
             </th>
-            <th>
+            <th rowspan="2">
                 Lưu lượng sử dụng
             </th>
-            <th>
+            <th rowspan="2">
                 Số ngày sử dụng
             </th>
-            <th>
-                Xóa
+            <th colspan="2" class="center">
+                Chức năng
             </th>
         </tr>
+		<tr>
+			<th>Cập nhật</th>
+			<th>Xóa</th>
+		</tr>
     </thead>
     <tbody id="list-diennuoc">
-        <?php if (isset($listdiennuoc) && count($listdiennuoc)): ?>
+        <?php if (isset($listdien) && count($listdien)): ?>
             <?php $i = 0; ?>
-            <?php foreach ($listdiennuoc as $pw): ?>
+            <?php foreach ($listdien as $pw): ?>
                 <tr class="<?php echo $classes[$i]; ?>">
-                    <td><?php echo $pw['DienNuocDoanhNghiep']['colThang'] ?></td>
+                    <td><?php echo h($pw['DienNuocDoanhNghiep']['colThang']) ?></td>
                     <td>
-                        <input type="hidden" name="colMa" value="<?php echo $pw['DienNuocDoanhNghiep']['colMa'] ?>">
-                        <?php echo $pw['DienNuocDoanhNghiep']['colNam'] ?>
+                        <input type="hidden" name="colMa" value="<?php echo h($pw['DienNuocDoanhNghiep']['colMa']) ?>">
+                        <?php echo h($pw['DienNuocDoanhNghiep']['colNam']) ?>
                     </td>
                     <td>
-                        <?php echo $pw['DienNuocDoanhNghiep']['colLoaiTThu'] ?>
+                        <?php echo h($pw['DienNuocDoanhNghiep']['colLoaiTThu']) ?>
                     </td>
                     <td>
-                        <?php echo $pw['DienNuocDoanhNghiep']['colLuongSD'] ?>
+                        <?php echo h($pw['DienNuocDoanhNghiep']['colLuongSD']) ?>
                     </td>
                     <td>
-                        <?php echo $pw['DienNuocDoanhNghiep']['colSoNgaySuDung'] ?>
+                        <?php echo h($pw['DienNuocDoanhNghiep']['colSoNgaySuDung']) ?>
                     </td>
+					<td><button title="Ấn để cập nhật" type="button"
+								class="btn
+				btn-edit" onclick="javascript:loadData(1010,<?php echo h($pw['DienNuocDoanhNghiep']['colMa'])?>);
+							"></button>
+					</td>
                     <td>
                         <input type="checkbox" name="deleterow<?php echo $pw['DienNuocDoanhNghiep']['colMa'] ?>">
                     </td>
@@ -55,16 +64,39 @@
 <?php endif; ?>
     </tbody>
     <tbody>
-        <tr>
-            <td colspan="5">
-            </td>
+    <form id="formupdatediennuocdoanhnghiep" method="post">
+	<tr>
             <td>
-                <button type="submit" name="delete" class="btn btn-danger" id="btn-xoa-diennuoc">Xóa</button>
+				<input type="hidden" name="colMa" class="loadData" prefix="P_">
+				<input type="hidden" name="colCSSX" class="loadData" prefix="P_">
+				<input type="text" name="colThang" class="input loadData" prefix="P_">
+            </td>
+			<td>
+				<input type="text" name="colNam" class="input loadData" prefix="P_">
+            </td>
+			<td>
+				<input type="text" name="colLoaiTThu" class="input loadData" prefix="P_">
+            </td>
+			<td>
+				<input type="text" name="colLuongSD" class="input loadData" prefix="P_">
+            </td>
+			<td>
+				<input type="text" name="colSoNgaySuDung" class="input loadData" prefix="P_">
+            </td>
+			<td>
+				<input type="button" name="submit" class="btn btn-success btn-update"
+					   onclick="javascript:updatediennuocdoanhnghiep();"
+					   value="Cập nhật">
+			</td>
+            <td>
+                <button type="button" name="delete" class="btn btn-danger" id="btn-xoa-diennuoc">Xóa</button>
             </td>
         </tr>
-    </tbody>
+	</form>
+	</tbody>
 </table>
-<?php echo $this->Form->create('DienNuocDoanhNghiep', array('method' => 'post', 'class' => 'form-horizontal', 'role' => 'form', 'id' => 'FormDienNuocDoanhNghiep')); ?>
+<?php echo $this->Form->create('DienNuocDoanhNghiep', array('method' => 'post', 'class' => 'form-horizontal', 'role' => 'form', 'id' => 'FormDienDoanhNghiep')); ?>
+<?php echo $this->Form->hidden('loai',array('value'=>1))?>
 <div class="form-group">
     <label for="inputThang" class="col-sm-2 control-label">Tháng</label>
     <?php
@@ -86,7 +118,7 @@
 <div class="form-group">
     <label for="colSoNgaySuDung" class="col-sm-2 control-label">Số ngày sử dụng</label>
     <?php
-    echo $this->Form->input('colSoNgaySuDung', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'type' => 'number', 'class' => 'form-control requiredInput',
+    echo $this->Form->input('colSoNgaySuDung', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'type' => 'number', 'class' => 'form-control',
     ));
     ?>
 </div>
@@ -125,7 +157,7 @@ echo $this->Form->input(null, array('type' => 'reset', 'class' => 'btn btn-info'
                 return false;
             }
         });
-        var validation = Validator.init('#FormDienNuocDoanhNghiep', 'doAddPowerWater');
+        var validation = Validator.init('#FormDienDoanhNghiep', 'doAddPowerWater');
     });
     function doAddPowerWater() {
         $.ajax({
@@ -135,15 +167,19 @@ echo $this->Form->input(null, array('type' => 'reset', 'class' => 'btn btn-info'
             complete: function(XMLHttpRequest, textStatus) {
                 hideLoading();
             },
-            data: $('#FormDienNuocDoanhNghiep').serialize(),
+            data: $('#FormDienDoanhNghiep').serialize(),
             type: "post",
             success: function(data, textStatus) {
+				console.log(data);
                 var html = '';
                 var powerwaters = JSON.parse(data);
                 var classes = ['', 'active', 'success', 'warning'];
                 var i = 0;
                 powerwaters.forEach(function(sp) {
-                    html += '<tr class="' + classes[i] + '"><td>' + parseInt(sp['DienNuocDoanhNghiep']['colThang']) + '</td><td><input type="hidden" name="colMa" value="' + sp['DienNuocDoanhNghiep']['colMa'] + '">' + parseInt(sp['DienNuocDoanhNghiep']['colNam']) + '</td><td>' + sp['DienNuocDoanhNghiep']['colLoaiTThu'] + '</td><td>' + parseFloat(sp['DienNuocDoanhNghiep']['colLuongSD']) + '</td><td>' + parseInt(sp['DienNuocDoanhNghiep']['colSoNgaySuDung']) + '</td><td><input type="checkbox" name="deleterow' + sp['DienNuocDoanhNghiep']['colMa'] + '"></td></tr>';
+                    html += '<tr class="' + classes[i] + '"><td>' + parseInt(sp['DienNuocDoanhNghiep']['colThang']) +
+						'</td><td><input type="hidden" name="colMa" value="' + sp['DienNuocDoanhNghiep']['colMa'] + '">' + parseInt(sp['DienNuocDoanhNghiep']['colNam']) + '</td><td>' + sp['DienNuocDoanhNghiep']['colLoaiTThu'] + '</td><td>' + sp['DienNuocDoanhNghiep']['colLuongSD'] + '</td><td>' + parseInt(sp['DienNuocDoanhNghiep']['colSoNgaySuDung']) + '</td><td><button title="Ấn để cập nhật" ' +
+						'type="button" class="btn btn-edit" onclick="javascript:loadData(1010,' +
+						'' + parseInt(sp['DienNuocDoanhNghiep']['colMa']) + ');"></button></td><td><input type="checkbox" name="deleterow' + sp['DienNuocDoanhNghiep']['colMa'] + '"></td></tr>';
                     ++i;
                     if (i == 3) {
                         i = 0;
@@ -161,20 +197,9 @@ echo $this->Form->input(null, array('type' => 'reset', 'class' => 'btn btn-info'
         $('#btn-reset-diennuoc').trigger("click");
     }
     function xoaDanhsachDiennuoc(list_colMa) {
-        $.ajax({
-            beforeSend: function(XMLHttpRequest) {
-                showLoading();
-            },
-            complete: function(XMLHttpRequest, textStatus) {
-                hideLoading();
-            },
-            data: {listcolMa: list_colMa},
-            type: "post",
-            success: function(data, textStatus) {
-                window.location.reload();
-            },
-            url: "<?php echo Router::url('/admin/doanhnghiep/xoadanhsachdiennuocdoanhnghiep') ?>"
-        });
+		var data={listcolMa: list_colMa};
+		var url="<?php echo Router::url('/admin/doanhnghiep/xoadanhsachdiennuocdoanhnghiep') ?>";
+        doPostAjax(url,data,'redirectdien');
         return false;
     }
 </script>

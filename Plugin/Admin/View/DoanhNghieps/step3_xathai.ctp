@@ -73,7 +73,7 @@
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane active" id="panel-nuocthai">
+                        <div class="tab-pane<?php if(!$activetab) echo ' active'?>" id="panel-nuocthai">
                             <!-- form thong tin nuoc thai doanh nghiep-->
                             <?php echo $this->element('Admin.Doanhnghieps/form_nuocthainhamay'); ?>
                             <!-- end form thong tin nuoc thai doanh nghiep -->
@@ -128,12 +128,43 @@
 <!-- /main-content -->
 <script type="text/javascript">
     $(function() {
+		$('.table').tooltip();
         $('ul.nav-tabs li').click(function(event) {
             if (!$(this).hasClass('active') && !$(this).hasClass('canclick')) {
                 alert('Vui lòng nhập thông tin hoạt động xả thải');
                 return false;
             }
         });
+		<?php if(isset($activetab) && $activetab=='kiemsoatnuocthai'):?>
+		$('#panel-kiemsoatnuocthai').addClass('active');
+		$('a[href="#panel-kiemsoatnuocthai"]').parent('li').addClass('active');
+		$('a[href="#panel-kiemsoatnuocthai"]').parent('li').parent('ul').children('li:first').removeClass('active');
+		<?php endif;?>
+		<?php if(isset($activetab) && $activetab=='khithai'):?>
+		$('#panel-khithai').addClass('active');
+		$('a[href="#panel-khithai"]').parent('li').addClass('active');
+		$('a[href="#panel-khithai"]').parent('li').parent('ul').children('li:first').removeClass('active');
+		<?php endif;?>
+		<?php if(isset($activetab) && $activetab=='tiengonrung'):?>
+		$('#panel-tiengonrung').addClass('active');
+		$('a[href="#panel-tiengonrung"]').parent('li').addClass('active');
+		$('a[href="#panel-tiengonrung"]').parent('li').parent('ul').children('li:first').removeClass('active');
+		<?php endif;?>
+		<?php if(isset($activetab) && $activetab=='racsinhhoat'):?>
+		$('#panel-racsinhhoat').addClass('active');
+		$('a[href="#panel-racsinhhoat"]').parent('li').addClass('active');
+		$('a[href="#panel-racsinhhoat"]').parent('li').parent('ul').children('li:first').removeClass('active');
+		<?php endif;?>
+		<?php if(isset($activetab) && $activetab=='chatthaicongnghiep'):?>
+		$('#panel-chatthaicongnghiep').addClass('active');
+		$('a[href="#panel-chatthaicongnghiep"]').parent('li').addClass('active');
+		$('a[href="#panel-chatthaicongnghiep"]').parent('li').parent('ul').children('li:first').removeClass('active');
+		<?php endif;?>
+		<?php if(isset($activetab) && $activetab=='chatthainguyhai'):?>
+		$('#panel-chatthainguyhai').addClass('active');
+		$('a[href="#panel-chatthainguyhai"]').parent('li').addClass('active');
+		$('a[href="#panel-chatthainguyhai"]').parent('li').parent('ul').children('li:first').removeClass('active');
+		<?php endif;?>
     });
 </script>
 <?php echo $this->element('Admin.Doanhnghieps/backend.js'); ?>

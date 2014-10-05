@@ -1,45 +1,56 @@
 <!--form rác thải nguy hại-->
 <p><h3>3.7. THÔNG TIN CHẤT THẢI NGUY HẠI</h3></p>
+<div class="scroll">
 <table class="table">
     <thead>
         <tr>
-            <th>
-                Năm
+			<th rowspan="2">STT</th>
+            <th rowspan="2">
+                Thời điểm
             </th>
-            <th>
+            <th rowspan="2">
                 Dạng chất thải
             </th>
-            <th>
+            <th rowspan="2">
                 Tổng khối lượng
             </th>
-            <th>
-                Nguồn phát sinh chủ yếu
+            <th rowspan="2">
+                Nguồn phát sinh<br> chủ yếu
             </th>
-            <th>
-                Hình thức lưu giữ
+            <th rowspan="2">
+                Hình thức<br> lưu giữ
             </th>
-            <th>
+            <th rowspan="2">
                 Bán ra
             </th>
-            <th>
+            <th rowspan="2">
                 Thải bỏ
             </th>
-            <th>
-                Đơn vị thu mua
+            <th rowspan="2">
+                Đơn vị<br> thu mua
             </th>
-            <th>
-                Định kỳ thu mua
+            <th rowspan="2">
+                Định kỳ<br> thu mua
             </th>
-            <th>
-                Xóa
+			<th rowspan="2">
+                Ghi chú
+            </th>
+            <th colspan="2" class="center">
+                Chức năng
             </th>
         </tr>
+		<tr>
+			<th>Cập nhật</th>
+			<th>Xóa</th>
+		</tr>
     </thead>
-    <tbody id="list-kqpt-chatthainguyhai">
+
+	<tbody id="list-kqpt-chatthainguyhai">
         <?php if (isset($listbienphapxulychatthainguyhai) && count($listbienphapxulychatthainguyhai)): ?>
-            <?php $i = 0; ?>
+            <?php $i = 0; $stt=1;?>
             <?php foreach ($listbienphapxulychatthainguyhai as $xlctNH): ?>
                 <tr class="<?php echo $classes[$i]; ?>">
+					<td><?php echo $stt?></td>
                     <td>
                         <input type="hidden" name="colMa" value="<?php echo $xlctNH['ChatThaiNguyHai']['colMa'] ?>">
                         <?php echo $xlctNH['ChatThaiNguyHai']['colThoiGian'] ? date('d/m/Y', strtotime($xlctNH['ChatThaiNguyHai']['colThoiGian'])) : '' ?>
@@ -71,12 +82,19 @@
                     <td>
                         <?php echo h($xlctNH['ChatThaiNguyHai']['colGhiChu']) ?>
                     </td>
+					<td>
+						<button title="Ấn để cập nhật" type="button"
+								class="btn
+				btn-edit" onclick="javascript:loadData(1025,<?php echo h($xlctNH['ChatThaiNguyHai']['colMa']) ?>);
+							"></button>
+					</td>
                     <td>
                         <input type="checkbox" name="deleterow<?php echo $xlctNH['ChatThaiNguyHai']['colMa'] ?>">
                     </td>
                 </tr>
                 <?php
                 ++$i;
+				++$stt;
                 if ($i == 3) {
                     $i = 0;
                 }
@@ -84,16 +102,80 @@
             <?php endforeach; ?>
         <?php endif; ?>
     </tbody>
+	</table>
+</div>
+<form id="formupdatechatthainguyhai" method="post">
+<table class="table">
     <tbody>
         <tr>
-            <td colspan="10">
-            </td>
             <td>
-                <button type="submit" name="delete" class="btn btn-danger" id="btn-xoa-chatthainguyhai">Xóa</button>
+				<input type="hidden" name="colMa" class="loadData" prefix="RH_">
+				<input type="hidden" name="colCSSX" class="loadData" prefix="RH_">
+				<input title="Thời điểm" type="text" name="colThoiGian" class="input loadData" prefix="RH_"
+					   style="width:
+				90px;" placeholder="dd/mm/yyyy">
+            </td>
+			<td>
+				<input title="Chất thải" type="text" name="colDangCThai" class="input loadData" prefix="RH_"
+					   style="max-width:
+				100px;">
+            </td>
+			<td>
+				<input title="Tổng khối lượng" type="text" name="colTongKL" class="input loadData" prefix="RH_"
+					   style="width:
+				60px;">
+            </td>
+			<td>
+				<input title="Nguồn phát sinh" type="text" name="colNguonPSinh" class="input loadData" prefix="RH_"
+					   style="max-width:
+				100px;">
+            </td>
+			<td>
+				<input title="Hình thức lưu" type="text" name="colHThucLuu" class="input loadData" prefix="RH_"
+					   style="max-width:
+				100px;">
+            </td>
+			<td>
+<!--				<input type="hidden" name="colBanRa" class="input loadData" prefix="RH_" style="width: 20px;"-->
+<!--					   id="h_colBanRa">-->
+				<input title="Bán ra" type="checkbox" name="colBanRa" class="input loadData" prefix="RH_"
+					   style="width:
+				20px;" id="c_colBanRa">
+            </td>
+			<td>
+<!--				<input type="hidden" name="colThaiBo" class="input loadData" prefix="RH_" style="width: 20px;"-->
+<!--					   id="h_colThaiBo">-->
+				<input title="Thải bỏ" type="checkbox" name="colThaiBo" class="input loadData" prefix="RH_"
+					   style="width:
+				20px;" id="c_colThaiBo">
+            </td>
+			<td>
+				<input title="DV Thu mua" type="text" name="colDViThuMua" class="input loadData" prefix="RH_"
+					   style="max-width:
+				100px;">
+            </td>
+			<td>
+				<input title="DK Thu mua" type="text" name="colDinhKyThuMua" class="input loadData" prefix="RH_"
+					   style="max-width:
+				100px;">
+            </td>
+			<td>
+				<input title="Ghi chú" type="text" name="colGhiChu" class="input loadData" prefix="RH_"
+					   style="max-width:
+				100px;">
+            </td>
+			<td>
+				<input type="button" name="submit" class="btn btn-success btn-update"
+					   onclick="javascript:updatechatthainguyhai();"
+					   value="Cập nhật">
+			</td>
+            <td>
+                <button type="button" name="delete" class="btn btn-danger" id="btn-xoa-chatthainguyhai">Xóa</button>
             </td>
         </tr>
     </tbody>
 </table>
+</form>
 <p><h3>THÔNG TIN KIỂM SOÁT CHẤT THẢI NGUY HẠI</h3></p>
 <?php echo $this->Form->create('ChatThaiNguyHai', array('method' => 'post', 'class' => 'form-horizontal', 'role' => 'form', 'id' => 'FormChatThaiNguyHai')); ?>
 <div class="form-group">
@@ -185,6 +267,13 @@
 <!--/end form rac thai nguy hại-->
 <script type="text/javascript">
     $(function() {
+		$('#h_colThaiBo').bind('change',function(){
+			var check = $(this).val();
+			alert(check);
+			if(check=="true"){
+				$('#c_colThaiBo').attr('checked','checked');
+			}
+		});
         $('#txtcolThoiGian_RacThaiNH').datepicker({numberOfMonths: 2}).next('.ui-datepicker-trigger').css({
             float: 'right',
             marginRight: '-20px',
@@ -227,19 +316,25 @@
                 var parsed = JSON.parse(data);
                 var classes = ['none', 'active', 'success', 'warning'];
                 var i = 0;
+				var stt=1;
                 parsed.forEach(function(bpxlctNH) {
-                    html += '<tr class="' + classes[i] + '">\n\
+                    html += '<tr class="' + classes[i] + '"><td>' + stt + '</td>\n\
             <td><input type="hidden" name="colMa" value="' + bpxlctNH['ChatThaiNguyHai']['colMa'] + '">' + echoDate(bpxlctNH['ChatThaiNguyHai']['colThoiGian']) + '</td>\n\
-<td>' + bpxlctNH['ChatThaiNguyHai']['colDangCThai'] + '</td><td>' + parseFloat(bpxlctNH['ChatThaiNguyHai']['colTongKL']) + '</td><td>' + echoNull(bpxlctNH['ChatThaiNguyHai']['colNguonPSinh']) + '</td>\n\
+<td>' + bpxlctNH['ChatThaiNguyHai']['colDangCThai'] + '</td><td>' + echoNull(bpxlctNH['ChatThaiNguyHai']['colTongKL']) + '</td><td>' + echoNull
+					(bpxlctNH['ChatThaiNguyHai']['colNguonPSinh']) + '</td>\n\
 <td>' + echoNull(bpxlctNH['ChatThaiNguyHai']['colHThucLuu']) + '</td>\n\
 <td>' + echoBoolValue(bpxlctNH['ChatThaiNguyHai']['colBanRa']) + '</td>\n\
 <td>' + echoBoolValue(bpxlctNH['ChatThaiNguyHai']['colThaiBo']) + '</td>\n\
 <td>' + echoNull(bpxlctNH['ChatThaiNguyHai']['colDViThuMua']) + '</td>\n\
 <td>' + echoNull(bpxlctNH['ChatThaiNguyHai']['colDinhKyThuMua']) + '</td>\n\
 <td>' + echoNull(bpxlctNH['ChatThaiNguyHai']['colGhiChu']) + '</td>\n\
+<td><button title="Ấn để cập nhật" ' +
+						'type="button" class="btn btn-edit" onclick="javascript:loadData(1025,' +
+						'' + parseInt(bpxlctNH['ChatThaiNguyHai']['colMa']) + ');"></button></td>\n\
 <td><input type="checkbox" name="deleterow' + bpxlctNH['ChatThaiNguyHai']['colMa'] + '"></td>\n\
 </tr>';
                     ++i;
+					++stt;
                     if (i == 3) {
                         i = 0;
                     }
@@ -252,21 +347,9 @@
         return false;
     }
     function xoaDanhSachBienPhapChatThaiNguyHai(list_colMa) {
-        $.ajax({
-            beforeSend: function(XMLHttpRequest) {
-                showLoading();
-            },
-            complete: function(XMLHttpRequest, textStatus) {
-                hideLoading();
-            },
-            data: {listcolMa: list_colMa},
-            type: "post",
-            success: function(data, textStatus) {
-                //                console.log(data)
-                window.location.reload();
-            },
-            url: "<?php echo Router::url('/admin/doanhnghiep/xoadanhsachbienphapxulychatthainguyhai') ?>"
-        });
+		var data={listcolMa: list_colMa},
+			url= "<?php echo Router::url('/admin/doanhnghiep/xoadanhsachbienphapxulychatthainguyhai') ?>";
+       doPostAjax(url,data,'redirectchatthainguyhai');
         return false;
     }
     

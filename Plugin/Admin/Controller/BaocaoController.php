@@ -1012,13 +1012,13 @@ class BaocaoController extends AdminAppController {
             $this->Search->set($data);
             if ($this->Search->validates()) {
                 $this->loadModel('Admin.Baocaogsmt');
-                $startdate = date_create_from_format('d/m/Y', $this->Search->data['Search']['startDate']);
-                $enddate = date_create_from_format('d/m/Y', $this->Search->data['Search']['endDate']);
+                $startDate = date_create_from_format('d/m/Y', $this->Search->data['Search']['startDate']);
+                $endDate = date_create_from_format('d/m/Y', $this->Search->data['Search']['endDate']);
                 $this->Paginator->settings = $this->paginate;
                 $result = $this->Paginator->paginate('Baocaogsmt', array(
 //                    'id_user' => $this->Auth->user('id'), //gioi han chi xem nhung bao cao user hien hanh da tao
-//					'tungay <= ' => $startdate->format('Y-m-d'),
-//					'tungay >= ' => $enddate->format('Y-m-d')
+					'tungay >= ' => $startDate->format('Y-m-d H:i:s'),
+					'denngay <= ' => $endDate->format('Y-m-d K:i:s')
                 ));
                 $this->set('result', $result);
             }

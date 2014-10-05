@@ -2,28 +2,32 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th rowspan="2">
                 Tháng
             </th>
-            <th>
+            <th rowspan="2">
                 Năm
             </th>
-            <th>
+            <th rowspan="2">
                 Nguyên liệu
             </th>
-            <th>
+            <th rowspan="2">
                 Đơn vị tính
             </th>
-            <th>
+            <th rowspan="2">
                 Lượng sử dụng
             </th>
-            <th>
+            <th rowspan="2">
                 Lượng dữ trữ
             </th>
-            <th>
-                Xóa
+            <th colspan="2" class="center">
+                Chức năng
             </th>
         </tr>
+		<tr>
+			<th>Cập nhật</th>
+			<th>Xóa</th>
+		</tr>
     </thead>
     <tbody id="list-materials">
         <?php if (isset($listnguyenlieu) && count($listnguyenlieu)): ?>
@@ -31,26 +35,31 @@
             <?php foreach ($listnguyenlieu as $nl): ?>
                 <tr class="<?php echo $classes[$i]; ?>">
                     <td>
-                        <?php echo $nl['NguyenLieuSanPham']['colThang']?>
+                        <?php echo h($nl['NguyenLieuSanPham']['colThang'])?>
                     </td>
                     <td>
                         <input type="hidden" name="colMa" value="<?php echo $nl['NguyenLieuSanPham']['colMa'] ?>">
-                        <?php echo $nl['NguyenLieuSanPham']['colNam'] ?>
+                        <?php echo h($nl['NguyenLieuSanPham']['colNam']) ?>
                     </td>
                     <td>
-                        <?php echo $nl['Nguyenlieu']['tennguyenlieu'] ?>
+                        <?php echo h($nl['Nguyenlieu']['tennguyenlieu']) ?>
                     </td>
                     <td>
-                        <?php echo $nl['NguyenLieuSanPham']['colDonVi'] ?>
+                        <?php echo h($nl['NguyenLieuSanPham']['colDonVi']) ?>
                     </td>
                     <td>
-                        <?php echo $nl['NguyenLieuSanPham']['colLuongSD'] ?>
+                        <?php echo h($nl['NguyenLieuSanPham']['colLuongSD']) ?>
                     </td>
                     <td>
-                        <?php echo $nl['NguyenLieuSanPham']['colLuongDTru'] ?>
+                        <?php echo h($nl['NguyenLieuSanPham']['colLuongDTru']) ?>
                     </td>
+					<td><button title="Ấn để cập nhật" type="button"
+								class="btn
+				btn-edit" onclick="javascript:loadData(1005,<?php echo h($nl['NguyenLieuSanPham']['colMa'])?>);
+							"></button>
+					</td>
                     <td>
-                        <input type="checkbox" name="deleterow<?php echo $nl['NguyenLieuSanPham']['colMa'] ?>">
+                        <input type="checkbox" name="deleterow<?php echo h($nl['NguyenLieuSanPham']['colMa']) ?>">
                     </td>
                 </tr>
                 <?php
@@ -63,13 +72,39 @@
 <?php endif; ?>
     </tbody>
     <tbody>
-        <tr>
-            <td colspan="6">
+        <form id="formupdatenguyenlieusanpham" method="post">
+		<tr>
+            <td>
+				<input type="hidden" name="colMa" class="loadData" prefix="M_">
+				<input type="hidden" name="colCSSX" class="loadData" prefix="M_">
+				<input type="hidden" name="colNguyenLieu" class="loadData" prefix="M_">
+				<input type="text" name="colThang" class="input loadData" prefix="M_">
             </td>
+			<td>
+				<input type="text" name="colNam" class="input loadData" prefix="M_">
+            </td>
+            <td>
+				<input type="text" name="tennguyenlieu" class="input loadData" prefix="M_" disabled="disabled">
+            </td>
+            <td>
+				<input type="text" name="colDonVi" class="input loadData" prefix="M_">
+            </td>
+            <td>
+				<input type="text" name="colLuongSD" class="input loadData" prefix="M_">
+            </td>
+            <td>
+				<input type="text" name="colLuongDTru" class="input loadData" prefix="M_">
+            </td>
+			<td>
+				<input type="button" name="submit" class="btn btn-success btn-update"
+					   onclick="javascript:updatenguyenlieusanpham();"
+					   value="Cập nhật">
+			</td>
             <td>
                 <button type="submit" name="delete" class="btn btn-danger" id="button-xoa-nguyenlieu-doanhnghiep">Xóa</button>
             </td>
         </tr>
+		</form>
     </tbody>
 </table>
     <?php echo $this->Form->create('NguyenLieuSanPham', array('method' => 'post', 'class' => 'form-horizontal', 'role' => 'form', 'id' => 'FormNguyenLieuSanPham')); ?>
@@ -98,14 +133,14 @@
 <div class="form-group">
     <label for="inputSoca" class="col-sm-2 control-label">Lượng sử dụng</label>
     <?php
-    echo $this->Form->input('colLuongSD', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'type' => 'number', 'class' => 'form-control requiredInput',
+    echo $this->Form->input('colLuongSD', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control requiredInput',
     ));
     ?>
 </div>
 <div class="form-group">
     <label for="inputSoca" class="col-sm-2 control-label">Lượng dự trữ</label>
     <?php
-    echo $this->Form->input('colLuongDTru', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'type' => 'number', 'class' => 'form-control',
+    echo $this->Form->input('colLuongDTru', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control',
     ));
     ?>
 </div>
@@ -174,6 +209,9 @@
 <td>' + nl['Nguyenlieu']['tennguyenlieu'] + '</td><td>' + nl['NguyenLieuSanPham']['colDonVi'] + '</td>\n\
 <td>' + parseFloat(nl['NguyenLieuSanPham']['colLuongSD']) + '</td>\n\
 <td>' + parseFloat(nl['NguyenLieuSanPham']['colLuongDTru']) + '</td>\n\
+<td><button title="Ấn để cập nhật" ' +
+						'type="button" class="btn btn-edit" onclick="javascript:loadData(1005,' +
+						'' + parseInt(nl['NguyenLieuSanPham']['colMa']) + ');"></button></td>\n\
 <td><input type="checkbox" name="deleterow' + nl['NguyenLieuSanPham']['colMa'] + '"></td>\n\
 </tr>';
                     ++i;
@@ -189,20 +227,9 @@
         return false;
     }
     function xoaDanhsachNguyenlieu(list_colMa){
-        $.ajax({
-            beforeSend: function(XMLHttpRequest) {
-                showLoading();
-            },
-            complete: function(XMLHttpRequest, textStatus) {
-                hideLoading();
-            },
-            data: {listcolMa: list_colMa},
-            type: "post",
-            success: function(data, textStatus) {
-                window.location.reload();
-            },
-            url: "<?php echo Router::url('/admin/doanhnghiep/xoadanhsachnguyenlieudoanhnghiep') ?>"
-        });
+		var data={listcolMa: list_colMa};
+		var url="<?php echo Router::url('/admin/doanhnghiep/xoadanhsachnguyenlieudoanhnghiep') ?>";
+        doPostAjax(url,data,'redirectnguyenlieu');
         return false;
     }
 </script>

@@ -9,7 +9,12 @@ Router::connect('/admin/doanhnghiep/themmoi', array('plugin' => 'Admin', 'contro
 Router::connect('/admin/doanhnghiep/themmoi/step2', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'step2Hoatdongsanxuat'));
 Router::connect('/admin/doanhnghiep/themmoi/step2/:tab', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'step2Hoatdongsanxuat'), array('pass' => array('tab')));
 Router::connect('/admin/doanhnghiep/themmoi/step3', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'step3Xathai'));
+Router::connect('/admin/doanhnghiep/themmoi/step3/:tab', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps',
+														   'action' => 'step3Xathai'),array('pass' => array('tab')));
 Router::connect('/admin/doanhnghiep/themmoi/step4', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'step4Giamsatdinhky'));
+Router::connect('/admin/doanhnghiep/themmoi/step4/:tab', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps',
+														   'action' => 'step4Giamsatdinhky'),array('pass'=>array('tab')
+																							 ));
 Router::connect('/admin/doanhnghiep/themmoi/step5', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'step5Hoatdongbaovemoitruong'));
 Router::connect('/admin/doanhnghiep/themmoi/step6', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'step6Kiennghi'));
 Router::connect('/admin/doanhnghiep/themmoi/step7', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'step7Hoantat'));
@@ -44,13 +49,22 @@ Router::connect('/admin/doanhnghiep/xoadanhsachbienphapxulyracthaisinhhoat', arr
 Router::connect('/admin/doanhnghiep/xoadanhsachbienphapxulychatthaicongnghiep', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'xoadanhsachbienphapxulychatthaicongnghiep'));
 Router::connect('/admin/doanhnghiep/xoadanhsachbienphapxulychatthainguyhai', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'xoadanhsachbienphapxulychatthainguyhai'));
 Router::connect('/admin/doanhnghiep/xoadanhsachvitrido', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'xoadanhsachvitrido'));
-Router::connect('/admin/doanhnghiep/xoadanhsachketquagiamsat', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'xoadanhsachketquagiamsat'));
+Router::connect('/admin/doanhnghiep/xoadanhsachketquagiamsatkhithai', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'xoadanhsachketquagiamsatkhithai'));
+Router::connect('/admin/doanhnghiep/xoadanhsachketquagiamsatdorung', array('plugin' => 'Admin',
+																	  'controller' => 'DoanhNghieps',
+																	  'action' => 'xoadanhsachketquagiamsatdorung'));
+Router::connect('/admin/doanhnghiep/xoadanhsachketquagiamsatnuocthai', array('plugin' => 'Admin',
+																		  'controller' => 'DoanhNghieps', 'action' => 'xoadanhsachketquagiamsatnuocthai'));
 Router::connect('/admin/commonfunction/chucnang/type/:type', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'chucnang'), array('pass' => array('type'), 'type' => '[0-9]{1,3}'));
 Router::connect('/admin/commonfunction/chucnang/type/:type/id_dn/:colMa', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'chucnang'), array('pass' => array('type','colMa'), 'type' => '[0-9]{1,3}'));
 Router::connect('/admin/commonfunction/capnhat/type/:type/id/:id', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'capnhat'), array('pass' => array('type', 'id'), 'type' => '[0-9]{1,3}', 'id' => '[0-9]{1,11}'));
 Router::connect('/admin/doanhnghiep/xoacoso', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'xoacoso'));
 Router::connect('/admin/doanhnghiep/getinfo', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'getinfo'));
 Router::connect('/admin/commonfunction/chucnangxoa', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'chucnangxoa'));
+Router::connect('/admin/commonfunction/load', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps',
+													'action' => 'loadData'));
+Router::connect('/admin/commonfunction/update/:type', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps',
+													'action' => 'updateData'),array('pass'=>array('type')));
 //Router::connect('/',array('plugin'=>'Front','controller'=>'News','action'=>'view'),'home','home');
 Router::connect('/', array('plugin' => 'Front', 'controller' => 'Home', 'action' => 'index'));
 Router::connect('/dodownload', array('plugin' => 'Front', 'controller' => 'News', 'action' => 'dodownload'));
@@ -86,5 +100,18 @@ Router::connect('/admin/baocao/chatthainguyhaitonluu',array('plugin'=>'Admin','c
 Router::connect('/admin/baocao/themchatthainguyhai',array('plugin'=>'Admin','controller'=>'Baocao','action'=>'themchatthainguyhai'));
 Router::connect('/admin/baocao/review',array('plugin'=>'Admin','controller'=>'Baocao','action'=>'review'));
 Router::connect('/admin/baocao/ketxuatword',array('plugin'=>'Admin','controller'=>'Baocao','action'=>'ketxuatword'));
+//-----------------------------------------Thong Ke -------------------------------//
+Router::connect('/admin/thongke/baocaochatthainguyhai',array('plugin'=>'Admin','controller'=>'Baocao',
+															   'action'=>'danhsachbaocaochatthainguyhai'));
+Router::connect('/admin/thongke/baocaogiamsatmoitruong',array('plugin'=>'Admin','controller'=>'Baocao',
+															   'action'=>'danhsachbaocaogiamsatmoitruong'));
+Router::connect('/admin/thongke/thongtincoban',array('plugin'=>'Admin','controller'=>'Thongke',
+													 'action'=>'thongtincoban'));
+Router::connect('/admin/thongke/thongtincoban/*',array('plugin'=>'Admin','controller'=>'Thongke',
+													 'action'=>'thongtincoban'));
+Router::connect('/admin/thongke/xuatexcel/:type',array('plugin'=>'Admin','controller'=>'Thongke',
+													 'action'=>'xuatexcel'),array('pass'=>array('type')));
+
+//-----------------------------------------End Thong ke --------------------------//
 CakePlugin::routes();
 require CAKE . 'Config' . DS . 'routes.php';

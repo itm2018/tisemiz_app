@@ -89,7 +89,7 @@
     </tbody>
     <tbody>
         <tr>
-            <td colspan="11">
+            <td colspan="10">
             </td>
             <td>
                 <button type="submit" name="delete" class="btn btn-danger" id="btn-xoa-racthaisinhhoatdoanhnghiep">Xóa</button>
@@ -255,21 +255,9 @@
         return false;
     }
     function xoaDanhSachBienPhapRacThaiSinhHoat(list_colMa) {
-        $.ajax({
-            beforeSend: function(XMLHttpRequest) {
-                showLoading();
-            },
-            complete: function(XMLHttpRequest, textStatus) {
-                hideLoading();
-            },
-            data: {listcolMa: list_colMa},
-            type: "post",
-            success: function(data, textStatus) {
-                //                console.log(data)
-                window.location.reload();
-            },
-            url: "<?php echo Router::url('/admin/doanhnghiep/xoadanhsachbienphapxulyracthaisinhhoat') ?>"
-        });
+		var data={listcolMa: list_colMa},
+			url="<?php echo Router::url('/admin/doanhnghiep/xoadanhsachbienphapxulyracthaisinhhoat') ?>";
+		doPostAjax(url,data,'redirectracsinhhoat');
         return false;
     }
     function echoBoolValue(value) {

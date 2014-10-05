@@ -105,25 +105,25 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Thống kê <strong class="caret"></strong></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="">Thống kê thông tin cơ bản</a></li>
-                                        <li><a href="">Thống kê hoạt động trạm xử lý nước thải</a></li>
-                                        <li><a href="">Thống kê lưu lượng nước thải</a></li>
-                                        <li><a href="">Thống kê xử lý cục bộ nước thải</a></li>
-                                        <li><a href="">Thống kê chất thải rắn - nguy hại</a></li>
-                                        <li><a href="">Thống kê hoạt động bảo vệ môi trường</a></li>
-                                        <li><a href="">Thống kê hoạt động thường xuyên</a></li>
-                                        <li><a href="">Thống kê chi phí vận hành XLNT</a></li>
-                                        <li><a href="">Thống kê sự cố</a></li>
-                                        <li><a href="">Thống kê xử lý cục bộ</a></li>
+                                        <li><a href="<?php echo Router::url('/admin/thongke/thongtincoban')?>">Thống
+												kê thông
+												tin	cơ bản</a></li>
+                                        <li><a href="#">Thống kê lưu lượng nước thải</a></li>
+                                        <li><a href="#">Thống kê chất thải rắn - nguy hại</a></li>
+                                        <li><a href="#">Thống kê hoạt động bảo vệ môi trường</a></li>
+                                        <li><a href="#">Thống kê hoạt động thường xuyên</a></li>
+                                        <li><a href="#">Thống kê sự cố</a></li>
+                                        <li><a href="<?php echo Router::url('/admin/thongke/baocaogiamsatmoitruong')?>">Thống kê danh sách BCGSMT</a></li>
+                                        <li><a href="<?php echo Router::url('/admin/thongke/baocaochatthainguyhai')?>">Thống kê danh sách BCCTNH</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Báo cáo <strong class="caret"></strong></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="<?php echo $this->Html->url('/admin/baocao/baocaogiamsatmoitruong'); ?>">Báo cáo giám sát môi trường</a></li>
-                                        <li><a href="<?php echo $this->Html->url('/admin/baocao/danhsachbaocaogiamsatmoitruong'); ?>">Danh sách BCGSMT</a></li>
+<!--                                        <li><a href="--><?php //echo $this->Html->url('/admin/baocao/danhsachbaocaogiamsatmoitruong'); ?><!--">Danh sách BCGSMT</a></li>-->
                                         <li><a href="<?php echo $this->Html->url('/admin/baocao/baocaochatthainguyhai'); ?>">Báo cáo chất thải nguy hại</a></li>
-                                        <li><a href="<?php echo $this->Html->url('/admin/baocao/danhsachbaocaochatthainguyhai'); ?>">Danh sách BCCTNH</a></li>
+<!--                                        <li><a href="--><?php //echo $this->Html->url('/admin/baocao/danhsachbaocaochatthainguyhai'); ?><!--">Danh sách BCCTNH</a></li>-->
                                     </ul>
                                 </li>
                             </ul>
@@ -172,7 +172,8 @@
                         }
                     </style>
                     <div class="content">
-                        <div class="bread"><marquee behavior="scrolling" scrolldelay="90" scrollamount="5" onmouseout="this.start();" onmouseover="this.stop();"><span>Phần mềm quản lý môi trường tại Cụm Công Nghiệp Tân Quy (ĐT: 08.32345678)</span></marquee></div>
+                        <div class="bread"><marquee behavior="scrolling" scrolldelay="90" scrollamount="5"
+													onmouseout="this.start();" onmouseover="this.stop();"><span>Phần mềm quản lý môi trường tại Cụm Công Nghiệp Tân Qui</span></marquee></div>
                         <?php echo $this->fetch('breadcrumb'); ?>
                         <?php echo $this->Session->flash(); ?>
                         <?php echo $this->fetch('content'); ?>

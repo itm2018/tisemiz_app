@@ -22,6 +22,7 @@ App::uses('ChatThai', 'Admin.Model');
 App::uses('NguonThai', 'Admin.Model');
 App::uses('Loaivanban', 'Admin.Model');
 App::uses('Linhvucvanban', 'Admin.Model');
+App::uses('DoanhNghiep', 'Admin.Model');
 
 class Common {
 
@@ -236,5 +237,18 @@ class Common {
         }
         return $ip;
     }
+	public static function getListNamNhapLieu(){
+		$doanhNghiep=new DoanhNghiep();
+		$result=array(1=>'--Chọn hết--');
+		$data=$doanhNghiep->find('list',array('fields'=>array('nam')));
+		$data=array_unique(array_values($data));
+		foreach($data as $v){
+			if($v){
+				$result[$v]=$v;
+			}
+		}
+		return $result;
+
+	}
 
 }

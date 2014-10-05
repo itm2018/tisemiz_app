@@ -58,29 +58,29 @@ class DoanhNghiep extends AdminAppModel {
                 'message' => 'Số điện thoại không đúng'
             )
         ),
-        'colFax' => array(
-            'allowEmpty' => array(
-                'rule' => array('notEmpty'),
-                'required' => true,
-                'allowEmpty' => true,
-                'message' => 'Xin nhập số fax'
-            ),
-            'tel' => array(
-                'rule' => '/^\(?\d{2,4}\)?\-?\d{3,5}\-?\d{3,5}+$/',
-                'message' => 'Số fax không đúng'
-            )
-        ),
+//        'colFax' => array(
+//            'allowEmpty' => array(
+//                'rule' => array('notEmpty'),
+//                'required' => true,
+//                'allowEmpty' => true,
+//                'message' => 'Xin nhập số fax'
+//            ),
+//            'tel' => array(
+//                'rule' => '/^\(?\d{2,4}\)?\-?\d{3,5}\-?\d{3,5}+$/',
+//                'message' => 'Số fax không đúng'
+//            )
+//        ),
         'colEmail' => array(
             'notEmpty' => array(
-                'rule' => array('notEmpty'),
-                'required' => true,
-                'allowEmpty' => false,
-                'message' => 'Xin nhập địa chỉ email của doanh nghiệp'
-            ),
-            'email' => array(
                 'rule' => array('email'),
+                'required' => true,
+                'allowEmpty' => true,
                 'message' => 'Địa chỉ email không đúng'
-            )
+            ),
+//            'email' => array(
+//                'rule' => array('email'),
+//                'message' => 'Địa chỉ email không đúng'
+//            )
         ),
         'colNamHopDong' => array(
             'date' => array(

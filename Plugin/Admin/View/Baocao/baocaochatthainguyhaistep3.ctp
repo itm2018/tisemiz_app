@@ -453,7 +453,11 @@
             var chathais_html = '';
             var tongnguyhaithongthuong = 0.0;
             chatthainguyhais.forEach(function(ct) {
-                tongnguyhaithongthuong += parseFloat(ct["colTongKL"]);
+				if(!IsNumber(ct["colTongKL"])){
+					tongnguyhaithongthuong+=0;
+				}else{
+                	tongnguyhaithongthuong += parseFloat(ct["colTongKL"]);
+				}
                 chathais_html += '<tr onmouseover="this.style.background = \'#EEE0C5\'" onmouseout="this.style.background = \'#ffffff\'">' +
                         '<td align="right">' +
                         ct["stt"] +
@@ -463,13 +467,13 @@
                         ct["colDangCThai"] +
                         '</td>' +
                         '<td align="left">' +
-                        ct["tt_tontai"] +
+                        echoNull(ct["tt_tontai"]) +
                         '</td>' +
                         '<td align="right">' +
                         ct["colTongKL"] +
                         '</td>' +
                         '<td align="right">' +
-                        ct["ma_chatthai"] +
+                        echoNull(ct["ma_chatthai"]) +
                         '</td>' +
                         ' <td width="35px" align="center">' +
                         '<a href="javascript:doUpdate(9,' + ct["colMa"] + ');">Sửa</a>' +

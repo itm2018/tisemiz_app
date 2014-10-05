@@ -2,28 +2,32 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th rowspan="2">
                 Tháng
             </th>
-            <th>
+            <th rowspan="2">
                 Năm
             </th>
-            <th>
+            <th rowspan="2">
                 Sản phẩm
             </th>
-            <th>
+            <th rowspan="2">
                 Đơn vị tính
             </th>
-            <th>
-                Công suất thiết kế
+            <th rowspan="2">
+                Công suất <br>thiết kế
             </th>
-            <th>
-                Công suất thực tế
+            <th rowspan="2">
+                Công suất <br>thực tế
             </th>
-            <th>
-                Xóa
+            <th colspan="2" class="center">
+                Chức năng
             </th>
         </tr>
+		<tr>
+			<th>Cập nhật</th>
+			<th>Xóa</th>
+		</tr>
     </thead>
     <tbody id="list-products">
         <?php
@@ -32,7 +36,18 @@
         ?>
         <?php if (isset($listsanpham) && count($listsanpham)): ?>
             <?php foreach ($listsanpham as $sp): ?>
-        <tr class="<?php echo $classes[$i]; ?>"><td><?php echo $sp['SanPhamDoanhNghiep']['colThang']?></td><td><input type="hidden" name="colMa" value="<?php echo $sp['SanPhamDoanhNghiep']['colMa']; ?>"><?php echo $sp['SanPhamDoanhNghiep']['colNam']; ?></td><td><?php echo $sp['Sanpham']['tensanpham']; ?></td><td><?php echo $sp['SanPhamDoanhNghiep']['colDVi']; ?></td><td><?php echo $sp['SanPhamDoanhNghiep']['colCongSuatTK']; ?></td><td><?php echo $sp['SanPhamDoanhNghiep']['colCongSuatTT']; ?></td><td><input type="checkbox" name="deleterow#"></td></tr>
+        <tr class="<?php echo $classes[$i]; ?>"><td><?php echo $sp['SanPhamDoanhNghiep']['colThang']?></td><td><input
+					type="hidden" name="colMa" value="<?php echo $sp['SanPhamDoanhNghiep']['colMa']; ?>"><?php echo
+				$sp['SanPhamDoanhNghiep']['colNam']; ?></td><td><?php echo $sp['Sanpham']['tensanpham'];
+				?></td><td><?php echo $sp['SanPhamDoanhNghiep']['colDVi']; ?></td><td><?php echo
+				$sp['SanPhamDoanhNghiep']['colCongSuatTK']; ?></td><td><?php echo
+				$sp['SanPhamDoanhNghiep']['colCongSuatTT']; ?></td><td><button title="Ấn để cập nhật" type="button"
+																			   class="btn
+				btn-edit" onclick="javascript:loadData(1000,<?php echo h($sp['SanPhamDoanhNghiep']['colMa'])?>);
+					"></button>
+			</td><td><input
+					type="checkbox"
+																						 name="deleterow#"></td></tr>
                 <?php
                 ++$i;
                 if ($i == 3) {
@@ -43,22 +58,40 @@
         <?php endif; ?>
     </tbody>
     <tbody>
-<!--        <tr>
-            <td><input type="hidden"><input style="width: 100%"></td>
-            <td><input style="width: 100%"></td>
-            <td><input style="width: 10style0%"></td>
-            <td><input style="width: 100%"></td>
-            <td><input style="width: 100%"></td>
-            <td><input style="width: 100%"></td>
-            <td><button class="btn btn-success">Sửa</button></td>
-        </tr>-->
-        <tr>
-            <td colspan="6">
+        <form id="formupdatesanphamdoanhnghiep" method="post">
+		<tr>
+            <td>
+				<input type="hidden" name="colCSSX" id="colCSSX" class="loadData" prefix="">
+				<input type="text" name="colThang" id="colThang" class="input loadData" prefix="">
+            </td>
+			<td>
+				<input type="hidden" name="colMa" id="colMa" class="loadData" prefix="">
+				<input type="text" name="colNam" id="colnam" class="input loadData" prefix="">
+            </td>
+			<td>
+				<input type="hidden" name="colSanPham" id="colSanPham" class= "loadData" prefix="">
+				<input type="text" name="tensanpham" id="tensanpham" class="input loadData" disabled="disabled" prefix="">
+            </td>
+			<td>
+				<input type="text" name="colDVi" id="colDVi" class="input loadData" prefix="">
+            </td>
+			<td>
+				<input type="text" name="colCongSuatTK" id="colCongSuatTK" class="input loadData" prefix="">
+            </td>
+			<td>
+				<input type="text" name="colCongSuatTT" id="colCongSuatTT" class="input loadData" prefix="">
+            </td>
+			<td>
+				<input type="button" name="submit" class="btn btn-success btn-update"
+					   onclick="javascript:updatesanphamdoanhnghiep();"
+					   value="Cập nhật">
             </td>
             <td>
-                <button type="submit" name="delete" id="btn-xoa-danhsach-sanpham-doanhnghiep" class="btn btn-danger">Xóa</button>
+                <button type="button" name="delete" id="btn-xoa-danhsach-sanpham-doanhnghiep" class="btn
+                btn-danger">Xóa</button>
             </td>
         </tr>
+		</form>
     </tbody>
 </table>
 <?php echo $this->Form->create('SanPhamDoanhNghiep', array('url' => Router::url('/admin/doanhnghiep/themsanpham'), 'method' => 'post', 'class' => 'form-horizontal', 'id' => 'FormSanPhamDoanhNghiep', 'role' => 'form')); ?>
@@ -95,14 +128,14 @@
 <div class="form-group">
     <label for="inputSoca" class="col-sm-2 control-label">Công suất thiết kế</label>
     <?php
-    echo $this->Form->input('colCongSuatTK', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'type' => 'number', 'class' => 'form-control requiredInput',
+    echo $this->Form->input('colCongSuatTK', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control',
     ));
     ?>
 </div>
 <div class="form-group">
     <label for="inputSoca" class="col-sm-2 control-label">Công suất thực tế</label>
     <?php
-    echo $this->Form->input('colCongSuatTT', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'type' => 'number', 'class' => 'form-control requiredInput',
+    echo $this->Form->input('colCongSuatTT', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control',
     ));
     ?>
 </div>
@@ -173,7 +206,14 @@
                 var classes = ['', 'active', 'success', 'warning'];
                 var i = 0;
                 products.forEach(function(sp) {
-                    html += '<tr class="' + classes[i] + '"><td>' + parseInt(sp['SanPhamDoanhNghiep']['colThang']) + '</td><td><input type="hidden" name="colMa" value="' + sp['SanPhamDoanhNghiep']['colMa'] + '">' + parseInt(sp['SanPhamDoanhNghiep']['colNam']) + '</td><td>' + sp['Sanpham']['tensanpham'] + '</td><td>' + sp['SanPhamDoanhNghiep']['colDVi'] + '</td><td>' + sp['SanPhamDoanhNghiep']['colCongSuatTK'] + '</td><td>' + sp['SanPhamDoanhNghiep']['colCongSuatTT'] + '</td><td><input type="checkbox" name="deleterow#"></td></tr>';
+                    html += '<tr class="' + classes[i] + '"><td>' + parseInt(sp['SanPhamDoanhNghiep']['colThang']) +
+						'</td><td><input type="hidden" name="colMa" value="' + sp['SanPhamDoanhNghiep']['colMa'] +
+						'">' + parseInt(sp['SanPhamDoanhNghiep']['colNam']) + '</td><td>' +
+						sp['Sanpham']['tensanpham'] + '</td><td>' + sp['SanPhamDoanhNghiep']['colDVi'] + '</td><td>'
+						+ echoNull(sp['SanPhamDoanhNghiep']['colCongSuatTK']) + '</td><td>' +
+						echoNull(sp['SanPhamDoanhNghiep']['colCongSuatTT']) + '</td><td><button title="Ấn để cập nhật" ' +
+						'type="button" class="btn btn-edit" onclick="javascript:loadData(1000,' +
+						'' + parseInt(sp['SanPhamDoanhNghiep']['colMa']) + ');"></button></td><td><input type="checkbox" name="deleterow#"></td></tr>';
                     ++i;
                     if (i == 3) {
                         i = 0;
@@ -188,20 +228,9 @@
     }
 
     function xoaDanhsachSanpham(list_colMa){
-        $.ajax({
-            beforeSend: function(XMLHttpRequest) {
-                showLoading();
-            },
-            complete: function(XMLHttpRequest, textStatus) {
-                hideLoading();
-            },
-            data: {listcolMa: list_colMa},
-            type: "post",
-            success: function(data, textStatus) {
-                window.location.reload();
-            },
-            url: "<?php echo Router::url('/admin/doanhnghiep/xoadanhsachsanphamdoanhnghiep') ?>"
-        });
+		var data= {listcolMa: list_colMa};
+		var url="<?php echo Router::url('/admin/doanhnghiep/xoadanhsachsanphamdoanhnghiep') ?>";
+       	doPostAjax(url,data,'redirectsanpham');
         return false;
     }
 </script>

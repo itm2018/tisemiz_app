@@ -195,21 +195,9 @@
         $('#btn-reset-thongtinnuocngam').trigger("click");
     }
     function xoaDanhsachNuocngam(list_colMa) {
-        $.ajax({
-            beforeSend: function(XMLHttpRequest) {
-                showLoading();
-            },
-            complete: function(XMLHttpRequest, textStatus) {
-                hideLoading();
-            },
-            data: {listcolMa: list_colMa},
-            type: "post",
-            success: function(data, textStatus) {
-//                console.log(data);
-                window.location.reload();
-            },
-            url: "<?php echo Router::url('/admin/doanhnghiep/xoadanhsachnuocngamdoanhnghiep') ?>"
-        });
+		var data={listcolMa: list_colMa};
+		var url ="<?php echo Router::url('/admin/doanhnghiep/xoadanhsachnuocngamdoanhnghiep') ?>";
+        doPostAjax(url,data,'redirectnuocngam');
         return false;
     }
 </script>

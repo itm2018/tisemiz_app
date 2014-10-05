@@ -38,7 +38,10 @@
                 <tr class="<?php echo $classes[$i]; ?>">
                     <td>
                         <input type="hidden" name="colMa" value="<?php echo $xlntDN['XuLyNuocThaiDoanhNghiep']['colMa'] ?>">
-                        <?php echo date('d/m/Y', strtotime($xlntDN['XuLyNuocThaiDoanhNghiep']['colThoiGian'])) ?>
+                        <?php echo !empty($xlntDN['XuLyNuocThaiDoanhNghiep']['colThoiGian'])?date('d/m/Y',
+																								  strtotime
+																								  ($xlntDN['XuLyNuocThaiDoanhNghiep']['colThoiGian'])):''
+						?>
                     </td>
                     <td>
                         <?php echo $xlntDN['BienPhapXuLyNuocThai']['tenbienphap'] ?>
@@ -95,12 +98,12 @@
     ?>
 </div>
 <div class="form-group">
-    <label for="inputNam" class="col-sm-2 control-label">Thời điểm <span class="text-danger">*</span></label>
+    <label for="inputNam" class="col-sm-2 control-label">Thời điểm</label>
     <!--<div class="col-sm-10">
         <input type="text" class="form-control" id="inputNam" placeholder="">
     </div>-->
     <?php
-    echo $this->Form->input('colThoiGian', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control requiredInput validate-date', 'tentruong' => 'Thời điểm', 'type' => 'text', 'placeholder' => __('dd/mm/yyyy'), 'id' => 'txtcolThoiGian'))
+    echo $this->Form->input('colThoiGian', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control validate-date', 'tentruong' => 'Thời điểm', 'type' => 'text', 'placeholder' => __('dd/mm/yyyy'), 'id' => 'txtcolThoiGian'))
     ;
     ?>
 </div>
@@ -245,8 +248,14 @@
                 var classes = ['none', 'active', 'success', 'warning'];
                 var i = 0;
                 parsed.forEach(function(bpxlnt) {
+					var date='';
+					if(bpxlnt['XuLyNuocThaiDoanhNghiep']['colThoiGian']){
+				    date = formatDate(new Date(getDateFromFormat
+					(bpxlnt['XuLyNuocThaiDoanhNghiep']['colThoiGian'], 'yyyy-MM-dd HH:mm:ss')), 'dd/MM/yyyy');
+					}
                     html += '<tr class="' + classes[i] + '">\n\
-            <td><input type="hidden" name="colMa" value="' + bpxlnt['XuLyNuocThaiDoanhNghiep']['colMa'] + '">' + formatDate(new Date(getDateFromFormat(bpxlnt['XuLyNuocThaiDoanhNghiep']['colThoiGian'], 'yyyy-MM-dd HH:mm:ss')), 'dd/MM/yyyy') + '</td>\n\
+            <td><input type="hidden" name="colMa" value="' + bpxlnt['XuLyNuocThaiDoanhNghiep']['colMa'] + '">' + date
+						+ '</td>\n\
 <td>' + bpxlnt['BienPhapXuLyNuocThai']['tenbienphap'] + '</td><td>' + echoBoolValue(bpxlnt['XuLyNuocThaiDoanhNghiep']['colNTSHoat']) + '</td>\n\
 <td>' + echoBoolValue(bpxlnt['XuLyNuocThaiDoanhNghiep']['colNTSX']) + '</td>\n\
 <td>' + echoBoolValue(bpxlnt['XuLyNuocThaiDoanhNghiep']['colXLKT']) + '</td>\n\
@@ -268,21 +277,10 @@
         return false;
     }
     function xoaDanhSachBienPhapXuLyNuocThai(list_colMa) {
-        $.ajax({
-            beforeSend: function(XMLHttpRequest) {
-                showLoading();
-            },
-            complete: function(XMLHttpRequest, textStatus) {
-                hideLoading();
-            },
-            data: {listcolMa: list_colMa},
-            type: "post",
-            success: function(data, textStatus) {
-//                console.log(data)
-                window.location.reload();
-            },
-            url: "<?php echo Router::url('/admin/doanhnghiep/xoadanhsachbienphapxulynuocthaidoanhnghiep') ?>"
-        });
+		var data={listcolMa: list_colMa},
+			url="<?php echo Router::url('/admin/doanhnghiep/xoadanhsachbienphapxulynuocthaidoanhnghiep') ?>";
+
+       doPostAjax(url,data,'redirectkiemsoatnuocthai');
         return false;
     }
     function echoBoolValue(value) {

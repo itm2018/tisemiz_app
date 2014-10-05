@@ -221,11 +221,34 @@ select.error{
     width: 40%;
     margin: 0 auto;
 }
-.table tr:hover{
-    background: #ccc;
-    cursor: pointer;
-}
+/*.table tr:hover{*/
+    /*background: #ccc;*/
+    /*cursor: pointer;*/
+/*}*/
 .scroll{
     max-height: 300px;
     overflow: scroll;
+}
+.table thead tr th{
+	vertical-align: middle;
+	background-color: #66FF33;
+}
+table thead tr th.center{
+	text-align: center;
+}
+.btn-edit{
+	background: url(/img/icon_edit.gif) center no-repeat;
+	/*padding: 5px;*/
+	height: 36px;
+	width: 36px;
+}
+.btn-update{
+	padding: 6px;
+}
+.input{
+	max-width: 100%;
+	vertical-align: middle;
+}
+.min-length{
+	width: 50px !important;
 }

@@ -1,10 +1,12 @@
 <p><h3>4.1. GIÁM SÁT ĐỊNH KỲ KHÍ THẢI</h3></p>
 
-<?php echo $this->Form->create('KetQuaGiamSatDinhKyKhiThai', array('method' => 'post', 'class' => 'form-horizontal', 'role' => 'form', 'id' => 'FormKetQuaGiamSatDinhKyKhiThai')); ?>
+<?php echo $this->Form->create('ViTriDo', array('url'=>'/admin/doanhnghiep/themmoi/step4/khithai','method' =>
+'post', 'class' => 'form-horizontal', 'role' => 'form',
+										  'id' => 'FormViTriGiamSatDinhKyKhiThai')); ?>
 <?php echo $this->Form->hidden('type', array('value' => 1)); ?>
 <?php echo $this->Form->hidden('id'); ?>
 <div class="form-group">
-    <label class="col-sm-2 control-label">Vị trí đo</label>
+    <label class="col-sm-2 control-label">Vị trí đo <span class="required">*</span></label>
     <?php
     echo $this->Form->input('vi_tri', array('div' => array('class' => 'col-sm-6'), 'label' => false, 'class' => 'form-control requiredInput'))
     ?>
@@ -37,7 +39,7 @@
             'div' => false, 'label' => false, 'id' => 'btn-luu-kqgsdk-khithai'));
         ?>
         <?php
-        echo $this->Form->input(null, array('type' => 'reset', 'class' => 'btn btn-info', 'value' => 'Làm lại',
+        echo $this->Form->input('reset', array('type' => 'reset', 'class' => 'btn btn-info', 'value' => 'Làm lại',
             'div' => false, 'label' => false, 'id' => 'btn-reset-kqgsdk-khithai'));
         ?>
     </div>
@@ -126,15 +128,11 @@
     </div>
 <script type="text/javascript">
     $(function() {
-        $(document).tooltip();
         $('#ngaygiamsat').datepicker();
         $('#ngaynhap').datepicker();
         $('#btn-luu-thongtin-nguyenlieusx').bind('click', function() {
 
         });
-//        $('#btn-nhap-kqgsdk-khithai').bind('click', function() {
-//            PopUpUpdate(3, 1);
-//        });
         $('#button-xoa-vitrido-doanhnghiep').bind('click', function() {
             var list_colMa = [];
             $('#list-vitridokhithai tr').each(function() {
@@ -154,61 +152,20 @@
                 return false;
             }
         });
-//        var validation_nguyenlieu = Validator.init('#FormNguyenLieuSanPham', 'doAddNguyenLieuSX');
         $('#list-vitridokhithai tr').bind('click', function() {
             var vitri = $.trim($(this).find('.vitri').html());
-            $('#KetQuaGiamSatDinhKyKhiThaiViTri').val(vitri);
+            $('#ViTriDoViTri').val(vitri);
             var id = $(this).children('input[name="id"]').val();
-            $('#KetQuaGiamSatDinhKyKhiThaiId').val(id);
+            $('#ViTriDoId').val(id);
             var ngaygiamsat=$.trim($(this).children('.ngaygiamsat').html());
             $('#ngaygiamsat').val(ngaygiamsat);
             var ngaynhap=$.trim($(this).children('.ngaynhap').html());
             $('#ngaynhap').val(ngaynhap);
             var mota=$.trim($(this).children('.mota').text());
-//            $('#mota').html(mota);
-            tinyMCE.activeEditor.setContent(mota);
+            tinyMCE.get('mota').setContent(mota);
         });
     });
-    function copydata() {
 
-    }
-    function doAddNguyenLieuSX() {
-        $.ajax({
-            beforeSend: function(XMLHttpRequest) {
-                showLoading();
-            },
-            complete: function(XMLHttpRequest, textStatus) {
-                hideLoading();
-            },
-            data: $('#FormNguyenLieuSanPham').serialize(),
-            type: "post",
-            success: function(data, textStatus) {
-
-                var html = '';
-                var parsed = JSON.parse(data);
-                var classes = ['none', 'active', 'success', 'warning'];
-                var i = 0;
-                parsed.forEach(function(nl) {
-                    //                    console.log(nl);
-                    html += '<tr class="' + classes[i] + '"><td>' + parseInt(nl['NguyenLieuSanPham']['colThang']) + '</td>\n\
-            <td><input type="hidden" name="colMa" value="' + nl['NguyenLieuSanPham']['colMa'] + '">' + parseInt(nl['NguyenLieuSanPham']['colNam']) + '</td>\n\
-<td>' + nl['Nguyenlieu']['tennguyenlieu'] + '</td><td>' + nl['NguyenLieuSanPham']['colDonVi'] + '</td>\n\
-<td>' + parseFloat(nl['NguyenLieuSanPham']['colLuongSD']) + '</td>\n\
-<td>' + parseFloat(nl['NguyenLieuSanPham']['colLuongDTru']) + '</td>\n\
-<td><input type="checkbox" name="deleterow' + nl['NguyenLieuSanPham']['colMa'] + '"></td>\n\
-</tr>';
-                    ++i;
-                    if (i > 3) {
-                        i = 0;
-                    }
-                });
-                $('#list-vitridokhithai').html(html);
-                $('#btn-reset-nguyenlieusanpham').trigger('click');
-            },
-            url: "<?php echo Router::url('/admin/doanhnghiep/themnguyenlieudoanhnghiep') ?>"
-        });
-        return false;
-    }
     function xoaDanhSachVitrido(list_colMa) {
         $.ajax({
             beforeSend: function(XMLHttpRequest) {

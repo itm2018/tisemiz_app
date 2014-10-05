@@ -65,12 +65,14 @@
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane active" id="panel-giamsatkhithai">
+                        <div class="tab-pane" id="panel-giamsatkhithai">
                             <!-- form giam sat khi thai-->
                             <?php echo $this->element('Admin.Doanhnghieps/form_giamsatdinhkykhithai'); ?>
                             <!-- end form giam sat khi thai -->
                         </div>
-                        <div class="tab-pane" id="panel-giamsatnuocthai">
+
+                        <div class="tab-pane"
+							 id="panel-giamsatnuocthai">
                             <!-- form giam sat nuoc thai-->
                             <?php echo $this->element('Admin.Doanhnghieps/form_giamsatdinhkynuocthai'); ?>
                             <!-- end form giam sat nuoc thai -->
@@ -96,12 +98,32 @@
 <!-- /main-content -->
 <script type="text/javascript">
     $(function() {
+		$('.table').tooltip();
         $('ul.nav-tabs li').click(function(event) {
             if (!$(this).hasClass('active') && !$(this).hasClass('canclick')) {
                 alert('Vui lòng nhập thông tin hoạt động xả thải');
                 return false;
             }
         });
+		<?php if($activetab=='nuocthai'):?>
+			$('#panel-giamsatnuocthai').addClass('active');
+			$('a[href="#panel-giamsatnuocthai"]').parent('li').addClass('active').prev('li').removeClass('active');
+			$('#panel-giamsatkhithai').removeClass('active').hide();
+			$('a[href="#panel-giamsatkhithai"]').parent('li').removeClass('active').bind('click',function(){
+				$('#panel-giamsatkhithai').addClass('active').show();
+			});
+		<?php endif;?>
+		<?php if($activetab=='tiengon'):?>
+		$('#panel-giamsattiengon').addClass('active');
+		$('a[href="#panel-giamsattiengon"]').parent('li').addClass('active');
+		$('#panel-giamsatkhithai').removeClass('active').hide();
+		$('a[href="#panel-giamsatkhithai"]').parent('li').removeClass('active').bind('click',function(){
+			$('#panel-giamsatkhithai').addClass('active').show();
+		});
+		<?php endif;?>
+		<?php if(!$activetab || $activetab='khithai'):?>
+		$('#panel-giamsatkhithai').addClass('active');
+		<?php endif;?>
     });
 </script>
 <?php echo $this->element('Admin.Doanhnghieps/backend.js'); ?>

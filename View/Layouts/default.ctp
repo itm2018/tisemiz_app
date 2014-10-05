@@ -220,7 +220,8 @@
                     </style>
                     <div class="content">
                                                 <div class="bread"><marquee behavior="scrolling" scrolldelay="90" scrollamount="5" onmouseout="this.start();" onmouseover="this.stop()
-                                                                ;"><span>Phần mềm quản lý môi trường tại Cụm Công Nghiệp Tân Quy (ĐT: 08.32345678)</span></marquee></div>
+                                                                ;"><span>Phần mềm quản lý môi trường tại Cụm Công
+															Nghiệp Tân Qui</span></marquee></div>
                                                     <?php echo $this->fetch('breadcrumb'); ?>
                                                     <?php echo $this->Session->flash(); ?>
                                                     <?php echo $this->fetch('content'); ?>

@@ -168,19 +168,19 @@ echo $this->Form->create('DoanhNghiep', array('type' => 'file', 'class' => 'form
     ?>
 </div>
 <div class="form-group">
-    <label for="inputEmail" class="col-sm-2 control-label">Email <span class="required">*</span></label>
+    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
     <?php
     echo $this->Form->input('colEmail', array('type' => 'email', 'class' => 'form-control',
         'div' => array('class' => 'col-sm-6'), 'label' => false));
     ?>
 </div>
-<div class="form-group">
-    <label for="inputSotk" class="col-sm-2 control-label">Số tài khoản</label>
-    <?php
-    echo $this->Form->input('colSoTKhoan', array('type' => 'text', 'class' => 'form-control',
-        'div' => array('class' => 'col-sm-6'), 'label' => false));
-    ?>
-</div>
+<!--<div class="form-group">-->
+<!--    <label for="inputSotk" class="col-sm-2 control-label">Số tài khoản</label>-->
+<!--    --><?php
+//    echo $this->Form->input('colSoTKhoan', array('type' => 'text', 'class' => 'form-control',
+//        'div' => array('class' => 'col-sm-6'), 'label' => false));
+//    ?>
+<!--</div>-->
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
         <?php
