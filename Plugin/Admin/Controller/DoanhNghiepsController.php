@@ -280,7 +280,8 @@ class DoanhNghiepsController extends AdminAppController
 		$this->loadModel('Admin.KetQuaGiamSatDinhKyDoRung');
 		if ($this->request->is('post') || $this->request->is('put')) {
 			$this->loadModel('Admin.ViTriDo');
-			$data            = array_values($this->request->data)[0];
+			$data            = array_values($this->request->data);
+			$data = $data[0];
 			$data['colCSSX'] = $savingDoanhNghiep['DoanhNghiep']['colMa'];
 //            xu ly cho truong hop giam sat khi thai va nuoc thai
 			if (!isset($this->request->data['KetQuaGiamSatDinhKyDoRung'])) {
@@ -2050,7 +2051,6 @@ class DoanhNghiepsController extends AdminAppController
 				$data = $this->request->data;
 				$this->loadModel('Admin.SanPhamDoanhNghiep');
 				$this->SanPhamDoanhNghiep->set($data);
-				pr($data);
 				if ($this->SanPhamDoanhNghiep->validates()) {
 					$saveOk = $this->SanPhamDoanhNghiep->save();
 					if (!empty($saveOk)) {

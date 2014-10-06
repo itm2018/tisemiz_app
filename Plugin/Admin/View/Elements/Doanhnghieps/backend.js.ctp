@@ -284,7 +284,7 @@ function updatenuocthainhamay(){
 	//validation
 	//end validation
 	var url = '<?php echo Router::url('/admin/commonfunction/update/1020');?>';
-	doPostAjax(url,data);
+	doPostAjax(url,data,'redirectnuocthainhamay');
 }
 function updatechatthainguyhai(){
 	var data = $('#formupdatechatthainguyhai').serialize();
@@ -292,7 +292,7 @@ function updatechatthainguyhai(){
 	//validation
 	//end validation
 	var url = '<?php echo Router::url('/admin/commonfunction/update/1025');?>';
-	doPostAjax(url,data);
+	doPostAjax(url,data,'redirectchatthainguyhai');
 }
 function redirectsanpham(data) {
 	location.href = '<?php echo Router::url('/admin/doanhnghiep/themmoi/step2/sanpham')?>';
@@ -330,7 +330,9 @@ function redirectchatthaicongnghiep(){
 function redirectchatthainguyhai(){
 	location.href = '<?php echo Router::url('/admin/doanhnghiep/themmoi/step3/chatthainguyhai')?>';
 }
-
+function redirectnuocthainhamay(){
+	location.href = '<?php echo Router::url('/admin/doanhnghiep/themmoi/step3/nuocthainhamay')?>';
+}
 function log(data) {
 	console.log(data);
 }

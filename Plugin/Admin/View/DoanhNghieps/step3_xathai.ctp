@@ -165,6 +165,10 @@
 		$('a[href="#panel-chatthainguyhai"]').parent('li').addClass('active');
 		$('a[href="#panel-chatthainguyhai"]').parent('li').parent('ul').children('li:first').removeClass('active');
 		<?php endif;?>
+		<?php if(isset($activetab) && $activetab=='nuocthainhamay'):?>
+		$('#panel-nuocthai').addClass('active');
+		$('a[href="#panel-nuocthai"]').parent('li').addClass('active');
+		<?php endif;?>
     });
 </script>
 <?php echo $this->element('Admin.Doanhnghieps/backend.js'); ?>

@@ -81,26 +81,26 @@
 			<td>
 				<input type="hidden" name="colMa" class="loadData" prefix="W_">
 				<input type="hidden" name="colCSSX" class="loadData" prefix="W_">
-				<input type="text" name="colThang" class="input loadData" prefix="W_" style="width: 50px;">
+				<input type="text" name="colThang" class="input loadData" prefix="W_" style="max-width: 50px;">
 			</td>
 			<td>
-				<input type="text" name="colNam" class="input loadData" prefix="W_" style="width: 60px;">
+				<input type="text" name="colNam" class="input loadData" prefix="W_" style="max-width: 60px;">
 			</td>
 			<td>
 				<input type="hidden" name="colNguonThai" class="loadData" prefix="W_">
 				<input type="text" name="colTenNguonThai" class="input loadData" prefix="W_">
 			</td>
 			<td>
-				<input type="text" name="colLLuongThai" class="input loadData" prefix="W_">
+				<input type="text" name="colLLuongThai" class="input loadData" prefix="W_" style="max-width: 120px;">
 			</td>
 			<td>
-				<input type="text" name="colNguonPSinh" class="input loadData" prefix="W_">
+				<input type="text" name="colNguonPSinh" class="input loadData" prefix="W_" style="max-width: 150px;">
 			</td>
 			<td>
-				<input type="text" name="colLLXLyTK" class="input loadData" prefix="W_">
+				<input type="text" name="colLLXLyTK" class="input loadData" prefix="W_" style="max-width: 120px;">
 			</td>
 			<td>
-				<input type="text" name="colLLXLyTT" class="input loadData" prefix="W_">
+				<input type="text" name="colLLXLyTT" class="input loadData" prefix="W_" style="max-width: 120px;">
 			</td>
 			<td>
 				<input type="button" name="submit" class="btn btn-success btn-update"

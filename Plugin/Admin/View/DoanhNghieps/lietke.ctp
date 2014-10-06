@@ -1,4 +1,3 @@
-<?php pr($this->Paginator->options)?>
 <?php
 $this->Paginator->options(array(
     'url' => array(

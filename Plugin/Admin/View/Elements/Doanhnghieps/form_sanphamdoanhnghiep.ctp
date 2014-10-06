@@ -62,24 +62,24 @@
 		<tr>
             <td>
 				<input type="hidden" name="colCSSX" id="colCSSX" class="loadData" prefix="">
-				<input type="text" name="colThang" id="colThang" class="input loadData" prefix="">
+				<input type="text" name="colThang" id="colThang" class="input loadData" prefix="" style="max-width: 50px;">
             </td>
 			<td>
 				<input type="hidden" name="colMa" id="colMa" class="loadData" prefix="">
-				<input type="text" name="colNam" id="colnam" class="input loadData" prefix="">
+				<input type="text" name="colNam" id="colnam" class="input loadData" prefix="" style="max-width: 100px;">
             </td>
 			<td>
 				<input type="hidden" name="colSanPham" id="colSanPham" class= "loadData" prefix="">
 				<input type="text" name="tensanpham" id="tensanpham" class="input loadData" disabled="disabled" prefix="">
             </td>
 			<td>
-				<input type="text" name="colDVi" id="colDVi" class="input loadData" prefix="">
+				<input type="text" name="colDVi" id="colDVi" class="input loadData" prefix="" style="max-width: 150px;">
             </td>
 			<td>
-				<input type="text" name="colCongSuatTK" id="colCongSuatTK" class="input loadData" prefix="">
+				<input type="text" name="colCongSuatTK" id="colCongSuatTK" class="input loadData" prefix="" style="max-width: 150px;">
             </td>
 			<td>
-				<input type="text" name="colCongSuatTT" id="colCongSuatTT" class="input loadData" prefix="">
+				<input type="text" name="colCongSuatTT" id="colCongSuatTT" class="input loadData" prefix="" style="max-width: 150px;">
             </td>
 			<td>
 				<input type="button" name="submit" class="btn btn-success btn-update"

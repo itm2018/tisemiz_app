@@ -78,22 +78,22 @@
 				<input type="hidden" name="colMa" class="loadData" prefix="M_">
 				<input type="hidden" name="colCSSX" class="loadData" prefix="M_">
 				<input type="hidden" name="colNguyenLieu" class="loadData" prefix="M_">
-				<input type="text" name="colThang" class="input loadData" prefix="M_">
+				<input type="text" name="colThang" class="input loadData" prefix="M_" style="max-width: 50px;">
             </td>
 			<td>
-				<input type="text" name="colNam" class="input loadData" prefix="M_">
+				<input type="text" name="colNam" class="input loadData" prefix="M_" style="max-width: 100px;">
             </td>
             <td>
 				<input type="text" name="tennguyenlieu" class="input loadData" prefix="M_" disabled="disabled">
             </td>
             <td>
-				<input type="text" name="colDonVi" class="input loadData" prefix="M_">
+				<input type="text" name="colDonVi" class="input loadData" prefix="M_" style="max-width: 150px;">
             </td>
             <td>
-				<input type="text" name="colLuongSD" class="input loadData" prefix="M_">
+				<input type="text" name="colLuongSD" class="input loadData" prefix="M_" style="max-width: 150px;">
             </td>
             <td>
-				<input type="text" name="colLuongDTru" class="input loadData" prefix="M_">
+				<input type="text" name="colLuongDTru" class="input loadData" prefix="M_" style="max-width: 150px;">
             </td>
 			<td>
 				<input type="button" name="submit" class="btn btn-success btn-update"
