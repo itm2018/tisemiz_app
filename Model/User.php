@@ -100,6 +100,13 @@ class User extends AppModel
 		$value = $value[0];
 		return ($value == $this->data[$this->alias]['password_update']);
 	}
+	public function matchCurrentPass($check){
+		$value=array_values($check);
+		$value=$value[0];
+		$passwordHasher                       = new SimplePasswordHasher(array('hashType' => 'sha256'));
+		$hash=$passwordHasher->hash($value);
+		return ($hash==$this->data[$this->alias]['current_hash_password']);
+	}
 
 	public function parentNode()
 	{
@@ -117,5 +124,9 @@ class User extends AppModel
 			return array('Role'=>array('id'=>$role_id));
 		}
 
+	}
+	public function UpdatePassword(){
+		$passwordHasher                       = new SimplePasswordHasher(array('hashType' => 'sha256'));
+		return $this->saveField('password',$passwordHasher->hash($this->data[$this->alias]['password_update']));
 	}
 }

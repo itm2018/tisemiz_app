@@ -362,7 +362,10 @@ class DoanhNghiepsController extends AdminAppController
 		$this->set('list_checked', $dn_tt_tuanthu_bvmt);
 	}
 
-	public function step6Kiennghi()
+	public function step6Quantractudong(){
+
+	}
+	public function step7Kiennghi()
 	{
 		$savingDoanhNghiep = $this->Session->read('savingDoanhNghiep');
 		if (!isset($savingDoanhNghiep['DoanhNghiep']) || empty($savingDoanhNghiep['DoanhNghiep']['colMa'])) {
@@ -387,7 +390,7 @@ class DoanhNghiepsController extends AdminAppController
 			} else {
 				$this->Session->setFlash('Có lỗi xảy ra trong quá trình lưu dữ liệu');
 			}
-			$this->redirect('/admin/doanhnghiep/themmoi/step6');
+			$this->redirect('/admin/doanhnghiep/themmoi/step7');
 		}
 //        $savingKiennghi = $this->Session->read('savingKiennghi');
 		$aftersaveDoanhNghiep = $this->Session->read('savingDoanhNghiep');
@@ -397,7 +400,7 @@ class DoanhNghiepsController extends AdminAppController
 		}
 	}
 
-	public function step7Hoantat()
+	public function step8Hoantat()
 	{
 		if ($this->request->is('post') || $this->request->is('put')) {
 			$savingDoanhNghiep = $this->Session->read('savingDoanhNghiep');
@@ -412,7 +415,8 @@ class DoanhNghiepsController extends AdminAppController
 				$this->Session->delete('editing');
 				$this->Session->delete('savingKiennghi');
 				$this->Session->setFlash('Đã hoàn tất quá trình cập nhật mới thông tin doanh nghiệp', 'default', array('class' => 'success'));
-				$this->redirect('/admin/doanhnghiep/lietke');
+				header('Refresh: 5;url=/admin/doanhnghiep/lietke');
+//				$this->redirect('/admin/doanhnghiep/lietke');
 			}
 		} else {
 			$this->Session->setFlash('Xin nhập thông tin doanh nghiệp');

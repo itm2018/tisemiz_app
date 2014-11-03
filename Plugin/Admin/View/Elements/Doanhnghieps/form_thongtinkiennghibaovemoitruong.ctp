@@ -18,7 +18,7 @@
             $('#btn-hoantat').bind('click',function(){
                if(confirm('Bạn xác nhận hoàn thành việc cập nhật thông tin doanh nghiệp?')){
                    $('#FormThongTinKienNghiBvmt').attr('action',
-					   '<?php echo Router::url('/admin/doanhnghiep/themmoi/step7');?>').submit();
+					   '<?php echo Router::url('/admin/doanhnghiep/themmoi/step8');?>').submit();
                    return true;
                } 
                return false;

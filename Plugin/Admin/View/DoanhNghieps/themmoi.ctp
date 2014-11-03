@@ -9,7 +9,8 @@
                     <a href="<?php echo Router::url('/admin/doanhnghiep/themmoi/step4'); ?>"><li>4</li></a>
                     <a href="<?php echo Router::url('/admin/doanhnghiep/themmoi/step5'); ?>"><li>5</li></a>
                     <a href="<?php echo Router::url('/admin/doanhnghiep/themmoi/step6'); ?>"><li>6</li></a>
-                    <li>7</li>
+                    <a href="<?php echo Router::url('/admin/doanhnghiep/themmoi/step7'); ?>"><li>7</li></a>
+                    <li>8</li>
                 </ul>
             </div>
         </td>
@@ -27,16 +28,19 @@
                 <a href="#panel-2" data-toggle="tab">Hoạt động sản xuất</a>
             </li>
             <li class="tab3">
-                <a href="#panel-3" data-toggle="tab">Xả thải</a>
+                <a href="#panel-3" data-toggle="tab">HĐ Xả thải</a>
             </li>
             <li class="tab4">
                 <a href="#panel-4" data-toggle="tab">Giám sát định kỳ</a>
             </li>
             <li class="tab5">
-                <a href="#panel-5" data-toggle="tab">Hoạt động bảo vệ môi trường</a>
+                <a href="#panel-5" data-toggle="tab">Hoạt động bảo vệ MT</a>
             </li>
-            <li class="tab6">
-                <a href="#panel-6" data-toggle="tab">Kiến nghị</a>
+			<li class="tab6">
+                <a href="#panel-6" data-toggle="tab">Quan trắc tự động</a>
+            </li>
+            <li class="tab7">
+                <a href="#panel-7" data-toggle="tab">Kiến nghị</a>
             </li>
         </ul>
         <div class="tab-content">
@@ -60,6 +64,9 @@
 
             </div>
             <div class="tab-pane" id="panel-6">
+
+            </div>
+			<div class="tab-pane" id="panel-7">
 
             </div>
         </div>

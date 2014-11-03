@@ -3,6 +3,8 @@
 //Router::connect('/admin/doanhnghiep/lietke/*',array('plugin'=>'Admin','controller'=>'DoanhNghieps','action'=>'lietke'));
 Router::connect('/bando', array('plugin' => 'Front', 'controller' => 'Map', 'action' => 'index'));
 Router::connect('/admin/dashboards', array('plugin' => 'Admin', 'controller' => 'Dashboards', 'action' => 'billboard'));
+Router::connect('/admin/doimatkhau', array('plugin' => 'Admin', 'controller' => 'User',
+										   'action' => 'changepassword'));
 Router::connect('/admin/doanhnghiep/lietke', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'lietke'));
 Router::connect('/admin/doanhnghiep/lietke/*', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'lietke'));
 Router::connect('/admin/doanhnghiep/themmoi', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'themmoi'));
@@ -16,8 +18,12 @@ Router::connect('/admin/doanhnghiep/themmoi/step4/:tab', array('plugin' => 'Admi
 														   'action' => 'step4Giamsatdinhky'),array('pass'=>array('tab')
 																							 ));
 Router::connect('/admin/doanhnghiep/themmoi/step5', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'step5Hoatdongbaovemoitruong'));
-Router::connect('/admin/doanhnghiep/themmoi/step6', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'step6Kiennghi'));
-Router::connect('/admin/doanhnghiep/themmoi/step7', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'step7Hoantat'));
+Router::connect('/admin/doanhnghiep/themmoi/step6', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps',
+														  'action' => 'step6Quantractudong'));
+Router::connect('/admin/doanhnghiep/themmoi/step7', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps',
+														  'action' => 'step7Kiennghi'));
+Router::connect('/admin/doanhnghiep/themmoi/step8', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps',
+														  'action' => 'step8Hoantat'));
 Router::connect('/admin/doanhnghiep/edit/:id', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'edit'), array('pass' => array('id')));
 Router::connect('/admin/doanhnghiep/delete/:id', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'delete'), array('pass' => array('id')));
 Router::connect('/admin/doanhnghiep/themsanpham', array('plugin' => 'Admin', 'controller' => 'DoanhNghieps', 'action' => 'themsanpham'));

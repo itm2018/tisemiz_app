@@ -19,6 +19,7 @@
 <div class="main-content">
     <h3>Thông Tin Chung</h3>
     <ul class="list-thongtinchung">
+        <li><a href="<?php echo Router::url('/admin/doimatkhau')?>">Đổi mật khẩu</a></li>
         <li><a href="<?php echo Router::url('/admin/thongtinchung/chatthai')?>">Thông tin chất thải</a></li>
         <li><a href="<?php echo Router::url('/admin/commonfunction/chucnang/type/3',true)?>" target="_blank">Thông tin nguyên liệu</a></li>
         <li><a href="<?php echo Router::url('/admin/commonfunction/chucnang/type/1')?>" target="_blank">Danh mục sản phẩm</a></li>

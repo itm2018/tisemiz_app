@@ -59,7 +59,7 @@ class AppController extends Controller {
         'Acl'
     );
 
-    function isAuthorized($user) {
+    function isAuthorized() {
         return true;
     }
 
@@ -72,6 +72,7 @@ class AppController extends Controller {
             $this->Security->enabled = false;
             $this->Security->csrfCheck = false;
         }
+//		$this->Acl->allow();
         $this->Auth->authorize = 'Controller';
         $this->Auth->allow(array('register', 'success', 'view', 'index','chitiet','dodownload','lienhe'));
         $this->Security->unlockedActions = array('login', 'themmoi', 'themnguyenlieudoanhnghiep', 'xoacoso','get');

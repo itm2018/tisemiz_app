@@ -9,7 +9,8 @@
                     <a href="<?php echo Router::url('/admin/doanhnghiep/themmoi/step4'); ?>"><li class="active">4</li></a>
                     <a href="<?php echo Router::url('/admin/doanhnghiep/themmoi/step5'); ?>"><li class="active">5</li></a>
                     <a href="<?php echo Router::url('/admin/doanhnghiep/themmoi/step6'); ?>"><li class="active">6</li></a>
-                    <li>7</li>
+					<li class="active">7</li></a>
+					<li>8</li>
                 </ul>
             </div>
         </td>
@@ -35,8 +36,11 @@
             <li class="tab5">
                 <a href="#panel-5" data-toggle="tab">Hoạt động bảo vệ môi trường</a>
             </li>
-            <li class="tab6 active">
-                <a href="#panel-6 active" data-toggle="tab">Kiến nghị</a>
+			<li class="tab6">
+				<a href="#panel-6" data-toggle="tab">Quan trắc tự động</a>
+			</li>
+            <li class="tab7 active">
+                <a href="#panel-7 active" data-toggle="tab">Kiến nghị</a>
             </li>
         </ul>
         <div class="tab-content">
@@ -55,7 +59,10 @@
             <div class="tab-pane" id="panel-5">
 
             </div>
-            <div class="tab-pane active" id="panel-6">
+			<div class="tab-pane" id="panel-6">
+
+			</div>
+            <div class="tab-pane active" id="panel-7">
                 <!--thong tin kien nghi-->
                 <?php echo $this->element('Admin.Doanhnghieps/form_thongtinkiennghibaovemoitruong') ?>
                 <!--ket thuc thong tin kien nghi-->
