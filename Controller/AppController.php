@@ -23,79 +23,96 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
-	//public $helpers = array('Minify.Minify');
-	public $components = array(
-		'Session',
-		'Security',
-		'RequestHandler',
-//        'Security' => array(
-//            'csrfExpires' => '+1 hour',
-//            'csrfUseOne' => false
-//        ),
-		'Auth' => array(
-			'loginRedirect' => array(
-				'plugin' => 'admin',
-				'controller' => 'dashboards',
-				'action' => 'index'
-			),
-			'logoutRedirect' => array(
-				'controller' => 'users',
-				'action' => 'login',
-				'home'
-			),
-			'loginAction' => array(
-				'plugin' => null,
-				'controller' => 'users',
-				'action' => 'login',
-			),
-			'authError' => 'Did you really think you are allowed to see that?',
-			'authenticate' => array(
-				'Form' => array(
-					'userModel' => 'User',
-					'passwordHasher' => array(
-						'className' => 'Simple',
-						'hashType' => 'sha256'
-					),
-					'fields' => array('username' => 'username', 'password' => 'password'),
-					'scope' => array('User.status' => 1)
-				)
-			)
-		),
-		'Acl'
-	);
+    //public $helpers = array('Minify.Minify');
+    public $components = array(
+        'Session',
+        'Security',
+        'Auth' => array(
+            'loginRedirect' => array(
+                'plugin' => 'admin',
+                'controller' => 'dashboards',
+                'action' => 'index'
+            ),
+            'logoutRedirect' => array(
+                'controller' => 'users',
+                'action' => 'login',
+                'home'
+            ),
+            'loginAction' => array(
+                'plugin' => null,
+                'controller' => 'users',
+                'action' => 'login',
+            ),
+            'authError' => 'Did you really think you are allowed to see that?',
+            'authenticate' => array(
+                'Form' => array(
+                    'userModel' => 'User',
+                    'passwordHasher' => array(
+                        'className' => 'Simple',
+                        'hashType' => 'sha256'
+                    ),
+                    'fields' => array('username' => 'username', 'password' => 'password'),
+                    'scope' => array('User.status' => 1)
+                )
+            )
+        ),
+//        'Acl'
+    );
 
-	public function beforeFilter() {
-		parent::beforeFilter();
-		$this->Security->blackHoleCallback = 'blackhole';
-		$this->Security->validatePost = false;
-		$this->Security->unlockedActions = array('dulieugiamsatmoitruong');
-		$this->Auth->allow(array('register', 'success', 'view'));
-	}
+    function isAuthorized() {
+        return true;
+    }
 
-	public function blackhole() {
-		$this->redirect(array('plugin' => null, 'controller' => 'errors', 'action' => 'session_expire'));
-	}
+    function beforeFilter() {
+        parent::beforeFilter();
+        $this->Security->blackHoleCallback = '_blackHole';
+        //Here, we disable the Security component for Ajax requests
+        if ($this->request->is('ajax') || $this->request->is('post') || $this->request->is('put')) {
+            $this->Security->validatePost = false;
+            $this->Security->enabled = false;
+            $this->Security->csrfCheck = false;
+        }
+//		$this->Acl->allow();
+        $this->Auth->authorize = 'Controller';
+        $this->Auth->allow(array('register', 'success', 'view', 'index','chitiet','dodownload','lienhe','verify',
+								 'resetpass','success','sendsuccess'));
+        $this->Security->unlockedActions = array('login', 'themmoi', 'themnguyenlieudoanhnghiep', 'xoacoso','get');
+    }
 
-	public function any_action() {
-		$aro = $this->Acl->Aro;
-		$groups = array(
-			0 => array(
-				'alias' => 'warriors'
-			),
-			1 => array(
-				'alias' => 'wizards'
-			),
-			2 => array(
-				'alias' => 'hobbits'
-			),
-			3 => array(
-				'alias' => 'visitors'
-			)
-		);
-		foreach($groups as $data) {
-			$aro->create();
-			$aro->save($data);
-		}
-	}
+    function _blackHole($error) {
+        switch ($error) {
+            case 'secure':
+                $this->redirect('https://' . env('SERVER_NAME') . env('REQUEST_URI'));
+                break;
+            case 'login':
+                // do something else
+                break;
+            default:
+                throw new NotFoundException('Trang bạn đang tìm không tồn tại');
+                break;
+        }
+    }
+
+//    public function any_action() {
+//        $aro = $this->Acl->Aro;
+//        $groups = array(
+//            0 => array(
+//                'alias' => 'warriors'
+//            ),
+//            1 => array(
+//                'alias' => 'wizards'
+//            ),
+//            2 => array(
+//                'alias' => 'hobbits'
+//            ),
+//            3 => array(
+//                'alias' => 'visitors'
+//            )
+//        );
+//        foreach ($groups as $data) {
+//            $aro->create();
+//            $aro->save($data);
+//        }
+//    }
 
 }

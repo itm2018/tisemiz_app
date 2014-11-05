@@ -1,13 +1,4 @@
-<div>ID:<?php echo !empty($baocaogsmt_id)?h($baocaogsmt_id):'';?></div>
-<form method="post" action="" id="form1">
-	<div class="aspNetHidden">
-		<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNzE4NTk2ODM0D2QWAgIBD2QWBgIBDw8WAh4EVGV4dAU4Tmd14buTbiBwaMOhdCBzaW5oIMO0IG5oaeG7hW06IEtow60gdGjhuqNpIHThuqFpIG5ndeG7k25kZAICDxYCHgdWaXNpYmxlaBYCZg9kFgJmD2QWBAIDDxYCHwFoZAIFDw8WAh8BaGRkAgMPFgIeC18hSXRlbUNvdW50ZmRkAULla5Nhj68X9YdcUif36nFRuD54XuRzTW+3eRDjRRc=">
-	</div>
-
-	<div class="aspNetHidden">
-
-		<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAJyrnflPUwf2svzxSRSxR3jlliAPKY+KvRmniYVjNuQiKF20lMyNOMJJhOTseSVttx/2ViRZJZyQBi2FklzZIh1">
-	</div>
+<?php echo $this->Form->create('form1', array('method' => 'post')); ?>
     <table id="Table9" cellspacing="0" cellpadding="0" width="100%" border="0">
         <tbody><tr>
 				<td style="text-align: left;">
@@ -69,37 +60,37 @@
 
 		<tbody><tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(255, 255, 255);">
 				<td align="center">
-					<input type="text" style="width: 98%" value="" id="ThuTu" name="ThuTu">
-					<input type="hidden" style="width: 98%" value="" id="ID" name="ID">
+					<input type="text" style="width: 98%" value="" id="ThuTu" name="ThuTu[]">
+					<input type="hidden" style="width: 98%" value="" id="ID" name="ID[]">
 				</td>
 				<td align="left">
-					<input type="text" style="width: 98%" value="" id="Ten" name="Ten">
+					<input type="text" style="width: 98%" value="" id="Ten" name="Ten[]">
 				</td>
 				<td align="center">
-					<input type="text" style="width: 98%" value="" id="DonVi" name="DonVi">
+					<input type="text" style="width: 98%" value="" id="DonVi" name="DonVi[]">
 				</td>
 
 				<td align="right">
-					<input type="text" style="width: 98%" value="" name="T1">
+					<input type="text" style="width: 98%" value="" name="T1[]">
 				</td>
 
 				<td align="right">
-					<input type="text" style="width: 98%" value="" name="T2">
+					<input type="text" style="width: 98%" value="" name="T2[]">
 				</td>
 
 				<td align="right">
-					<input type="text" style="width: 98%" value="" name="T3">
+					<input type="text" style="width: 98%" value="" name="T3[]">
 				</td>
 
 				<td align="right">
-					<input type="text" style="width: 98%" value="" name="T4">
+					<input type="text" style="width: 98%" value="" name="T4[]">
 				</td>
 
 				<td>
 				</td>
 
 				<td align="center">
-					<input type="text" style="width: 98%" value="" id="GhiChu" name="GhiChu">
+					<input type="text" style="width: 98%" value="" id="GhiChu" name="GhiChu[]">
 				</td>
 
 				<td align="center">
@@ -108,37 +99,37 @@
 
 			<tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
 				<td align="center">
-					<input type="text" style="width: 98%" value="" id="ThuTu" name="ThuTu">
-					<input type="hidden" style="width: 98%" value="" id="ID" name="ID">
+					<input type="text" style="width: 98%" value="" id="ThuTu" name="ThuTu[]">
+					<input type="hidden" style="width: 98%" value="" id="ID" name="ID[]">
 				</td>
 				<td align="left">
-					<input type="text" style="width: 98%" value="" id="Ten" name="Ten">
+					<input type="text" style="width: 98%" value="" id="Ten" name="Ten[]">
 				</td>
 				<td align="center">
-					<input type="text" style="width: 98%" value="" id="DonVi" name="DonVi">
+					<input type="text" style="width: 98%" value="" id="DonVi" name="DonVi[]">
 				</td>
 
 				<td align="right">
-					<input type="text" style="width: 98%" value="" name="T1">
+					<input type="text" style="width: 98%" value="" name="T1[]">
 				</td>
 
 				<td align="right">
-					<input type="text" style="width: 98%" value="" name="T2">
+					<input type="text" style="width: 98%" value="" name="T2[]">
 				</td>
 
 				<td align="right">
-					<input type="text" style="width: 98%" value="" name="T3">
+					<input type="text" style="width: 98%" value="" name="T3[]">
 				</td>
 
 				<td align="right">
-					<input type="text" style="width: 98%" value="" name="T4">
+					<input type="text" style="width: 98%" value="" name="T4[]">
 				</td>
 
 				<td>
 				</td>
 
 				<td align="center">
-					<input type="text" style="width: 98%" value="" id="GhiChu" name="GhiChu">
+					<input type="text" style="width: 98%" value="" id="GhiChu" name="GhiChu[]">
 				</td>
 
 				<td align="center">
@@ -147,37 +138,37 @@
 
 			<tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'">
 				<td align="center">
-					<input type="text" style="width: 98%" value="" id="ThuTu" name="ThuTu">
-					<input type="hidden" style="width: 98%" value="" id="ID" name="ID">
+					<input type="text" style="width: 98%" value="" id="ThuTu" name="ThuTu[]">
+					<input type="hidden" style="width: 98%" value="" id="ID" name="ID[]">
 				</td>
 				<td align="left">
-					<input type="text" style="width: 98%" value="" id="Ten" name="Ten">
+					<input type="text" style="width: 98%" value="" id="Ten" name="Ten[]">
 				</td>
 				<td align="center">
-					<input type="text" style="width: 98%" value="" id="DonVi" name="DonVi">
+					<input type="text" style="width: 98%" value="" id="DonVi" name="DonVi[]">
 				</td>
 
 				<td align="right">
-					<input type="text" style="width: 98%" value="" name="T1">
+					<input type="text" style="width: 98%" value="" name="T1[]">
 				</td>
 
 				<td align="right">
-					<input type="text" style="width: 98%" value="" name="T2">
+					<input type="text" style="width: 98%" value="" name="T2[]">
 				</td>
 
 				<td align="right">
-					<input type="text" style="width: 98%" value="" name="T3">
+					<input type="text" style="width: 98%" value="" name="T3[]">
 				</td>
 
 				<td align="right">
-					<input type="text" style="width: 98%" value="" name="T4">
+					<input type="text" style="width: 98%" value="" name="T4[]">
 				</td>
 
 				<td>
 				</td>
 
 				<td align="center">
-					<input type="text" style="width: 98%" value="" id="GhiChu" name="GhiChu">
+					<input type="text" style="width: 98%" value="" id="GhiChu" name="GhiChu[]">
 				</td>
 
 				<td align="center">
@@ -186,37 +177,37 @@
 
 			<tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(255, 255, 255);">
 				<td align="center">
-					<input type="text" style="width: 98%" value="" id="ThuTu" name="ThuTu">
-					<input type="hidden" style="width: 98%" value="" id="ID" name="ID">
+					<input type="text" style="width: 98%" value="" id="ThuTu" name="ThuTu[]">
+					<input type="hidden" style="width: 98%" value="" id="ID" name="ID[]">
 				</td>
 				<td align="left">
-					<input type="text" style="width: 98%" value="" id="Ten" name="Ten">
+					<input type="text" style="width: 98%" value="" id="Ten" name="Ten[]">
 				</td>
 				<td align="center">
-					<input type="text" style="width: 98%" value="" id="DonVi" name="DonVi">
+					<input type="text" style="width: 98%" value="" id="DonVi" name="DonVi[]">
 				</td>
 
 				<td align="right">
-					<input type="text" style="width: 98%" value="" name="T1">
+					<input type="text" style="width: 98%" value="" name="T1[]">
 				</td>
 
 				<td align="right">
-					<input type="text" style="width: 98%" value="" name="T2">
+					<input type="text" style="width: 98%" value="" name="T2[]">
 				</td>
 
 				<td align="right">
-					<input type="text" style="width: 98%" value="" name="T3">
+					<input type="text" style="width: 98%" value="" name="T3[]">
 				</td>
 
 				<td align="right">
-					<input type="text" style="width: 98%" value="" name="T4">
+					<input type="text" style="width: 98%" value="" name="T4[]">
 				</td>
 
 				<td>
 				</td>
 
 				<td align="center">
-					<input type="text" style="width: 98%" value="" id="GhiChu" name="GhiChu">
+					<input type="text" style="width: 98%" value="" id="GhiChu" name="GhiChu[]">
 				</td>
 
 				<td align="center">
@@ -225,47 +216,101 @@
 
 			<tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(255, 255, 255);">
 				<td align="center">
-					<input type="text" style="width: 98%" value="" id="ThuTu" name="ThuTu">
-					<input type="hidden" style="width: 98%" value="" id="ID" name="ID">
+					<input type="text" style="width: 98%" value="" id="ThuTu" name="ThuTu[]">
+					<input type="hidden" style="width: 98%" value="" id="ID" name="ID[]">
 				</td>
 				<td align="left">
-					<input type="text" style="width: 98%" value="" id="Ten" name="Ten">
+					<input type="text" style="width: 98%" value="" id="Ten" name="Ten[]">
 				</td>
 				<td align="center">
-					<input type="text" style="width: 98%" value="" id="DonVi" name="DonVi">
+					<input type="text" style="width: 98%" value="" id="DonVi" name="DonVi[]">
 				</td>
 
 				<td align="right">
-					<input type="text" style="width: 98%" value="" name="T1">
+					<input type="text" style="width: 98%" value="" name="T1[]">
 				</td>
 
 				<td align="right">
-					<input type="text" style="width: 98%" value="" name="T2">
+					<input type="text" style="width: 98%" value="" name="T2[]">
 				</td>
 
 				<td align="right">
-					<input type="text" style="width: 98%" value="" name="T3">
+					<input type="text" style="width: 98%" value="" name="T3[]">
 				</td>
 
 				<td align="right">
-					<input type="text" style="width: 98%" value="" name="T4">
+					<input type="text" style="width: 98%" value="" name="T4[]">
 				</td>
 
 				<td>
 				</td>
 
 				<td align="center">
-					<input type="text" style="width: 98%" value="" id="GhiChu" name="GhiChu">
+					<input type="text" style="width: 98%" value="" id="GhiChu" name="GhiChu[]">
 				</td>
 
 				<td align="center">
 				</td>
 			</tr>
+                        <?php
+                        if(!empty($nguonphatsinhkhithai)){
+                            foreach ($nguonphatsinhkhithai as $key => $npskt) {
+                                ?>
+                        <tr onmouseover="this.style.background = '#dbf0c9'" onmouseout="this.style.background = '#ffffff'" style="background: rgb(255, 255, 255);">
+				<td align="center">
+					<input type="text" style="width: 98%" value="<?php echo h($npskt['stt']);?>" id="ThuTu" name="ThuTu[]">
+					<input type="hidden" style="width: 98%" value="<?php echo h($npskt['temp_id']);?>" id="ID" name="ID[]">
+				</td>
+				<td align="left">
+					<input type="text" style="width: 98%" value="<?php echo h($npskt['loaikhithai']);?>" id="Ten" name="Ten[]">
+				</td>
+				<td align="center">
+					<input type="text" style="width: 98%" value="<?php echo h($npskt['donvi']);?>" id="DonVi" name="DonVi[]">
+				</td>
 
+				<td align="right">
+					<input type="text" style="width: 98%" value="<?php echo h($npskt['quy1']);?>" name="T1[]">
+				</td>
+
+				<td align="right">
+					<input type="text" style="width: 98%" value="<?php echo h($npskt['quy2']);?>" name="T2[]">
+				</td>
+
+				<td align="right">
+					<input type="text" style="width: 98%" value="<?php echo h($npskt['quy3']);?>" name="T3[]">
+				</td>
+
+				<td align="right">
+					<input type="text" style="width: 98%" value="<?php echo h($npskt['quy4']);?>" name="T4[]">
+				</td>
+
+				<td>
+                                    <?php echo h($npskt['tong']);?>
+				</td>
+
+				<td align="center">
+					<input type="text" style="width: 98%" value="<?php echo h($npskt['ghichu']);?>" id="GhiChu" name="GhiChu[]">
+				</td>
+
+				<td align="center">
+                                    <a href="javascript:doDelete(<?php echo h($npskt['temp_id']); ?>,'');">Delete</a>
+				</td>
+			</tr>
+                        <?php
+                            }
+                        }
+                        ?>
 		</tbody></table>
 
 
     <input type="button" id="btnCapNhat" name="btnCapNhat" onclick="window.opener.location.reload();
 			window.close();" value="Kết thúc">
     <input type="submit" name="btnSave" value="Cập nhật" id="btnSave" class="button">
-</form>
+<?php echo $this->Form->end(); ?>
+<script type="text/javascript">
+	function doDelete(strID, strAllQueryString) {
+		if (confirm('Bạn có thực sự muốn xóa ?')) {
+			window.location.href = "<?php echo $this->here . '?' . $_SERVER['QUERY_STRING']; ?>&action=delete&ID=" + strID + "&" + strAllQueryString;
+		}
+	}
+</script>

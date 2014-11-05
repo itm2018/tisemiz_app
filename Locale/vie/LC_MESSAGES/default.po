@@ -62,7 +62,7 @@ msgid "Forgot your password?"
 msgstr "Quên mật khẩu?"
 
 msgid "Reset Password"
-msgstr "Lấy lại mật "
+msgstr "Lấy lại mật khẩu"
 
 msgid "Hide me"
 msgstr "Ẩn"
@@ -82,3 +82,8 @@ msgstr "Chúc mừng"
 msgid "Your account has been added. But before you can login to system, please check your mailbox for confirmation email and do as introduction as active your account."
 msgstr "Tài khoản của bạn đã được tạo. Nhưng trước khi bạn có thể đăng  vào hệ thống, vui lòng kiểm tra hộp thư để xem email xác nhận và làm theo hướng dẫn để kích hoạt tài khoản.<br>Xin chân thành cảm ơn."
 
+msgid "You are logged in"
+msgstr "Bạn đã đăng nhập thành công"
+
+msgid "Are you sure you want to delete # %s?"
+msgstr "Bạn có chắc muốn xóa doanh nghiệp ứng với ID=%s"
