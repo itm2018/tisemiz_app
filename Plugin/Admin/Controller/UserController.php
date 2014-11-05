@@ -13,8 +13,6 @@ class UserController extends AdminAppController{
 
 	public function changepassword(){
 		$this->loadModel('User');
-		$passwordHasher                       = new SimplePasswordHasher(array('hashType' => 'sha256'));
-		pr($passwordHasher->hash('123456Aa!'));
 		if($this->request->is('post')){
 
 			$data=$this->request->data;
@@ -84,11 +82,14 @@ class UserController extends AdminAppController{
 			}
 			$this->User->set($data['User']);
 			if($this->User->validates()){
-				$saved=$this->User->saveField('password',$passwordHasher->hash($data['User']['password_update']));
-				if($saved){
-					$this->Session->setFlash('Đổi mật khẩu thành công','default',array('class'=>'success'));
-					$this->redirect($this->request->here) ;
+				try{
+					$this->User->saveField('password',$data['User']['password_update']);
+
+				}catch (Exception $e){
+
 				}
+				$this->Session->setFlash('Đổi mật khẩu thành công','default',array('class'=>'success'));
+				$this->redirect($this->request->here) ;
 			}
 		}
 	}

@@ -95,7 +95,7 @@
  */
 $config['map'] = array(
 	'User' => 'User/username',
-	'Role' => 'User/group_id',
+	'Role' => 'User/role_id',
 );
 
 /**

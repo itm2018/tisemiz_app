@@ -56,7 +56,7 @@ class AppController extends Controller {
                 )
             )
         ),
-        'Acl'
+//        'Acl'
     );
 
     function isAuthorized() {
@@ -74,7 +74,8 @@ class AppController extends Controller {
         }
 //		$this->Acl->allow();
         $this->Auth->authorize = 'Controller';
-        $this->Auth->allow(array('register', 'success', 'view', 'index','chitiet','dodownload','lienhe'));
+        $this->Auth->allow(array('register', 'success', 'view', 'index','chitiet','dodownload','lienhe','verify',
+								 'resetpass','success','sendsuccess'));
         $this->Security->unlockedActions = array('login', 'themmoi', 'themnguyenlieudoanhnghiep', 'xoacoso','get');
     }
 
@@ -92,26 +93,26 @@ class AppController extends Controller {
         }
     }
 
-    public function any_action() {
-        $aro = $this->Acl->Aro;
-        $groups = array(
-            0 => array(
-                'alias' => 'warriors'
-            ),
-            1 => array(
-                'alias' => 'wizards'
-            ),
-            2 => array(
-                'alias' => 'hobbits'
-            ),
-            3 => array(
-                'alias' => 'visitors'
-            )
-        );
-        foreach ($groups as $data) {
-            $aro->create();
-            $aro->save($data);
-        }
-    }
+//    public function any_action() {
+//        $aro = $this->Acl->Aro;
+//        $groups = array(
+//            0 => array(
+//                'alias' => 'warriors'
+//            ),
+//            1 => array(
+//                'alias' => 'wizards'
+//            ),
+//            2 => array(
+//                'alias' => 'hobbits'
+//            ),
+//            3 => array(
+//                'alias' => 'visitors'
+//            )
+//        );
+//        foreach ($groups as $data) {
+//            $aro->create();
+//            $aro->save($data);
+//        }
+//    }
 
 }

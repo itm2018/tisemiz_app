@@ -10,7 +10,7 @@ class User extends AppModel
 {
 	public $name = 'User';
 	public $useTable = 'user';
-	public $actsAs=array('Acl'=>array('type'=>'Requester'));
+//	public $actsAs=array('Acl'=>array('type'=>'Requester'));
 
 	public function beforeSave($options = array())
 	{
